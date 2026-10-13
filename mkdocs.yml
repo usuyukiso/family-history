@@ -2,7 +2,7 @@ site_name: "Семейная история"
 site_description: "Генеалогическая книга и каталог источников"
 # Адрес нужен только для опубликованного сайта (карта сайта, канонические ссылки).
 # Внутренние ссылки относительные и от него не зависят.
-# site_url: "https://ЛОГИН.github.io/family-history/"
+site_url: "https://usuyukiso.github.io/family-history/"
 
 theme:
   name: material
