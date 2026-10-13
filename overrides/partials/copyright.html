@@ -7,4 +7,15 @@
     <a href="{{ base_url }}/terminology/">Терминология</a>
     <a href="{{ base_url }}/about/">О проекте</a>
   </nav>
+  <p class="footer-visits" hidden>Просмотров сайта: <span></span></p>
+  <script>
+    fetch("https://usuyukiso-family-history.goatcounter.com/counter/TOTAL.json")
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => {
+        const p = document.querySelector(".footer-visits");
+        p.querySelector("span").textContent = d.count;
+        p.hidden = false;
+      })
+      .catch(() => {});
+  </script>
 </div>

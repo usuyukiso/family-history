@@ -522,3 +522,7 @@
 .md-copyright .footer-links a:hover {
   color: var(--md-footer-fg-color);
 }
+.md-copyright .footer-visits {
+  margin: .6rem 0 0;
+  color: var(--md-footer-fg-color--lighter);
+}
