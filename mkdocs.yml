@@ -1,0 +1,420 @@
+site_name: "Семейная история"
+site_description: "Генеалогическая книга и каталог источников"
+# Адрес нужен только для опубликованного сайта (карта сайта, канонические ссылки).
+# Внутренние ссылки относительные и от него не зависят.
+# site_url: "https://ЛОГИН.github.io/family-history/"
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: ru
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.tooltips
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Включить тёмную тему
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Включить светлую тему
+
+plugins:
+  - search:
+      lang: ru
+
+hooks:
+  - hooks/id_links.py
+  - hooks/hidden_pages.py
+  - hooks/family_tree.py
+  - hooks/nav_counts.py
+  - hooks/place_pages.py
+  - hooks/document_age.py
+  - hooks/household_tables.py
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.magiclink
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/to-top.js
+  - javascripts/family-tree.js
+
+# Страницы, доступные только по прямой ссылке (не в меню, не в поиске, не в карте сайта).
+not_in_nav: |
+  /people/P1004-pavel-p.md
+  /people/P1026-konon.md
+
+validation:
+  links:
+    not_found: warn
+    anchors: warn
+    unrecognized_links: warn
+
+nav:
+  - Главная: index.md
+  - Родословное древо: tree.md
+  - Персоны:
+      - people/index.md
+      - 1645 Михайла Семенов: people/P1061-mikhayla-semenov.md
+      - 1648 Феврония Тимофеева: people/P1062-fevroniya-timofeeva.md
+      - 1649 Самуил Яковлев: people/P1069-samuil-yakovlev.md
+      - 1669 Нестер Кононов: people/P1025-nester-kononov.md
+      - 1679 Кондратий Самуилов: people/P1068-kondratiy-samuilov.md
+      - 1684 Татьяна Иванова: people/P1067-tatyana-ivanova.md
+      - 1686 Евдокия: people/P1071-evdokiya.md
+      - 1686 Калина Михайлов: people/P1059-kalina-mikhaylov.md
+      - 1691 Ефимия Савельева: people/P1060-efimiya-saveleva.md
+      - 1692 Григорий Егоров: people/P1065-grigoriy-egorov.md
+      - 1693 Никифор Никулин: people/P1072-nikifor-nikulin.md
+      - 1694 Афанасий Федотов: people/P1066-afanasiy-fedotov.md
+      - 1696 Семен Гаврилов: people/P1054-semen-gavrilov.md
+      - 1698 Ксения Трофимова: people/P1073-kseniya-trofimova.md
+      - 1706 Акилина Трофимова: people/P1035-akilina-trofimova.md
+      - 1709 Евдокия (Авдотья) Алексеева: people/P1064-evdokiya-alekseeva.md
+      - 1709 Екатерина Прокофьева: people/P1046-ekaterina-prokofeva.md
+      - 1711 Козьма Нестеров: people/P1024-kozma-nesterov.md
+      - 1711 Параскева Харитонова: people/P1070-paraskeva-kharitonova.md
+      - 1714 Евтифей Иванов: people/P1023-evtifey-ivanov.md
+      - 1714 Никифор Григорьев: people/P1063-nikifor-grigorev.md
+      - 1715 Евдоким Калинин: people/P1057-evdokim-kalinin.md
+      - 1716 Дарья Васильева: people/P1058-darya-vasileva.md
+      - 1718 Илья Абросимов: people/P1034-ilya-abrosimov.md
+      - 1718 Филипп Кондратьев: people/P1043-filipp-kondratev.md
+      - 1721 Яков Семенов: people/P1052-yakov-semenov.md
+      - 1723 Авдотья Маркова: people/P1053-avdotya-markova.md
+      - 1725 Исаак Никифоров: people/P1074-isaak-nikiforov.md
+      - 1729 Гликерия Козьмина: people/P1022-glikeriya-kozmina.md
+      - 1732 Федосья Егорова: people/P1042-fedosya-egorova.md
+      - 1734 Елисей Филиппов: people/P1041-elisey-filippov.md
+      - 1735 Егор Ильин: people/P1032-egor-ilin.md
+      - 1735 Сергей Афанасьев: people/P1009-sergey-afanasev.md
+      - 1736 Анна Никифорова: people/P1010-anna-nikiforova.md
+      - 1736 Козьма Евдокимов: people/P1055-kozma-evdokimov.md
+      - 1737 Анна Маркелова: people/P1033-anna-markelova.md
+      - 1738 Авдотья Иванова: people/P1056-avdotya-ivanova.md
+      - 1738 Иринья Иванова: people/P1051-irinya-ivanova.md
+      - 1739 Федот Евтифиев: people/P1021-fedot-evtifiev.md
+      - 1743 Петр Яковлев: people/P1050-petr-yakovlev.md
+      - 1752 Матфей Исаков: people/P1044-matfey-isakov.md
+      - 1753 Марфа Трифонова: people/P1045-marfa-trifonova.md
+      - 1754 Давыд Федотов: people/P1011-davyd-fedotov.md
+      - 1759 Иван Елисеев: people/P1039-ivan-eliseev.md
+      - 1759 Иван Петров: people/P1048-ivan-petrov.md
+      - 1760 Агафья Мокеева: people/P1040-agafya-mokeeva.md
+      - 1760 Екатерина Козьмина: people/P1049-ekaterina-kozmina.md
+      - 1762 Мирон Егоров: people/P1030-miron-egorov.md
+      - 1764 Фекла Максимова: people/P1031-fekla-maksimova.md
+      - 1767 Потап Сергеев: people/P1012-potap-sergeev.md
+      - 1771 Варвара Терентьева: people/P1047-varvara-terenteva.md
+      - 1784 Татьяна Матфеева: people/P1038-tatyana-matfeeva.md
+      - 1786 Феодор Иванов: people/P1037-feodor-ivanov.md
+      - 1793 Дарья Иванова: people/P1029-darya-ivanova.md
+      - 1795 Марков Тит Миронов: people/P1028-tit-mironov-markov.md
+      - 1807 Петр Давыдов: people/P1013-petr-davydov.md
+      - 1808 Настасья Федорова: people/P1036-nastasya-fedorova.md
+      - 1813 Косма Потапов: people/P1014-kosma-potapov.md
+      - 1814 Марфа Титова: people/P1027-marfa-titova.md
+      - 1815 Иван Давыдов: people/P1015-ivan-davydov.md
+      - 1840 Андрей Кузьмин: people/P1016-andrey-kuzmin.md
+      - 1844 Давыдов Василий Иванов: people/P1017-vasiliy-ivanov-davydov.md
+      - 1855 Лапина Евдокия Артемьевна: people/P1000-evdokiya-lapina.md
+      - 1858 Почеревин Егор Димитриев: people/P1001-egor-pocherevin.md
+      - 1873 Давыдов Иван Васильевич: people/P1019-ivan-vasilevich-davydov.md
+      - 1875 Андреева Александра Андреевна: people/P1018-aleksandra-andreeva.md
+      - 1883 Сычева Анна Никитична: people/P1003-anna-sycheva.md
+      - 1885 Почеревин Иван Егорович: people/P1002-ivan-pocherevin.md
+      - 1889 Давыдов Михаил Васильев: people/P1020-mikhail-vasilev-davydov.md
+      - 1916 Давыдов Павел Иванович: people/P1005-pavel-davydov.md
+      - 1919 Писарев Григорий Яковлевич: people/P1007-grigoriy-pisarev.md
+      - 1924 Давыдова Любовь Ивановна: people/P1006-lyubov-davydova.md
+      - Радионова Настасья: people/P1075-nastasya-radionova.md
+      - Сычев Никита Яковлев: people/P1008-nikita-sychev.md
+  - Места:
+      - places/index.md
+      - Псковская губерния:
+          - Алексеево-Зуево: places/PLC1007-alekseevo-zuevo.md
+          - Ванютино: places/PLC1018-vanyutino.md
+          - Горелик: places/PLC1015-gorelik.md
+          - Захарино: places/PLC1003-zakharino.md
+          - Зубово: places/PLC1008-zubovo.md
+          - Костково: places/PLC1013-kostkovo.md
+          - Красихино: places/PLC1012-krasikhino.md
+          - Лескушкино: places/PLC1019-leskushkino.md
+          - Маковицы: places/PLC1002-makovitsy.md
+          - Мокряне: places/PLC1010-mokryane.md
+          - Мышино: places/PLC1009-myshino.md
+          - Пашки (Колтырево): places/PLC1016-pashki-koltyrevo.md
+          - Печохново: places/PLC1014-pechokhnovo.md
+          - Попова Гора: places/PLC1017-popova-gora.md
+          - Порухово: places/PLC1011-porukhovo.md
+      - Могилёвская губерния:
+          - Глазовка: places/PLC1006-glazovka.md
+          - Рудня-Бартоломеевская: places/PLC1005-rudnya-bartolomeevskaya.md
+      - Приморская область:
+          - Шевелёвка: places/PLC1000-shevelevka.md
+      - Тверская губерния:
+          - Глазки: places/PLC1001-glazki.md
+      - Харьковская губерния:
+          - Винники: places/PLC1004-vinnikov.md
+      - Черниговская губерния:
+          - Лыщичи: places/PLC1020-lyshchichi.md
+  - Источники:
+      - sources/index.md
+      - Архивные записи:
+          - sources/archives/A1177-rgada-1209-1-8510-1711-myshino.md
+          - sources/archives/A1188-gapo-39-1-2505-ispoved-1742-pechakhnova.md
+          - sources/archives/A1047-rgada-350-2-755-1745-makovitsy.md
+          - sources/archives/A1160-rgada-350-2-755-1745-popova-gora.md
+          - sources/archives/A1176-rgada-350-2-755-1745-zubovo.md
+          - sources/archives/A1178-rgada-350-2-755-1745-mokryane.md
+          - sources/archives/A1179-rgada-350-2-755-1745-porukhova.md
+          - sources/archives/A1180-rgada-350-2-755-1745-krasikhina.md
+          - sources/archives/A1191-rgada-350-2-755-1745-zakharino.md
+          - sources/archives/A1192-rgada-350-2-755-1745-pechakhnovo.md
+          - sources/archives/A1193-rgada-350-2-755-1745-goreliki.md
+          - sources/archives/A1194-rgada-350-2-755-1745-koltyrevo.md
+          - sources/archives/A1145-voronich-1746-smert-7-nester-kononov.md
+          - sources/archives/A1152-gapo-39-1-2510-ispoved-1747-mokryane.md
+          - sources/archives/A1190-voronich-1747-brak-22-grigoriy-egorov.md
+          - sources/archives/A1195-rgada-350-2-2433-1748-vybyvshie.md
+          - sources/archives/A1161-voronich-1751-brak-53-elisey-filippov.md
+          - sources/archives/A1048-gapo-39-1-1590-ispoved-1754-gorelik.md
+          - sources/archives/A1146-gapo-39-1-1590-ispoved-1754-makovitsy.md
+          - sources/archives/A1162-gapo-39-1-1590-ispoved-1754-popova-gora.md
+          - sources/archives/A1189-gapo-39-1-1590-ispoved-1754-pechokhnova.md
+          - sources/archives/A1063-voronich-1756-brak-14-afanasev-nikiforova.md
+          - sources/archives/A1064-voronich-1759-rozhdenie-isaak-gorelik.md
+          - sources/archives/A1049-rgada-350-2-523-1763-krasikhino.md
+          - sources/archives/A1143-rgada-350-2-523-1763-makovitsy.md
+          - sources/archives/A1144-rgada-350-2-523-1763-alekseevo-zuevo.md
+          - sources/archives/A1147-voronich-1763-brak-3-rodion-evtifeev.md
+          - sources/archives/A1181-rgada-350-2-523-1763-kostkovo.md
+          - sources/archives/A1182-rgada-350-2-523-1763-pechokhnova.md
+          - sources/archives/A1183-rgada-350-2-523-1763-gorelik.md
+          - sources/archives/A1184-rgada-350-2-523-1763-koltyreva.md
+          - sources/archives/A1185-rgada-350-2-523-1763-porukhova.md
+          - sources/archives/A1186-rgada-350-2-523-1763-popova-gora.md
+          - sources/archives/A1187-rgada-350-2-523-1763-vanyutino.md
+          - sources/archives/A1148-voronich-1766-rozhdenie-14-tikhon.md
+          - sources/archives/A1149-voronich-1767-smert-15-ekaterina-prokofeva.md
+          - sources/archives/A1150-voronich-1767-rozhdenie-63-anna.md
+          - sources/archives/A1050-gapo-39-1-2545-ispoved-1769-makovitsy.md
+          - sources/archives/A1051-gapo-39-1-1607-ispoved-1770-gorelik.md
+          - sources/archives/A1163-gapo-39-1-1607-ispoved-1770-popova-gora.md
+          - sources/archives/A1052-gapo-39-1-1611-ispoved-1774-gorelik.md
+          - sources/archives/A1065-voronich-1774-rozhdenie-2-rodion-gorelik.md
+          - sources/archives/A1164-gapo-39-1-1617-ispoved-1780-popova-gora.md
+          - sources/archives/A1151-polyane-1782-rozhdenie-26-arkhip.md
+          - sources/archives/A1159-gapo-58-1-1029-reviziya-1782-zubovo.md
+          - sources/archives/A1174-gapo-58-1-1029-reviziya-1782-myshino.md
+          - sources/archives/A1157-terebeni-1784-rozhdenie-7-darya.md
+          - sources/archives/A1175-terebeni-1784-rozhdenie-6-darya.md
+          - sources/archives/A1165-pyatnitskaya-1789-smert-6-filipp-kondratev.md
+          - sources/archives/A1066-polyane-1790-braki-12-13-sergeev-davydov.md
+          - sources/archives/A1053-gapo-39-1-2623-ispoved-1792.md
+          - sources/archives/A1054-gapo-58-1-1027-reviziya-1795-makovitsy.md
+          - sources/archives/A1153-utretki-1795-rozhdenie-14-tit.md
+          - sources/archives/A1067-polyane-1800-smert-8-kseniya-safonova.md
+          - sources/archives/A1055-gapo-39-1-2669-ispoved-1802-zakharino.md
+          - sources/archives/A1068-rozhdestvo-1803-smert-52-sergey-afanasev.md
+          - sources/archives/A1166-gapo-39-1-2675-ispoved-1803-kostkovo.md
+          - sources/archives/A1069-rozhdestvo-1804-rozhdenie-113-stefanida.md
+          - sources/archives/A1158-gapo-39-1-2677-ispoved-1804-zubovo.md
+          - sources/archives/A1056-gapo-39-1-2680-ispoved-1806-zakharino.md
+          - sources/archives/A1070-rozhdestvo-1806-smert-25-anna-nikiforova.md
+          - sources/archives/A1154-gapo-39-1-2680-ispoved-1806-mokryane.md
+          - sources/archives/A1167-gapo-39-1-2680-ispoved-1806-popova-gora.md
+          - sources/archives/A1168-pyatnitskaya-1806-brak-13-fedor-ivanov.md
+          - sources/archives/A1071-polyane-1807-rozhdenie-61-ustinya.md
+          - sources/archives/A1169-pyatnitskaya-1808-smert-91-elisey-filippov.md
+          - sources/archives/A1173-pyatnitskaya-1809-smert-10-matfey-isakov.md
+          - sources/archives/A1170-pyatnitskaya-1810-rozhdenie-72-filipp.md
+          - sources/archives/A1155-utretki-1811-brak-7-tit-mironov.md
+          - sources/archives/A1125-rozhdestvo-1813-rozhdenie-38-kosma.md
+          - sources/archives/A1057-gapo-58-1-1291-reviziya-1816-makovitsy.md
+          - sources/archives/A1171-pyatnitskaya-1817-rozhdenie-59-pelageya.md
+          - sources/archives/A1172-pyatnitskaya-1822-smert-4-ivan-eliseev.md
+          - sources/archives/A1120-rozhdestvo-1824-rozhdenie-33-akilina.md
+          - sources/archives/A1126-rozhdestvo-1828-brak-19-kosma-potapov.md
+          - sources/archives/A1127-rozhdestvo-1830-rozhdenie-97-isakiy.md
+          - sources/archives/A1072-polyane-1832-smert-17-davyd-fedorov.md
+          - sources/archives/A1128-rozhdestvo-1832-rozhdenie-9-dariya.md
+          - sources/archives/A1073-polyane-1833-rozhdenie-14-matrona.md
+          - sources/archives/A1074-polyane-1834-brak-7-ivan-davydov.md
+          - sources/archives/A1129-rozhdestvo-1836-rozhdenie-26-yulian.md
+          - sources/archives/A1130-rozhdestvo-1836-smert-30-potapiy-sergeev.md
+          - sources/archives/A1121-rozhdestvo-1837-rozhdenie-59-iakov.md
+          - sources/archives/A1058-gapo-39-1-2720-ispoved-1840.md
+          - sources/archives/A1075-polyane-1840-brak-6-kishkina-ovsikhina.md
+          - sources/archives/A1131-rozhdestvo-1840-rozhdenie-43-andrey.md
+          - sources/archives/A1132-rozhdestvo-1842-smert-11-anastasiya-fedorova.md
+          - sources/archives/A1133-rozhdestvo-1842-brak-10-kosma-potapov-dariya.md
+          - sources/archives/A1076-polyane-1844-brak-5-pavel-antonov.md
+          - sources/archives/A1077-polyane-1844-rozhdenie-13-timofey.md
+          - sources/archives/A1078-polyane-1844-rozhdenie-21-vasiliy.md
+          - sources/archives/A1079-polyane-1844-rozhdenie-31-andrey-ivanova.md
+          - sources/archives/A1134-rozhdestvo-1844-rozhdenie-15-fevronya.md
+          - sources/archives/A1135-rozhdestvo-1844-smert-15-dariya-ivanova.md
+          - sources/archives/A1059-gapo-39-1-2723-ispoved-1850.md
+          - sources/archives/A1060-gapo-39-1-2516-ispoved-1852.md
+          - sources/archives/A1156-1852-brak-3-yakov-sidorov.md
+          - sources/archives/A1080-polyane-1853-brak-4-evtikhiy-alekseev.md
+          - sources/archives/A1081-polyane-1853-rozhdenie-5-anna.md
+          - sources/archives/A1082-polyane-1853-rozhdenie-37-iakov-selyugi.md
+          - sources/archives/A1122-rozhdestvo-1853-rozhdenie-46-melaniya.md
+          - sources/archives/A1083-polyane-1854-brak-4-petr-davydov.md
+          - sources/archives/A1084-polyane-1856-rozhdenie-6-iustina.md
+          - sources/archives/A1085-polyane-1857-smert-6-iustina.md
+          - sources/archives/A1086-polyane-1857-smert-9-aleksandra.md
+          - sources/archives/A1061-gapo-58-1-1844-reviziya-1858-makovitsy.md
+          - sources/archives/A1087-polyane-1858-rozhdenie-10-agafya.md
+          - sources/archives/A1088-polyane-1858-brak-17-petr-alekseev.md
+          - sources/archives/A1136-rozhdestvo-1858-brak-12-andrey-kosmin.md
+          - sources/archives/A1089-polyane-1859-smert-1-agafya.md
+          - sources/archives/A1090-polyane-1859-brak-2-stefan-pavlov.md
+          - sources/archives/A1137-rozhdestvo-1859-rozhdenie-luka.md
+          - sources/archives/A1091-polyane-1860-rozhdenie-13-evdokiya.md
+          - sources/archives/A1062-gapo-39-1-2736-ispoved-1862.md
+          - sources/archives/A1092-polyane-1862-brak-8-stefan-pavlov.md
+          - sources/archives/A1093-polyane-1862-rozhdenie-17-aleksey.md
+          - sources/archives/A1094-polyane-1862-brak-21-vasiliy-ivanov.md
+          - sources/archives/A1138-rozhdestvo-1863-rozhdenie-13-pelageya.md
+          - sources/archives/A1139-rozhdestvo-1865-smert-11-iakov.md
+          - sources/archives/A1095-polyane-1872-brak-miron-nikiforov.md
+          - sources/archives/A1096-polyane-1872-smert-53-pavel.md
+          - sources/archives/A1097-polyane-1876-rozhdenie-45-feodor.md
+          - sources/archives/A1098-polyane-1876-smert-27-feodor.md
+          - sources/archives/A1099-polyane-1876-smert-58-petr-davydov.md
+          - sources/archives/A1123-rozhdestvo-1876-brak-5-evdokiya-bogdanova.md
+          - sources/archives/A1100-rozhdestvo-1883-rozhdenie-dariya.md
+          - sources/archives/A1101-rozhdestvo-1883-smert-matfey.md
+          - sources/archives/A1140-rozhdestvo-1884-rozhdenie-27-mariya.md
+          - sources/archives/A1000-giaso-23i-2-9-l160-1885-births.md
+          - sources/archives/A1001-giaso-23i-2-9-l172-1885-deaths.md
+          - sources/archives/A1124-rozhdestvo-1887-rozhdenie-27-anna.md
+          - sources/archives/A1002-anivskaya-ispoved-1889.md
+          - sources/archives/A1102-rozhdestvo-1889-rozhdenie-77-mikhail.md
+          - sources/archives/A1003-giaso-23i-2-17-l104-1891-births.md
+          - sources/archives/A1011-rgia-dv-1133-2-2263-alfavit-poselentsev.md
+          - sources/archives/A1004-giaso-23i-2-21-l157-1893-births.md
+          - sources/archives/A1005-rgia-dv-1009-2-118-ispoved-1894.md
+          - sources/archives/A1006-giaso-23i-2-24-l25-1895-marriage.md
+          - sources/archives/A1010-giaso-23i-3-4-l25-alfavit-1895.md
+          - sources/archives/A1012-rgia-dv-1133-2-2271-alfavit-1896.md
+          - sources/archives/A1103-rozhdestvo-1895-brak-7-ioann-vasilev-aleksandra-andreeva.md
+          - sources/archives/A1141-rozhdestvo-1895-smert-47-andrey-kosmin.md
+          - sources/archives/A1007-rgia-dv-1133-2-2253-krestyanskiy-alfavit.md
+          - sources/archives/A1104-rozhdestvo-1897-rozhdenie-61-ioann.md
+          - sources/archives/A1105-rozhdestvo-1897-rozhdenie-106-anastasiya.md
+          - sources/archives/A1106-rozhdestvo-1898-smert-anastasiya.md
+          - sources/archives/A1107-rozhdestvo-1899-rozhdenie-aleksandr.md
+          - sources/archives/A1142-rozhdestvo-1900-brak-12-aleksey-andreev.md
+          - sources/archives/A1108-rozhdestvo-1901-smert-53-ioann-davydov.md
+          - sources/archives/A1109-rozhdestvo-1902-rozhdenie-lyubov.md
+          - sources/archives/A1110-rozhdestvo-1902-smert-lyubov.md
+          - sources/archives/A1013-giaso-23i-2-72-l16-1903-births.md
+          - sources/archives/A1111-rozhdestvo-1903-rozhdenie-81-viktor.md
+          - sources/archives/A1196-rgia-dv-98-1-326-l24-spisok-khodakov-1903.md
+          - sources/archives/A1014-giaso-23i-2-86-l23-1904-marriage.md
+          - sources/archives/A1015-giaso-23i-2-103-l6-1905-births.md
+          - sources/archives/A1016-rgia-dv-98-1-326-l19-spisok-1905.md
+          - sources/archives/A1017-rgia-dv-pismo-1905-12-10-shevelevka.md
+          - sources/archives/A1020-shkotovo-1906-marriage-pocherevin-sycheva.md
+          - sources/archives/A1044-shkotovo-1906-deaths-aleksandra-sycheva.md
+          - sources/archives/A1112-rozhdestvo-1906-rozhdenie-mariya.md
+          - sources/archives/A1113-rozhdestvo-1906-brak-dariya-vasileva.md
+          - sources/archives/A1018-rgia-dv-2-1-766-l2-prigovor-1907.md
+          - sources/archives/A1019-spisok-sakhalintsev-shevelevka-1907.md
+          - sources/archives/A1021-shkotovo-1907-births-mariya-pocherevina.md
+          - sources/archives/A1008-shkotovo-1908-births.md
+          - sources/archives/A1022-shkotovo-1908-births-mikhail-slednev.md
+          - sources/archives/A1023-shkotovo-1908-births-anastasiya-soleeva.md
+          - sources/archives/A1114-rozhdestvo-1908-rozhdenie-anatoliy.md
+          - sources/archives/A1024-shkotovo-1909-marriage-pushnoy-pozdeeva.md
+          - sources/archives/A1025-shkotovo-1909-births-aleksandra-pocherevina.md
+          - sources/archives/A1115-rozhdestvo-1909-smert-anatoliy.md
+          - sources/archives/A1026-shkotovo-1910-births-fedor-kiselkov.md
+          - sources/archives/A1027-shkotovo-1910-births-anastasiya-sledneva.md
+          - sources/archives/A1116-rozhdestvo-1910-rozhdenie-zinaida.md
+          - sources/archives/A1028-shkotovo-1911-deaths-viktor-pocherevin.md
+          - sources/archives/A1117-rozhdestvo-1912-smert-zinaida.md
+          - sources/archives/A1118-rozhdestvo-1912-smert-aleksey.md
+          - sources/archives/A1029-rgia-dv-1-4-2374-l99-prigovor-1913.md
+          - sources/archives/A1045-shkotovo-1913-marriage-botvinka-sycheva.md
+          - sources/archives/A1030-gapk-r2074-1-13-l46-1914-marriage.md
+          - sources/archives/A1119-rozhdestvo-1916-rozhdenie-44-pavel.md
+          - sources/archives/A1031-shkotovo-1917-marriage-khosroev-bukina.md
+          - sources/archives/A1032-shkotovo-1917-marriage-yakobson-pushnaya.md
+          - sources/archives/A1046-shkotovo-1917-deaths-mariya-sycheva.md
+          - sources/archives/A1042-gato-r312-1-204-l85-1919-birth.md
+          - sources/archives/A1009-shkotovo-1921-deaths.md
+          - sources/archives/A1033-gapk-r1963-3-4-l93-1923-births.md
+          - sources/archives/A1034-gapk-r1963-3-15-l193-1924-births.md
+          - sources/archives/A1035-gapk-r1963-3-29-l20-1925-marriage.md
+          - sources/archives/A1036-gapk-r1963-3-29-l22-1925-marriage.md
+          - sources/archives/A1043-gapk-r1963-3-29-1925-marriage-dubodelov-sycheva.md
+          - sources/archives/A1038-tsamo-58-18001-304-poteri-8-mpmp-1943.md
+          - sources/archives/A1041-rgaspi-kandidatskaya-kartochka-1943.md
+          - sources/archives/A1039-tsamo-58-a71497-4-kuldiga-1989.md
+          - sources/archives/A1040-kartochka-zakhoroneniya-krasnyy-oskol-1991.md
+          - sources/archives/A1037-gakk-r876-davydov-fond.md
+      - Книги:
+          - sources/books/B1005-spiski-naselennykh-mest-tverskaya-1862.md
+          - sources/books/B1011-spiski-naselennykh-mest-pskovskaya-1885.md
+          - sources/books/B1000-chekhov-census-1890.md
+          - sources/books/B1006-manifest-1894-11-14-milosti.md
+          - sources/books/B1012-spisok-naselennykh-mest-primorskoy-oblasti-1912.md
+          - sources/books/B1003-kniga-pamyati-tverskaya-t4-1993.md
+          - sources/books/B1004-kniga-pamyati-tverskaya-t8-1995.md
+          - sources/books/B1002-tarasov-artem-na-zare-2006.md
+          - sources/books/B1007-nikiforov-t5-leskushkino.md
+          - sources/books/B1008-nikiforov-t5-mokryane.md
+          - sources/books/B1009-nikiforov-t5-zakharino.md
+          - sources/books/B1010-nikiforov-t5-popova-gora.md
+          - sources/books/B1001-iz-istorii-zaseleniya-shkotovskogo-rayona-2017.md
+      - Фотографии:
+          - sources/photos/F1000-solovyovka-izba-1888-1890.md
+          - sources/photos/F1001-anivskaya-tserkov-1891.md
+          - sources/photos/F1002-pisarev-orlov-1932.md
+          - sources/photos/F1003-pisarev-dyatlovo-1940.md
+          - sources/photos/F1004-krasnyy-oskol-bratskaya-mogila-2020.md
+      - Письма:
+          - sources/letters/L1000-pismo-1942-06-21.md
+          - sources/letters/L1001-pismo-1942-09-10.md
+          - sources/letters/L1002-otkrytka-1942-11-05.md
+      - Веб-страницы:
+          - sources/websites/W1000-moypolk-davydov-pavel-ivanovich.md
+          - sources/websites/W1001-moypolk-davydov-pavel-ivanovich-1.md
+          - sources/websites/W1004-wikipedia-kot-vasiliy-andreevich.md
+          - sources/websites/W1005-libsakh-kot-vasiliy-andreevich.md
+          - sources/websites/W1006-wikipedia-lyshchichi.md
+          - sources/websites/W1007-geneabits-karta-pskovskoy-gubernii-1745-1763.md
+      - Базы данных:
+          - sources/databases/DB1000-obd-memorial-davydov-70002475315.md
+          - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md
+  - Методология: research-method.md
+  - Терминология: terminology.md
+  - О проекте: about.md
+
+extra:
+  generator: false

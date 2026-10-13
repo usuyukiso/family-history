@@ -1,0 +1,524 @@
+/* Дополнительные стили генеалогической книги. */
+
+/* Основной цвет сайта — приглушённый тёмно-оливковый зелёный. */
+:root {
+  --md-primary-fg-color: #4a5d3a;
+  --md-primary-fg-color--light: #6b7d58;
+  --md-primary-fg-color--dark: #36452a;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, .7);
+  --md-accent-fg-color: #7a8f4e;
+  --md-accent-fg-color--transparent: rgba(122, 143, 78, .1);
+  --md-accent-bg-color: #fff;
+  --md-accent-bg-color--light: rgba(255, 255, 255, .7);
+}
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #9db07f;
+  --md-accent-fg-color: #a3b87a;
+  --md-accent-fg-color--transparent: rgba(163, 184, 122, .1);
+}
+
+/* Палитра светлой темы: тёплый почти белый фон, коричневый текст, песочные рамки. */
+:root,
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #fdfbf5;
+  --md-default-fg-color: #3b3025;
+  --md-default-fg-color--light: rgba(59, 48, 37, .62);
+  --md-default-fg-color--lighter: rgba(59, 48, 37, .34);
+  --md-default-fg-color--lightest: rgba(59, 48, 37, .08);
+  --md-typeset-color: #3b3025;
+  --site-card-bg: #f0e4cc;
+  --site-border: #c7b58f;
+}
+[data-md-color-scheme="slate"] {
+  --site-card-bg: #3a3326;
+  --site-border: #8a7448;
+}
+/* Таблицы, меню страницы и примечания — песочные рамки и «карточки». */
+.md-typeset table:not([class]) {
+  border-color: var(--site-border);
+}
+.md-typeset .page-menu {
+  background: var(--site-card-bg);
+  border-color: var(--site-border) !important;
+}
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  background: var(--site-card-bg);
+  border-color: var(--site-border);
+}
+
+/* Текст архивных документов (цитаты и таблицы внутри цитат) — «старая бумага». */
+:root {
+  --doc-paper-bg: #f5e7c8;
+  --doc-paper-stains:
+    radial-gradient(ellipse at 15% 10%, rgba(155, 111, 49, .22), transparent 55%),
+    radial-gradient(ellipse at 85% 90%, rgba(130, 89, 45, .18), transparent 50%);
+  --doc-paper-head: transparent;
+  --doc-paper-border: #c7b58f;
+  --doc-paper-ink: #3b3025;
+  --doc-paper-line: #dcc9a0;
+}
+[data-md-color-scheme="slate"] {
+  --doc-paper-bg: #3a3326;
+  --doc-paper-stains:
+    radial-gradient(ellipse at 15% 10%, rgba(214, 170, 100, .08), transparent 55%),
+    radial-gradient(ellipse at 85% 90%, rgba(190, 140, 80, .06), transparent 50%);
+  --doc-paper-head: transparent;
+  --doc-paper-border: #8a7448;
+  --doc-paper-ink: #eadfc6;
+  --doc-paper-line: #5a4e38;
+}
+.md-typeset blockquote {
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: var(--doc-paper-bg);
+  background-image: var(--doc-paper-stains);
+  color: var(--doc-paper-ink);
+  border: 1px solid var(--doc-paper-border);
+  padding: 24px;
+  border-radius: .15rem;
+  box-shadow:
+    inset 0 0 28px rgba(120, 85, 35, .18),
+    0 2px 6px rgba(59, 48, 37, .15);
+  /* Широкая таблица прокручивается вбок вместе с листом (и его фоном),
+     а не внутри него. */
+  overflow-x: auto;
+  background-attachment: local;
+}
+/* Material рисует у цитаты толстую серую левую полосу — заменяем её обычной рамкой листа. */
+[dir] .md-typeset blockquote {
+  border-left: 1px solid var(--doc-paper-border);
+}
+[dir] .md-typeset .doc-18c blockquote {
+  border-left-color: #a8875a;
+}
+[data-md-color-scheme="slate"] .md-typeset blockquote {
+  box-shadow: none;
+}
+.md-typeset blockquote .md-typeset__scrollwrap {
+  overflow: visible;
+  margin: .4rem 0;
+}
+.md-typeset blockquote .md-typeset__table {
+  padding: 0;
+}
+.md-typeset blockquote table:not([class]) {
+  max-width: none;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  border-color: var(--doc-paper-line);
+  margin: .4rem 0;
+}
+.md-typeset blockquote table:not([class]) th {
+  background: var(--doc-paper-head);
+  color: inherit;
+  border-bottom: 1px solid var(--doc-paper-border);
+}
+.md-typeset blockquote table:not([class]) td {
+  border-top-color: var(--doc-paper-line);
+}
+.md-typeset blockquote table:not([class]) tbody tr:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Метрическая запись о браке: графы 1, 4 и 6 (номер, лета жениха и невесты) — только цифры, делаем их узкими. */
+.md-typeset .marriage-record table th:is(:nth-child(1), :nth-child(4), :nth-child(6)),
+.md-typeset .marriage-record table td:is(:nth-child(1), :nth-child(4), :nth-child(6)) {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: .5em;
+  padding-right: .5em;
+  text-align: center;
+}
+
+.md-typeset table:not([class]) {
+  font-size: .72rem;
+}
+
+/* Краткое меню разделов в начале страницы персоны. */
+.md-typeset .page-menu {
+  margin: .6rem 0 1.2rem;
+  padding: .5rem .8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .2rem;
+  font-size: .72rem;
+}
+.md-typeset .page-menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.md-typeset .page-menu li {
+  margin: 0;
+}
+
+/* Плавающая кнопка «Наверх». */
+.to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 10;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: .5rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  box-shadow: 0 .1rem .4rem rgba(0, 0, 0, .3);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(.5rem);
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+.to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.to-top:hover {
+  background: var(--md-accent-fg-color);
+}
+.to-top svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Родословное древо на странице «Персоны» (хук hooks/family_tree.py). */
+.md-typeset .ftree-controls {
+  margin: 0 0 .6rem;
+}
+.md-typeset .ftree-controls .md-button {
+  font-size: .7rem;
+  padding: .2em 1em;
+  margin: 0 .3rem .3rem 0;
+}
+.md-typeset .ftree ul,
+[dir] .md-typeset .ftree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* Глубокие ветви (до 13 уровней): отступ на уровень небольшой, а у вложенного
+   списка есть минимальная ширина — когда места не хватает, древо прокручивается
+   вбок, а не переносит имена по три буквы. */
+.md-typeset .ftree {
+  overflow-x: auto;
+  padding-bottom: .4rem;
+}
+.md-typeset .ftree ul ul,
+[dir] .md-typeset .ftree ul ul {
+  min-width: 16rem;
+  margin: 0 0 0 .1rem;
+  padding-left: .25rem;
+  border-left: 1px dashed var(--md-default-fg-color--lighter);
+}
+/* Рамки раскрывающихся блоков (details из Material) — с узкими полями, чтобы
+   каждый уровень вложенности отнимал меньше ширины и высоты. */
+.md-typeset .ftree details {
+  margin: .25rem 0;
+  padding: 0 0 .15rem .15rem;
+}
+.md-typeset .ftree details > summary {
+  margin-left: -.15rem;
+  padding-left: 1.8rem;
+}
+.md-typeset .ftree details > summary::before {
+  left: .5rem;
+}
+/* Человек в древе: имя с годами, под ним — где жил (поле `village`).
+   Супруг стоит рядом таким же блоком; блоки переносятся целиком, а не по буквам. */
+.md-typeset .ftree-person {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.md-typeset .ftree-place {
+  display: block;
+  color: var(--md-default-fg-color--light);
+  font-size: .8em;
+  font-weight: normal;
+  line-height: 1.3;
+}
+.md-typeset .ftree-spouse {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.md-typeset .ftree summary::before,
+.md-typeset .ftree .ftree-leaf::before {
+  vertical-align: top;
+}
+/* То же место мелкой строкой под подписью человека в левом меню. */
+.md-nav__link .nav-place {
+  display: block;
+  font-size: .85em;
+  line-height: 1.25;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .ftree li,
+[dir] .md-typeset .ftree li {
+  margin: .25rem 0;
+}
+.md-typeset .ftree summary {
+  cursor: pointer;
+  list-style: none;
+}
+.md-typeset .ftree summary::-webkit-details-marker {
+  display: none;
+}
+.md-typeset .ftree summary::before,
+.md-typeset .ftree .ftree-leaf::before {
+  display: inline-block;
+  width: 1.1rem;
+  color: var(--md-accent-fg-color);
+}
+.md-typeset .ftree summary::before {
+  content: "▸";
+  transition: transform .15s;
+}
+.md-typeset .ftree details[open] > summary::before {
+  transform: rotate(90deg);
+}
+.md-typeset .ftree .ftree-leaf::before {
+  content: "•";
+  text-align: center;
+  width: .8rem;
+  margin-right: .3rem;
+}
+.md-typeset .ftree-years,
+.md-typeset .ftree-spouse {
+  color: var(--md-default-fg-color--light);
+  font-size: .9em;
+}
+.md-typeset .ftree-spouse {
+  margin-left: .4rem;
+}
+.md-typeset .ftree-count {
+  display: inline-block;
+  min-width: 1.3em;
+  padding: 0 .35em;
+  border-radius: 1em;
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-default-fg-color--light);
+  font-size: .75em;
+  text-align: center;
+}
+
+/* Расшифровка составителя, вставленная дословно, — «выцветшие чернила» на старой бумаге. */
+:root {
+  --doc-faded-ink: #7a6548;
+}
+[data-md-color-scheme="slate"] {
+  --doc-faded-ink: #bcaa86;
+}
+.md-typeset .transcript {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: .78rem;
+  line-height: 1.65;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  background-color: var(--doc-paper-bg);
+  background-image: var(--doc-paper-stains);
+  color: var(--doc-faded-ink);
+  border: 1px solid var(--doc-paper-border);
+  border-radius: .15rem;
+  padding: .6rem .9rem;
+  margin: .8rem 0 1.2rem;
+}
+
+/* Счётчики в левом меню: жители у мест, число источников у групп. Как .ftree-count в древе. */
+.md-nav__link .nav-count {
+  flex-shrink: 0;
+  display: inline-block;
+  min-width: 1.3em;
+  margin-left: .4em;
+  padding: 0 .35em;
+  border-radius: 1em;
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-default-fg-color--light);
+  font-size: .75em;
+  line-height: 1.6;
+  text-align: center;
+}
+.md-nav__link .nav-count--hint {
+  cursor: help;
+  transition: background .15s, color .15s;
+}
+.md-nav__link .nav-count--hint:hover {
+  background: var(--md-accent-fg-color);
+  color: var(--md-accent-bg-color);
+}
+
+/* Встроенная Яндекс-карта на странице «Места». */
+.md-typeset .places-map {
+  position: relative;
+  height: 0;
+  padding-bottom: 62%;
+  margin: .8rem 0 .4rem;
+  border-radius: .2rem;
+  overflow: hidden;
+  background: var(--md-default-fg-color--lightest);
+}
+.md-typeset .places-map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .places-map {
+    padding-bottom: 110%;
+  }
+}
+
+/* Таблицы на страницах мест — ровная песочная бумага #f5e7c8. */
+:root {
+  --place-paper-top: #f5e7c8;
+  --place-paper-bottom: #f5e7c8;
+  --place-paper-head: #ecdbb5;
+  --place-paper-line: #d8c49b;
+  --place-paper-ink: #3b3025;
+}
+[data-md-color-scheme="slate"] {
+  --place-paper-top: #34353a;
+  --place-paper-bottom: #2a2b2f;
+  --place-paper-head: #3d3e44;
+  --place-paper-line: #4a4b52;
+  --place-paper-ink: #dedcd6;
+}
+.md-typeset .place-page table:not([class]) {
+  background: linear-gradient(180deg, var(--place-paper-top), var(--place-paper-bottom));
+  color: var(--place-paper-ink);
+  border: 1px solid var(--place-paper-line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+.md-typeset .place-page table:not([class]) th {
+  background: var(--place-paper-head);
+  color: inherit;
+  border-bottom: 1px solid var(--place-paper-line);
+}
+.md-typeset .place-page table:not([class]) td {
+  border-top-color: var(--place-paper-line);
+}
+.md-typeset .place-page table:not([class]) tbody tr:hover {
+  background: rgba(0, 0, 0, .035);
+  box-shadow: none;
+}
+[data-md-color-scheme="slate"] .md-typeset .place-page table:not([class]) tbody tr:hover {
+  background: rgba(255, 255, 255, .04);
+}
+
+
+/* Документы XVIII века и старше (hooks/document_age.py) — сильно состаренный
+   лист: фото старой бумаги assets/images/paper-18c.jpg. */
+.md-typeset .doc-18c blockquote,
+.md-typeset .doc-18c .transcript {
+  background-color: #e8d5a8;
+  background-image: url("../assets/images/paper-18c.jpg");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #a8875a;
+  color: #2e2114;
+  padding: 32px 36px;
+  box-shadow:
+    inset 0 0 40px rgba(90, 55, 15, .25),
+    0 3px 10px rgba(59, 48, 37, .25);
+}
+.md-typeset .doc-18c blockquote table:not([class]) {
+  border-color: rgba(90, 60, 25, .35);
+}
+.md-typeset .doc-18c blockquote table:not([class]) th {
+  background: transparent;
+  border-bottom-color: rgba(90, 60, 25, .55);
+}
+.md-typeset .doc-18c blockquote table:not([class]) td {
+  border-top-color: rgba(90, 60, 25, .2);
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-18c blockquote,
+[data-md-color-scheme="slate"] .md-typeset .doc-18c .transcript {
+  background-color: #3a2c1a;
+  background-image:
+    linear-gradient(rgba(30, 22, 12, .72), rgba(30, 22, 12, .72)),
+    url("../assets/images/paper-18c.jpg");
+  border-color: #8a7448;
+  color: #f0e2c4;
+  box-shadow: none;
+}
+
+/* Таблицы дворов (hooks/household_tables.py): номерные графы «Двор», «М.», «Ж.» — узкие. */
+.md-typeset .household-1 table th:nth-child(-n+1),
+.md-typeset .household-1 table td:nth-child(-n+1),
+.md-typeset .household-2 table th:nth-child(-n+2),
+.md-typeset .household-2 table td:nth-child(-n+2),
+.md-typeset .household-3 table th:nth-child(-n+3),
+.md-typeset .household-3 table td:nth-child(-n+3) {
+  width: 1%;
+  min-width: 0;
+  white-space: nowrap;
+  padding-left: .5em;
+  padding-right: .5em;
+  text-align: center;
+}
+
+
+/* Главная: старые фотографии из семейного архива, как в альбоме. */
+.md-typeset .home-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  align-items: center;
+  margin: 1.6em 0 2em;
+}
+.md-typeset .home-photos a {
+  display: block;
+  padding: .45rem;
+  background: #fbf7ee;
+  border: 1px solid rgba(90, 60, 25, .18);
+  box-shadow: 0 2px 6px rgba(60, 40, 15, .18);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.md-typeset .home-photos a:nth-child(1) { transform: rotate(-1.5deg); }
+.md-typeset .home-photos a:nth-child(2) { transform: rotate(.8deg) translateY(-.4rem); }
+.md-typeset .home-photos a:nth-child(3) { transform: rotate(1.6deg); }
+.md-typeset .home-photos a:hover {
+  transform: none;
+  box-shadow: 0 6px 16px rgba(60, 40, 15, .28);
+}
+.md-typeset .home-photos img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4.3;
+  object-fit: cover;
+}
+[data-md-color-scheme="slate"] .md-typeset .home-photos a {
+  background: #3a2c1a;
+  border-color: #8a7448;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+}
+@media (max-width: 480px) {
+  .md-typeset .home-photos { gap: .6rem; }
+  .md-typeset .home-photos a { padding: .25rem; }
+}
+
+/* Ссылки на основные разделы в футере */
+.md-copyright .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.2rem;
+}
+.md-copyright .footer-links a {
+  color: var(--md-footer-fg-color--light);
+}
+.md-copyright .footer-links a:hover {
+  color: var(--md-footer-fg-color);
+}
