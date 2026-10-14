@@ -9,6 +9,8 @@
   [A1000][A1006]     -> те же ссылки через пробел: «A1000 A1006»
   [P1000]            -> [Евдокия Лапина](P1000-….md)  (для персон и мест PLC — имя)
   [текст](P1000)     -> [текст](P1000-….md)
+  «- [A1000]» в разделе «## Источники» -> «- A1000 — название» (на телефоне нет
+  всплывающей подсказки, поэтому название пишется рядом обычным текстом)
 
 Неизвестный ID даёт предупреждение; `mkdocs build --strict` на нём падает.
 """
@@ -27,6 +29,7 @@ BARE = re.compile(rf"(?<!\w)\[((?:{PREFIXES})\d{{4}})\](?!\()")
 ADJACENT = re.compile(rf"(\[(?:{PREFIXES})\d{{4}}\])(?=\[(?:{PREFIXES})\d{{4}}\](?!\())")
 TARGET = re.compile(rf"\]\(((?:{PREFIXES})\d{{4}})\)")
 FENCE = re.compile(r"^(```|~~~)")
+SOURCE_ITEM = re.compile(rf"^- \[((?:{PREFIXES})\d{{4}})\]\s*$")
 
 _pages = {}  # ID -> (src_uri, подпись, всплывающая подсказка)
 
@@ -78,10 +81,15 @@ def on_page_markdown(markdown, page, config, files):
         rel = _rel(page, m.group(1))
         return m.group(0) if rel is None else f"]({rel})"
 
-    out, in_code = [], False
+    out, in_code, in_sources = [], False, False
     for line in markdown.split("\n"):
         if FENCE.match(line.lstrip()):
             in_code = not in_code
+        if line.startswith("## "):
+            in_sources = line[3:].strip() == "Источники"
+        item = SOURCE_ITEM.match(line) if in_sources and not in_code else None
+        if item and item.group(1) in _pages and not item.group(1).startswith(("P", "PLC")):
+            line = f"{line.rstrip()} — {_pages[item.group(1)][2]}"
         if not in_code:
             line = ADJACENT.sub(r"\1 ", line)
             line = TARGET.sub(target, BARE.sub(bare, line))

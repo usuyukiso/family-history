@@ -540,3 +540,21 @@
     transform: translateX(min(350px, 85vw));
   }
 }
+
+/* Ссылки в тексте — сочнее и полужирные, с лёгким подчёркиванием, чтобы не сливались с коричневым текстом. */
+:root,
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: #4c7a12;
+}
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #b9d67a;
+}
+.md-typeset a:not(.headerlink):not(.md-button) {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: .18em;
+}
+.md-typeset a:not(.headerlink):not(.md-button):hover {
+  text-decoration-color: currentColor;
+}

@@ -20,6 +20,7 @@ related_places:
   - PLC1012
   - PLC1013
   - PLC1017
+  - PLC1021
 accessed: "2026-10-13"
 ---
 
@@ -44,6 +45,7 @@ accessed: "2026-10-13"
 | 7200 | [Маковицы](PLC1002) («Маковѣйцы») | 229 | [247](http://elib.shpl.ru/ru/nodes/16305-vyp-34-pskovskaya-guberniya-po-svedeniyam-1872-77-gody-1885#mode/inspect/page/247/zoom/7){ target="_blank" rel="noopener" } |
 | 7332 | [Зубово](PLC1008) | 233 | [251](http://elib.shpl.ru/ru/nodes/16305-vyp-34-pskovskaya-guberniya-po-svedeniyam-1872-77-gody-1885#mode/inspect/page/251/zoom/7){ target="_blank" rel="noopener" } |
 | 7335 | [Мышино](PLC1009) («Мышкино»; отождествление составителя) | 233 | [251](http://elib.shpl.ru/ru/nodes/16305-vyp-34-pskovskaya-guberniya-po-svedeniyam-1872-77-gody-1885#mode/inspect/page/251/zoom/7){ target="_blank" rel="noopener" } |
+| 7393 | [Пухово](PLC1021) | 235 | [253](http://elib.shpl.ru/ru/nodes/16305-vyp-34-pskovskaya-guberniya-po-svedeniyam-1872-77-gody-1885#mode/inspect/page/253/zoom/7){ target="_blank" rel="noopener" } |
 | 7407 | [Порухово](PLC1011) («Горончары (Парухоро)»; отождествление составителя) | 236 | [254](http://elib.shpl.ru/ru/nodes/16305-vyp-34-pskovskaya-guberniya-po-svedeniyam-1872-77-gody-1885#mode/inspect/page/254/zoom/7){ target="_blank" rel="noopener" } |
 | 7436 | [Попова Гора](PLC1017) | 237 | [255](http://elib.shpl.ru/ru/nodes/16305-vyp-34-pskovskaya-guberniya-po-svedeniyam-1872-77-gody-1885#mode/inspect/page/255/zoom/7){ target="_blank" rel="noopener" } |
 | 7447 | [Захарино](PLC1003) (номер — по карте составителя [W1007]) | 237 | [255](http://elib.shpl.ru/ru/nodes/16305-vyp-34-pskovskaya-guberniya-po-svedeniyam-1872-77-gody-1885#mode/inspect/page/255/zoom/7){ target="_blank" rel="noopener" } |
