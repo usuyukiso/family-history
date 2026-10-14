@@ -63,6 +63,7 @@ extra_javascript:
 not_in_nav: |
   /people/P1004-pavel-p.md
   /people/P1026-konon.md
+  /people/P1079-yakov-ivanov-zakrevskiy.md
 
 validation:
   links:
@@ -144,9 +145,12 @@ nav:
       - 1883 Сычева Анна Никитична: people/P1003-anna-sycheva.md
       - 1885 Почеревин Иван Егорович: people/P1002-ivan-pocherevin.md
       - 1889 Давыдов Михаил Васильев: people/P1020-mikhail-vasilev-davydov.md
+      - 1912 Почеревин Пётр Иванович: people/P1076-petr-pocherevin.md
       - 1916 Давыдов Павел Иванович: people/P1005-pavel-davydov.md
       - 1919 Писарев Григорий Яковлевич: people/P1007-grigoriy-pisarev.md
+      - 1922 Почеревин Павел Иванович: people/P1077-pavel-pocherevin.md
       - 1924 Давыдова Любовь Ивановна: people/P1006-lyubov-davydova.md
+      - Писарев Яков Иванов: people/P1078-yakov-ivanov-pisarev.md
       - Радионова Настасья: people/P1075-nastasya-radionova.md
       - Сычев Никита Яковлев: people/P1008-nikita-sychev.md
   - Места:
@@ -314,10 +318,15 @@ nav:
           - sources/archives/A1124-rozhdestvo-1887-rozhdenie-27-anna.md
           - sources/archives/A1002-anivskaya-ispoved-1889.md
           - sources/archives/A1102-rozhdestvo-1889-rozhdenie-77-mikhail.md
+          - sources/archives/A1199-glazki-1890-rozhd-17-vassa.md
           - sources/archives/A1003-giaso-23i-2-17-l104-1891-births.md
           - sources/archives/A1011-rgia-dv-1133-2-2263-alfavit-poselentsev.md
           - sources/archives/A1004-giaso-23i-2-21-l157-1893-births.md
+          - sources/archives/A1200-glazki-1893-smert-6-ivan-stefanov.md
+          - sources/archives/A1201-glazki-1893-rozhd-34-ioakim.md
           - sources/archives/A1005-rgia-dv-1009-2-118-ispoved-1894.md
+          - sources/archives/A1202-glazki-1894-brak-14-ivan-ivanov.md
+          - sources/archives/A1203-glazki-1894-smert-23-dariya-danilova.md
           - sources/archives/A1006-giaso-23i-2-24-l25-1895-marriage.md
           - sources/archives/A1010-giaso-23i-3-4-l25-alfavit-1895.md
           - sources/archives/A1012-rgia-dv-1133-2-2271-alfavit-1896.md
@@ -326,26 +335,36 @@ nav:
           - sources/archives/A1007-rgia-dv-1133-2-2253-krestyanskiy-alfavit.md
           - sources/archives/A1104-rozhdestvo-1897-rozhdenie-61-ioann.md
           - sources/archives/A1105-rozhdestvo-1897-rozhdenie-106-anastasiya.md
+          - sources/archives/A1204-glazki-1897-brak-2-gerasim-nilov-khristina.md
+          - sources/archives/A1205-glazki-1897-brak-15-vasiliy-ivanov.md
           - sources/archives/A1106-rozhdestvo-1898-smert-anastasiya.md
           - sources/archives/A1107-rozhdestvo-1899-rozhdenie-aleksandr.md
           - sources/archives/A1142-rozhdestvo-1900-brak-12-aleksey-andreev.md
           - sources/archives/A1108-rozhdestvo-1901-smert-53-ioann-davydov.md
           - sources/archives/A1109-rozhdestvo-1902-rozhdenie-lyubov.md
           - sources/archives/A1110-rozhdestvo-1902-smert-lyubov.md
+          - sources/archives/A1206-glazki-1902-rozhd-7-grigoriy.md
           - sources/archives/A1013-giaso-23i-2-72-l16-1903-births.md
           - sources/archives/A1111-rozhdestvo-1903-rozhdenie-81-viktor.md
           - sources/archives/A1196-rgia-dv-98-1-326-l24-spisok-khodakov-1903.md
+          - sources/archives/A1207-glazki-1903-brak-2-ilarion-ivanov.md
+          - sources/archives/A1208-glazki-1903-rozhd-26-anna.md
           - sources/archives/A1014-giaso-23i-2-86-l23-1904-marriage.md
+          - sources/archives/A1209-glazki-1904-brak-7-yakov-ivanov-feodosiya.md
           - sources/archives/A1015-giaso-23i-2-103-l6-1905-births.md
           - sources/archives/A1016-rgia-dv-98-1-326-l19-spisok-1905.md
           - sources/archives/A1017-rgia-dv-pismo-1905-12-10-shevelevka.md
+          - sources/archives/A1210-glazki-1905-rozhd-8-dariya.md
           - sources/archives/A1020-shkotovo-1906-marriage-pocherevin-sycheva.md
           - sources/archives/A1044-shkotovo-1906-deaths-aleksandra-sycheva.md
           - sources/archives/A1112-rozhdestvo-1906-rozhdenie-mariya.md
           - sources/archives/A1113-rozhdestvo-1906-brak-dariya-vasileva.md
+          - sources/archives/A1211-glazki-1906-rozhd-25-petr.md
+          - sources/archives/A1212-gromovka-1906-rozhd-44-iakov.md
           - sources/archives/A1018-rgia-dv-2-1-766-l2-prigovor-1907.md
           - sources/archives/A1019-spisok-sakhalintsev-shevelevka-1907.md
           - sources/archives/A1021-shkotovo-1907-births-mariya-pocherevina.md
+          - sources/archives/A1213-glazki-1907-rozhd-26-nataliya.md
           - sources/archives/A1008-shkotovo-1908-births.md
           - sources/archives/A1022-shkotovo-1908-births-mikhail-slednev.md
           - sources/archives/A1023-shkotovo-1908-births-anastasiya-soleeva.md
@@ -353,20 +372,31 @@ nav:
           - sources/archives/A1024-shkotovo-1909-marriage-pushnoy-pozdeeva.md
           - sources/archives/A1025-shkotovo-1909-births-aleksandra-pocherevina.md
           - sources/archives/A1115-rozhdestvo-1909-smert-anatoliy.md
+          - sources/archives/A1214-bobrovka-1909-rozhd-28-29-klavdiya-tatiana.md
           - sources/archives/A1026-shkotovo-1910-births-fedor-kiselkov.md
           - sources/archives/A1027-shkotovo-1910-births-anastasiya-sledneva.md
           - sources/archives/A1116-rozhdestvo-1910-rozhdenie-zinaida.md
           - sources/archives/A1028-shkotovo-1911-deaths-viktor-pocherevin.md
+          - sources/archives/A1215-glazki-1911-brak-4-vassa-ivanova.md
           - sources/archives/A1117-rozhdestvo-1912-smert-zinaida.md
           - sources/archives/A1118-rozhdestvo-1912-smert-aleksey.md
+          - sources/archives/A1216-gromovka-1912-rozhd-36-iustina.md
           - sources/archives/A1029-rgia-dv-1-4-2374-l99-prigovor-1913.md
           - sources/archives/A1045-shkotovo-1913-marriage-botvinka-sycheva.md
+          - sources/archives/A1217-glazki-1913-rozhd-18-petr.md
+          - sources/archives/A1218-glazki-1913-smert-18-petr.md
           - sources/archives/A1030-gapk-r2074-1-13-l46-1914-marriage.md
+          - sources/archives/A1219-glazki-1914-rozhd-29-aleksandr.md
           - sources/archives/A1119-rozhdestvo-1916-rozhdenie-44-pavel.md
+          - sources/archives/A1220-glazki-1916-smert-9-tatiana.md
           - sources/archives/A1031-shkotovo-1917-marriage-khosroev-bukina.md
           - sources/archives/A1032-shkotovo-1917-marriage-yakobson-pushnaya.md
           - sources/archives/A1046-shkotovo-1917-deaths-mariya-sycheva.md
+          - sources/archives/A1221-glazki-1917-rozhd-10-ioann-mariya-pisarevy.md
+          - sources/archives/A1222-glazki-1917-rozhd-14-antonina.md
+          - sources/archives/A1223-gromovka-1917-brak-5-kliment-gerasimov.md
           - sources/archives/A1042-gato-r312-1-204-l85-1919-birth.md
+          - sources/archives/A1224-kazinskaya-vol-1919-l79ob-birth-kseniya-zakrevskaya.md
           - sources/archives/A1009-shkotovo-1921-deaths.md
           - sources/archives/A1033-gapk-r1963-3-4-l93-1923-births.md
           - sources/archives/A1034-gapk-r1963-3-15-l193-1924-births.md
@@ -375,6 +405,8 @@ nav:
           - sources/archives/A1043-gapk-r1963-3-29-1925-marriage-dubodelov-sycheva.md
           - sources/archives/A1038-tsamo-58-18001-304-poteri-8-mpmp-1943.md
           - sources/archives/A1041-rgaspi-kandidatskaya-kartochka-1943.md
+          - sources/archives/A1197-tsamo-prikaz-211-sp-03n-1945.md
+          - sources/archives/A1198-ukaz-pvs-sssr-za-vyslugu-let.md
           - sources/archives/A1039-tsamo-58-a71497-4-kuldiga-1989.md
           - sources/archives/A1040-kartochka-zakhoroneniya-krasnyy-oskol-1991.md
           - sources/archives/A1037-gakk-r876-davydov-fond.md
