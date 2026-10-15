@@ -157,11 +157,13 @@ nav:
       - places/index.md
       - Псковская губерния:
           - Алексеево-Зуево: places/PLC1007-alekseevo-zuevo.md
+          - Боровово: places/PLC1023-borovovo.md
           - Ванютино: places/PLC1018-vanyutino.md
           - Горелик: places/PLC1015-gorelik.md
           - Захарино: places/PLC1003-zakharino.md
           - Зубово: places/PLC1008-zubovo.md
           - Костково: places/PLC1013-kostkovo.md
+          - Кочаново: places/PLC1024-kochanovo.md
           - Красихино: places/PLC1012-krasikhino.md
           - Лескушкино: places/PLC1019-leskushkino.md
           - Маковицы: places/PLC1002-makovitsy.md
@@ -172,6 +174,7 @@ nav:
           - Попова Гора: places/PLC1017-popova-gora.md
           - Порухово: places/PLC1011-porukhovo.md
           - Пухово: places/PLC1021-pukhovo.md
+          - Саблево (Шевели): places/PLC1022-sablevo-sheveli.md
       - Могилёвская губерния:
           - Глазовка: places/PLC1006-glazovka.md
           - Рудня-Бартоломеевская: places/PLC1005-rudnya-bartolomeevskaya.md
@@ -413,6 +416,7 @@ nav:
           - sources/archives/A1037-gakk-r876-davydov-fond.md
       - Книги:
           - sources/books/B1005-spiski-naselennykh-mest-tverskaya-1862.md
+          - sources/books/B1013-spiski-naselennykh-mest-chernigovskaya-1866.md
           - sources/books/B1011-spiski-naselennykh-mest-pskovskaya-1885.md
           - sources/books/B1000-chekhov-census-1890.md
           - sources/books/B1006-manifest-1894-11-14-milosti.md
