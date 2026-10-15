@@ -558,3 +558,48 @@
 .md-typeset a:not(.headerlink):not(.md-button):hover {
   text-decoration-color: currentColor;
 }
+
+/* Схемы (mermaid): прокрутка, кнопки масштаба, полноэкранный режим. */
+.diagram-zoom {
+  margin: 1em 0;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .2rem;
+  background: var(--md-default-bg-color);
+}
+.diagram-zoom__bar {
+  display: flex;
+  gap: .3rem;
+  justify-content: flex-end;
+  padding: .3rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+.diagram-zoom__bar button {
+  min-width: 2rem;
+  padding: .1rem .5rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: .2rem;
+  background: transparent;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  font-size: .8rem;
+}
+.diagram-zoom__bar button:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+.diagram-zoom__area {
+  overflow: auto;
+  max-height: 80vh;
+}
+.diagram-zoom__area .mermaid {
+  margin: 0;
+}
+.diagram-zoom:fullscreen {
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  border-radius: 0;
+}
+.diagram-zoom:fullscreen .diagram-zoom__area {
+  flex: 1;
+  max-height: none;
+}

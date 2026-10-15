@@ -50,6 +50,11 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.magiclink
 
 extra_css:
@@ -58,6 +63,7 @@ extra_css:
 extra_javascript:
   - javascripts/to-top.js
   - javascripts/family-tree.js
+  - javascripts/diagram-zoom.js
 
 # Страницы, доступные только по прямой ссылке (не в меню, не в поиске, не в карте сайта).
 not_in_nav: |
@@ -244,10 +250,14 @@ nav:
           - sources/archives/A1153-utretki-1795-rozhdenie-14-tit.md
           - sources/archives/A1067-polyane-1800-smert-8-kseniya-safonova.md
           - sources/archives/A1055-gapo-39-1-2669-ispoved-1802-zakharino.md
+          - sources/archives/A1225-rozhdestvo-1802-rozhdenie-27-samson.md
+          - sources/archives/A1226-rozhdestvo-1802-rozhdenie-35-stefan.md
           - sources/archives/A1068-rozhdestvo-1803-smert-52-sergey-afanasev.md
           - sources/archives/A1166-gapo-39-1-2675-ispoved-1803-kostkovo.md
+          - sources/archives/A1227-rozhdestvo-1803-brak-3-isaak-isaakov.md
           - sources/archives/A1069-rozhdestvo-1804-rozhdenie-113-stefanida.md
           - sources/archives/A1158-gapo-39-1-2677-ispoved-1804-zubovo.md
+          - sources/archives/A1228-rozhdestvo-1804-rozhdenie-88-bliznetsy.md
           - sources/archives/A1056-gapo-39-1-2680-ispoved-1806-zakharino.md
           - sources/archives/A1070-rozhdestvo-1806-smert-25-anna-nikiforova.md
           - sources/archives/A1154-gapo-39-1-2680-ispoved-1806-mokryane.md
@@ -257,10 +267,15 @@ nav:
           - sources/archives/A1169-pyatnitskaya-1808-smert-91-elisey-filippov.md
           - sources/archives/A1173-pyatnitskaya-1809-smert-10-matfey-isakov.md
           - sources/archives/A1170-pyatnitskaya-1810-rozhdenie-72-filipp.md
+          - sources/archives/A1229-rozhdestvo-1810-brak-24-rodion-vasilev.md
+          - sources/archives/A1230-rozhdestvo-1810-rozhdenie-55-simeon.md
+          - sources/archives/A1231-rozhdestvo-1810-rozhdenie-79-artemiy.md
           - sources/archives/A1155-utretki-1811-brak-7-tit-mironov.md
           - sources/archives/A1125-rozhdestvo-1813-rozhdenie-38-kosma.md
+          - sources/archives/A1232-rozhdestvo-1813-smert-20-tatyana-timofeeva.md
           - sources/archives/A1057-gapo-58-1-1291-reviziya-1816-makovitsy.md
           - sources/archives/A1171-pyatnitskaya-1817-rozhdenie-59-pelageya.md
+          - sources/archives/A1233-rozhdestvo-1817-smert-20-isaak-sergeev.md
           - sources/archives/A1172-pyatnitskaya-1822-smert-4-ivan-eliseev.md
           - sources/archives/A1120-rozhdestvo-1824-rozhdenie-33-akilina.md
           - sources/archives/A1126-rozhdestvo-1828-brak-19-kosma-potapov.md
@@ -268,9 +283,12 @@ nav:
           - sources/archives/A1072-polyane-1832-smert-17-davyd-fedorov.md
           - sources/archives/A1128-rozhdestvo-1832-rozhdenie-9-dariya.md
           - sources/archives/A1073-polyane-1833-rozhdenie-14-matrona.md
+          - sources/archives/A1234-rozhdestvo-1833-smert-26-varvara-potapova.md
           - sources/archives/A1074-polyane-1834-brak-7-ivan-davydov.md
+          - sources/archives/A1235-rozhdestvo-1834-rozhdenie-6-dariya.md
           - sources/archives/A1129-rozhdestvo-1836-rozhdenie-26-yulian.md
           - sources/archives/A1130-rozhdestvo-1836-smert-30-potapiy-sergeev.md
+          - sources/archives/A1236-rozhdestvo-1836-smert-11-rodion-sergeev.md
           - sources/archives/A1121-rozhdestvo-1837-rozhdenie-59-iakov.md
           - sources/archives/A1058-gapo-39-1-2720-ispoved-1840.md
           - sources/archives/A1075-polyane-1840-brak-6-kishkina-ovsikhina.md
@@ -283,30 +301,45 @@ nav:
           - sources/archives/A1079-polyane-1844-rozhdenie-31-andrey-ivanova.md
           - sources/archives/A1134-rozhdestvo-1844-rozhdenie-15-fevronya.md
           - sources/archives/A1135-rozhdestvo-1844-smert-15-dariya-ivanova.md
+          - sources/archives/A1237-rozhdestvo-1848-brak-12-isaak-kuzmin.md
           - sources/archives/A1059-gapo-39-1-2723-ispoved-1850.md
+          - sources/archives/A1238-rozhdestvo-1850-rozhdenie-23-nikita.md
+          - sources/archives/A1239-rozhdestvo-1851-rozhdenie-39-ekaterina.md
+          - sources/archives/A1240-rozhdestvo-1851-smert-36-ekaterina.md
           - sources/archives/A1060-gapo-39-1-2516-ispoved-1852.md
           - sources/archives/A1156-1852-brak-3-yakov-sidorov.md
+          - sources/archives/A1241-rozhdestvo-1852-rozhdenie-31-stefan.md
+          - sources/archives/A1242-rozhdestvo-1852-smert-34-stefan.md
           - sources/archives/A1080-polyane-1853-brak-4-evtikhiy-alekseev.md
           - sources/archives/A1081-polyane-1853-rozhdenie-5-anna.md
           - sources/archives/A1082-polyane-1853-rozhdenie-37-iakov-selyugi.md
           - sources/archives/A1122-rozhdestvo-1853-rozhdenie-46-melaniya.md
           - sources/archives/A1083-polyane-1854-brak-4-petr-davydov.md
+          - sources/archives/A1243-rozhdestvo-1854-smert-21-anisya.md
+          - sources/archives/A1244-rozhdestvo-1855-rozhdenie-22-prokopiy.md
           - sources/archives/A1084-polyane-1856-rozhdenie-6-iustina.md
           - sources/archives/A1085-polyane-1857-smert-6-iustina.md
           - sources/archives/A1086-polyane-1857-smert-9-aleksandra.md
+          - sources/archives/A1245-rozhdestvo-1857-brak-12-dariya-kozmina.md
           - sources/archives/A1061-gapo-58-1-1844-reviziya-1858-makovitsy.md
           - sources/archives/A1087-polyane-1858-rozhdenie-10-agafya.md
           - sources/archives/A1088-polyane-1858-brak-17-petr-alekseev.md
           - sources/archives/A1136-rozhdestvo-1858-brak-12-andrey-kosmin.md
+          - sources/archives/A1246-rozhdestvo-1858-rozhdenie-mikhail.md
           - sources/archives/A1089-polyane-1859-smert-1-agafya.md
           - sources/archives/A1090-polyane-1859-brak-2-stefan-pavlov.md
           - sources/archives/A1137-rozhdestvo-1859-rozhdenie-luka.md
           - sources/archives/A1091-polyane-1860-rozhdenie-13-evdokiya.md
+          - sources/archives/A1247-rozhdestvo-1860-brak-5-upom-kosma.md
+          - sources/archives/A1248-rozhdestvo-1860-rozhdenie-6-kseniya.md
+          - sources/archives/A1249-rozhdestvo-1860-rozhdenie-11-matrona.md
+          - sources/archives/A1250-rozhdestvo-1860-smert-14-mikhail.md
           - sources/archives/A1062-gapo-39-1-2736-ispoved-1862.md
           - sources/archives/A1092-polyane-1862-brak-8-stefan-pavlov.md
           - sources/archives/A1093-polyane-1862-rozhdenie-17-aleksey.md
           - sources/archives/A1094-polyane-1862-brak-21-vasiliy-ivanov.md
           - sources/archives/A1138-rozhdestvo-1863-rozhdenie-13-pelageya.md
+          - sources/archives/A1251-rozhdestvo-1863-rozhdenie-simeon.md
           - sources/archives/A1139-rozhdestvo-1865-smert-11-iakov.md
           - sources/archives/A1095-polyane-1872-brak-miron-nikiforov.md
           - sources/archives/A1096-polyane-1872-smert-53-pavel.md
@@ -325,6 +358,7 @@ nav:
           - sources/archives/A1199-glazki-1890-rozhd-17-vassa.md
           - sources/archives/A1003-giaso-23i-2-17-l104-1891-births.md
           - sources/archives/A1011-rgia-dv-1133-2-2263-alfavit-poselentsev.md
+          - sources/archives/A1252-rozhdestvo-1892-rozhdenie-lyubov.md
           - sources/archives/A1004-giaso-23i-2-21-l157-1893-births.md
           - sources/archives/A1200-glazki-1893-smert-6-ivan-stefanov.md
           - sources/archives/A1201-glazki-1893-rozhd-34-ioakim.md
@@ -344,10 +378,12 @@ nav:
           - sources/archives/A1106-rozhdestvo-1898-smert-anastasiya.md
           - sources/archives/A1107-rozhdestvo-1899-rozhdenie-aleksandr.md
           - sources/archives/A1142-rozhdestvo-1900-brak-12-aleksey-andreev.md
+          - sources/archives/A1253-rozhdestvo-1900-rozhdenie-aleksandr.md
           - sources/archives/A1108-rozhdestvo-1901-smert-53-ioann-davydov.md
           - sources/archives/A1109-rozhdestvo-1902-rozhdenie-lyubov.md
           - sources/archives/A1110-rozhdestvo-1902-smert-lyubov.md
           - sources/archives/A1206-glazki-1902-rozhd-7-grigoriy.md
+          - sources/archives/A1254-rozhdestvo-1902-rozhdenie-pavel.md
           - sources/archives/A1013-giaso-23i-2-72-l16-1903-births.md
           - sources/archives/A1111-rozhdestvo-1903-rozhdenie-81-viktor.md
           - sources/archives/A1196-rgia-dv-98-1-326-l24-spisok-khodakov-1903.md
@@ -355,10 +391,12 @@ nav:
           - sources/archives/A1208-glazki-1903-rozhd-26-anna.md
           - sources/archives/A1014-giaso-23i-2-86-l23-1904-marriage.md
           - sources/archives/A1209-glazki-1904-brak-7-yakov-ivanov-feodosiya.md
+          - sources/archives/A1255-rozhdestvo-1904-rozhdenie-anna.md
           - sources/archives/A1015-giaso-23i-2-103-l6-1905-births.md
           - sources/archives/A1016-rgia-dv-98-1-326-l19-spisok-1905.md
           - sources/archives/A1017-rgia-dv-pismo-1905-12-10-shevelevka.md
           - sources/archives/A1210-glazki-1905-rozhd-8-dariya.md
+          - sources/archives/A1256-rozhdestvo-1905-smert-71-iulian-kosmin.md
           - sources/archives/A1020-shkotovo-1906-marriage-pocherevin-sycheva.md
           - sources/archives/A1044-shkotovo-1906-deaths-aleksandra-sycheva.md
           - sources/archives/A1112-rozhdestvo-1906-rozhdenie-mariya.md
@@ -369,6 +407,7 @@ nav:
           - sources/archives/A1019-spisok-sakhalintsev-shevelevka-1907.md
           - sources/archives/A1021-shkotovo-1907-births-mariya-pocherevina.md
           - sources/archives/A1213-glazki-1907-rozhd-26-nataliya.md
+          - sources/archives/A1257-rozhdestvo-1907-rozhdenie-mariya.md
           - sources/archives/A1008-shkotovo-1908-births.md
           - sources/archives/A1022-shkotovo-1908-births-mikhail-slednev.md
           - sources/archives/A1023-shkotovo-1908-births-anastasiya-soleeva.md
@@ -380,6 +419,7 @@ nav:
           - sources/archives/A1026-shkotovo-1910-births-fedor-kiselkov.md
           - sources/archives/A1027-shkotovo-1910-births-anastasiya-sledneva.md
           - sources/archives/A1116-rozhdestvo-1910-rozhdenie-zinaida.md
+          - sources/archives/A1258-rozhdestvo-1910-smert-mariya.md
           - sources/archives/A1028-shkotovo-1911-deaths-viktor-pocherevin.md
           - sources/archives/A1215-glazki-1911-brak-4-vassa-ivanova.md
           - sources/archives/A1117-rozhdestvo-1912-smert-zinaida.md
@@ -401,6 +441,7 @@ nav:
           - sources/archives/A1223-gromovka-1917-brak-5-kliment-gerasimov.md
           - sources/archives/A1042-gato-r312-1-204-l85-1919-birth.md
           - sources/archives/A1224-kazinskaya-vol-1919-l79ob-birth-kseniya-zakrevskaya.md
+          - sources/archives/A1259-gato-r312-1-784-l21-1920-birth-mariya-antonovna.md
           - sources/archives/A1009-shkotovo-1921-deaths.md
           - sources/archives/A1033-gapk-r1963-3-4-l93-1923-births.md
           - sources/archives/A1034-gapk-r1963-3-15-l193-1924-births.md
@@ -410,6 +451,7 @@ nav:
           - sources/archives/A1038-tsamo-58-18001-304-poteri-8-mpmp-1943.md
           - sources/archives/A1041-rgaspi-kandidatskaya-kartochka-1943.md
           - sources/archives/A1197-tsamo-prikaz-211-sp-03n-1945.md
+          - sources/archives/A1260-tsamo-donesenie-3261-olenino-rvk-1948.md
           - sources/archives/A1198-ukaz-pvs-sssr-za-vyslugu-let.md
           - sources/archives/A1039-tsamo-58-a71497-4-kuldiga-1989.md
           - sources/archives/A1040-kartochka-zakhoroneniya-krasnyy-oskol-1991.md
