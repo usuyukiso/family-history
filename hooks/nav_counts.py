@@ -8,6 +8,8 @@
   страниц с `in_tree: false`. При наведении — подсказка «персон в древе».
 - У каждой группы источников (раздел «Источники»: «Архивные записи», «Книги», …) —
   число источников в группе, без подсказки.
+- У каждой фамилии (раздел «Фамилии») — число персон из `people:` в front matter
+  страницы фамилии, с подсказкой «персон».
 - У каждой губернии в разделе «Места» — число мест в ней, с подсказкой «мест».
 
 Значок оформлен так же, как число детей в родословном древе (`ftree-count`).
@@ -23,6 +25,7 @@ from mkdocs.structure.nav import Section
 from mkdocs.structure.pages import Page
 
 _places = {}  # название места -> число жителей
+_surnames = {}  # фамилия -> число персон
 _groups = {}  # группа источников или губерния -> (число страниц, подсказка)
 _persons = 0  # персоны в древе (раздел «Персоны»)
 
@@ -54,6 +57,7 @@ def _residents(text):
 def on_files(files, config):
     global _persons
     _places.clear()
+    _surnames.clear()
     _persons = 0
     for f in files.documentation_pages():
         if re.match(r"people/P\d{4}-", f.src_uri):
@@ -65,6 +69,10 @@ def on_files(files, config):
             meta, _ = _front_matter(text)
             if meta.get("name"):
                 _places[str(meta["name"])] = _residents(text)
+        if re.match(r"surnames/SUR\d{4}-", f.src_uri):
+            meta, _ = _front_matter(f.content_string)
+            if meta.get("name"):
+                _surnames[str(meta["name"])] = len(meta.get("people") or [])
     return files
 
 
@@ -100,6 +108,8 @@ def on_post_page(output, page, config):
         output = _insert(output, "Персоны", _badge(_persons, "персон в древе"))
     for name, n in _places.items():
         output = _insert(output, name, _badge(n, "связанных жителей"))
+    for name, n in _surnames.items():
+        output = _insert(output, name, _badge(n, "персон"))
     # Группы — только заголовки разделов меню (<label>), не ссылки оглавления:
     # там бывают одноимённые заголовки, например «Псковская губерния» на странице «Места».
     for name, (n, hint) in _groups.items():

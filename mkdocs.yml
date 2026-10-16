@@ -80,6 +80,14 @@ validation:
 nav:
   - Главная: index.md
   - Родословное древо: tree.md
+  - Фамилии:
+      - surnames/index.md
+      - Давыдов: surnames/SUR1000-davydov.md
+      - Лапин: surnames/SUR1001-lapin.md
+      - Марков: surnames/SUR1002-markov.md
+      - Писарев: surnames/SUR1003-pisarev.md
+      - Почеревин: surnames/SUR1004-pocherevin.md
+      - Сычев: surnames/SUR1005-sychev.md
   - Персоны:
       - people/index.md
       - 1645 Михайла Семенов: people/P1061-mikhayla-semenov.md

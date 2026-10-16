@@ -7,7 +7,7 @@
 
   [A1000]            -> [A1000](../sources/archives/A1000-….md "название")  (код без скобок)
   [A1000][A1006]     -> те же ссылки через пробел: «A1000 A1006»
-  [P1000]            -> [Евдокия Лапина](P1000-….md)  (для персон и мест PLC — имя)
+  [P1000]            -> [Евдокия Лапина](P1000-….md)  (для персон, мест PLC и фамилий SUR — имя)
   [текст](P1000)     -> [текст](P1000-….md)
   «- [A1000]» в разделе «## Источники» -> «- A1000 — название» (на телефоне нет
   всплывающей подсказки, поэтому название пишется рядом обычным текстом)
@@ -23,7 +23,7 @@ import yaml
 
 log = logging.getLogger("mkdocs.hooks.id_links")
 
-PREFIXES = "FAM|PLC|EV|DB|P|F|D|A|B|W|N|L|I|M|V|O"
+PREFIXES = "FAM|PLC|SUR|EV|DB|P|F|D|A|B|W|N|L|I|M|V|O"
 FILE_ID = re.compile(rf"^((?:{PREFIXES})\d{{4}})-")
 BARE = re.compile(rf"(?<!\w)\[((?:{PREFIXES})\d{{4}})\](?!\()")
 ADJACENT = re.compile(rf"(\[(?:{PREFIXES})\d{{4}}\])(?=\[(?:{PREFIXES})\d{{4}}\](?!\())")
@@ -54,7 +54,7 @@ def on_files(files, config):
             log.warning("ID %s встречается дважды: %s и %s", pid, _pages[pid][0], f.src_uri)
         meta = _front_matter(f.content_string)
         title = str(meta.get("title") or meta.get("name") or pid)
-        label = title if pid.startswith("P") else pid
+        label = title if pid.startswith(("P", "SUR")) else pid
         _pages[pid] = (f.src_uri, label, title)
     return files
 
@@ -88,7 +88,7 @@ def on_page_markdown(markdown, page, config, files):
         if line.startswith("## "):
             in_sources = line[3:].strip() == "Источники"
         item = SOURCE_ITEM.match(line) if in_sources and not in_code else None
-        if item and item.group(1) in _pages and not item.group(1).startswith(("P", "PLC")):
+        if item and item.group(1) in _pages and not item.group(1).startswith(("P", "PLC", "SUR")):
             line = f"{line.rstrip()} — {_pages[item.group(1)][2]}"
         if not in_code:
             line = ADJACENT.sub(r"\1 ", line)
@@ -98,8 +98,8 @@ def on_page_markdown(markdown, page, config, files):
 
 
 def on_page_content(html, page, config, files):
-    """На страницах персон и мест вставляет под заголовком краткое меню разделов (H2)."""
-    if not FILE_ID.match(posixpath.basename(page.file.src_uri)) or not page.file.src_uri.startswith(("people/", "places/")):
+    """На страницах персон, мест и фамилий вставляет под заголовком краткое меню разделов (H2)."""
+    if not FILE_ID.match(posixpath.basename(page.file.src_uri)) or not page.file.src_uri.startswith(("people/", "places/", "surnames/")):
         return html
     items = [c for top in page.toc for c in top.children] if page.toc else []
     if len(items) < 2:
