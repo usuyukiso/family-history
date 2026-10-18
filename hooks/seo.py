@@ -55,11 +55,13 @@ def _is_noindex(page):
 
 
 def _plain(text):
-    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", text)  # картинки
-    text = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", text)  # ссылки → текст
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)(\{[^}]*\})?", "", text)  # картинки
+    link = r"\((?:[^\s)]+)(?:\s+\"[^\"]*\")?\)"  # (адрес "подсказка")
+    text = re.sub(r"\s*\[[A-Z]{1,3}\d{4}\]" + link, "", text)  # ссылки-ID: [A1000](A1000 "…")
+    text = re.sub(r"\[([^\]]+)\]" + link, r"\1", text)  # ссылки → текст
     text = re.sub(r"\s*\[\^?[A-Z]{1,3}\d{4}[^\]]*\]", "", text)  # [A1206], [^1]
     text = re.sub(r"\s*\[\^[^\]]+\]", "", text)
-    text = re.sub(r"\{[:.#][^}]*\}", "", text)  # attr_list
+    text = re.sub(r"\{[^}]*\}", "", text)  # attr_list
     text = re.sub(r"<[^>]+>", "", text)
     text = re.sub(r"[*_`]+", "", text)
     return re.sub(r"\s+", " ", text).strip()
@@ -82,7 +84,7 @@ def _first_paragraph(markdown):
         if para:
             para.append(s)
             continue
-        if s.startswith(("#", "|", "<", "!!!", "???", "- ", "* ", ">", "{", "[^")) or re.match(r"\d+\.", s):
+        if s.startswith(("#", "|", "<", "!!!", "???", "![", "- ", "* ", ">", "{", "[^")) or re.match(r"\d+\.", s):
             continue
         para.append(s)
     text = _plain(" ".join(para))

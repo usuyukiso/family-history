@@ -7,6 +7,7 @@ evidence_kind: "secondary"
 related_places:
   - PLC1020
 accessed: "2026-10-13"
+verified: "2026-10-18"
 ---
 
 # W1006 — Википедия: Лыщичи

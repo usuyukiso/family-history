@@ -7,6 +7,7 @@ evidence_kind: "secondary"
 related_people:
   - P1005
 accessed: "2026-10-11"
+verified: "2026-10-18"
 ---
 
 # W1004 — Википедия: Кот, Василий Андреевич
