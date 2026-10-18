@@ -126,11 +126,41 @@
 /* Метрическая запись о браке: графы 1, 4 и 6 (номер, лета жениха и невесты) — только цифры, делаем их узкими. */
 .md-typeset .marriage-record table th:is(:nth-child(1), :nth-child(4), :nth-child(6)),
 .md-typeset .marriage-record table td:is(:nth-child(1), :nth-child(4), :nth-child(6)) {
-  width: 1%;
   white-space: nowrap;
   padding-left: .5em;
   padding-right: .5em;
   text-align: center;
+}
+/* Запись о браке: таблица во всю ширину; графы 1, 2, 4, 6 узкие, 8 (поручители) — шире. */
+.md-typeset .marriage-record table {
+  display: table;
+  width: 100%;
+  font-size: .66rem;
+}
+.md-typeset .marriage-record table :is(th, td):is(:nth-child(1), :nth-child(4), :nth-child(6)) {
+  width: 1%;
+  padding-left: .35em;
+  padding-right: .35em;
+}
+.md-typeset .marriage-record table :is(th, td):nth-child(2) {
+  width: 1%;
+  min-width: 5em;
+  padding-left: .35em;
+  padding-right: .35em;
+  text-align: center;
+}
+.md-typeset .marriage-record table th { min-width: 0; }
+.md-typeset .marriage-record table :is(th, td) {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: manual;
+  padding-left: .45em;
+  padding-right: .45em;
+}
+.md-typeset .marriage-record table :is(th, td):nth-child(8) { min-width: 12em; }
+.md-typeset .marriage-record table :is(th, td):is(:nth-child(1), :nth-child(2), :nth-child(4), :nth-child(6)) {
+  padding-left: .3em;
+  padding-right: .3em;
 }
 
 .md-typeset table:not([class]) {
@@ -603,3 +633,419 @@
   flex: 1;
   max-height: none;
 }
+
+/* Набранная копия документа «по образцу бланка» (страницы с doc_replica: true).
+   Все размеры — в cqw, поэтому лист масштабируется целиком, как картинка. */
+.md-typeset .replica {
+  container-type: inline-size;
+  max-width: 640px;
+  margin: 1.5em auto;
+}
+.md-typeset .replica__sheet {
+  --rp-ink: #3a3a32;
+  --rp-pen: #4f3f9a;
+  --rp-green: rgba(86, 120, 72, .28);
+  position: relative;
+  padding: 2.6cqw;
+  background-color: #dfe0c3;
+  background-image:
+    repeating-linear-gradient(45deg, var(--rp-green) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, var(--rp-green) 0 1px, transparent 1px 7px),
+    radial-gradient(ellipse at 20% 15%, rgba(150, 120, 60, .18), transparent 60%),
+    radial-gradient(ellipse at 80% 85%, rgba(140, 110, 60, .2), transparent 55%);
+  color: var(--rp-ink);
+  box-shadow: 0 2px 8px rgba(40, 40, 30, .25);
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 2.4cqw;
+  line-height: 1.25;
+}
+.md-typeset .replica__frame {
+  border: .35cqw double rgba(70, 100, 60, .55);
+  padding: 3.5cqw 4cqw 3cqw;
+}
+.md-typeset .replica__sheet--back {
+  background-color: #ecd9bd;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(150, 120, 80, .1) 0 1px, transparent 1px 7px),
+    radial-gradient(ellipse at 30% 20%, rgba(150, 110, 60, .2), transparent 60%);
+  margin-top: 1.5em;
+}
+.md-typeset .replica__sheet--back .replica__frame {
+  border-color: transparent;
+  min-height: 60cqw;
+  position: relative;
+}
+.md-typeset .replica p { margin: 0; }
+.md-typeset .replica .rp-motto {
+  text-align: right;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-style: italic;
+  font-size: 1.7cqw;
+  letter-spacing: .05em;
+}
+.md-typeset .replica .rp-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: "PT Sans Narrow", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 3.9cqw;
+  letter-spacing: .04em;
+  margin-top: 1.5cqw;
+}
+.md-typeset .replica .rp-sub {
+  text-align: center;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 3cqw;
+  letter-spacing: .06em;
+  padding-bottom: 1cqw;
+  border-bottom: .5cqw double var(--rp-ink);
+}
+.md-typeset .replica .rp-title {
+  text-align: center;
+  font-size: 5.2cqw;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  margin: 8cqw 0 5cqw;
+}
+.md-typeset .replica .rp-num {
+  text-align: right;
+  font-size: 3.6cqw;
+  margin-bottom: 3cqw;
+}
+.md-typeset .replica .rp-num span {
+  display: inline-block;
+  min-width: 18cqw;
+  border-bottom: 1px dotted var(--rp-ink);
+  text-align: left;
+}
+.md-typeset .replica .rp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2cqw;
+  margin-top: 1.6cqw;
+}
+.md-typeset .replica .rp-lbl {
+  white-space: nowrap;
+  padding-top: 2.6cqw;
+}
+.md-typeset .replica .rp-bold {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 2.45cqw;
+  letter-spacing: .02em;
+}
+.md-typeset .replica .rp-fld { flex: 1; min-width: 0; }
+.md-typeset .replica .rp-hand,
+.md-typeset .replica .rp-fld > span:first-child {
+  display: block;
+  min-height: 4.6cqw;
+  border-bottom: 1px dotted var(--rp-ink);
+  font-family: "Marck Script", cursive;
+  font-size: 3.9cqw;
+  line-height: 1.15;
+  color: var(--rp-pen);
+  padding-left: 2cqw;
+  white-space: nowrap;
+}
+.md-typeset .replica .rp-cap {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.55cqw;
+  line-height: 1.3;
+}
+.md-typeset .replica .rp-inline {
+  font-family: "Marck Script", cursive;
+  font-size: 3.9cqw;
+  font-weight: 400;
+  color: var(--rp-pen);
+  padding: 0 .6cqw;
+}
+.md-typeset .replica .rp-blank {
+  display: inline-block;
+  border-bottom: 1px dotted var(--rp-ink);
+}
+.md-typeset .replica .rp-grp {
+  display: grid;
+  grid-template-columns: 14cqw 2.5cqw 1fr;
+  align-items: center;
+  margin-top: 2cqw;
+}
+.md-typeset .replica .rp-grp__lbl { text-align: center; line-height: 1.15; }
+.md-typeset .replica .rp-brace {
+  font-size: 7cqw;
+  line-height: 1;
+  transform: scaleX(.55);
+  font-weight: 300;
+}
+.md-typeset .replica .rp-grp .rp-row { margin-top: .4cqw; }
+.md-typeset .replica .rp-place {
+  display: grid;
+  grid-template-columns: 9cqw 1fr 13cqw 1fr;
+  align-items: end;
+  column-gap: .8cqw;
+}
+.md-typeset .replica .rp-place .rp-cap { text-align: right; font-size: 1.7cqw; }
+.md-typeset .replica .rp-place .rp-hand { padding-left: .5cqw; font-size: 3.2cqw; }
+.md-typeset .replica .rp-foot {
+  display: grid;
+  grid-template-columns: 16cqw 1fr;
+  align-items: center;
+  margin-top: 4cqw;
+}
+.md-typeset .replica .rp-seal {
+  width: 12cqw;
+  height: 12cqw;
+  border: 1px solid var(--rp-ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8cqw;
+}
+.md-typeset .replica .rp-seal { position: relative; }
+.md-typeset .replica .rp-stamp {
+  position: absolute;
+  left: .5cqw;
+  top: -1.5cqw;
+  width: 15cqw;
+  height: 15cqw;
+  border-radius: 50%;
+  border: .5cqw solid rgba(95, 80, 165, .22);
+  box-shadow: inset 0 0 0 1.6cqw rgba(95, 80, 165, .07), inset 0 0 0 1.9cqw rgba(95, 80, 165, .16);
+  background: radial-gradient(circle, rgba(95, 80, 165, .08), transparent 70%);
+}
+.md-typeset .replica .rp-sign { font-style: italic; text-align: center; }
+.md-typeset .replica .rp-sign s { display: inline-block; margin-top: 5cqw; }
+.md-typeset .replica .rp-nosign {
+  font-family: "PT Serif", Georgia, serif;
+  font-style: normal;
+  font-size: 2cqw;
+  color: var(--rp-pen);
+  opacity: .75;
+  padding-left: 2cqw;
+}
+.md-typeset .replica .rp-pencil {
+  position: absolute;
+  top: 1cqw;
+  left: 44%;
+  font-family: "Marck Script", cursive;
+  font-size: 3.6cqw;
+  color: #6d6a66;
+}
+.md-typeset .replica .rp-rules {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 2.7cqw;
+  margin: 26cqw 4cqw 0;
+}
+.md-typeset .replica .rp-rules p { text-indent: 3cqw; }
+.md-typeset .replica .rp-rules ol {
+  list-style: none;
+  margin: 0 0 0 6cqw;
+  padding: 0;
+}
+.md-typeset .replica .rp-rules li { margin: 0; }
+.md-typeset .replica .rp-faded {
+  margin: 10cqw 0 0 26cqw;
+  font-style: italic;
+  font-size: 2cqw;
+  color: rgba(70, 120, 150, .75);
+}
+.md-typeset .replica__note {
+  text-align: center;
+  font-size: .7rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: .6em;
+}
+[data-md-color-scheme="slate"] .md-typeset .replica__sheet {
+  filter: brightness(.88);
+}
+
+/* Ключевой вывод в рассуждении — красным жирным. */
+.md-typeset .key-point {
+  color: #c62828;
+  font-weight: 700;
+}
+[data-md-color-scheme="slate"] .md-typeset .key-point {
+  color: #ef6b6b;
+}
+
+/* Цифра, вписанная от руки поверх напечатанной (D1000: «3» → «1»). */
+.md-typeset .replica .rp-over { position: relative; }
+.md-typeset .replica .rp-overmark {
+  position: absolute;
+  left: -.2cqw;
+  top: -2.4cqw;
+  font-family: "Marck Script", cursive;
+  font-weight: 400;
+  font-size: 5.4cqw;
+  color: var(--rp-pen);
+  transform: rotate(8deg);
+}
+
+.md-typeset .replica .rp-hand.rp-center {
+  text-align: center;
+  padding-left: 0;
+}
+
+/* Короткая надпись (оборот фото и т. п.) — лист по ширине текста, а не во всю колонку. */
+.md-typeset .narrow-quote blockquote {
+  width: fit-content;
+  max-width: 100%;
+  padding-right: 48px;
+}
+
+/* Блок по центру колонки (фото с подписью). */
+.md-typeset .centered {
+  text-align: center;
+}
+
+/* Документы XX века (поле paper: grey) — светло-серый, почти не выцветший лист. */
+.md-typeset .doc-grey blockquote {
+  --doc-paper-bg: #eeeeec;
+  --doc-paper-stains: none;
+  --doc-paper-border: #c9c9c5;
+  --doc-paper-ink: #2f2f2c;
+  --doc-paper-line: #d8d8d4;
+  box-shadow: 0 1px 4px rgba(40, 40, 40, .12);
+}
+[dir] .md-typeset .doc-grey blockquote {
+  border-left-color: #c9c9c5;
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-grey blockquote {
+  --doc-paper-bg: #34353a;
+  --doc-paper-border: #5a5c63;
+  --doc-paper-ink: #e4e4e2;
+  --doc-paper-line: #4a4c52;
+}
+
+/* Документы на белой бумаге (поле paper: white): чисто-белый лист с холодной рамкой
+   и тенью, чтобы отличаться от тёплого фона сайта; вписанное от руки (курсив) — синими чернилами. */
+.md-typeset .doc-white blockquote {
+  --doc-paper-bg: #ffffff;
+  --doc-paper-stains: none;
+  --doc-paper-border: #cfd3da;
+  --doc-paper-ink: #2b2b2b;
+  --doc-paper-line: #dde0e5;
+  --doc-ink-pen: #1f4e96;
+  box-shadow: 0 1px 6px rgba(30, 40, 60, .16);
+}
+[dir] .md-typeset .doc-white blockquote {
+  border-left-color: #cfd3da;
+}
+.md-typeset .doc-white blockquote em {
+  color: var(--doc-ink-pen);
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-white blockquote {
+  --doc-paper-bg: #3a3d44;
+  --doc-paper-border: #5f636c;
+  --doc-paper-ink: #ececea;
+  --doc-paper-line: #50545c;
+  --doc-ink-pen: #9cc0f2;
+}
+
+/* Светло-жёлтый бланк внутри белого документа (отчётная карточка A1270). */
+.md-typeset .doc-white .doc-yellow blockquote {
+  --doc-paper-bg: #fdf8dc;
+  --doc-paper-border: #e4daae;
+  --doc-paper-line: #ede4bd;
+}
+[dir] .md-typeset .doc-white .doc-yellow blockquote {
+  border-left-color: #e4daae;
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-white .doc-yellow blockquote {
+  --doc-paper-bg: #45412c;
+  --doc-paper-border: #6e6744;
+  --doc-paper-line: #5a5438;
+}
+
+/* Альбомный бланк 1940-х (D1001): лист шире, без рамки; обложка — разворот из двух половин. */
+.md-typeset .replica--wide { max-width: 860px; }
+.md-typeset .replica--wide .replica__sheet {
+  --rp-pen: #2c4f78;
+  background-color: #dfe3cf;
+  font-size: 1.8cqw;
+}
+.md-typeset .replica--wide .replica__frame { border-color: transparent; padding: 2cqw 3cqw 2.5cqw; }
+.md-typeset .replica--wide .rp-title {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 3.6cqw;
+  margin: 0 0 1cqw;
+}
+.md-typeset .replica--wide .rp-title .rp-ser { font-family: "PT Serif", serif; font-weight: 400; margin-left: 2cqw; }
+.md-typeset .replica--wide .rp-bold { font-size: 1.9cqw; }
+.md-typeset .replica--wide .rp-lbl { padding-top: 1.9cqw; }
+.md-typeset .replica--wide .rp-row { margin-top: .6cqw; }
+.md-typeset .replica--wide .rp-hand,
+.md-typeset .replica--wide .rp-fld > span:first-child { font-size: 3cqw; min-height: 3.5cqw; }
+.md-typeset .replica--wide .rp-inline { font-size: 3cqw; }
+.md-typeset .replica--wide .rp-cap { font-size: 1.2cqw; }
+.md-typeset .replica--wide .rp-grp { grid-template-columns: 17cqw 2cqw 1fr; margin-top: .8cqw; }
+.md-typeset .replica--wide .rp-brace { font-size: 5cqw; }
+.md-typeset .replica--wide .rp-place { grid-template-columns: 10cqw 1fr 13cqw 1fr; }
+.md-typeset .replica--wide .rp-place .rp-cap { font-size: 1.4cqw; font-weight: 700; font-style: normal; font-family: "PT Sans Narrow", sans-serif; }
+.md-typeset .replica--wide .rp-place .rp-hand { font-size: 2.6cqw; }
+.md-typeset .replica--wide .rp-foot { grid-template-columns: 14cqw 1fr; margin-top: 1.5cqw; }
+.md-typeset .replica--wide .rp-seal { width: 9cqw; height: 9cqw; font-size: 1.4cqw; }
+.md-typeset .replica--wide .rp-stamp { left: -1cqw; top: -2cqw; width: 11cqw; height: 11cqw; border-color: rgba(60, 60, 60, .16); box-shadow: inset 0 0 0 1.2cqw rgba(60, 60, 60, .05); background: radial-gradient(circle, rgba(60, 60, 60, .06), transparent 70%); }
+.md-typeset .replica--wide .rp-sign { font-style: italic; text-align: left; padding-left: 20cqw; }
+.md-typeset .replica--wide .rp-sign .rp-sign2 { display: block; padding-left: 10cqw; margin-top: 1cqw; }
+.md-typeset .replica--wide .rp-date { margin-top: 2cqw; padding-left: 6cqw; }
+.md-typeset .replica .rp-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 62cqw;
+}
+.md-typeset .replica .rp-spread > div { position: relative; padding: 2.5cqw 3cqw; }
+.md-typeset .replica .rp-spread > div + div { border-left: 1px dashed rgba(70, 70, 60, .35); }
+.md-typeset .replica .rp-gosznak { position: absolute; bottom: 3cqw; left: 0; right: 0; text-align: center; font-size: 1.4cqw; }
+.md-typeset .replica .rp-pstamp {
+  margin: 5cqw 0 0 1cqw;
+  padding: 1cqw 1.5cqw;
+  border-top: .3cqw solid rgba(110, 80, 160, .55);
+  border-bottom: .3cqw solid rgba(110, 80, 160, .55);
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 1.9cqw;
+  line-height: 2.1;
+  color: rgba(110, 80, 160, .7);
+}
+.md-typeset .replica .rp-pstamp .rp-inline { color: #222; font-size: 2.6cqw; }
+.md-typeset .replica .rp-coverhead { display: flex; justify-content: space-between; font-family: "PT Sans Narrow", sans-serif; font-weight: 700; font-size: 2.3cqw; letter-spacing: .1em; margin-top: 3cqw; line-height: 1.2; }
+.md-typeset .replica .rp-coverhead span:last-child { text-align: right; }
+.md-typeset .replica .rp-coversub { font-family: "PT Sans Narrow", sans-serif; font-weight: 700; font-size: 2.1cqw; letter-spacing: .08em; text-align: center; border-bottom: .3cqw double var(--rp-ink); padding-bottom: .5cqw; margin-top: 1cqw; }
+.md-typeset .replica .rp-covertitle { text-align: center; font-family: "PT Sans Narrow", sans-serif; font-weight: 700; font-size: 3.9cqw; letter-spacing: .04em; line-height: 1.3; margin-top: 13cqw; }
+
+/* Запись о браке (A1006): мельче шрифт, чтобы все 9 граф помещались в ширину страницы. */
+.md-typeset .marriage-record blockquote table:not([class]),
+.md-typeset .marriage-record blockquote table:not([class]) :is(th, td) {
+  font-size: .64rem;
+}
+
+/* D1001: защитная сетка есть и на оригинале, но едва заметная. */
+.md-typeset .replica--wide .replica__sheet {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(86, 120, 72, .09) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgba(86, 120, 72, .09) 0 1px, transparent 1px 7px),
+    radial-gradient(ellipse at 20% 15%, rgba(150, 120, 60, .12), transparent 60%);
+}
+
+/* Статус проверки страницы (hooks/verification_status.py): плашка под заголовком. */
+.md-typeset .vstatus {
+  display: flex;
+  align-items: flex-start;
+  gap: .5em;
+  margin: -.4rem 0 1.2rem;
+  padding: .45em .9em .45em .65em;
+  border-radius: .35rem;
+  font-size: .68rem;
+  line-height: 1.5;
+  border: 1px solid;
+}
+.md-typeset .vstatus svg { width: 1.15em; height: 1.15em; flex: none; margin-top: .15em; }
+.md-typeset .vstatus--pending { color: #6b6b66; background: #efefec; border-color: #d6d6d1; }
+.md-typeset .vstatus--ok { color: #2e6b34; background: #e8f3e6; border-color: #b9d9b3; }
+[data-md-color-scheme="slate"] .md-typeset .vstatus--pending { color: #b8b8b2; background: #34353a; border-color: #50525a; }
+[data-md-color-scheme="slate"] .md-typeset .vstatus--ok { color: #9fd49a; background: #2b3a2b; border-color: #4a6a47; }

@@ -7,6 +7,7 @@ evidence_kind: "primary"
 related_people:
   - P1007
 accessed: "2026-10-11"
+verified: "2026-10-16"
 ---
 
 # 1940 Фотография Г. Я. Писарева и С. П. Кузьмина, пос. Дятлово (F1003)

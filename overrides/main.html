@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+  {{ super() }}
+  {% if page and page.meta and page.meta.doc_replica %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marck+Script&family=PT+Sans+Narrow:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap">
+  {% endif %}
+{% endblock %}
+
 {% block analytics %}
   {{ super() }}
   <script data-goatcounter="https://usuyukiso-family-history.goatcounter.com/count"

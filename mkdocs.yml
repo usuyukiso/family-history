@@ -40,6 +40,7 @@ hooks:
   - hooks/place_pages.py
   - hooks/document_age.py
   - hooks/household_tables.py
+  - hooks/verification_status.py
 
 markdown_extensions:
   - admonition
@@ -82,12 +83,18 @@ nav:
   - Родословное древо: tree.md
   - Фамилии:
       - surnames/index.md
+      - Березовский: surnames/SUR1006-berezovskiy.md
+      - Винник: surnames/SUR1009-vinnik.md
       - Давыдов: surnames/SUR1000-davydov.md
       - Лапин: surnames/SUR1001-lapin.md
       - Марков: surnames/SUR1002-markov.md
+      - Мироненко: surnames/SUR1010-mironenko.md
+      - Мордвинов: surnames/SUR1008-mordvinov.md
+      - Наумов: surnames/SUR1011-naumov.md
       - Писарев: surnames/SUR1003-pisarev.md
       - Почеревин: surnames/SUR1004-pocherevin.md
       - Сычев: surnames/SUR1005-sychev.md
+      - Харламенко: surnames/SUR1007-kharlamenko.md
   - Персоны:
       - people/index.md
       - 1645 Михайла Семенов: people/P1061-mikhayla-semenov.md
@@ -109,10 +116,12 @@ nav:
       - 1709 Екатерина Прокофьева: people/P1046-ekaterina-prokofeva.md
       - 1711 Козьма Нестеров: people/P1024-kozma-nesterov.md
       - 1711 Параскева Харитонова: people/P1070-paraskeva-kharitonova.md
+      - 1712 Пелагея Назарова: people/P1086-pelageya-nazarova.md
       - 1714 Евтифей Иванов: people/P1023-evtifey-ivanov.md
       - 1714 Никифор Григорьев: people/P1063-nikifor-grigorev.md
       - 1715 Евдоким Калинин: people/P1057-evdokim-kalinin.md
       - 1716 Дарья Васильева: people/P1058-darya-vasileva.md
+      - 1717 Винниченко Данило Астапьев: people/P1085-danilo-astapev-vinnichenko.md
       - 1718 Илья Абросимов: people/P1034-ilya-abrosimov.md
       - 1718 Филипп Кондратьев: people/P1043-filipp-kondratev.md
       - 1721 Яков Семенов: people/P1052-yakov-semenov.md
@@ -130,9 +139,13 @@ nav:
       - 1738 Иринья Иванова: people/P1051-irinya-ivanova.md
       - 1739 Федот Евтифиев: people/P1021-fedot-evtifiev.md
       - 1743 Петр Яковлев: people/P1050-petr-yakovlev.md
+      - 1749 Мария Никифорова: people/P1088-mariya-nikiforova.md
+      - 1751 Винниченко Алексей Данилов: people/P1087-aleksey-danilov-vinnichenko.md
       - 1752 Матфей Исаков: people/P1044-matfey-isakov.md
       - 1753 Марфа Трифонова: people/P1045-marfa-trifonova.md
+      - 1754 Винниченко Иван Данилов: people/P1089-ivan-danilov-vinnichenko.md
       - 1754 Давыд Федотов: people/P1011-davyd-fedotov.md
+      - 1754 Евдокия Калинина: people/P1090-evdokiya-kalinina.md
       - 1759 Иван Елисеев: people/P1039-ivan-eliseev.md
       - 1759 Иван Петров: people/P1048-ivan-petrov.md
       - 1760 Агафья Мокеева: people/P1040-agafya-mokeeva.md
@@ -141,32 +154,57 @@ nav:
       - 1764 Фекла Максимова: people/P1031-fekla-maksimova.md
       - 1767 Потап Сергеев: people/P1012-potap-sergeev.md
       - 1771 Варвара Терентьева: people/P1047-varvara-terenteva.md
+      - 1772 Винниченко Петр Алексеев: people/P1091-petr-alekseev-vinnichenko.md
       - 1784 Татьяна Матфеева: people/P1038-tatyana-matfeeva.md
       - 1786 Феодор Иванов: people/P1037-feodor-ivanov.md
+      - 1788 Вынниченко Иван Иванов: people/P1092-ivan-ivanov-vynnichenko.md
       - 1793 Дарья Иванова: people/P1029-darya-ivanova.md
       - 1795 Марков Тит Миронов: people/P1028-tit-mironov-markov.md
       - 1807 Петр Давыдов: people/P1013-petr-davydov.md
       - 1808 Настасья Федорова: people/P1036-nastasya-fedorova.md
+      - 1811 Вынниченко Мартин Петров: people/P1093-martin-petrov-vynnichenko.md
+      - 1812 Акулина Петрова: people/P1094-akulina-petrova.md
       - 1813 Косма Потапов: people/P1014-kosma-potapov.md
       - 1814 Марфа Титова: people/P1027-marfa-titova.md
       - 1815 Иван Давыдов: people/P1015-ivan-davydov.md
+      - 1823 Евдокия Ерофеева: people/P1096-evdokiya-erofeeva.md
+      - 1825 Вынниченко Аким Иванов: people/P1095-akim-ivanov-vynnichenko.md
       - 1840 Андрей Кузьмин: people/P1016-andrey-kuzmin.md
+      - 1840 Винник Роман Мартынов: people/P1097-roman-martynov-vinnik.md
       - 1844 Давыдов Василий Иванов: people/P1017-vasiliy-ivanov-davydov.md
+      - 1853 Винник Иоанн Акимов: people/P1098-ioann-akimov-vinnik.md
       - 1855 Лапина Евдокия Артемьевна: people/P1000-evdokiya-lapina.md
       - 1858 Почеревин Егор Димитриев: people/P1001-egor-pocherevin.md
+      - 1860 Стефанида Павлова: people/P1099-stefanida-pavlova.md
+      - 1866 Винник Филипп Романов: people/P1100-filipp-romanov-vinnik.md
+      - 1867 Христина Емельянова: people/P1101-khristina-emelyanova.md
       - 1873 Давыдов Иван Васильевич: people/P1019-ivan-vasilevich-davydov.md
       - 1875 Андреева Александра Андреевна: people/P1018-aleksandra-andreeva.md
       - 1883 Сычева Анна Никитична: people/P1003-anna-sycheva.md
       - 1885 Почеревин Иван Егорович: people/P1002-ivan-pocherevin.md
+      - 1888 Винник Лукерья Степановна: people/P1103-lukerya-stepanovna-vinnik.md
       - 1889 Давыдов Михаил Васильев: people/P1020-mikhail-vasilev-davydov.md
+      - 1890 Винник Аким Иоаннов: people/P1102-akim-ioannov-vinnik.md
+      - 1893 Винник Иван Филиппович: people/P1104-ivan-filippovich-vinnik.md
+      - 1894 Харламенко Мария Анисимовна: people/P1081-mariya-kharlamenko.md
+      - 1897 Мироненко Мария Федоровна: people/P1105-mariya-fedorovna-mironenko.md
+      - 1911 Винник Василий Акимович: people/P1106-vasiliy-akimovich-vinnik.md
       - 1912 Почеревин Пётр Иванович: people/P1076-petr-pocherevin.md
       - 1916 Давыдов Павел Иванович: people/P1005-pavel-davydov.md
+      - 1917 Винник Полина Ивановна: people/P1107-polina-ivanovna-vinnik.md
+      - 1919 Березовская Мария Васильевна: people/P1080-mariya-berezovskaya.md
       - 1919 Писарев Григорий Яковлевич: people/P1007-grigoriy-pisarev.md
       - 1922 Почеревин Павел Иванович: people/P1077-pavel-pocherevin.md
       - 1924 Давыдова Любовь Ивановна: people/P1006-lyubov-davydova.md
+      - 1924 Наумов Иван Павлович: people/P1110-ivan-naumov.md
+      - 1942 Писарев Валерий Григорьевич: people/P1109-valeriy-pisarev.md
+      - 1956 Озерская Зоя Васильевна: people/P1108-zoya-vasilevna-ozerskaya.md
+      - Березовский Василий: people/P1084-vasiliy-berezovskiy.md
+      - Мордвинов Нестер: people/P1083-nester-mordvinov.md
       - Писарев Яков Иванов: people/P1078-yakov-ivanov-pisarev.md
       - Радионова Настасья: people/P1075-nastasya-radionova.md
       - Сычев Никита Яковлев: people/P1008-nikita-sychev.md
+      - Харламенко Анисим: people/P1082-anisim-kharlamenko.md
   - Места:
       - places/index.md
       - Псковская губерния:
@@ -194,6 +232,8 @@ nav:
           - Рудня-Бартоломеевская: places/PLC1005-rudnya-bartolomeevskaya.md
       - Приморская область:
           - Шевелёвка: places/PLC1000-shevelevka.md
+      - Смоленская губерния:
+          - Дрогачево: places/PLC1025-drogachevo.md
       - Тверская губерния:
           - Глазки: places/PLC1001-glazki.md
       - Харьковская губерния:
@@ -226,6 +266,7 @@ nav:
           - sources/archives/A1189-gapo-39-1-1590-ispoved-1754-pechokhnova.md
           - sources/archives/A1063-voronich-1756-brak-14-afanasev-nikiforova.md
           - sources/archives/A1064-voronich-1759-rozhdenie-isaak-gorelik.md
+          - sources/archives/A1261-rgvia-14-1-1702-1761-novaya-vodolaga.md
           - sources/archives/A1049-rgada-350-2-523-1763-krasikhino.md
           - sources/archives/A1143-rgada-350-2-523-1763-makovitsy.md
           - sources/archives/A1144-rgada-350-2-523-1763-alekseevo-zuevo.md
@@ -256,6 +297,8 @@ nav:
           - sources/archives/A1053-gapo-39-1-2623-ispoved-1792.md
           - sources/archives/A1054-gapo-58-1-1027-reviziya-1795-makovitsy.md
           - sources/archives/A1153-utretki-1795-rozhdenie-14-tit.md
+          - sources/archives/A1262-reviziya-1795-valkovskiy-uezd.md
+          - sources/archives/A1263-ispoved-1799.md
           - sources/archives/A1067-polyane-1800-smert-8-kseniya-safonova.md
           - sources/archives/A1055-gapo-39-1-2669-ispoved-1802-zakharino.md
           - sources/archives/A1225-rozhdestvo-1802-rozhdenie-27-samson.md
@@ -312,6 +355,7 @@ nav:
           - sources/archives/A1237-rozhdestvo-1848-brak-12-isaak-kuzmin.md
           - sources/archives/A1059-gapo-39-1-2723-ispoved-1850.md
           - sources/archives/A1238-rozhdestvo-1850-rozhdenie-23-nikita.md
+          - sources/archives/A1264-reviziya-1850-novaya-vodolaga.md
           - sources/archives/A1239-rozhdestvo-1851-rozhdenie-39-ekaterina.md
           - sources/archives/A1240-rozhdestvo-1851-smert-36-ekaterina.md
           - sources/archives/A1060-gapo-39-1-2516-ispoved-1852.md
@@ -334,6 +378,7 @@ nav:
           - sources/archives/A1088-polyane-1858-brak-17-petr-alekseev.md
           - sources/archives/A1136-rozhdestvo-1858-brak-12-andrey-kosmin.md
           - sources/archives/A1246-rozhdestvo-1858-rozhdenie-mikhail.md
+          - sources/archives/A1265-reviziya-1858-karavan.md
           - sources/archives/A1089-polyane-1859-smert-1-agafya.md
           - sources/archives/A1090-polyane-1859-brak-2-stefan-pavlov.md
           - sources/archives/A1137-rozhdestvo-1859-rozhdenie-luka.md
@@ -342,6 +387,7 @@ nav:
           - sources/archives/A1248-rozhdestvo-1860-rozhdenie-6-kseniya.md
           - sources/archives/A1249-rozhdestvo-1860-rozhdenie-11-matrona.md
           - sources/archives/A1250-rozhdestvo-1860-smert-14-mikhail.md
+          - sources/archives/A1266-metricheskie-knigi-stanichnoe-1860-1893.md
           - sources/archives/A1062-gapo-39-1-2736-ispoved-1862.md
           - sources/archives/A1092-polyane-1862-brak-8-stefan-pavlov.md
           - sources/archives/A1093-polyane-1862-rozhdenie-17-aleksey.md
@@ -387,6 +433,7 @@ nav:
           - sources/archives/A1107-rozhdestvo-1899-rozhdenie-aleksandr.md
           - sources/archives/A1142-rozhdestvo-1900-brak-12-aleksey-andreev.md
           - sources/archives/A1253-rozhdestvo-1900-rozhdenie-aleksandr.md
+          - sources/archives/A1267-gakho-40-110-914-ispoved-1900-stanichnoe.md
           - sources/archives/A1108-rozhdestvo-1901-smert-53-ioann-davydov.md
           - sources/archives/A1109-rozhdestvo-1902-rozhdenie-lyubov.md
           - sources/archives/A1110-rozhdestvo-1902-smert-lyubov.md
@@ -461,12 +508,16 @@ nav:
           - sources/archives/A1197-tsamo-prikaz-211-sp-03n-1945.md
           - sources/archives/A1260-tsamo-donesenie-3261-olenino-rvk-1948.md
           - sources/archives/A1198-ukaz-pvs-sssr-za-vyslugu-let.md
+          - sources/archives/A1269-nelidovo-pokhozyaystvennye-knigi-drogachevo-1952-1966.md
+          - sources/archives/A1270-rgaspi-partbilet-pisarev-valeriy-1970.md
           - sources/archives/A1039-tsamo-58-a71497-4-kuldiga-1989.md
           - sources/archives/A1040-kartochka-zakhoroneniya-krasnyy-oskol-1991.md
           - sources/archives/A1037-gakk-r876-davydov-fond.md
+          - sources/archives/A1268-nelidovo-arkhiv-otvet-2026-dyatlovo.md
       - Книги:
           - sources/books/B1005-spiski-naselennykh-mest-tverskaya-1862.md
           - sources/books/B1013-spiski-naselennykh-mest-chernigovskaya-1866.md
+          - sources/books/B1014-spiski-naselennykh-mest-smolenskaya-1868.md
           - sources/books/B1011-spiski-naselennykh-mest-pskovskaya-1885.md
           - sources/books/B1000-chekhov-census-1890.md
           - sources/books/B1006-manifest-1894-11-14-milosti.md
@@ -479,6 +530,15 @@ nav:
           - sources/books/B1009-nikiforov-t5-zakharino.md
           - sources/books/B1010-nikiforov-t5-popova-gora.md
           - sources/books/B1001-iz-istorii-zaseleniya-shkotovskogo-rayona-2017.md
+      - Документы:
+          - sources/documents/D1000-svidetelstvo-o-rozhdenii-davydov-pavel-1930e.md
+          - sources/documents/D1001-svidetelstvo-o-rozhdenii-pisarev-valeriy-1942.md
+          - sources/documents/D1002-pereselencheskiy-bilet-naumov-1959.md
+          - sources/documents/D1003-trudovye-knizhki-pisarev-valeriy-1961-1997.md
+          - sources/documents/D1004-voennyy-bilet-pisarev-valeriy-1962.md
+          - sources/documents/D1005-dokumenty-ob-obrazovanii-pisarev-valeriy-1968-1993.md
+          - sources/documents/D1006-gramoty-pisarev-valeriy-1978-1987.md
+          - sources/documents/D1007-svidetelstvo-o-smerti-pisarev-valeriy-1997.md
       - Фотографии:
           - sources/photos/F1000-solovyovka-izba-1888-1890.md
           - sources/photos/F1001-anivskaya-tserkov-1891.md
