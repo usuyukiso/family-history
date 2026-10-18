@@ -41,6 +41,7 @@ hooks:
   - hooks/document_age.py
   - hooks/household_tables.py
   - hooks/verification_status.py
+  - hooks/seo.py
 
 markdown_extensions:
   - admonition
