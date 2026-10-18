@@ -81,7 +81,7 @@ validation:
 nav:
   - Главная: index.md
   - Родословное древо: tree.md
-  - Генеалогические загадки: investigations.md
+  - Генеалогические загадки: genealogy-puzzles.md
   - Фамилии:
       - surnames/index.md
       - Березовский: surnames/SUR1006-berezovskiy.md
@@ -556,6 +556,7 @@ nav:
           - sources/websites/W1006-wikipedia-lyshchichi.md
           - sources/websites/W1007-geneabits-karta-pskovskoy-gubernii-1745-1763.md
           - sources/websites/W1008-tass-beskrayniy-krayniy.md
+          - sources/websites/W1009-vgd-shkotovo-metriki-1886-1922.md
       - Базы данных:
           - sources/databases/DB1000-obd-memorial-davydov-70002475315.md
           - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md
