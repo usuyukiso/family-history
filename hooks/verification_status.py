@@ -7,15 +7,15 @@
 во внутреннем чек-листе documents_check_list.md.
 
 Плашки нет на главной, родословной, методологии, терминологии, «О проекте»,
-на страницах фамилий, мест и персон (surnames/, places/, people/) — она стоит
-только на страницах отдельных источников (не на реестре sources/index.md).
+на страницах фамилий и мест (surnames/, places/) и на реестрах источников
+и персон — она стоит только на страницах отдельных источников и биографий.
 """
 
 import re
 
-SKIP_DIRS = ("surnames/", "places/", "people/")
+SKIP_DIRS = ("surnames/", "places/")
 SKIP = {"index.md", "tree.md", "research-method.md", "terminology.md", "about.md",
-        "sources/index.md"}
+        "sources/index.md", "people/index.md"}
 
 TEXT = ("Материалы этой страницы подготовлены с помощью ИИ-инструментов "
         "на основе архивных документов и таблиц")
