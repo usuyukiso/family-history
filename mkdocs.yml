@@ -81,6 +81,7 @@ validation:
 nav:
   - Главная: index.md
   - Родословное древо: tree.md
+  - Генеалогические загадки: investigations.md
   - Фамилии:
       - surnames/index.md
       - Березовский: surnames/SUR1006-berezovskiy.md
@@ -449,7 +450,6 @@ nav:
           - sources/archives/A1255-rozhdestvo-1904-rozhdenie-anna.md
           - sources/archives/A1015-giaso-23i-2-103-l6-1905-births.md
           - sources/archives/A1016-rgia-dv-98-1-326-l19-spisok-1905.md
-          - sources/archives/A1017-rgia-dv-pismo-1905-12-10-shevelevka.md
           - sources/archives/A1210-glazki-1905-rozhd-8-dariya.md
           - sources/archives/A1256-rozhdestvo-1905-smert-71-iulian-kosmin.md
           - sources/archives/A1020-shkotovo-1906-marriage-pocherevin-sycheva.md
@@ -555,6 +555,7 @@ nav:
           - sources/websites/W1005-libsakh-kot-vasiliy-andreevich.md
           - sources/websites/W1006-wikipedia-lyshchichi.md
           - sources/websites/W1007-geneabits-karta-pskovskoy-gubernii-1745-1763.md
+          - sources/websites/W1008-tass-beskrayniy-krayniy.md
       - Базы данных:
           - sources/databases/DB1000-obd-memorial-davydov-70002475315.md
           - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md

@@ -14,7 +14,7 @@
 import re
 
 SKIP_DIRS = ("surnames/", "places/")
-SKIP = {"index.md", "tree.md", "research-method.md", "terminology.md", "about.md",
+SKIP = {"index.md", "tree.md", "research-method.md", "investigations.md", "terminology.md", "about.md",
         "sources/index.md", "people/index.md"}
 
 TEXT = ("Материалы этой страницы подготовлены с помощью ИИ-инструментов "
