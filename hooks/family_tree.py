@@ -16,6 +16,10 @@
 `sex: m|f` в front matter); жена видна рядом с ним. Человек с двумя известными
 родителями виден в обеих ветвях — по отцу и по матери.
 
+Корни разложены по вкладкам («Псковская ветка», …): вкладку задаёт поле
+`tree_branch` в front matter корня (или его супруга без родителей); корни без
+этого поля попадают во вкладку «Другие». Вкладки идут по алфавиту, «Другие» — последней.
+
 Имя и годы жизни берутся из заголовка страницы: «# Иван Давыдов (ок. 1815 – 1901)».
 Под именем — где жил человек, из поля `village` («д. Горелик → Захарино»);
 в древе это вторая строка, в левом меню — мелкая строка под подписью.
@@ -45,6 +49,7 @@ from mkdocs.utils import get_relative_url
 
 MARKER = "<!-- family-tree -->"
 SPOUSE = "💍"  # значок супруга в древе и в меню
+OTHER_BRANCH = "Другие"  # вкладка для корней без `tree_branch`
 FILE_ID = re.compile(r"^(P\d{4})-")
 H1 = re.compile(r"^#\s+(.+?)\s*$", re.M)
 YEARS = re.compile(r"^(.*\S)\s+\(([^()]*[\d?][^()]*)\)$")
@@ -87,6 +92,7 @@ def on_files(files, config):
             "sort": (int(born.group(0)) if born else 9999, name),
             "female": meta.get("sex") == "f",
             "village": str(meta.get("village") or ""),
+            "branch": str(meta.get("tree_branch") or ""),
             "first_parents": _ids(meta.get("parents")),
             "parents": set(_ids(meta.get("parents"))),
             "spouses": set(_ids(meta.get("spouses"))),
@@ -164,17 +170,50 @@ def _roots():
     return _root_order(roots, lambda r: [s for s in _people[r]["spouses"] if not _people[s]["parents"]])
 
 
+def _branch(root):
+    """Вкладка древа для корня: поле `tree_branch` у него или у супруга без родителей."""
+    for pid in [root] + _sorted(_people[root]["spouses"]):
+        if _people[pid]["branch"]:
+            return _people[pid]["branch"]
+    return OTHER_BRANCH
+
+
+def _tabs(groups, page):
+    """Вкладки в разметке pymdownx.tabbed (alternate_style) — их оформляет тема Material."""
+    n = len(groups)
+    inputs = "".join(
+        f'<input{" checked" if i == 0 else ""} id="__ftree_{i + 1}" name="__ftree" type="radio">'
+        for i in range(n)
+    )
+    labels = "".join(
+        f'<label for="__ftree_{i + 1}">{html.escape(name)}</label>' for i, name in enumerate(groups)
+    )
+    blocks = "".join(
+        '<div class="tabbed-block"><ul>' + "".join(_node(r, page, {r}) for r in roots) + "</ul></div>"
+        for roots in groups.values()
+    )
+    return (
+        f'<div class="tabbed-set tabbed-alternate" data-tabs="1:{n}">{inputs}'
+        f'<div class="tabbed-labels">{labels}</div>'
+        f'<div class="tabbed-content">{blocks}</div></div>'
+    )
+
+
 def on_page_markdown(markdown, page, config, files):
     if MARKER not in markdown:
         return markdown
-    items = "".join(_node(r, page, {r}) for r in _roots())
+    by_branch = {}
+    for r in _roots():
+        by_branch.setdefault(_branch(r), []).append(r)
+    # Вкладки по алфавиту, «Другие» — последней.
+    groups = {b: by_branch[b] for b in sorted(by_branch, key=lambda b: (b == OTHER_BRANCH, b))}
     tree = (
         '<div class="ftree">\n'
         '<div class="ftree-controls">'
         '<button type="button" class="md-button" data-ftree="open">Развернуть всё</button> '
         '<button type="button" class="md-button" data-ftree="close">Свернуть всё</button>'
         "</div>\n"
-        f"<ul>{items}</ul>\n"
+        f"{_tabs(groups, page)}\n"
         "</div>"
     )
     return markdown.replace(MARKER, tree)

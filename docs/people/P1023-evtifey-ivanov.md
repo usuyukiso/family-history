@@ -15,6 +15,7 @@ spouses: [P1046]
 children: [P1021]
 places: [PLC1002, PLC1016]
 village: "д. Колтырево → Маковицы"
+tree_branch: "Псковская ветка"
 sources: [A1047, A1146, A1143, A1147, A1149, A1050, A1053, A1151]
 ---
 

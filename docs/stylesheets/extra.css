@@ -257,8 +257,46 @@
   margin: .25rem 0;
   padding: 0 0 .15rem .15rem;
 }
+/* Вкладки веток древа: крупнее обычных, шрифт PT Sans Narrow; подписи Material
+   делает ссылками — общее подчёркивание ссылок сайта им не нужно.
+   Вкладки, которые не помещаются, переносятся на новую строку (у Material —
+   прокрутка вбок); поэтому бегунок Material (::before, двигается скриптом
+   по одной строке) отключён, а выбранная вкладка подчёркнута своей рамкой. */
+.md-typeset .ftree .tabbed-labels {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+.js .md-typeset .ftree .tabbed-labels::before {
+  display: none;
+}
+.md-typeset .ftree .tabbed-labels > label {
+  font-family: "PT Sans Narrow", "Arial Narrow", sans-serif;
+  font-size: .9rem;
+  border-bottom-width: 2px;
+}
+.md-typeset .ftree .tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
+.md-typeset .ftree .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
+.md-typeset .ftree .tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3),
+.md-typeset .ftree .tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),
+.md-typeset .ftree .tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
+.md-typeset .ftree .tabbed-set > input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6),
+.md-typeset .ftree .tabbed-set > input:nth-child(7):checked ~ .tabbed-labels > :nth-child(7),
+.md-typeset .ftree .tabbed-set > input:nth-child(8):checked ~ .tabbed-labels > :nth-child(8),
+.md-typeset .ftree .tabbed-set > input:nth-child(9):checked ~ .tabbed-labels > :nth-child(9),
+.md-typeset .ftree .tabbed-set > input:nth-child(10):checked ~ .tabbed-labels > :nth-child(10) {
+  color: var(--md-default-fg-color);
+  border-bottom-color: var(--md-default-fg-color);
+}
+.md-typeset .ftree .tabbed-labels a:not(.headerlink):not(.md-button) {
+  text-decoration: none;
+  color: inherit;
+}
+/* У Material summary растянут на поля details (margin: 0 -.6rem); справа поля
+   у details здесь нет, поэтому и summary справа не растягиваем — иначе он
+   вылезает за рамку и у древа появляется лишняя прокрутка вбок. */
 .md-typeset .ftree details > summary {
   margin-left: -.15rem;
+  margin-right: 0;
   padding-left: 1.8rem;
 }
 .md-typeset .ftree details > summary::before {
@@ -942,6 +980,31 @@
   --doc-paper-border: #5f636c;
   --doc-paper-ink: #ececea;
   --doc-paper-line: #50545c;
+  --doc-ink-pen: #9cc0f2;
+}
+
+/* Розовый бланк (поле paper: pink; переселенческий билет D1002);
+   вписанное от руки (курсив) — синими чернилами, как у doc-white. */
+.md-typeset .doc-pink blockquote {
+  --doc-paper-bg: rgb(220, 171, 156); /* цвет бланка-оригинала */
+  --doc-paper-stains: none;
+  --doc-paper-border: #b98a7c;
+  --doc-paper-ink: #2b2220;
+  --doc-paper-line: #c99a8c;
+  --doc-ink-pen: #1a3f85;
+  box-shadow: 0 1px 4px rgba(90, 40, 30, .18);
+}
+[dir] .md-typeset .doc-pink blockquote {
+  border-left-color: #b98a7c;
+}
+.md-typeset .doc-pink blockquote em {
+  color: var(--doc-ink-pen);
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-pink blockquote {
+  --doc-paper-bg: #4a3530;
+  --doc-paper-border: #7a5a50;
+  --doc-paper-ink: #ececea;
+  --doc-paper-line: #614740;
   --doc-ink-pen: #9cc0f2;
 }
 

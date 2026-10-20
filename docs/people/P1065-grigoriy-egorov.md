@@ -13,6 +13,7 @@ spouses: []
 children: [P1063]
 places: [PLC1014]
 village: "д. Печохново"
+tree_branch: "Псковская ветка"
 sources: [A1188, A1190, A1182, A1192]
 ---
 

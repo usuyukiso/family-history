@@ -13,6 +13,7 @@ spouses: [P1073]
 children: [P1074]
 places: [PLC1013]
 village: "д. Костково"
+tree_branch: "Псковская ветка"
 sources: [A1181]
 ---
 

@@ -12,6 +12,7 @@ spouses: []
 children: [P1081]
 places: []
 village: "?"
+tree_branch: "Тверская ветка"
 sources: []
 ---
 

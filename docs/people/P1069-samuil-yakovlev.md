@@ -13,6 +13,7 @@ spouses: []
 children: [P1068]
 places: [PLC1017]
 village: "д. Попова Гора"
+tree_branch: "Псковская ветка"
 sources: [A1195]
 ---
 

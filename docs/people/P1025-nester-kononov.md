@@ -14,6 +14,7 @@ spouses: []
 children: [P1024]
 places: [PLC1007]
 village: "д. Алексеево-Зуево"
+tree_branch: "Псковская ветка"
 sources: [A1144, A1145, A1143]
 ---
 

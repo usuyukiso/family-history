@@ -13,6 +13,7 @@ spouses: [P1067]
 children: [P1009]
 places: [PLC1015, PLC1012]
 village: "д. Горелик → Красихино"
+tree_branch: "Псковская ветка"
 sources: [A1180, A1048, A1049, A1063, A1064, A1193]
 ---
 

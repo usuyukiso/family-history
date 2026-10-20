@@ -13,6 +13,7 @@ spouses: []
 children: [P1052]
 places: [PLC1008]
 village: "д. Зубово"
+tree_branch: "Псковская ветка"
 sources: [A1159, A1176, A1177]
 ---
 

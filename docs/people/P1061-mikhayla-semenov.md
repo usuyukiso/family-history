@@ -13,6 +13,7 @@ spouses: [P1062]
 children: [P1059]
 places: [PLC1009]
 village: "д. Мышино"
+tree_branch: "Псковская ветка"
 sources: [A1177]
 ---
 

@@ -14,6 +14,7 @@ spouses: [P1035]
 children: [P1032]
 places: [PLC1010]
 village: "д. Мокряне"
+tree_branch: "Псковская ветка"
 sources: [A1152, A1154, A1178]
 ---
 

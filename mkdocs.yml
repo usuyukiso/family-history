@@ -209,6 +209,11 @@ nav:
       - Харламенко Анисим: people/P1082-anisim-kharlamenko.md
   - Места:
       - places/index.md
+      - Могилёвская губерния:
+          - Глазовка: places/PLC1006-glazovka.md
+          - Рудня-Бартоломеевская: places/PLC1005-rudnya-bartolomeevskaya.md
+      - Приморская область:
+          - Шевелёвка: places/PLC1000-shevelevka.md
       - Псковская губерния:
           - Алексеево-Зуево: places/PLC1007-alekseevo-zuevo.md
           - Боровово: places/PLC1023-borovovo.md
@@ -229,11 +234,6 @@ nav:
           - Порухово: places/PLC1011-porukhovo.md
           - Пухово: places/PLC1021-pukhovo.md
           - Саблево (Шевели): places/PLC1022-sablevo-sheveli.md
-      - Могилёвская губерния:
-          - Глазовка: places/PLC1006-glazovka.md
-          - Рудня-Бартоломеевская: places/PLC1005-rudnya-bartolomeevskaya.md
-      - Приморская область:
-          - Шевелёвка: places/PLC1000-shevelevka.md
       - Смоленская губерния:
           - Дрогачево: places/PLC1025-drogachevo.md
       - Тверская губерния:
