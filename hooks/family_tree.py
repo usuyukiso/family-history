@@ -326,8 +326,15 @@ def on_nav(nav, config, files):
     return nav
 
 
+TREE_NAV = re.compile(
+    r'(class="md-nav__link[^"]*"[^>]*>\s*<span class="md-ellipsis">\s*Родословное древо\s*</span>)'
+)
+
+
 def on_post_page(output, page, config):
-    """Место под подписью человека в левом меню (мелкая строка внутри ссылки)."""
+    """Место под подписью человека в левом меню (мелкая строка внутри ссылки);
+    иконка дерева справа у пункта «Родословное древо» (рисует extra.css)."""
+    output = TREE_NAV.sub(r'\1<span class="nav-tree-icon" aria-hidden="true"></span>', output)
     for label, place in _menu_places.items():
         pat = re.compile(
             r'(class="md-nav__link[^"]*"[^>]*>\s*<span class="md-ellipsis">\s*' + re.escape(html.escape(label, quote=False)) + r")(\s*</span>)"
