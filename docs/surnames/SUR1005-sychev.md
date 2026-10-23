@@ -7,6 +7,7 @@ name_variants:
   - "Сычева"
 people: [P1008, P1003]
 places: [PLC1020, PLC1000]
+verified: "2026-10-23"
 ---
 
 # Сычевы

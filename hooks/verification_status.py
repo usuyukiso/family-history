@@ -7,16 +7,15 @@
 во внутреннем чек-листе internal/checks/documents_check_list.md (в репозитории,
 но не на сайте) — там же полная история проверок и правок каждой страницы.
 
-Плашки нет на главной, родословной, методологии, терминологии, «О проекте»,
-на страницах фамилий (surnames/) и на реестрах источников, мест
-и персон — она стоит на страницах отдельных источников, биографий и мест.
+Плашки нет на главной, родословной, методологии, терминологии, «О проекте»
+и на реестрах источников, мест, персон и фамилий — она стоит на страницах
+отдельных источников, биографий, мест и фамилий.
 """
 
 import re
 
-SKIP_DIRS = ("surnames/",)
 SKIP = {"index.md", "tree.md", "research-method.md", "genealogy-puzzles.md", "terminology.md", "about.md",
-        "sources/index.md", "people/index.md", "places/index.md"}
+        "sources/index.md", "people/index.md", "places/index.md", "surnames/index.md"}
 
 TEXT = ("Материалы этой страницы подготовлены с помощью ИИ-инструментов "
         "на основе архивных документов и таблиц")
@@ -45,7 +44,7 @@ def _badge(page):
 
 
 def on_page_content(html, page, config, files):
-    if page.file.src_uri in SKIP or page.file.src_uri.startswith(SKIP_DIRS):
+    if page.file.src_uri in SKIP:
         return html
     badge = _badge(page)
     m = H1_END.search(html)

@@ -7,6 +7,7 @@ name_variants:
   - "Ланин"
 people: [P1000, P1002]
 places: [PLC1000]
+verified: "2026-10-23"
 ---
 
 # Лапины

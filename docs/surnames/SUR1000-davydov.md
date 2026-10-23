@@ -7,6 +7,7 @@ name_variants:
   - "Давидов"
 people: [P1011, P1013, P1015, P1017, P1019, P1020, P1005, P1006]
 places: [PLC1002]
+verified: "2026-10-23"
 ---
 
 # Давыдовы

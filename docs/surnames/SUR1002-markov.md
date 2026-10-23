@@ -4,6 +4,7 @@ name: "Марков"
 name_variants: []
 people: [P1028]
 places: [PLC1010, PLC1019]
+verified: "2026-10-23"
 ---
 
 # Марковы
