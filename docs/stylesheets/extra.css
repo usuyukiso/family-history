@@ -1124,3 +1124,7 @@
 .md-typeset .vstatus--ok { color: #2e6b34; background: #e8f3e6; border-color: #b9d9b3; }
 [data-md-color-scheme="slate"] .md-typeset .vstatus--pending { color: #b8b8b2; background: #34353a; border-color: #50525a; }
 [data-md-color-scheme="slate"] .md-typeset .vstatus--ok { color: #9fd49a; background: #2b3a2b; border-color: #4a6a47; }
+
+/* Имя героя страницы внутри цитаты из документа: **…**{.subject} */
+.md-typeset strong.subject { color: #9a3b12; }
+[data-md-color-scheme="slate"] .md-typeset strong.subject { color: #f0a46e; }
