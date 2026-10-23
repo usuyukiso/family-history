@@ -4,6 +4,7 @@ name: "Мироненко"
 name_variants: []
 people: [P1105]
 places: [PLC1004]
+verified: "2026-10-23"
 ---
 
 # Мироненко
