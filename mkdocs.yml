@@ -37,6 +37,7 @@ hooks:
   - hooks/hidden_pages.py
   - hooks/family_tree.py
   - hooks/nav_counts.py
+  - hooks/nav_collapsible.py
   - hooks/place_pages.py
   - hooks/document_age.py
   - hooks/household_tables.py
@@ -573,6 +574,8 @@ nav:
       - Базы данных:
           - sources/databases/DB1000-obd-memorial-davydov-70002475315.md
           - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md
+  - Разное:
+      - Семейные черты: misc/family-traits.md
   - Методология: research-method.md
   - Терминология: terminology.md
   - О проекте: about.md

@@ -1127,4 +1127,7 @@
 
 /* Имя героя страницы внутри цитаты из документа: **…**{.subject} */
 .md-typeset strong.subject { color: #9a3b12; }
+
+/* Уменьшенная схема «Семейные черты» (docs/misc/family-traits-tree.html) на странице раздела «Разное» */
+.md-typeset iframe.trait-tree { display: block; width: 100%; aspect-ratio: 1420 / 960; min-height: 420px; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 6px; margin: 1em 0; }
 [data-md-color-scheme="slate"] .md-typeset strong.subject { color: #f0a46e; }
