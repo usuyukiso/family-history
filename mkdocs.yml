@@ -36,12 +36,14 @@ hooks:
   - hooks/id_links.py
   - hooks/hidden_pages.py
   - hooks/family_tree.py
+  - hooks/page_tabs.py
   - hooks/nav_counts.py
   - hooks/nav_collapsible.py
   - hooks/place_pages.py
   - hooks/document_age.py
   - hooks/household_tables.py
   - hooks/verification_status.py
+  - hooks/document_registry.py
   - hooks/seo.py
 
 markdown_extensions:
@@ -67,6 +69,7 @@ extra_javascript:
   - javascripts/to-top.js
   - javascripts/family-tree.js
   - javascripts/diagram-zoom.js
+  - javascripts/page-tabs.js
 
 # Страницы, доступные только по прямой ссылке (не в меню, не в поиске, не в карте сайта).
 not_in_nav: |
@@ -189,7 +192,7 @@ nav:
       - 1888 Винник Лукерья Степановна: people/P1103-lukerya-stepanovna-vinnik.md
       - 1889 Давыдов Михаил Васильев: people/P1020-mikhail-vasilev-davydov.md
       - 1890 Винник Аким Иоаннов: people/P1102-akim-ioannov-vinnik.md
-      - 1893 Винник Иван Филиппович: people/P1104-ivan-filippovich-vinnik.md
+      - 1892 Винник Иван Филиппович: people/P1104-ivan-filippovich-vinnik.md
       - 1894 Харламенко Мария Анисимовна: people/P1081-mariya-kharlamenko.md
       - 1897 Мироненко Мария Федоровна: people/P1105-mariya-fedorovna-mironenko.md
       - 1911 Винник Василий Акимович: people/P1106-vasiliy-akimovich-vinnik.md
@@ -294,6 +297,7 @@ nav:
           - sources/archives/A1050-gapo-39-1-2545-ispoved-1769-makovitsy.md
           - sources/archives/A1051-gapo-39-1-1607-ispoved-1770-gorelik.md
           - sources/archives/A1163-gapo-39-1-1607-ispoved-1770-popova-gora.md
+          - sources/archives/A1281-polyane-1770-rozhdenie-12-aleksey.md
           - sources/archives/A1052-gapo-39-1-1611-ispoved-1774-gorelik.md
           - sources/archives/A1065-voronich-1774-rozhdenie-2-rodion-gorelik.md
           - sources/archives/A1164-gapo-39-1-1617-ispoved-1780-popova-gora.md
@@ -424,6 +428,8 @@ nav:
           - sources/archives/A1003-giaso-23i-2-17-l104-1891-births.md
           - sources/archives/A1011-rgia-dv-1133-2-2263-alfavit-poselentsev.md
           - sources/archives/A1252-rozhdestvo-1892-rozhdenie-lyubov.md
+          - sources/archives/A1282-stanichnoe-1892-brak-21-filipp-romanov-vinnik.md
+          - sources/archives/A1283-stanichnoe-1892-rozhdenie-146-ioann-filippov-vinnik.md
           - sources/archives/A1004-giaso-23i-2-21-l157-1893-births.md
           - sources/archives/A1200-glazki-1893-smert-6-ivan-stefanov.md
           - sources/archives/A1201-glazki-1893-rozhd-34-ioakim.md
@@ -546,6 +552,7 @@ nav:
       - Документы:
           - sources/documents/D1000-svidetelstvo-o-rozhdenii-davydov-pavel-1930e.md
           - sources/documents/D1001-svidetelstvo-o-rozhdenii-pisarev-valeriy-1942.md
+          - sources/documents/D1008-svidetelstvo-o-brake-davydov-pavel-1945.md
           - sources/documents/D1002-pereselencheskiy-bilet-naumov-1959.md
           - sources/documents/D1003-trudovye-knizhki-pisarev-valeriy-1961-1997.md
           - sources/documents/D1004-voennyy-bilet-pisarev-valeriy-1962.md
@@ -574,8 +581,9 @@ nav:
       - Базы данных:
           - sources/databases/DB1000-obd-memorial-davydov-70002475315.md
           - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md
-  - Разное:
-      - Семейные черты: misc/family-traits.md
+  - Схемы:
+      - Семейные черты: schemes/family-traits.md
+      - Реестр документов: schemes/document-registry.md
   - Методология: research-method.md
   - Терминология: terminology.md
   - О проекте: about.md

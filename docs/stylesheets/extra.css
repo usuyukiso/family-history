@@ -403,6 +403,17 @@
   margin: .8rem 0 1.2rem;
 }
 
+/* Левое меню (широкий экран): пункты разделов «Фамилии», «Места» и «Схемы» — с отступом
+   и линией слева, чтобы отличались от заголовка раздела. Раздел узнаётся по ссылкам внутри
+   (SUR…, PLC… и страницы схем); «Персоны» и «Источники» не затрагиваются. */
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary > .md-nav__list > .md-nav__item--section:is(:has(a[href*="SUR1"]), :has(a[href*="PLC1"]), :has(a[href*="family-traits"]), :has(a[href*="document-registry"])) > .md-nav > .md-nav__list {
+    margin-left: .3rem;
+    padding-left: .5rem;
+    border-left: 1px solid var(--md-default-fg-color--lighter);
+  }
+}
+
 /* Счётчики в левом меню: жители у мест, число источников у групп. Как .ftree-count в древе. */
 /* Иконка дерева справа у пункта «Родословное древо» в левом меню
    (span ставит hooks/family_tree.py; рисунок — mdi family-tree из Material). */
@@ -1020,6 +1031,31 @@
   --doc-ink-pen: #9cc0f2;
 }
 
+/* Кремовый бланк (поле paper: cream; свидетельство о браке D1008);
+   вписанное от руки (курсив) — синими чернилами, как у doc-white. */
+.md-typeset .doc-cream blockquote {
+  --doc-paper-bg: #f3ecd9; /* цвет бланка-оригинала */
+  --doc-paper-stains: none;
+  --doc-paper-border: #d6cbad;
+  --doc-paper-ink: #2b2a24;
+  --doc-paper-line: #e2d8bc;
+  --doc-ink-pen: #1f4e96;
+  box-shadow: 0 1px 4px rgba(90, 70, 30, .16);
+}
+[dir] .md-typeset .doc-cream blockquote {
+  border-left-color: #d6cbad;
+}
+.md-typeset .doc-cream blockquote em {
+  color: var(--doc-ink-pen);
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-cream blockquote {
+  --doc-paper-bg: #423d30;
+  --doc-paper-border: #6b6450;
+  --doc-paper-ink: #ececea;
+  --doc-paper-line: #57513f;
+  --doc-ink-pen: #9cc0f2;
+}
+
 /* Светло-жёлтый бланк внутри белого документа (отчётная карточка A1270). */
 .md-typeset .doc-white .doc-yellow blockquote {
   --doc-paper-bg: #fdf8dc;
@@ -1068,6 +1104,61 @@
 .md-typeset .replica--wide .rp-sign { font-style: italic; text-align: left; padding-left: 20cqw; }
 .md-typeset .replica--wide .rp-sign .rp-sign2 { display: block; padding-left: 10cqw; margin-top: 1cqw; }
 .md-typeset .replica--wide .rp-date { margin-top: 2cqw; padding-left: 6cqw; }
+/* Свидетельство о браке 1945 г. (D1008): кремовая бумага без сетки, рамка из толстой и тонкой линий,
+   слева — штамп исполкома и надпись о паспорте наискосок, справа — графы; вписанное — фиолетовым. */
+.md-typeset .replica--wide.replica--marriage .replica__sheet {
+  --rp-pen: #5a3f9a;
+  background-color: #efe7d2;
+  background-image:
+    radial-gradient(ellipse at 15% 20%, rgba(150, 120, 60, .14), transparent 60%),
+    radial-gradient(ellipse at 85% 80%, rgba(140, 110, 60, .14), transparent 55%);
+}
+.md-typeset .replica--marriage .replica__frame {
+  border: .6cqw solid var(--rp-ink);
+  border-style: solid double;
+  padding: 2.5cqw 3.5cqw 2.5cqw;
+  position: relative;
+}
+.md-typeset .replica--marriage .rp-mhead {
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: "PT Sans Narrow", sans-serif; font-weight: 700; font-size: 2.6cqw; letter-spacing: .04em;
+}
+.md-typeset .replica--marriage .rp-emblem {
+  width: 9cqw; height: 9cqw; border-radius: 50%;
+  border: 1px dashed rgba(58, 58, 50, .45);
+  background: radial-gradient(circle, rgba(58, 58, 50, .12), transparent 70%);
+}
+.md-typeset .replica--marriage .rp-msub {
+  text-align: center; font-family: "PT Sans Narrow", sans-serif; font-weight: 700; font-size: 2.5cqw;
+  letter-spacing: .06em; border-bottom: .4cqw double var(--rp-ink); padding-bottom: 1cqw; margin-top: 1cqw;
+}
+.md-typeset .replica--marriage .rp-mcols { display: grid; grid-template-columns: 34cqw 1fr; column-gap: 2cqw; margin-top: 1.5cqw; }
+.md-typeset .replica--marriage .rp-mleft { position: relative; text-align: center; font-size: 1.6cqw; }
+.md-typeset .replica--marriage .rp-cstamp {
+  display: flex; flex-direction: column; line-height: 1.35;
+  font-family: "PT Sans Narrow", sans-serif; font-weight: 700; color: rgba(70, 70, 70, .5);
+}
+.md-typeset .replica--marriage .rp-cstamp__big { font-size: 2.4cqw; letter-spacing: .03em; }
+.md-typeset .replica--marriage .rp-mplace { position: absolute; top: 12cqw; left: 3cqw; font-size: 1.5cqw; line-height: 1.6; }
+.md-typeset .replica--marriage .rp-mdate { margin-top: 2.5cqw; border-bottom: 1px dotted var(--rp-ink); }
+.md-typeset .replica--marriage .rp-mno { margin-top: .5cqw; }
+.md-typeset .replica--marriage .rp-mfaint { margin-top: 1cqw; color: rgba(70, 70, 70, .5); font-family: "PT Sans Narrow", sans-serif; font-weight: 700; }
+.md-typeset .replica--marriage .rp-diag {
+  position: absolute; top: -2.5cqw; left: 1cqw;
+  font-family: "PT Serif", serif; font-style: italic; font-size: 2.2cqw; line-height: 1.3; color: #2b2b2b;
+  transform: rotate(38deg); transform-origin: left top; text-align: left; white-space: nowrap;
+}
+.md-typeset .replica--marriage .rp-mright .rp-title { margin: 1cqw 0 1.5cqw; font-size: 3.4cqw; text-align: right; }
+.md-typeset .replica--marriage .rp-two { display: flex; justify-content: space-around; }
+.md-typeset .replica--marriage .rp-mtext { margin-top: 2cqw; font-family: "PT Sans Narrow", sans-serif; font-weight: 700; font-size: 2.1cqw; line-height: 1.9; }
+.md-typeset .replica--marriage .rp-mtext .rp-inline { border-bottom: 1px dotted var(--rp-ink); }
+.md-typeset .replica--marriage .rp-mcap { text-align: right; padding-right: 10cqw; }
+.md-typeset .replica--marriage .rp-grp { grid-template-columns: 22cqw 2cqw 1fr; margin-top: 1.5cqw; }
+.md-typeset .replica--marriage .rp-stamp { left: -2cqw; top: -4cqw; width: 17cqw; height: 17cqw; border-color: rgba(70, 70, 70, .22); box-shadow: inset 0 0 0 2cqw rgba(70, 70, 70, .05), inset 0 0 0 2.3cqw rgba(70, 70, 70, .14); background: radial-gradient(circle, rgba(70, 70, 70, .07), transparent 70%); }
+.md-typeset .replica--marriage .rp-seal { border-radius: 0; }
+.md-typeset .replica--marriage .rp-sign { padding-left: 8cqw; margin-top: 2.5cqw; }
+.md-typeset .replica--marriage .rp-date { padding-left: 2cqw; }
+
 .md-typeset .replica .rp-spread {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1128,6 +1219,7 @@
 /* Имя героя страницы внутри цитаты из документа: **…**{.subject} */
 .md-typeset strong.subject { color: #9a3b12; }
 
-/* Уменьшенная схема «Семейные черты» (docs/misc/family-traits-tree.html) на странице раздела «Разное» */
+/* Уменьшенные схемы раздела «Схемы» (docs/schemes/*-tree.html) на их страницах */
 .md-typeset iframe.trait-tree { display: block; width: 100%; aspect-ratio: 1420 / 960; min-height: 420px; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 6px; margin: 1em 0; }
+.md-typeset iframe.registry-tree { display: block; width: 100%; height: 78vh; min-height: 480px; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 6px; margin: 1em 0; }
 [data-md-color-scheme="slate"] .md-typeset strong.subject { color: #f0a46e; }

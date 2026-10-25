@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Реестр документов — Семейная история</title>
+<link rel="icon" href="../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+/* Схема-древо прямых предков: какие документы есть у каждого и почему родители — эти.
+   Данные — document-registry-data.js, его собирает хук hooks/document_registry.py. */
+:root{
+  --bg:#f6f7f4; --fg:#22261f; --muted:#69705f; --line:#9aa290; --card:#ffffff; --btn:#e8eae3;
+  --rec:#5fae6b; --rec-fg:#0f2412; --doc:#cfe9c8; --doc-fg:#1d3a1f; --gss:#f2e3a9; --gss-fg:#3d3210;
+  --none:#ffffff; --none-fg:#69705f; --none-line:#b9beb0;
+  --e-rec:#3f9152; --e-doc:#8dc487; --e-gss:#c49a1c; --e-none:#b9beb0;
+  --o1:#e3f2de; --o2:#bfe0b6; --o3:#8cc583; --o4:#4f9a58; --o4-fg:#ffffff;
+  --display:"PT Serif",Georgia,serif; --body:"PT Sans","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1b1d19; --fg:#e7e9e2; --muted:#a3aa98; --line:#5f6656; --card:#272a24; --btn:#2f332b;
+  --rec:#3f8a4c; --rec-fg:#f1fbef; --doc:#2f4a2f; --doc-fg:#d8ecd3; --gss:#5a4d1e; --gss-fg:#f6ecc5;
+  --none:#23261f; --none-fg:#a3aa98; --none-line:#4f5547;
+  --e-rec:#5fb36d; --e-doc:#5d8f59; --e-gss:#c9a43a; --e-none:#4f5547;
+  --o1:#26352a; --o2:#2f4d32; --o3:#3c6e40; --o4:#4f9a58; --o4-fg:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1b1d19; --fg:#e7e9e2; --muted:#a3aa98; --line:#5f6656; --card:#272a24; --btn:#2f332b;
+  --rec:#3f8a4c; --rec-fg:#f1fbef; --doc:#2f4a2f; --doc-fg:#d8ecd3; --gss:#5a4d1e; --gss-fg:#f6ecc5;
+  --none:#23261f; --none-fg:#a3aa98; --none-line:#4f5547;
+  --e-rec:#5fb36d; --e-doc:#5d8f59; --e-gss:#c9a43a; --e-none:#4f5547;
+  --o1:#26352a; --o2:#2f4d32; --o3:#3c6e40; --o4:#4f9a58; --o4-fg:#ffffff; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45;display:flex;flex-direction:column}
+.top{padding-inline:16px;padding-block:calc(12px + env(safe-area-inset-top,0px)) 4px;max-width:1500px;width:100%;margin:0 auto}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:8px}
+.icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;
+  background:var(--btn);color:var(--fg);text-decoration:none;flex:none;border:0;cursor:pointer;font:inherit}
+.icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon:hover,.icon:focus-visible{outline:2px solid var(--line)}
+h1{font-family:var(--display);font-size:1.45rem;margin:0;flex:0 1 auto;min-width:0;text-wrap:balance}
+/* Переключатель — вкладки рядом с заголовком; выбранная залита цветом. В начале пульсирует рамка. */
+:root{--accent:#4a6b3a;--accent-fg:#fff;--accent-glow:rgba(74,107,58,.55);--seg-bg:#e3e7dc;--seg-line:#b3bea6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#8fbf7a;--accent-fg:#13200f;--accent-glow:rgba(143,191,122,.5);--seg-bg:#2a2e26;--seg-line:#55604b}}
+:root[data-theme="dark"]{--accent:#8fbf7a;--accent-fg:#13200f;--accent-glow:rgba(143,191,122,.5);--seg-bg:#2a2e26;--seg-line:#55604b}
+.pick{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:.95rem;min-width:0;max-width:100%}
+.pick .seg{max-width:100%;min-width:0}
+.pick select{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.seg{display:inline-flex;flex-wrap:wrap;gap:3px;padding:3px;border-radius:20px;background:var(--seg-bg);border:1.5px solid var(--seg-line)}
+.seg button{font:inherit;font-size:.92rem;border:0;border-radius:16px;padding:6px 14px;background:transparent;color:var(--fg);cursor:pointer}
+.seg button:hover{background:var(--card)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg);font-weight:700}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg.hint{animation:segpulse 1.6s ease-out 3}
+@keyframes segpulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}100%{box-shadow:0 0 0 12px transparent}}
+@media (prefers-reduced-motion: reduce){.seg.hint{animation:none}}
+.zoom{display:flex;gap:6px;margin-left:auto}
+.zoom .icon{width:34px;height:34px;font-size:1.05rem;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0 0 4px;padding:0;list-style:none;font-size:.88rem}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend i{width:22px;height:13px;border-radius:3px;display:inline-block;border:1px solid var(--none-line)}
+.legend svg{width:30px;height:10px}
+.legend .sep{width:100%;height:0}
+.scroll{flex:1 1 auto;overflow:auto;-webkit-overflow-scrolling:touch;min-height:300px;border-top:1px solid var(--btn)}
+svg#tree{display:block;user-select:none;-webkit-user-select:none}
+/* перетаскивание схемы мышью */
+.scroll{cursor:grab}
+.scroll.drag{cursor:grabbing}
+.scroll.drag .node{cursor:grabbing}
+.ed{fill:none;stroke-width:1.8}
+.ed.rec{stroke:var(--e-rec);stroke-width:2.4}
+.ed.doc{stroke:var(--e-doc);stroke-width:2.2}
+.ed.guess{stroke:var(--e-gss);stroke-dasharray:6 4;stroke-width:2.2}
+.ed.none{stroke:var(--e-none);stroke-dasharray:2 4}
+.node{cursor:pointer;outline:none}
+.node rect.box{stroke:var(--none-line);stroke-width:1}
+.node.st-none rect.box{stroke-dasharray:4 3}
+.node:hover rect.box,.node:focus-visible rect.box,.node.on rect.box{stroke:var(--fg);stroke-width:2;stroke-dasharray:none}
+.nm{font:700 12.5px var(--body)}
+.yr{font:400 11px var(--body);opacity:.8}
+.dot{stroke:rgba(0,0,0,.4);stroke-width:1}
+#tip{position:fixed;background:var(--card);color:var(--fg);border:1px solid var(--line);
+  border-radius:8px;padding:10px 12px;font-size:.88rem;box-shadow:0 6px 22px rgba(0,0,0,.2);
+  width:min(380px,calc(100vw - 16px));max-height:min(70vh,520px);overflow:auto;z-index:5;pointer-events:none}
+#tip.pinned{pointer-events:auto}
+#tip h2{font:700 1rem var(--display);margin:0 22px 2px 0}
+#tip .yrs{color:var(--muted);margin-bottom:6px}
+#tip h3{font:700 .8rem var(--body);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:8px 0 3px}
+#tip ul{margin:2px 0 4px;padding-left:18px}
+#tip li{margin:2px 0}
+#tip p{margin:3px 0}
+#tip a{color:inherit}
+#tip .st{display:inline-block;font-size:.78rem;font-weight:700;padding:1px 7px;border-radius:9px;margin-right:4px}
+#tip .q{color:var(--muted)}
+#tip .close{position:absolute;top:6px;right:6px;width:26px;height:26px;border:0;border-radius:50%;background:var(--btn);color:var(--fg);cursor:pointer;display:none;font-size:1rem;line-height:1}
+#tip.pinned .close{display:block}
+#tip .open{display:none;margin-top:8px;font-weight:700}
+#tip.pinned .open{display:block}
+#tip ul.full{display:none}
+#tip.pinned ul.full{display:block}
+#tip.pinned .hoveronly{display:none}
+#tip ul.full{margin-top:-4px}
+.hint{color:var(--muted);font-size:.85rem;margin:0 0 6px}
+/* встроенный (уменьшенный) вид на странице сайта */
+.embed .top{padding-block:6px 2px;padding-inline:6px}
+.embed #back,.embed #home,.embed h1,.embed .hint{display:none}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="bar">
+    <a class="icon" id="back" href="document-registry/" title="Назад" aria-label="Назад"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></a>
+    <a class="icon" id="home" href="../" title="На главную" aria-label="На главную"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></a>
+    <h1>Реестр документов</h1>
+    <div class="pick"><span>Показать:</span>
+      <select id="mode" aria-hidden="true" tabindex="-1">
+        <option value="birth">запись о рождении</option>
+        <option value="marriage">запись о браке</option>
+        <option value="death">запись о смерти</option>
+        <option value="other">другие документы</option>
+      </select>
+    </div>
+    <div class="zoom" role="group" aria-label="Масштаб">
+      <button class="icon" id="zout" title="Мельче" aria-label="Мельче">−</button>
+      <button class="icon" id="zin" title="Крупнее" aria-label="Крупнее">+</button>
+      <button class="icon" id="zfit" title="Вписать в экран" aria-label="Вписать в экран"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+  </div>
+  <p class="hint">Слева — младшее поколение, вправо — предки. Наведите на человека или нажмите на него, чтобы увидеть список документов; три точки в углу — рождение, брак, смерть.</p>
+  <ul class="legend" id="legend"></ul>
+</div>
+<div class="scroll" id="scroll"><svg id="tree" role="img" aria-label="Схема прямых предков с документами"></svg></div>
+<div id="tip" hidden role="dialog" aria-live="polite"></div>
+
+<script src="document-registry-data.js"></script>
+<script>
+// Тема: как на сайте (переключатель Material хранит выбор в localStorage), иначе — системная.
+try{
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(k && k.endsWith("__palette")){
+      const s=JSON.parse(localStorage.getItem(k)||"{}");
+      if(s && s.color && s.color.scheme) document.documentElement.dataset.theme = s.color.scheme==="slate"?"dark":"light";
+    }
+  }
+}catch(e){}
+if(window.self!==window.top) document.body.classList.add("embed");
+
+const R=window.REGISTRY||{people:{},sources:{},stubs:[]};
+const P=R.people, SRC=R.sources;
+const MODES={birth:"запись о рождении",marriage:"запись о браке",death:"запись о смерти",other:"другие документы"};
+const W=196,SW=96,H=46,COLW=236,ROWH=54,PADX=40,PADY=34;
+
+// ---- узлы: люди с сайта и живые родственники (одна буква, без сведений) ----
+// Живые кладутся в P рядом с остальными, с пометкой stub: имя — буква, без страницы.
+R.stubs.forEach(s=>{P[s.id]=Object.assign({},s,{stub:true,name:s.label,years:""})});
+const N={};
+Object.values(P).forEach(p=>{
+  const par=p.parents.filter(q=>q in P).sort((a,b)=>(P[a].sex==="f")-(P[b].sex==="f"));  // отец сверху, мать снизу
+  N[p.id]={id:p.id,stub:!!p.stub,p,par};
+});
+const nw=n=>n.stub?SW:W;
+const ROOT="kids";
+
+// ---- раскладка: поколение — столбец, каждый «крайний» предок — своя строка ----
+let row=0, maxDepth=0; const seen=new Set();
+function place(id,d){
+  const n=N[id]; if(!n||seen.has(id)) return null;
+  seen.add(id); n.d=d; maxDepth=Math.max(maxDepth,d);
+  const ys=n.par.map(q=>place(q,d+1)).filter(v=>v!==null);
+  n.r = ys.length ? (Math.min(...ys)+Math.max(...ys))/2 : row++;
+  return n.r;
+}
+place(ROOT,0);
+const cx=n=>PADX+n.d*COLW, cy=n=>PADY+n.r*ROWH;
+const VW=PADX*2+maxDepth*COLW+W, VH=PADY*2+(row-1)*ROWH+H;
+
+const NS="http://www.w3.org/2000/svg", svg=document.getElementById("tree");
+const el=(t,a,p=svg)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+svg.setAttribute("viewBox",`0 0 ${VW} ${VH}`);
+
+const gEdges=el("g",{}), gNodes=el("g",{});
+const edgeEls=[];
+Object.values(N).forEach(n=>{
+  if(n.d===undefined) return;
+  n.par.forEach(q=>{
+    const m=N[q]; if(!m||m.d===undefined) return;
+    const x1=cx(n)+nw(n), y1=cy(n)+H/2, x2=cx(m), y2=cy(m)+H/2;
+    const mid=x1+(x2-x1)/2;
+    const st=n.p.edges[q] ? n.p.edges[q].s : "none";
+    const path=el("path",{class:"ed "+st,d:`M${x1},${y1} H${mid} V${y2} H${x2}`},gEdges);
+    edgeEls.push(path);
+  });
+});
+
+function shortName(s){return s.replace(/\s*\([^)]*\)/g,"").replace(/,.*$/,"").trim()}
+const nodes={};
+Object.values(N).forEach(n=>{
+  if(n.d===undefined) return;
+  const x=cx(n), y=cy(n), w=nw(n);
+  const g=el("g",{class:"node"+(n.stub?" stub":""),tabindex:"0",role:"button"},gNodes);
+  const box=el("rect",{class:"box",x,y,width:w,height:H,rx:8},g);
+  const nm=n.stub?n.p.name:shortName(n.p.name);
+  const t1=el("text",{class:"nm",x:x+10,y:y+19},g); t1.textContent=nm;
+  if(nm.length>25) t1.style.fontSize="11px";
+  const t2=el("text",{class:"yr",x:x+10,y:y+36},g); t2.textContent=n.stub?"живые":(n.p.years||"");
+  const dots=["birth","marriage","death"].map((k,i)=>el("circle",{class:"dot",cx:x+w-32+i*11,cy:y+H-13,r:4.2},g));
+  nodes[n.id]={g,box,t1,t2,dots,n};
+});
+
+// ---- цвета ----
+const ST={rec:["--rec","--rec-fg"],doc:["--doc","--doc-fg"],guess:["--gss","--gss-fg"],none:["--none","--none-fg"]};
+const DOT={rec:"--e-rec",doc:"--e-doc",guess:"--e-gss",none:"--none-line"};
+function otherLevel(c){return c===0?0:c<=2?1:c<=5?2:c<=10?3:4}
+const OL=[["--none","--none-fg"],["--o1","--doc-fg"],["--o2","--doc-fg"],["--o3","--rec-fg"],["--o4","--o4-fg"]];
+const OLT=["нет","1–2","3–5","6–10","11 и больше"];
+function stateOf(p,mode){return mode==="other"?null:p[mode].s}
+
+const LEG={
+  birth:[["rec","есть запись о рождении"],["doc","записи нет — родители по другим документам"],["guess","родители — вывод составителя"],["none","документов нет"]],
+  marriage:[["rec","есть запись о браке"],["doc","записи нет — супруги вместе в других документах"],["none","документов нет"]],
+  death:[["rec","есть запись о смерти (свидетельство, донесение о потерях)"],["doc","записи нет — смерть отмечена в других документах"],["none","документов нет"]]
+};
+const lg=document.getElementById("legend"), sel=document.getElementById("mode");
+function render(mode){
+  const cnt={};
+  Object.values(nodes).forEach(({box,t1,t2,dots,n,g})=>{
+    const p=n.p; let bg,fg,key;
+    if(mode==="other"){const c=p.other.docs.length,l=otherLevel(c);[bg,fg]=OL[l];key="o"+l;}
+    else{key=stateOf(p,mode);[bg,fg]=ST[key];}
+    if(!n.stub) cnt[key]=(cnt[key]||0)+1;  // в счёт легенды — только люди со страницей
+    box.setAttribute("fill",`var(${bg})`); t1.setAttribute("fill",`var(${fg})`); t2.setAttribute("fill",`var(${fg})`);
+    g.classList.toggle("st-none",key==="none"||key==="o0");
+    ["birth","marriage","death"].forEach((k,i)=>dots[i].setAttribute("fill",`var(${DOT[p[k].s]})`));
+    g.setAttribute("aria-label",`${p.name}, ${p.years||""}: ${mode==="other"?p.other.docs.length+" док.":({rec:"есть запись",doc:"по другим документам",guess:"вывод составителя",none:"документов нет"})[key]}`);
+  });
+  lg.innerHTML="";
+  const add=h=>{const li=document.createElement("li");li.innerHTML=h;lg.appendChild(li)};
+  if(mode==="other"){
+    OL.forEach(([bg],l)=>{if(cnt["o"+l])add(`<i style="background:var(${bg})"></i>${OLT[l]} — ${cnt["o"+l]}`)});
+  } else {
+    LEG[mode].forEach(([k,t])=>{if(cnt[k])add(`<i style="background:var(${ST[k][0]})"></i>${t} — ${cnt[k]}`)});
+  }
+  const sep=document.createElement("li");sep.className="sep";lg.appendChild(sep);
+  const line=(c,t)=>add(`<svg viewBox="0 0 30 10"><path class="ed ${c}" d="M0,5H30"/></svg>${t}`);
+  add("<b>Линии к родителям:</b>");
+  line("rec","запись о рождении"); line("doc","другие документы"); line("guess","вывод составителя"); line("none","без документа");
+  try{sessionStorage.setItem("registry-mode",mode)}catch(e){}
+}
+
+// ---- подсказка ----
+const tip=document.getElementById("tip");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const docLi=id=>{const s=SRC[id];return s?`<li><a href="${esc(s[1])}" target="_top">${esc(s[0])}</a></li>`:`<li>${esc(id)}</li>`};
+// full — подробный список ссылок, только в закреплённой (по нажатию) подсказке
+const docUl=(ids,full)=>ids.length?`<ul${full?' class="full"':""}>${ids.map(docLi).join("")}</ul>`:"";
+const badge=s=>{const [bg,fg]=ST[s];return `<span class="st" style="background:var(${bg});color:var(${fg});border:1px solid var(--none-line)">${({rec:"запись есть",doc:"по другим документам",guess:"вывод составителя",none:"документов нет"})[s]}</span>`};
+const info=a=>a.map(t=>`<p class="q">${esc(t)}</p>`).join("");
+function parentRole(q){return P[q].sex==="f"?"Мать":"Отец"}
+
+// документы, которые есть у составителя, но не опубликованы на сайте
+const held=x=>{
+  if(!x.held) return "";
+  const many=x.held.length>1||/^(два|две|три|свидетельства)/.test(x.held[0]);
+  return `<p>У составителя есть ${esc(x.held.join(" и "))} (на сайте не публику${many?"ются":"ется"}).</p>`;
+};
+const recOrHeld=(x,none)=>x.docs.length?docUl(x.docs)+held(x):(x.held?held(x):`<p>${none}</p>`);
+
+function tipHTML(id,mode){
+  const p=P[id];
+  let h=`<button class="close" aria-label="Закрыть">×</button><h2>${esc(p.name)}</h2>`
+       +`<div class="yrs">${p.stub?"сведения о живых на сайте не публикуются":esc(p.years||"")}</div>`;
+  if(mode==="birth"){
+    const b=p.birth;
+    h+=`<h3>Рождение</h3>${badge(b.s)}`;
+    h+=recOrHeld(b,"Записи о рождении нет.");
+    if(b.info.length) h+=info(b.info.slice(0,1));
+    const qs=Object.keys(p.edges);
+    if(qs.length||!p.stub) h+=`<h3>Почему родители — эти</h3>`;
+    if(!qs.length&&!p.stub) h+=`<p>Родители в документах не установлены.</p>`;
+    // Отец и мать с одинаковым основанием — одной строкой.
+    const groups=[];
+    qs.forEach(q=>{
+      const e=p.edges[q], key=e.s+"|"+e.docs.join(",")+"|"+(e.s==="guess"?q:"");
+      const g=groups.find(x=>x.key===key);
+      if(g) g.qs.push(q); else groups.push({key,e,qs:[q]});
+    });
+    groups.forEach(({e,qs:gq})=>{
+      const who=gq.length>1?`Родители — <b>${gq.map(q=>esc(P[q].name)).join("</b> и <b>")}</b>`
+                            :`${parentRole(gq[0])} — <b>${esc(P[gq[0]].name)}</b>`;
+      const why=e.why.length?esc(e.why.join("; ")):"";
+      if(e.s==="rec") h+=`<p>${who}: ${gq.length>1?"указаны":"указан"+(P[gq[0]].sex==="f"?"а":"")} в ${b.docs.length?"записи":"свидетельстве"} о рождении.</p>`;
+      else if(e.s==="doc") h+=`<p>${who}. Родство — по документам${why?": "+why:""}.</p>${docUl(e.docs,true)}`;
+      else if(e.s==="guess") h+=`<p>${who}: <b>вывод составителя</b>.${why?" Опора — "+why+".":""}</p>${e.text?`<p class="q">${esc(e.text)}</p>`:""}${docUl(e.docs,true)}`;
+      else h+=`<p>${who}: документа нет${e.text?" — "+esc(e.text.replace(/^[^:]*:\s*/,"")):""}.</p>`;
+    });
+  } else if(mode==="marriage"||mode==="death"){
+    const x=p[mode], word=mode==="marriage"?"о браке":"о смерти";
+    h+=`<h3>${mode==="marriage"?"Брак":"Смерть"}</h3>${badge(x.s)}`;
+    h+=recOrHeld(x,`Записи ${word} нет.`);
+    if(x.info.length) h+=info(x.info);
+    if(x.s!=="rec" && x.cited.length) h+=`<h3>Документы</h3>${docUl(x.cited)}`;
+  } else {
+    const d=p.other.docs;
+    h+=`<h3>Другие документы — ${d.length}</h3>`;
+    h+=d.length?docUl(d.slice(0,8))+docUl(d.slice(8),true):`<p>На сайте других документов нет.</p>`;
+    if(d.length>8) h+=`<p class="q hoveronly">…и ещё ${d.length-8} — нажмите, чтобы увидеть все.</p>`;
+    const own=[...p.birth.docs,...p.marriage.docs,...p.death.docs];
+    if(own.length) h+=`<p class="q">Кроме записей о рождении, браке и смерти: ${own.length}.</p>`;
+  }
+  if(p.url) h+=`<a class="open" href="${esc(p.url)}" target="_top">Открыть страницу →</a>`;
+  return h;
+}
+let pinned=null;
+function position(x,y){
+  const w=tip.offsetWidth, hh=tip.offsetHeight;
+  tip.style.left=Math.max(8,Math.min(x+14,innerWidth-w-8))+"px";
+  tip.style.top=Math.max(8,Math.min(y+14,innerHeight-hh-8))+"px";
+}
+function show(id,x,y,pin){
+  tip.innerHTML=tipHTML(id,sel.value); tip.hidden=false;
+  tip.classList.toggle("pinned",!!pin); position(x,y);
+  if(pin){
+    if(pinned) nodes[pinned].g.classList.remove("on");
+    pinned=id; nodes[id].g.classList.add("on");
+    tip.querySelector(".close").addEventListener("click",hide);
+  }
+}
+function hide(){tip.hidden=true;tip.classList.remove("pinned");if(pinned){nodes[pinned].g.classList.remove("on");pinned=null}}
+Object.entries(nodes).forEach(([id,{g}])=>{
+  g.addEventListener("mouseenter",e=>{if(!pinned&&!drag)show(id,e.clientX,e.clientY,false)});
+  g.addEventListener("mousemove",e=>{if(!pinned&&!drag)position(e.clientX,e.clientY)});
+  g.addEventListener("mouseleave",()=>{if(!pinned)tip.hidden=true});
+  g.addEventListener("click",e=>{e.stopPropagation();show(id,e.clientX,e.clientY,true)});
+  g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();const b=g.getBoundingClientRect();show(id,b.right,b.top,true)}});
+});
+tip.addEventListener("click",e=>e.stopPropagation());
+document.addEventListener("click",hide);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")hide()});
+document.getElementById("scroll").addEventListener("scroll",()=>{if(!pinned)tip.hidden=true});
+
+// ---- масштаб ----
+const sc=document.getElementById("scroll");
+let zoom=1;
+function setZoom(z){zoom=Math.max(.3,Math.min(2,z));svg.style.width=VW*zoom+"px";svg.style.height=VH*zoom+"px"}
+document.getElementById("zin").addEventListener("click",()=>setZoom(zoom*1.25));
+document.getElementById("zout").addEventListener("click",()=>setZoom(zoom/1.25));
+document.getElementById("zfit").addEventListener("click",()=>setZoom(Math.min((sc.clientWidth-4)/VW,(sc.clientHeight-4)/VH)));
+setZoom(document.body.classList.contains("embed")?.75:1);
+
+// ---- перетаскивание мышью (на сенсорных экранах прокрутка и так работает пальцем) ----
+let drag=null, moved=false;
+sc.addEventListener("pointerdown",e=>{
+  if(e.pointerType!=="mouse"||e.button!==0) return;
+  drag={x:e.clientX,y:e.clientY,l:sc.scrollLeft,t:sc.scrollTop}; moved=false;
+});
+window.addEventListener("pointermove",e=>{
+  if(!drag) return;
+  const dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+  if(!moved && Math.hypot(dx,dy)<5) return;  // мелкое дрожание — это ещё щелчок
+  if(!moved){moved=true;sc.classList.add("drag");if(!pinned)tip.hidden=true}
+  sc.scrollLeft=drag.l-dx; sc.scrollTop=drag.t-dy;
+});
+window.addEventListener("pointerup",()=>{
+  drag=null; sc.classList.remove("drag");
+  setTimeout(()=>{moved=false},0);  // щелчок (если будет) приходит раньше
+});
+// после перетаскивания отпускание кнопки не считается щелчком по человеку
+sc.addEventListener("click",e=>{if(moved){e.stopPropagation();e.preventDefault()}},true);
+
+let start="birth";
+const fromHash=location.hash.slice(1);
+if(fromHash in MODES) start=fromHash;
+else{try{const s=sessionStorage.getItem("registry-mode");if(s in MODES)start=s}catch(e){}}
+// Вкладки вместо выпадающего списка: все варианты видны сразу; <select> остаётся источником значений.
+const seg=document.createElement("div");
+seg.className="seg"; seg.setAttribute("role","group"); seg.setAttribute("aria-label","Что показать");
+[...sel.options].forEach(o=>{
+  const b=document.createElement("button"); b.type="button"; b.textContent=o.textContent; b.dataset.v=o.value;
+  b.addEventListener("click",e=>{e.stopPropagation();if(sel.value!==o.value){sel.value=o.value;sel.dispatchEvent(new Event("change"))}});
+  seg.appendChild(b);
+});
+sel.after(seg);
+const syncSeg=()=>seg.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===sel.value));
+// при первом открытии за сеанс рамка вкладок трижды пульсирует (~5 с)
+try{if(!sessionStorage.getItem("seg-hint:"+location.pathname)){seg.classList.add("hint");sessionStorage.setItem("seg-hint:"+location.pathname,"1")}}catch(e){seg.classList.add("hint")}
+
+sel.value=start; render(start); syncSeg();
+sel.addEventListener("change",()=>{render(sel.value);syncSeg();hide()});
+</script>
+</body>
+</html>

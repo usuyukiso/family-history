@@ -9,8 +9,8 @@
 
 Плашки нет на главной, родословной, методологии, терминологии, «О проекте»
 и на реестрах источников, мест, персон и фамилий — она стоит на страницах
-отдельных источников, биографий, мест и фамилий. Нет её и в разделе «Разное»
-(docs/misc/): там сведения со слов родственников, а не из документов.
+отдельных источников, биографий, мест и фамилий. Нет её и в разделе «Схемы»
+(docs/schemes/): там сводные схемы, а не страницы с документами.
 """
 
 import re
@@ -45,7 +45,7 @@ def _badge(page):
 
 
 def on_page_content(html, page, config, files):
-    if page.file.src_uri in SKIP or page.file.src_uri.startswith("misc/"):
+    if page.file.src_uri in SKIP or page.file.src_uri.startswith("schemes/"):
         return html
     badge = _badge(page)
     m = H1_END.search(html)
