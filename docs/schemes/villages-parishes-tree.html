@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Деревни и приходы — Семейная история</title>
+<link rel="icon" href="../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+/* Шкала времени по псковским деревням: где жили прямые предки и к какому приходу относилась деревня.
+   Данные — в массивах ROWS и MOVES ниже, по страницам мест, персон и источников сайта. */
+:root{
+  --bg:#f6f7f4; --fg:#22261f; --muted:#69705f; --line:#9aa290; --grid:#e1e4dc; --card:#ffffff; --btn:#e8eae3;
+  --p-georg:#2a78d6; --p-pol:#eb6834; --p-rozh:#1baf7a; --p-pyat:#eda100; --p-vved:#e87ba4; --p-voskr:#008300; --p-unk:#b9beb0;
+  --display:"PT Serif",Georgia,serif; --body:"PT Sans","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1b1d19; --fg:#e7e9e2; --muted:#a3aa98; --line:#5f6656; --grid:#2c3029; --card:#272a24; --btn:#2f332b;
+  --p-georg:#3987e5; --p-pol:#d95926; --p-rozh:#199e70; --p-pyat:#c98500; --p-vved:#d55181; --p-voskr:#008300; --p-unk:#5f6656;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1b1d19; --fg:#e7e9e2; --muted:#a3aa98; --line:#5f6656; --grid:#2c3029; --card:#272a24; --btn:#2f332b;
+  --p-georg:#3987e5; --p-pol:#d95926; --p-rozh:#199e70; --p-pyat:#c98500; --p-vved:#d55181; --p-voskr:#008300; --p-unk:#5f6656;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45}
+.wrap{padding-inline:16px;padding-block:calc(12px + env(safe-area-inset-top,0px)) 24px;max-width:1500px;margin:0 auto}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:8px}
+.icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;
+  background:var(--btn);color:var(--fg);text-decoration:none;flex:none}
+.icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon:hover,.icon:focus-visible{outline:2px solid var(--line)}
+h1{font-family:var(--display);font-size:1.45rem;margin:0;min-width:0;text-wrap:balance}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 4px;padding:0;list-style:none;font-size:.9rem}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend i{width:22px;height:12px;border-radius:3px;display:inline-block;flex:none}
+.legend.keys{color:var(--muted);font-size:.85rem;margin-bottom:8px}
+.legend .hatch{background:repeating-linear-gradient(135deg,var(--p-georg) 0 2px,transparent 2px 5px);border:1px solid var(--p-georg)}
+.legend .solid{background:var(--p-georg)}
+.legend .dot{width:9px;height:9px;border-radius:50%;background:var(--card);border:2px solid var(--fg)}
+.legend .dot.nos{background:var(--bg);border-style:dashed}
+.legend .dia{width:8px;height:8px;border-radius:1px;background:var(--card);border:2px solid var(--fg);transform:rotate(45deg);margin:0 2px}
+.legend .arr{width:26px;height:2px;border-radius:0;background:var(--fg);position:relative}
+.legend .arr.dash{background:repeating-linear-gradient(90deg,var(--fg) 0 4px,transparent 4px 7px)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+svg#tl{display:block;width:100%;height:auto;min-width:1000px}
+.grid{stroke:var(--grid);stroke-width:1}
+.rev{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3;opacity:.8}
+.ax{font:400 12px var(--body);fill:var(--muted);text-anchor:middle}
+.revl{font:700 11px var(--body);fill:var(--muted);text-anchor:middle}
+.gh{font:700 12.5px var(--body);fill:var(--muted);letter-spacing:.02em}
+.rl{font:700 14px var(--body);fill:var(--fg)}
+.rl.nolink{font-weight:400}
+a .rl:hover{text-decoration:underline}
+.rowbg{fill:transparent}
+.rowline{stroke:var(--grid);stroke-width:1}
+.seg{cursor:pointer;outline:none}
+.seg:hover rect.sh,.seg:focus-visible rect.sh{stroke:var(--fg);stroke-width:1.5}
+.doc{fill:var(--card);stroke:var(--fg);stroke-width:1.6;cursor:pointer}
+.doc.out{fill:var(--bg);stroke:var(--muted)}
+.doc.nosite{fill:var(--bg);stroke-dasharray:2 1.5}
+.doc:hover{stroke-width:2.6}
+.mv{fill:none;stroke-width:1.8;stroke:var(--fg)}
+.mv.dash{stroke-dasharray:4 3}
+.mvhalo{fill:none;stroke:var(--bg);stroke-width:5}
+.mvhit{fill:none;stroke:transparent;stroke-width:12;cursor:pointer}
+.mvg:hover .mv{stroke-width:3}
+.endl{font:400 12px var(--body);fill:var(--muted)}
+#tip{position:fixed;pointer-events:none;background:var(--card);color:var(--fg);border:1px solid var(--line);
+  border-radius:6px;padding:9px 12px;font-size:.9rem;box-shadow:0 4px 16px rgba(0,0,0,.18);max-width:340px;z-index:5}
+#tip.pin{pointer-events:auto}
+#tip b{font-family:var(--display)}
+#tip .m{color:var(--muted)}
+#tip .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:baseline}
+#tip a{color:inherit}
+#tip .x{position:absolute;top:4px;right:6px;border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;line-height:1}
+#tip p{margin:4px 0 0}
+.src{color:var(--muted);font-size:.85rem;margin:6px 0 0}
+.embed .wrap{padding-block:6px 4px;padding-inline:4px}
+.embed .icon,.embed h1,.embed .src{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <a class="icon" id="back" href="villages-parishes/" title="Назад" aria-label="Назад"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></a>
+    <a class="icon" href="../" title="На главную" aria-label="На главную"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></a>
+    <h1>Деревни и приходы</h1>
+  </div>
+  <ul class="legend" id="legend"></ul>
+  <ul class="legend keys">
+    <li><i class="solid"></i>по документам</li>
+    <li><i class="hatch"></i>годы по возрасту в документах или приход — мнение составителя</li>
+    <li><i class="dot"></i>перепись, ревизия, исповедная роспись</li>
+    <li><i class="dia"></i>метрическая запись, по которой виден приход</li>
+    <li><i class="dot nos"></i>есть в таблице составителя, на сайте пока нет</li>
+    <li><i class="arr"></i>брак или переселение (дата известна)</li>
+    <li><i class="arr dash"></i>то же, год примерный</li>
+  </ul>
+  <div class="scroll"><svg id="tl" role="img" aria-label="Шкала времени: псковские деревни предков и их приходы"></svg></div>
+  <p class="src">Пунктирные вертикальные линии — переписи 1711 г. и ревизии I–X. Наведите на полосу, точку или стрелку, чтобы увидеть подробности; нажмите — чтобы открыть ссылки.</p>
+</div>
+<div id="tip" hidden></div>
+<script>
+// Тема: как на сайте (переключатель Material хранит выбор в localStorage), иначе — системная.
+try{
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(k && k.endsWith("__palette")){
+      const s=JSON.parse(localStorage.getItem(k)||"{}");
+      if(s && s.color && s.color.scheme) document.documentElement.dataset.theme = s.color.scheme==="slate"?"dark":"light";
+    }
+  }
+}catch(e){}
+if(window.self!==window.top) document.body.classList.add("embed");
+
+const PARISH={
+  georg:"Георгиевская церковь пригорода Воронича",
+  pol:"Покровская церковь погоста Поляне",
+  rozh:"Христорождественская церковь погоста Рождество",
+  pyat:"Пятницкая церковь Святогорского монастыря",
+  vved:"Введенская церковь Утрецкого погоста",
+  voskr:"Воскресенская церковь Теребенского погоста",
+  unk:"приход в документах не указан"
+};
+const P={
+  P1005:["Павел Иванович Давыдов","P1005-pavel-davydov"],
+  P1009:["Сергей Афанасьев","P1009-sergey-afanasev"],P1010:["Анна Никифорова","P1010-anna-nikiforova"],
+  P1011:["Давыд Федотов","P1011-davyd-fedotov"],P1012:["Потап Сергеев","P1012-potap-sergeev"],
+  P1014:["Косма Потапов","P1014-kosma-potapov"],P1015:["Иван Давыдов","P1015-ivan-davydov"],
+  P1016:["Андрей Кузьмин","P1016-andrey-kuzmin"],P1017:["Василий Иванов Давыдов","P1017-vasiliy-ivanov-davydov"],
+  P1018:["Александра Андреевна Андреева","P1018-aleksandra-andreeva"],P1019:["Иван Васильевич Давыдов","P1019-ivan-vasilevich-davydov"],
+  P1021:["Федот Евтифиев","P1021-fedot-evtifiev"],P1022:["Гликерия Козьмина","P1022-glikeriya-kozmina"],
+  P1023:["Евтифей Иванов","P1023-evtifey-ivanov"],P1024:["Козьма Нестеров","P1024-kozma-nesterov"],
+  P1025:["Нестер Кононов","P1025-nester-kononov"],P1027:["Марфа Титова","P1027-marfa-titova"],
+  P1028:["Тит Миронов (Марков)","P1028-tit-mironov-markov"],P1029:["Дарья Иванова","P1029-darya-ivanova"],
+  P1030:["Мирон Егоров","P1030-miron-egorov"],P1032:["Егор Ильин","P1032-egor-ilin"],
+  P1034:["Илья Абросимов","P1034-ilya-abrosimov"],P1036:["Настасья Федорова","P1036-nastasya-fedorova"],
+  P1037:["Феодор Иванов","P1037-feodor-ivanov"],P1038:["Татьяна Матфеева","P1038-tatyana-matfeeva"],
+  P1039:["Иван Елисеев","P1039-ivan-eliseev"],P1041:["Елисей Филиппов","P1041-elisey-filippov"],
+  P1042:["Федосья Егорова","P1042-fedosya-egorova"],P1043:["Филипп Кондратьев","P1043-filipp-kondratev"],
+  P1044:["Матфей Исаков","P1044-matfey-isakov"],P1046:["Екатерина Прокофьева","P1046-ekaterina-prokofeva"],
+  P1048:["Иван Петров","P1048-ivan-petrov"],P1049:["Екатерина Козьмина","P1049-ekaterina-kozmina"],
+  P1050:["Петр Яковлев","P1050-petr-yakovlev"],
+  P1052:["Яков Семенов","P1052-yakov-semenov"],P1053:["Авдотья Маркова","P1053-avdotya-markova"],
+  P1054:["Семен Гаврилов","P1054-semen-gavrilov"],P1055:["Козьма Евдокимов","P1055-kozma-evdokimov"],
+  P1056:["Авдотья Иванова","P1056-avdotya-ivanova"],P1057:["Евдоким Калинин","P1057-evdokim-kalinin"],
+  P1058:["Дарья Васильева","P1058-darya-vasileva"],P1059:["Калина Михайлов","P1059-kalina-mikhaylov"],
+  P1061:["Михайла Семенов","P1061-mikhayla-semenov"],
+  P1063:["Никифор Григорьев","P1063-nikifor-grigorev"],P1064:["Евдокия (Авдотья) Алексеева","P1064-evdokiya-alekseeva"],
+  P1065:["Григорий Егоров","P1065-grigoriy-egorov"],P1066:["Афанасий Федотов","P1066-afanasiy-fedotov"],
+  P1067:["Татьяна Иванова","P1067-tatyana-ivanova"],P1068:["Кондратий Самуилов","P1068-kondratiy-samuilov"],
+  P1069:["Самуил Яковлев","P1069-samuil-yakovlev"],P1070:["Параскева Харитонова","P1070-paraskeva-kharitonova"],
+  P1072:["Никифор Никулин","P1072-nikifor-nikulin"],P1073:["Ксения Трофимова","P1073-kseniya-trofimova"],
+  P1074:["Исаак Никифоров","P1074-isaak-nikiforov"],P1075:["Настасья Радионова","P1075-nastasya-radionova"],
+  P1111:["Федот Артемьев","P1111-fedot-artemev"]
+};
+// Источники: id → [путь на сайте, краткое описание].
+const S={
+  A1051:["archives/A1051-gapo-39-1-1607-ispoved-1770-gorelik","1770 — исповедная роспись церквей Воронича, д. Горелик"],
+  A1052:["archives/A1052-gapo-39-1-1611-ispoved-1774-gorelik","1774 — исповедная роспись церквей Воронича, д. Горелик"],
+  A1054:["archives/A1054-gapo-58-1-1027-reviziya-1795-makovitsy","1795 — V ревизия, д. Маковицы"],
+  A1056:["archives/A1056-gapo-39-1-2680-ispoved-1806-zakharino","1806 — исповедная роспись, д. Захарино"],
+  A1057:["archives/A1057-gapo-58-1-1291-reviziya-1816-makovitsy","1816 — VII ревизия, д. Маковицы"],
+  A1058:["archives/A1058-gapo-39-1-2720-ispoved-1840","1840 — исповедная роспись, дд. Маковицы и Захарино"],
+  A1059:["archives/A1059-gapo-39-1-2723-ispoved-1850","1850 — исповедная роспись, дд. Маковицы и Захарино"],
+  A1060:["archives/A1060-gapo-39-1-2516-ispoved-1852","1852 — исповедная роспись, дд. Маковицы и Захарино"],
+  A1061:["archives/A1061-gapo-58-1-1844-reviziya-1858-makovitsy","1858 — X ревизия, д. Маковицы"],
+  A1062:["archives/A1062-gapo-39-1-2736-ispoved-1862","1862 — исповедная роспись, дд. Маковицы и Захарино"],
+  A1146:["archives/A1146-gapo-39-1-1590-ispoved-1754-makovitsy","1754 — исповедная роспись Георгиевской церкви Воронича, д. Маковицы"],
+  A1150:["archives/A1150-voronich-1767-rozhdenie-63-anna","1767 — рождение Анны, дочери Федота Евтифиева, Георгиевская церковь (последняя запись по Маковицам в этой церкви)"],
+  A1163:["archives/A1163-gapo-39-1-1607-ispoved-1770-popova-gora","1770 — исповедная роспись церквей Воронича, д. Попова Гора"],
+  A1167:["archives/A1167-gapo-39-1-2680-ispoved-1806-popova-gora","1806 — исповедная роспись, д. Попова Гора (Пятницкая церковь)"],
+  A1179:["archives/A1179-rgada-350-2-755-1745-porukhova","1745 — II ревизия, д. Порухово"],
+  A1183:["archives/A1183-rgada-350-2-523-1763-gorelik","1763 — III ревизия, д. Горелик"],
+  A1184:["archives/A1184-rgada-350-2-523-1763-koltyreva","1763 — III ревизия, д. Колтырево"],
+  A1185:["archives/A1185-rgada-350-2-523-1763-porukhova","1763 — III ревизия, д. Порухово"],
+  A1187:["archives/A1187-rgada-350-2-523-1763-vanyutino","1763 — III ревизия, д. Ванютино"],
+  A1190:["archives/A1190-voronich-1747-brak-22-grigoriy-egorov","1747 — брак Григория Егорова из Печохнова, Георгиевская церковь"],
+  A1191:["archives/A1191-rgada-350-2-755-1745-zakharino","1745 — II ревизия, д. Захарино"],
+  A1192:["archives/A1192-rgada-350-2-755-1745-pechakhnovo","1745 — II ревизия, д. Печохново"],
+  A1194:["archives/A1194-rgada-350-2-755-1745-koltyrevo","1745 — II ревизия, д. Колтырево"],
+  A1195:["archives/A1195-rgada-350-2-2433-1748-vybyvshie","1748 — книга выбывших душ, дд. Попова Гора и Колтырево"],
+  B1009:["books/B1009-nikiforov-t5-zakharino","В. Г. Никифоров: Захарино (росписи 1829, 1848 (?), 1862 гг.)"],
+  A1037:["archives/A1037-gakk-r876-davydov-fond","1930-е — документы П. И. Давыдова"],
+  A1047:["archives/A1047-rgada-350-2-755-1745-makovitsy","1745 — II ревизия, д. Маковицы"],
+  A1048:["archives/A1048-gapo-39-1-1590-ispoved-1754-gorelik","1754 — исповедная роспись Георгиевской церкви Воронича, д. Горелик"],
+  A1049:["archives/A1049-rgada-350-2-523-1763-krasikhino","1763 — III ревизия, д. Красихино"],
+  A1050:["archives/A1050-gapo-39-1-2545-ispoved-1769-makovitsy","1769 — исповедная роспись, д. Маковицы (погост Поляне)"],
+  A1053:["archives/A1053-gapo-39-1-2623-ispoved-1792","1792 — исповедная роспись, дд. Горелик и Маковицы"],
+  A1055:["archives/A1055-gapo-39-1-2669-ispoved-1802-zakharino","1802 — исповедная роспись, д. Захарино"],
+  A1063:["archives/A1063-voronich-1756-brak-14-afanasev-nikiforova","1756 — брак Сергея Афанасьева и Анны Никифоровой, Георгиевская церковь"],
+  A1065:["archives/A1065-voronich-1774-rozhdenie-2-rodion-gorelik","1774 — рождение Родиона, Георгиевская церковь"],
+  A1066:["archives/A1066-polyane-1790-braki-12-13-sergeev-davydov","1790 — браки Потапа Сергеева и Василия Давыдова, Покровская церковь погоста Поляне"],
+  A1068:["archives/A1068-rozhdestvo-1803-smert-52-sergey-afanasev","1803 — смерть Сергея Афанасьева, погост Рождество"],
+  A1074:["archives/A1074-polyane-1834-brak-7-ivan-davydov","1834 — брак Ивана Давыдова и Марфы Титовой, погост Поляне"],
+  A1099:["archives/A1099-polyane-1876-smert-58-petr-davydov","1876 — смерть Петра Давыдова, погост Поляне"],
+  A1102:["archives/A1102-rozhdestvo-1889-rozhdenie-77-mikhail","1889 — рождение Михаила Давыдова, погост Рождество"],
+  A1103:["archives/A1103-rozhdestvo-1895-brak-7-ioann-vasilev-aleksandra-andreeva","1895 — брак Ив. Вас. Давыдова и Ал. Андр. Андреевой, погост Рождество"],
+  A1119:["archives/A1119-rozhdestvo-1916-rozhdenie-44-pavel","1916 — рождение Пав. Ив. Давыдова, погост Рождество"],
+  A1120:["archives/A1120-rozhdestvo-1824-rozhdenie-33-akilina","1824 — рождение Акилины, погост Рождество"],
+  A1123:["archives/A1123-rozhdestvo-1876-brak-5-evdokiya-bogdanova","1876 — брак, поручитель Андрей Кузьмин, погост Рождество"],
+  A1126:["archives/A1126-rozhdestvo-1828-brak-19-kosma-potapov","1828 — брак Космы Потапова и Настасьи Федоровой, погост Рождество"],
+  A1143:["archives/A1143-rgada-350-2-523-1763-makovitsy","1763 — III ревизия, д. Маковицы"],
+  A1144:["archives/A1144-rgada-350-2-523-1763-alekseevo-zuevo","1763 — III ревизия, д. Алексеево-Зуево"],
+  A1145:["archives/A1145-voronich-1746-smert-7-nester-kononov","1746 — смерть Нестера Кононова, Георгиевская церковь"],
+  A1148:["archives/A1148-voronich-1766-rozhdenie-14-tikhon","1766 — рождение сына Федота Евтифиева, Георгиевская церковь"],
+  A1152:["archives/A1152-gapo-39-1-2510-ispoved-1747-mokryane","1747 — исповедная роспись Введенской церкви Утрецкого погоста, д. Мокряне"],
+  A1153:["archives/A1153-utretki-1795-rozhdenie-14-tit","1795 — рождение Тита, Введенская церковь"],
+  A1154:["archives/A1154-gapo-39-1-2680-ispoved-1806-mokryane","1806 — исповедная роспись, д. Мокряне"],
+  A1155:["archives/A1155-utretki-1811-brak-7-tit-mironov","1811 — брак Тита Миронова и Дарьи Ивановой, Введенская церковь"],
+  A1157:["archives/A1157-terebeni-1784-rozhdenie-7-darya","1784 — рождение Дарьи, дочери Ивана Петрова, Воскресенская церковь"],
+  A1158:["archives/A1158-gapo-39-1-2677-ispoved-1804-zubovo","1804 — исповедная роспись, д. Зубово"],
+  A1159:["archives/A1159-gapo-58-1-1029-reviziya-1782-zubovo","1782 — IV ревизия, д. Зубово"],
+  A1160:["archives/A1160-rgada-350-2-755-1745-popova-gora","1745 — II ревизия, д. Попова Гора"],
+  A1161:["archives/A1161-voronich-1751-brak-53-elisey-filippov","1751 — брак Елисея Филиппова и Федосьи Егоровой, Георгиевская церковь"],
+  A1162:["archives/A1162-gapo-39-1-1590-ispoved-1754-popova-gora","1754 — исповедная роспись Георгиевской церкви, д. Попова Гора"],
+  A1164:["archives/A1164-gapo-39-1-1617-ispoved-1780-popova-gora","1780 — исповедная роспись церквей Воронича, д. Попова Гора"],
+  A1165:["archives/A1165-pyatnitskaya-1789-smert-6-filipp-kondratev","1789 — смерть Филиппа Кондратьева, Пятницкая церковь"],
+  A1166:["archives/A1166-gapo-39-1-2675-ispoved-1803-kostkovo","1803 — исповедная роспись, д. Костково"],
+  A1168:["archives/A1168-pyatnitskaya-1806-brak-13-fedor-ivanov","1806 — брак Феодора Иванова и Татьяны Матфеевой, Пятницкая церковь"],
+  A1172:["archives/A1172-pyatnitskaya-1822-smert-4-ivan-eliseev","1822 — смерть Ивана Елисеева, Пятницкая церковь"],
+  A1173:["archives/A1173-pyatnitskaya-1809-smert-10-matfey-isakov","1809 — смерть Матфея Исакова, Пятницкая церковь"],
+  A1174:["archives/A1174-gapo-58-1-1029-reviziya-1782-myshino","1782 — IV ревизия, д. Мышино"],
+  A1175:["archives/A1175-terebeni-1784-rozhdenie-6-darya","1784 — рождение Дарьи, дочери Петра Козьмина, Воскресенская церковь"],
+  A1176:["archives/A1176-rgada-350-2-755-1745-zubovo","1745 — II ревизия, д. Зубово"],
+  A1177:["archives/A1177-rgada-1209-1-8510-1711-myshino","1711 — переписная книга, Теребенская губа, д. Мышино"],
+  A1178:["archives/A1178-rgada-350-2-755-1745-mokryane","1745 — II ревизия, д. Мокряне"],
+  A1180:["archives/A1180-rgada-350-2-755-1745-krasikhina","1745 — II ревизия, д. Красихино"],
+  A1181:["archives/A1181-rgada-350-2-523-1763-kostkovo","1763 — III ревизия, д. Костково"],
+  A1182:["archives/A1182-rgada-350-2-523-1763-pechokhnova","1763 — III ревизия, д. Печохново"],
+  A1186:["archives/A1186-rgada-350-2-523-1763-popova-gora","1763 — III ревизия, д. Попова Гора"],
+  A1188:["archives/A1188-gapo-39-1-2505-ispoved-1742-pechakhnova","1742 — исповедная роспись Георгиевской церкви, д. Печохново"],
+  A1189:["archives/A1189-gapo-39-1-1590-ispoved-1754-pechokhnova","1754 — исповедная роспись Георгиевской церкви, д. Печохново"],
+  A1193:["archives/A1193-rgada-350-2-755-1745-goreliki","1745 — II ревизия, д. Горелик"],
+  A1275:["archives/A1275-rgada-350-2-2681-1719-gorelik","1719 — I ревизия, д. Горелик"],
+  A1276:["archives/A1276-rgada-350-2-2681-1719-alekseevo-zuevo","1719 — I ревизия, д. Алексеево-Зуево"],
+  A1277:["archives/A1277-rgada-350-2-2681-1719-popova-gora","1719 — I ревизия, д. Попова Гора"],
+  A1278:["archives/A1278-rgada-350-2-2681-1719-porukhovo","1719 — I ревизия, д. Порухово"],
+  A1281:["archives/A1281-polyane-1770-rozhdenie-12-aleksey","1770 — рождение Алексея, Покровская церковь погоста Поляне"],
+  B1007:["books/B1007-nikiforov-t5-leskushkino","В. Г. Никифоров: Лескушкино (росписи 1825, 1848, 1862 гг.)"],
+  B1010:["books/B1010-nikiforov-t5-popova-gora","В. Г. Никифоров: Попова Гора (роспись 1825 г.)"]
+};
+
+// Строки. g — заголовок группы. seg: [с, по, приход, "d" — по документам | "e" — оценка, пояснение].
+// docs: [год, источник]. people — прямые предки, жившие здесь. plc — страница места (если есть).
+const ROWS=[
+ {g:"Линия Марфы Титовой — Теребенская губа и Утрецкий погост; в Маковицы в 1834 г."},
+ {id:"koch",name:"Кочаново",plc:"PLC1024-kochanovo",people:["P1058"],src:["A1174"],
+  segs:[[1716,1731,"unk","e","Дарья Васильева, ок. 1716 г. р. (по возрасту); вотчина помещика Егора Семенова сына Еремеева, Теребенская губа."]]},
+ {id:"bykh",name:"Быхново",people:["P1056"],src:["A1174"],
+  segs:[[1738,1750,"unk","e","Авдотья Иванова, ок. 1738 г. р. (по возрасту). Страницы деревни на сайте нет."]]},
+ {id:"mysh",name:"Мышино",plc:"PLC1009-myshino",people:["P1061","P1059","P1057","P1058","P1055","P1056","P1049"],
+  docs:[[1711,"A1177"],[1782,"A1174"],[1784,"A1175","m"]],
+  segs:[[1645,1711,"voskr","e","Михайла Семенов, 66 лет в 1711 г.; годы до переписи — по возрасту."],
+        [1711,1782,"voskr","d","Помещичья деревня Теребенской губы (Карповские, затем Бороздина). В переписи 1711 г. — в Теребенской губе с погостом Воскресенской церкви; в 1784 г. дети из Мышина крещены в Воскресенской церкви."]]},
+ {id:"gark",name:"Гаркухино (сельцо)",people:["P1053"],src:["A1159"],
+  segs:[[1723,1742,"unk","e","Авдотья Маркова, ок. 1723 г. р. (по возрасту). Страницы места на сайте нет."]]},
+ {id:"zub",name:"Зубово",plc:"PLC1008-zubovo",people:["P1054","P1052","P1053","P1050","P1048","P1049","P1029"],
+  docs:[[1745,"A1176"],[1782,"A1159"],[1784,"A1157","m"],[1804,"A1158"]],
+  segs:[[1745,1763,"voskr","e","Деревня заселена незадолго до 1745 г. выходцами из Мышкина; семьи Семена Гаврилова в 1745 г. здесь ещё нет — появилась между 1745 и 1763 гг."],
+        [1763,1811,"voskr","d","Владельцы — Кокошкины (1782–1784), Н. С. Бороздин (1811). Приход — Воскресенская церковь Теребенского погоста (1784, 1804)."]]},
+ {id:"mokr",name:"Мокряне",plc:"PLC1010-mokryane",people:["P1034","P1032","P1030","P1028"],
+  docs:[[1745,"A1178"],[1747,"A1152"],[1795,"A1153","m"],[1806,"A1154"],[1811,"A1155","m"]],
+  segs:[[1718,1745,"vved","e","Илья Абросимов, ок. 1718 г. р.; в 1745 г. семья «писана в прежней переписи»."],
+        [1745,1811,"vved","d","Приход — Введенская церковь Утрецкого погоста (1747–1811). Помещики Рокотовы (1795, 1811)."],
+        [1811,1818,"vved","e","Между 1811 и 1825 гг. семья Мирона Егорова перешла в соседнее Лескушкино."]]},
+ {id:"lesk",name:"Лескушкино",plc:"PLC1019-leskushkino",people:["P1030","P1028","P1029","P1027"],
+  docs:[[1825,"B1007"],[1848,"B1007"],[1862,"B1007"]],
+  segs:[[1818,1825,"vved","e","Переселение из Мокряне — между 1811 и 1825 гг."],
+        [1825,1862,"vved","d","Тит Миронов — опочецкий мещанин, с 1862 г. Марков; записан здесь в 1825–1862 гг. Приход — Введенская церковь Утрецкого погоста."]]},
+
+ {g:"Давыдовы — Ильинская губа Вороницкой вотчины"},
+ {id:"drisk",name:"Дрискова",people:[],src:["A1144"],
+  segs:[[1712,1728,"unk","e","Фекла Михайлова, ок. 1712 г. р., Богородицкая губа; жена Козьмы Нестерова. Мать ли она Гликерии Козьминой — не доказано. Страницы деревни на сайте нет."]]},
+ {id:"zuev",name:"Алексеево-Зуево",plc:"PLC1007-alekseevo-zuevo",people:["P1025","P1024","P1022"],
+  docs:[[1719,"A1276"],[1746,"A1145","m"],[1763,"A1144"]],
+  segs:[[1669,1719,"georg","e","Нестер Кононов, 50 лет в 1719 г.; годы до ревизии — по возрасту."],
+        [1719,1750,"georg","d","Приход — Георгиевская церковь пригорода Воронича (смерть Нестера Кононова, 1746)."],
+        [1750,1753,"georg","e","Гликерия Козьмина вышла замуж в Маковицы до рождения сына Давыда (ок. 1754–1757)."]]},
+ {id:"kolt",name:"Колтырево (Пашки)",plc:"PLC1016-pashki-koltyrevo",people:["P1023","P1021"],
+  docs:[[1745,"A1194"],[1748,"A1195"],[1754,"1754 — исповедная роспись Георгиевской церкви Воронича, ГАПО ф. 39, оп. 1, д. 1590, л. 46 об.","x"],[1763,"A1184"]],
+  segs:[[1714,1745,"georg","e","Евтифей Иванов, ок. 1714–1715 г. р.; до 1745 г. семья переведена в Маковицы. Приход XVIII в. в документах не указан; Георгиевская церковь — по мнению составителя (та же Ильинская губа)."]]},
+ {id:"makov",name:"Маковицы",plc:"PLC1002-makovitsy",people:["P1046","P1023","P1021","P1022","P1011","P1015","P1027","P1017","P1019","P1018","P1005"],
+  docs:[[1745,"A1047"],[1754,"A1146"],[1763,"A1143"],[1767,"A1150","m"],[1769,"A1050"],[1770,"A1281","m"],[1792,"A1053"],[1795,"A1054"],[1816,"A1057"],[1840,"A1058"],[1850,"A1059"],[1852,"A1060"],[1858,"A1061"],[1862,"A1062"],[1876,"A1099","m"],[1889,"A1102","m"],[1916,"A1119","m"]],
+  end:"→ Ленинград, 1930",
+  segs:[[1709,1745,"georg","e","Екатерина Прокофьева — «старинная дворцовая той же деревни», ок. 1709–1712 г. р."],
+        [1745,1768,"georg","d","Последняя запись по Маковицам в Георгиевской церкви Воронича — 1767 г."],
+        [1768,1877,"pol","d","Первая запись в приходе погоста Поляне — исповедная роспись 1769 г., последняя — 1876 г."],
+        [1877,1917,"rozh","d","С 1877 по 1916 г. — по метрическим книгам погоста Рождество."],
+        [1917,1930,"unk","e","После 1916 г. данных о приходе нет. В 1930 г. Ив. Вас. Давыдов уехал в Ленинград.",true]]},
+
+ {g:"Линия Александры Андреевой — из Захарина в Маковицы в 1895 г."},
+ {id:"zakh",name:"Захарино",plc:"PLC1003-zakharino",people:["P1009","P1010","P1012","P1014","P1036","P1016","P1018"],
+  docs:[[1745,"A1191"],[1792,"1792 — исповедная роспись Рождественской церкви, ГАПО ф. 39, оп. 1, д. 2623, л. 76 (семьи предков в Захарине ещё нет)","x"],[1802,"A1055"],[1803,"A1068","m"],[1806,"A1056"],[1829,"B1009"],[1840,"A1058"],[1850,"A1059"],[1852,"A1060"],[1862,"A1062"]],
+  segs:[[1797,1802,"rozh","e","Семья Сергея Афанасьева переселилась из Горелика между 1792 и 1802 гг."],
+        [1802,1895,"rozh","d","Приход — Христорождественская церковь погоста Рождество (1802–1910)."]]},
+ {id:"gor",name:"Горелик",plc:"PLC1015-gorelik",people:["P1111","P1066","P1067","P1009","P1010","P1012"],
+  docs:[[1719,"A1275"],[1745,"A1193"],[1754,"A1048"],[1763,"A1183"],[1770,"A1051"],[1774,"A1052"],[1774,"A1065","m"],[1790,"A1066","m"],[1792,"A1053"]],
+  segs:[[1629,1719,"georg","e","Федот Артемьев, 90 лет в 1719 г.; годы до ревизии — по возрасту."],
+        [1719,1775,"georg","d","Приход — Георгиевская церковь пригорода Воронича (записи 1754–1774 гг.)."],
+        [1775,1790,"georg","e","Между 1774 и 1790 гг. деревня перешла в приход погоста Поляне; когда именно — неизвестно. По таблице составителя — около 1790 г."],
+        [1790,1793,"pol","d","Брак Потапа Сергеева 1790 г. — в Покровской церкви погоста Поляне."],
+        [1793,1797,"pol","e","Переселение в Захарино — между 1792 и 1802 гг."]]},
+ {id:"march",name:"Марчонки",people:[],src:["A1066","A1053"],
+  segs:[[1769,1790,"unk","e","Мавра (Марфа) Егорова, жена Потапа Сергеева, ок. 1769 г. р. (по возрасту). Страницы деревни на сайте нет."]]},
+ {id:"kras",name:"Красихино",plc:"PLC1012-krasikhino",people:["P1066","P1067","P1009","P1010"],
+  docs:[[1745,"A1180"],[1763,"A1049"],[1774,"A1065","m"]],
+  segs:[[1745,1763,"georg","d","По ревизиям 1745 и 1763 гг. семья Афанасия Федотова записана в «новопоселенной» Красихиной, переведённой из Горелика. По исповедной росписи 1754 г. семья жила в Горелике. Приход — Георгиевская церковь (запись 1774 г.)."]]},
+ {id:"pech",name:"Печохново",plc:"PLC1014-pechokhnovo",people:["P1065","P1063","P1064","P1010"],
+  docs:[[1742,"A1188"],[1745,"A1192"],[1747,"A1190","m"],[1754,"A1189"],[1763,"A1182"],[1806,"1806 — исповедная роспись, ГАПО ф. 39, оп. 1, д. 2680, л. 1223 об. (Павел Никифоров, 57 лет)","x"],[1852,"1852 — исповедная роспись, ГАПО ф. 39, оп. 1, д. 2516, л. 1022 об.","x"]],
+  segs:[[1693,1742,"georg","e","Григорий Егоров, ок. 1692–1694 г. р.; годы до 1742 г. — по возрасту."],
+        [1742,1763,"georg","d","Приход — Георгиевская церковь пригорода Воронича (1742–1756)."]]},
+ {id:"poruh",name:"Порухово",plc:"PLC1011-porukhovo",people:["P1064"],
+  docs:[[1719,"A1278"],[1745,"A1179"],[1763,"A1185"]],
+  segs:[[1710,1735,"unk","e","Евдокия (Авдотья) Алексеева, ок. 1709–1712 г. р. (по возрасту); вышла замуж в Печохново до рождения дочери Анны (ок. 1736–1738)."]]},
+ {id:"popg",name:"Попова Гора",plc:"PLC1017-popova-gora",people:["P1069","P1068","P1043","P1070","P1041","P1042","P1039","P1037","P1038","P1036"],
+  docs:[[1719,"A1277"],[1745,"A1160"],[1748,"A1195"],[1751,"A1161","m"],[1754,"A1162"],[1763,"A1186"],[1770,"A1163"],[1780,"A1164"],[1789,"A1165","m"],[1806,"A1167"],[1811,"1811 — VI ревизия, ГАПО ф. 58, оп. 1, д. 1150","x"],[1822,"A1172","m"],[1825,"B1010"],[1826,"1826 — исповедная роспись, ГАПО ф. 39, оп. 1, д. 2703, л. 1001 об.","x"]],
+  segs:[[1649,1719,"georg","e","Самуил Яковлев, 70 лет в 1719 г.; годы до ревизии — по возрасту."],
+        [1719,1781,"georg","d","Приход — Георгиевская церковь пригорода Воронича (1751–1780)."],
+        [1781,1787,"georg","e","Между 1780 и 1789 гг. деревня перешла в приход Пятницкой церкви; по таблице составителя — с 1787 г."],
+        [1787,1789,"pyat","e","Между 1780 и 1789 гг. — переход в Пятницкую церковь; по таблице составителя — с 1787 г."],
+        [1789,1828,"pyat","d","Приход — Пятницкая церковь Святогорского монастыря (1789–1822)."]]},
+ {id:"kost",name:"Костково",plc:"PLC1013-kostkovo",people:["P1072","P1073","P1074","P1075","P1044","P1038"],
+  docs:[[1763,"A1181"],[1803,"A1166"],[1806,"A1168","m"],[1809,"A1173","m"],[1811,"1811 — VI ревизия, ГАПО ф. 58, оп. 1, д. 1150","x"]],
+  segs:[[1693,1763,"pyat","e","Никифор Никулин, ок. 1693 г. р.; годы до ревизии — по возрасту. Приход до 1806 г. в документах не указан; Пятницкая церковь — по мнению составителя."],
+        [1763,1806,"pyat","e","Семья записана здесь в 1763 и 1803 гг.; приход в этих документах не указан."],
+        [1806,1809,"pyat","d","Приход — Пятницкая церковь Святогорского монастыря (1806–1809)."]]},
+ {id:"puh",name:"Пухово",plc:"PLC1021-pukhovo",people:["P1073"],src:["A1181"],
+  segs:[[1698,1720,"unk","e","Ксения Трофимова, ок. 1698 г. р. (по возрасту); вышла замуж в Костково до рождения сына Исаака (ок. 1725)."]]},
+ {id:"bor",name:"Боровово",plc:"PLC1023-borovovo",people:["P1075"],src:["A1181"],segs:[]},
+ {id:"sabl",name:"Саблево (Шевели)",plc:"PLC1022-sablevo-sheveli",people:["P1070"],src:["A1186"],
+  segs:[[1711,1733,"unk","e","Параскева Харитонова, ок. 1711–1712 г. р. (по возрасту), Богородицкая губа."]]},
+ {id:"van",name:"Ванютино",plc:"PLC1018-vanyutino",people:["P1042"],src:["A1161","A1186"],docs:[[1763,"A1187"]],
+  segs:[[1733,1751,"unk","e","Федосья Егорова, ок. 1732–1734 г. р. (по возрасту), Богородицкая губа."]]}
+];
+
+// Браки и переселения: [год, откуда, куда, "d" — дата из документа | "e" — примерно, текст, кто, источники].
+const MOVES=[
+ [1731,"koch","mysh","d","1731 — Дарья Васильева вышла замуж в Мышино за Евдокима Калинина","P1058",["A1174"]],
+ [1750,"bykh","mysh","d","1750 — Авдотья Иванова вышла замуж в Мышино за Козьму Евдокимова","P1056",["A1174"]],
+ [1742,"gark","zub","e","ок. 1742 — Авдотья Маркова — жена Якова Семенова (семья позже жила в Зубове)","P1053",["A1159"]],
+ [1778,"mysh","zub","e","до 1782 (ок. 1778) — Екатерина Козьмина вышла замуж в Зубово за Ивана Петрова","P1049",["A1159","A1174"]],
+ [1811,"zub","mokr","d","30.01.1811 — Дарья Иванова вышла замуж в Мокряне за Тита Миронова","P1029",["A1155"]],
+ [1818,"mokr","lesk","e","между 1811 и 1825 — семья Мирона Егорова и Тита Миронова переселилась в Лескушкино","P1028",["A1155","B1007"]],
+ [1834,"lesk","makov","d","18.02.1834 — Марфа Титова вышла замуж в Маковицы за Ивана Давыдова","P1027",["A1074"]],
+ [1728,"drisk","zuev","e","ок. 1728 (не позже 1737) — Фекла Михайлова вышла замуж в Зуево за Козьму Нестерова; что она мать Гликерии — не доказано",null,["A1144"]],
+ [1752,"zuev","makov","e","до 1754–1757 — Гликерия Козьмина вышла замуж в Маковицы за Федота Евтифиева","P1022",["A1143"]],
+ [1744,"kolt","makov","e","до 1745 — семья Евтифея Иванова переведена из Колтырева в Маковицы","P1023",["A1047"]],
+ [1895,"zakh","makov","d","30.01.1895 — Александра Андреева вышла замуж в Маковицы за Ив. Вас. Давыдова","P1018",["A1103"]],
+ [1797,"gor","zakh","e","между 1792 и 1802 — семья Сергея Афанасьева переселилась из Горелика в Захарино","P1009",["A1053","A1055"]],
+ [1790,"march","gor","d","27.10.1790 — Мавра Егорова вышла замуж в Горелик за Потапа Сергеева","P1012",["A1066"]],
+ [1743,"gor","kras","e","до 1745 — семья Афанасия Федотова переведена из Горелика в Красихину","P1066",["A1180"]],
+ [1756,"pech","gor","d","10.11.1756 — Анна Никифорова вышла замуж в Горелик за Сергея Афанасьева","P1010",["A1063"]],
+ [1735,"poruh","pech","e","до 1736–1738 — Евдокия Алексеева вышла замуж в Печохново за Никифора Григорьева","P1064",["A1182"]],
+ [1828,"popg","zakh","d","04.11.1828 — Настасья Федорова вышла замуж в Захарино за Косму Потапова","P1036",["A1126"]],
+ [1806,"kost","popg","d","1806 — Татьяна Матфеева вышла замуж в Попову Гору за Феодора Иванова","P1038",["A1168"]],
+ [1720,"puh","kost","e","ок. 1720 — Ксения Трофимова вышла замуж в Костково за Никифора Никулина","P1073",["A1181"]],
+ [1750,"bor","kost","e","ок. 1750 (до рождения сына Матфея, ок. 1752–1755) — Настасья Радионова вышла замуж в Костково за Исаака Никифорова","P1075",["A1181"]],
+ [1733,"sabl","popg","e","ок. 1733 (до рождения сына Елисея, ок. 1734–1738) — Параскева Харитонова вышла замуж в Попову Гору за Филиппа Кондратьева","P1070",["A1186"]],
+ [1751,"van","popg","d","1751 — Федосья Егорова вышла замуж в Попову Гору за Елисея Филиппова","P1042",["A1161"]]
+];
+const REV=[[1711,"1711"],[1719,"I"],[1745,"II"],[1763,"III"],[1782,"IV"],[1795,"V"],[1811,"VI"],[1816,"VII"],[1834,"VIII"],[1850,"IX"],[1858,"X"]];
+
+const NS="http://www.w3.org/2000/svg";
+const Y0=1620,Y1=1935,LW=190,PW=1150,W=LW+PW+130,TOP=64,RH=30,GH=30,BH=16;
+const px=y=>LW+(y-Y0)/(Y1-Y0)*PW;
+const svg=document.getElementById("tl");
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);(parent||svg).appendChild(e);return e}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const personLink=id=>P[id]?`<a href="../people/${P[id][1]}/" target="_top">${esc(P[id][0])}</a>`:"";
+const srcLink=id=>S[id]?`<a href="../sources/${S[id][0]}/" target="_top">${esc(S[id][1])}</a>`:id;
+
+// Раскладка по вертикали.
+let y=TOP;const rowY={};
+ROWS.forEach(r=>{ if(r.g){r._y=y+GH-10;y+=GH;} else {rowY[r.id]=y+RH/2;r._y=y+RH/2;y+=RH;} });
+const H=y+14;
+svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+
+// Штриховки для «оценочных» полос — по цвету прихода.
+const defs=el("defs",{});
+Object.keys(PARISH).forEach(k=>{
+  const p=el("pattern",{id:"h-"+k,patternUnits:"userSpaceOnUse",width:6,height:6,patternTransform:"rotate(45)"},defs);
+  el("rect",{width:6,height:6,style:`fill:var(--p-${k});opacity:.28`},p);
+  el("line",{x1:0,y1:0,x2:0,y2:6,style:`stroke:var(--p-${k});stroke-width:3`},p);
+});
+const mk=el("marker",{id:"arr",viewBox:"0 0 10 10",refX:8,refY:5,markerWidth:7,markerHeight:7,orient:"auto-start-reverse"},defs);
+el("path",{d:"M0,0 L10,5 L0,10 z",style:"fill:var(--fg)"},mk);
+
+// Сетка десятилетий и ревизии.
+for(let d=1630;d<=1930;d+=10){
+  el("line",{x1:px(d),x2:px(d),y1:TOP-6,y2:H-10,class:"grid"});
+  if(d%50===0){ const t=el("text",{x:px(d),y:TOP-34,class:"ax"}); t.textContent=d; }
+}
+REV.forEach(([yr,l],i)=>{
+  el("line",{x1:px(yr),x2:px(yr),y1:TOP-22,y2:H-10,class:"rev"});
+  const t=el("text",{x:px(yr),y:TOP-(i%2?10:22)+ (i%2?0:0),class:"revl"}); t.textContent=l;
+  const tt=el("title",{},t); tt.textContent=yr===1711?"Перепись 1711 г.":`${l} ревизия, ${yr} г.`;
+});
+
+// Подписи строк и группы.
+ROWS.forEach(r=>{
+  if(r.g){ const t=el("text",{x:8,y:r._y,class:"gh"}); t.textContent=r.g.toUpperCase(); return; }
+  el("line",{x1:LW-6,x2:LW+PW,y1:r._y,y2:r._y,class:"rowline"});
+  let parent=svg;
+  if(r.plc){ parent=el("a",{href:`../places/${r.plc}/`,target:"_top"}); }
+  const t=el("text",{x:LW-12,y:r._y+5,class:"rl"+(r.plc?"":" nolink"),"text-anchor":"end"},parent); t.textContent=r.name;
+});
+
+// Подсказка.
+const tip=document.getElementById("tip");let pinned=false;
+function place(ev){
+  const pad=14,w=tip.offsetWidth,h=tip.offsetHeight;
+  let x=ev.clientX+pad,yy=ev.clientY+pad;
+  if(x+w>innerWidth-8)x=Math.max(8,ev.clientX-w-pad);
+  if(yy+h>innerHeight-8)yy=Math.max(8,ev.clientY-h-pad);
+  tip.style.left=x+"px";tip.style.top=yy+"px";
+}
+function show(html,ev,pin){
+  if(pinned&&!pin)return;
+  tip.innerHTML=(pin?'<button class="x" aria-label="Закрыть">×</button>':"")+html;
+  tip.hidden=false;tip.classList.toggle("pin",!!pin);pinned=!!pin;place(ev);
+  if(pin)tip.querySelector(".x").onclick=hide;
+}
+function hide(){tip.hidden=true;pinned=false;tip.classList.remove("pin")}
+document.addEventListener("click",e=>{if(pinned&&!tip.contains(e.target)&&!e.target.closest(".hot"))hide()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")hide()});
+function bind(g,fn){
+  g.classList.add("hot");g.setAttribute("tabindex","0");
+  g.addEventListener("mousemove",e=>show(fn(false),e,false));
+  g.addEventListener("mouseleave",()=>{if(!pinned)hide()});
+  g.addEventListener("click",e=>{e.stopPropagation();show(fn(true),e,true)});
+  g.addEventListener("keydown",e=>{if(e.key==="Enter"){const b=g.getBoundingClientRect();show(fn(true),{clientX:b.left,clientY:b.bottom},true)}});
+}
+const yrs=(a,b)=>`${a}–${b}`;
+
+// Полосы.
+ROWS.forEach(r=>{
+  if(r.g)return;
+  r.segs.forEach(([a,b,p,c,note,noParish])=>{
+    const g=el("g",{class:"seg",role:"button","aria-label":`${r.name}, ${yrs(a,b)}`+(noParish?"":`: ${PARISH[p]}`)});
+    const x=px(a)+1,w=Math.max(3,px(b)-px(a)-2);
+    el("rect",{x,y:r._y-BH/2,width:w,height:BH,rx:4,class:"sh",style:c==="d"?`fill:var(--p-${p})`:`fill:url(#h-${p})`},g);
+    bind(g,pin=>{
+      let h=`<b>${esc(r.name)}</b> · ${yrs(a,b)}`
+        +(noParish?"":`<p><span class="sw" style="background:var(--p-${p})"></span>${esc(PARISH[p])}</p>`)
+        +`<p class="m">${esc(note)}</p>`;
+      if(pin){
+        if(r.plc)h+=`<p><a href="../places/${r.plc}/" target="_top">Страница деревни →</a></p>`;
+        if(r.people.length)h+=`<p>Предки: ${r.people.map(personLink).join(", ")}</p>`;
+        const ss=(r.docs||[]).filter(d=>d[2]!=="x").map(d=>d[1]).concat(r.src||[]).filter((v,i,a)=>a.indexOf(v)===i);
+        if(ss.length)h+=`<p class="m">Источники: ${ss.map(srcLink).join("; ")}</p>`;
+      } else if(r.people.length) h+=`<p class="m">Предки: ${r.people.map(id=>P[id]?esc(P[id][0]):"").join(", ")}</p>`;
+      return h;
+    });
+  });
+  if(r.end){ const t=el("text",{x:px(1930)+6,y:r._y+4,class:"endl"}); t.textContent=r.end; }
+});
+
+// Браки и переселения — поверх полос.
+MOVES.forEach(([yr,from,to,c,txt,pid,src])=>{
+  const x=px(yr),y1=rowY[from],y2=rowY[to];
+  const dir=y2>y1?1:-1, ya=y1+dir*(BH/2+1), yb=y2-dir*(BH/2+3);
+  const d=`M${x},${ya} C${x+10},${ya+dir*12} ${x+10},${yb-dir*12} ${x},${yb}`;
+  const g=el("g",{class:"mvg",role:"button","aria-label":txt});
+  el("path",{d,class:"mvhalo"},g);
+  el("path",{d,class:"mv"+(c==="e"?" dash":""),"marker-end":"url(#arr)"},g);
+  el("circle",{cx:x,cy:y1,r:3.2,style:"fill:var(--fg)"},g);
+  el("path",{d,class:"mvhit"},g);
+  bind(g,pin=>`<b>${esc(txt)}</b>`+(pin?(pid?`<p>${personLink(pid)}</p>`:"")+`<p class="m">${src.map(srcLink).join("; ")}</p>`:""));
+});
+
+// Документы — точки на строке.
+ROWS.forEach(r=>{
+  if(r.g||!r.docs)return;
+  // [год, источник] — перепись, ревизия, исповедная роспись; [год, источник, "m"] — метрическая запись,
+  // подтверждающая приход; [год, описание, "x"] — есть в таблице составителя, на сайте пока нет.
+  r.docs.forEach(([yr,id,k])=>{
+    const inside=r.segs.some(s=>yr>=s[0]&&yr<=s[1]);
+    const label=k==="x"?id+" — в таблице составителя, на сайте пока нет":(S[id]?S[id][1]:id);
+    const cls="doc"+(inside?"":" out")+(k==="x"?" nosite":"");
+    const x=px(yr),cy=r._y;
+    const c=k==="m"
+      ? el("path",{d:`M${x},${cy-4.6} L${x+4.6},${cy} L${x},${cy+4.6} L${x-4.6},${cy} z`,class:cls,role:"button","aria-label":label})
+      : el("circle",{cx:x,cy,r:inside?3.6:3,class:cls,role:"button","aria-label":label});
+    bind(c,pin=>`<b>${esc(r.name)}</b><p>${pin&&k!=="x"?srcLink(id):esc(label)}</p>`);
+  });
+});
+
+// Легенда приходов — в порядке появления на схеме.
+const lg=document.getElementById("legend");
+["georg","pol","rozh","pyat","vved","voskr","unk"].forEach(k=>{
+  const li=document.createElement("li");
+  li.innerHTML=`<i style="background:var(--p-${k})"></i>${esc(PARISH[k])}`;lg.appendChild(li);
+});
+</script>
+</body>
+</html>

@@ -207,7 +207,7 @@ Object.values(N).forEach(n=>{
   const nm=n.stub?n.p.name:shortName(n.p.name);
   const t1=el("text",{class:"nm",x:x+10,y:y+19},g); t1.textContent=nm;
   if(nm.length>25) t1.style.fontSize="11px";
-  const t2=el("text",{class:"yr",x:x+10,y:y+36},g); t2.textContent=n.stub?"живые":(n.p.years||"");
+  const t2=el("text",{class:"yr",x:x+10,y:y+36},g); t2.textContent=n.stub?"":(n.p.years||"");
   const dots=["birth","marriage","death"].map((k,i)=>el("circle",{class:"dot",cx:x+w-32+i*11,cy:y+H-13,r:4.2},g));
   nodes[n.id]={g,box,t1,t2,dots,n};
 });
@@ -219,6 +219,8 @@ function otherLevel(c){return c===0?0:c<=2?1:c<=5?2:c<=10?3:4}
 const OL=[["--none","--none-fg"],["--o1","--doc-fg"],["--o2","--doc-fg"],["--o3","--rec-fg"],["--o4","--o4-fg"]];
 const OLT=["нет","1–2","3–5","6–10","11 и больше"];
 function stateOf(p,mode){return mode==="other"?null:p[mode].s}
+// другие документы: на сайте + у составителя
+const otherCount=p=>p.other.docs.length+(p.other.held||[]).length;
 
 const LEG={
   birth:[["rec","есть запись о рождении"],["doc","записи нет — родители по другим документам"],["guess","родители — вывод составителя"],["none","документов нет"]],
@@ -230,13 +232,13 @@ function render(mode){
   const cnt={};
   Object.values(nodes).forEach(({box,t1,t2,dots,n,g})=>{
     const p=n.p; let bg,fg,key;
-    if(mode==="other"){const c=p.other.docs.length,l=otherLevel(c);[bg,fg]=OL[l];key="o"+l;}
+    if(mode==="other"){const c=otherCount(p),l=otherLevel(c);[bg,fg]=OL[l];key="o"+l;}
     else{key=stateOf(p,mode);[bg,fg]=ST[key];}
     if(!n.stub) cnt[key]=(cnt[key]||0)+1;  // в счёт легенды — только люди со страницей
     box.setAttribute("fill",`var(${bg})`); t1.setAttribute("fill",`var(${fg})`); t2.setAttribute("fill",`var(${fg})`);
     g.classList.toggle("st-none",key==="none"||key==="o0");
     ["birth","marriage","death"].forEach((k,i)=>dots[i].setAttribute("fill",`var(${DOT[p[k].s]})`));
-    g.setAttribute("aria-label",`${p.name}, ${p.years||""}: ${mode==="other"?p.other.docs.length+" док.":({rec:"есть запись",doc:"по другим документам",guess:"вывод составителя",none:"документов нет"})[key]}`);
+    g.setAttribute("aria-label",`${p.name}, ${p.years||""}: ${mode==="other"?otherCount(p)+" док.":({rec:"есть запись",doc:"по другим документам",guess:"вывод составителя",none:"документов нет"})[key]}`);
   });
   lg.innerHTML="";
   const add=h=>{const li=document.createElement("li");li.innerHTML=h;lg.appendChild(li)};
@@ -266,14 +268,15 @@ function parentRole(q){return P[q].sex==="f"?"Мать":"Отец"}
 const held=x=>{
   if(!x.held) return "";
   const many=x.held.length>1||/^(два|две|три|свидетельства)/.test(x.held[0]);
-  return `<p>У составителя есть ${esc(x.held.join(" и "))} (на сайте не публику${many?"ются":"ется"}).</p>`;
+  const list=x.held.length>2?x.held.slice(0,-1).join(", ")+" и "+x.held[x.held.length-1]:x.held.join(" и ");
+  return `<p>У составителя есть ${esc(list)} (на сайте не публику${many?"ются":"ется"}).</p>`;
 };
 const recOrHeld=(x,none)=>x.docs.length?docUl(x.docs)+held(x):(x.held?held(x):`<p>${none}</p>`);
 
 function tipHTML(id,mode){
   const p=P[id];
   let h=`<button class="close" aria-label="Закрыть">×</button><h2>${esc(p.name)}</h2>`
-       +`<div class="yrs">${p.stub?"сведения о живых на сайте не публикуются":esc(p.years||"")}</div>`;
+       +`<div class="yrs">${p.stub?"сведения не публикуются":esc(p.years||"")}</div>`;
   if(mode==="birth"){
     const b=p.birth;
     h+=`<h3>Рождение</h3>${badge(b.s)}`;
@@ -306,8 +309,9 @@ function tipHTML(id,mode){
     if(x.s!=="rec" && x.cited.length) h+=`<h3>Документы</h3>${docUl(x.cited)}`;
   } else {
     const d=p.other.docs;
-    h+=`<h3>Другие документы — ${d.length}</h3>`;
-    h+=d.length?docUl(d.slice(0,8))+docUl(d.slice(8),true):`<p>На сайте других документов нет.</p>`;
+    h+=`<h3>Другие документы — ${otherCount(p)}</h3>`;
+    h+=d.length?docUl(d.slice(0,8))+docUl(d.slice(8),true):(p.other.held?"":`<p>На сайте других документов нет.</p>`);
+    h+=held(p.other);
     if(d.length>8) h+=`<p class="q hoveronly">…и ещё ${d.length-8} — нажмите, чтобы увидеть все.</p>`;
     const own=[...p.birth.docs,...p.marriage.docs,...p.death.docs];
     if(own.length) h+=`<p class="q">Кроме записей о рождении, браке и смерти: ${own.length}.</p>`;

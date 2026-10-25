@@ -47,13 +47,17 @@ STUBS = [
     ["lar", "Л", ["P1005", "P1006"], {"birth": "свидетельство о рождении",
                                       "marriage": ["два свидетельства о браке", "документ о расторжении первого брака"]}],
     ["oks", "О", ["yur", "P1108"], {"birth": "свидетельство о рождении", "marriage": "свидетельство о браке"}],
-    ["yur", "Ю", [], {"birth": "свидетельство о рождении"}],
+    ["yur", "Ю", [], {"birth": "свидетельство о рождении", "marriage": "свидетельство о браке"}],
 ]
 # Документы, которые есть у составителя, но на сайте не опубликованы (со слов составителя,
 # 2026-10-25). В схеме они считаются записью («зелёный»), в подсказке — «у составителя есть …».
 COMPILER_DOCS = {
     "P1109": {"marriage": "свидетельство о браке"},  # свидетельство о смерти — на сайте, D1007
-    "P1108": {"death": "свидетельство о смерти"},
+    "P1005": {"death": "свидетельство о смерти"},
+    "P1108": {"birth": "свидетельство о рождении", "marriage": "свидетельство о браке",
+              "death": "свидетельство о смерти",
+              "other": ["паспорт", "партийный билет", "трудовая книжка",
+                        "учётная карточка члена ВЛКСМ"]},
 }
 OUT = "schemes/document-registry-data.js"
 
@@ -321,7 +325,7 @@ def _person(pid, ids, url_of):
                      "info": info(s_bl), "cited": doclist([c for c in dict.fromkeys(cited(s_bl)) if c in _sources and c not in own["M"]])},
         "death": {"s": d_state, "docs": doclist(own["D"]),
                   "info": info(d_bl), "cited": doclist([c for c in dict.fromkeys(cited(d_bl)) if c in _sources and c not in own["D"]])},
-        "other": {"docs": doclist(other)},
+        "other": {"docs": doclist(other)},  # + "held" из COMPILER_DOCS
         "edges": edges,
     }
     _add_held(out, COMPILER_DOCS.get(pid, {}))
@@ -330,10 +334,13 @@ def _person(pid, ids, url_of):
 
 def _add_held(entry, held):
     """Документы у составителя: событие «есть запись»; свидетельство о рождении
-    подтверждает и родителей (кроме тех, что помечены как вывод составителя)."""
+    подтверждает и родителей (кроме тех, что помечены как вывод составителя).
+    Прочие документы (`other`) только добавляются к счёту и списку."""
     for key, title in held.items():
-        entry[key]["s"] = "rec"
         entry[key]["held"] = title if isinstance(title, list) else [title]
+        if key == "other":
+            continue
+        entry[key]["s"] = "rec"
         if key == "birth":
             for e in entry["edges"].values():
                 if e["s"] != "guess":
