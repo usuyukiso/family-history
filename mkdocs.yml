@@ -8,6 +8,8 @@ theme:
   name: material
   custom_dir: overrides
   language: ru
+  # Значок вкладки — та же иконка, что в шапке, золотистая (#b89a56).
+  favicon: assets/images/favicon.svg
   features:
     - navigation.sections
     - navigation.indexes
