@@ -1,27 +1,119 @@
 /* Дополнительные стили генеалогической книги. */
 
-/* Основной цвет сайта — приглушённый тёмно-оливковый зелёный. */
+/* Основной цвет сайта — тёмный лесной зелёный #285638 (хедер, меню),
+   текст на нём — светло-зелёный #e8f5e9, наведение в навигации — #1b5e20.
+   Золотистый #b89a56 — иконки, разделители, выделение важного. */
 :root {
-  --md-primary-fg-color: #4a5d3a;
-  --md-primary-fg-color--light: #6b7d58;
-  --md-primary-fg-color--dark: #36452a;
-  --md-primary-bg-color: #fff;
-  --md-primary-bg-color--light: rgba(255, 255, 255, .7);
-  --md-accent-fg-color: #7a8f4e;
-  --md-accent-fg-color--transparent: rgba(122, 143, 78, .1);
-  --md-accent-bg-color: #fff;
-  --md-accent-bg-color--light: rgba(255, 255, 255, .7);
+  --md-primary-fg-color: #285638;
+  --md-primary-fg-color--light: #3d7350;
+  --md-primary-fg-color--dark: #1d4029;
+  --md-primary-bg-color: #e8f5e9;
+  --md-primary-bg-color--light: rgba(232, 245, 233, .7);
+  --md-accent-fg-color: #1b5e20;
+  --md-accent-fg-color--transparent: rgba(27, 94, 32, .1);
+  --md-accent-bg-color: #e8f5e9;
+  --md-accent-bg-color--light: rgba(232, 245, 233, .7);
+  --site-gold: #b89a56;
 }
+/* В тёмной теме #1b5e20 на тёмном фоне почти не виден (контраст 2:1),
+   поэтому наведение — светлый вариант того же зелёного. */
 [data-md-color-scheme="slate"] {
   --md-typeset-a-color: #9db07f;
-  --md-accent-fg-color: #a3b87a;
-  --md-accent-fg-color--transparent: rgba(163, 184, 122, .1);
+  --md-accent-fg-color: #81c784;
+  --md-accent-fg-color--transparent: rgba(129, 199, 132, .1);
+  --md-accent-bg-color: #1b2e20;
+}
+/* Шапка: название сайта и подзаголовок мелким шрифтом второй строкой.
+   Шапка выше стандартной (2.4rem), поэтому её высота — в переменной:
+   от неё отсчитываются прилипающие боковые меню и якоря. Размеры в px:
+   rem у Material крупнее обычного (корневой шрифт 20px и больше). */
+:root {
+  --site-header-h: 75px;
+}
+.md-header__title {
+  height: auto;
+  line-height: normal;
+  min-width: 0;
+}
+.md-header__topic:first-child {
+  position: relative;
+  max-width: 100%;
+}
+/* Заголовок статьи, который появляется в шапке при прокрутке, занимает всю её высоту:
+   подсказка с полным заголовком (тема ставит её под этим блоком) тогда выходит
+   ниже шапки, а не прячется под ней. */
+.md-header__topic + .md-header__topic {
+  top: 0;
+  bottom: 0;
+}
+.md-header__topic + .md-header__topic .md-ellipsis {
+  line-height: var(--site-header-h);
+}
+.site-heading {
+  padding: 11px 24px 10px;
+  min-width: 0;
+}
+.site-heading__title,
+.site-heading__subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.site-heading__title {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+.site-heading__subtitle {
+  margin: 3px 0 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #e4ebdd;
+}
+.md-sidebar {
+  top: var(--site-header-h);
+}
+/* Иконка сайта в шапке — крупнее стандартных 24px, золотистая. */
+.md-header__button.md-logo {
+  color: var(--site-gold);
+}
+.md-header__button.md-logo :is(img, svg) {
+  height: 38px;
+  width: auto;
+}
+.md-typeset :target {
+  --md-scroll-margin: calc(var(--site-header-h) + 1.2rem);
+}
+/* На телефоне шапка компактнее, чтобы не занимала треть экрана. */
+@media screen and (max-width: 44.984375em) {
+  :root {
+    --site-header-h: 76px;
+  }
+  .md-header__topic:first-child {
+    white-space: normal;
+  }
+  .site-heading {
+    padding: 10px 0 9px;
+  }
+  .site-heading__title {
+    font-size: 17px;
+  }
+  .site-heading__subtitle {
+    margin-top: 2px;
+    font-size: 12px;
+  }
 }
 
-/* Палитра светлой темы: тёплый почти белый фон, коричневый текст, песочные рамки. */
+/* Разделители — золотистые. */
+.md-typeset hr {
+  border-bottom-color: var(--site-gold);
+}
+
+/* Палитра светлой темы: тёплый бежевый фон #f5f0e6, коричневый текст, песочные рамки. */
 :root,
 [data-md-color-scheme="default"] {
-  --md-default-bg-color: #fdfbf5;
+  --md-default-bg-color: #f5f0e6;
   --md-default-fg-color: #3b3025;
   --md-default-fg-color--light: rgba(59, 48, 37, .62);
   --md-default-fg-color--lighter: rgba(59, 48, 37, .34);
