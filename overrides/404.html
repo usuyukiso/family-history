@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+
+{#- Страница «не найдено». Ссылки — от site_url: 404.html отдаётся
+    по любому несуществующему адресу, относительные пути там не работают. -#}
+{% set root = config.site_url | d(base_url ~ "/", true) %}
+
+{% block content %}
+<div class="page-404">
+  <svg class="page-404__tree" viewBox="0 0 220 170" role="img"
+       aria-label="Ветвь родословного древа обрывается вопросительным знаком">
+    <g class="page-404__lines">
+      <path d="M110 150 V120 M110 120 H60 V92 M110 120 H160 V92"/>
+      <path d="M60 70 V48 M60 48 H30 V30 M60 48 H90 V30"/>
+      <path class="page-404__lost" d="M160 70 V48 M160 48 H130 V30 M160 48 H190 V30"/>
+    </g>
+    <g class="page-404__nodes">
+      <circle cx="110" cy="150" r="9"/>
+      <circle cx="60" cy="81" r="9"/>
+      <circle cx="160" cy="81" r="9"/>
+      <circle cx="30" cy="21" r="8"/>
+      <circle cx="90" cy="21" r="8"/>
+    </g>
+    <g class="page-404__unknown">
+      <circle cx="130" cy="21" r="8"/>
+      <circle cx="190" cy="21" r="8"/>
+      <text x="130" y="25">?</text>
+      <text x="190" y="25">?</text>
+    </g>
+    <g class="page-404__lens">
+      <circle cx="177" cy="44" r="17"/>
+      <path d="M189 56 L204 71"/>
+    </g>
+  </svg>
+
+  <p class="page-404__code">Ф. 404 · оп. — · дело не значится</p>
+  <h1>Здесь след обрывается</h1>
+  <p>Такой страницы на сайте нет. Возможно, адрес набран с ошибкой или страница переехала — как дела, которые при передаче из архива в архив получают новые шифры.</p>
+  <p>Как и в настоящем поиске, лучше вернуться к тому, что уже известно:</p>
+  <p class="page-404__links">
+    <a class="md-button md-button--primary" href="{{ root }}">На главную</a>
+    <a class="md-button" href="{{ root }}tree/">Родословное древо</a>
+    <a class="md-button" href="{{ root }}people/">Персоны</a>
+    <label class="md-button" for="__search">Поиск по сайту</label>
+  </p>
+</div>
+{% endblock %}
