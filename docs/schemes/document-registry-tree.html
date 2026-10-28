@@ -82,6 +82,7 @@ svg#tree{display:block;user-select:none;-webkit-user-select:none}
 .node:hover rect.box,.node:focus-visible rect.box,.node.on rect.box{stroke:var(--fg);stroke-width:2;stroke-dasharray:none}
 .nm{font:700 12.5px var(--body)}
 .yr{font:400 11px var(--body);opacity:.8}
+.vl{font:italic 400 11px var(--body);opacity:.85}
 .dot{stroke:rgba(0,0,0,.4);stroke-width:1}
 #tip{position:fixed;background:var(--card);color:var(--fg);border:1px solid var(--line);
   border-radius:8px;padding:10px 12px;font-size:.88rem;box-shadow:0 6px 22px rgba(0,0,0,.2);
@@ -153,7 +154,7 @@ if(window.self!==window.top) document.body.classList.add("embed");
 const R=window.REGISTRY||{people:{},sources:{},stubs:[]};
 const P=R.people, SRC=R.sources;
 const MODES={birth:"запись о рождении",marriage:"запись о браке",death:"запись о смерти",other:"другие документы"};
-const W=196,SW=96,H=46,COLW=236,ROWH=54,PADX=40,PADY=34;
+const W=196,SW=96,H=60,COLW=236,ROWH=68,PADX=40,PADY=34;
 
 // ---- узлы: люди с сайта и живые родственники (одна буква, без сведений) ----
 // Живые кладутся в P рядом с остальными, с пометкой stub: имя — буква, без страницы.
@@ -205,11 +206,14 @@ Object.values(N).forEach(n=>{
   const g=el("g",{class:"node"+(n.stub?" stub":""),tabindex:"0",role:"button"},gNodes);
   const box=el("rect",{class:"box",x,y,width:w,height:H,rx:8},g);
   const nm=n.stub?n.p.name:shortName(n.p.name);
-  const t1=el("text",{class:"nm",x:x+10,y:y+19},g); t1.textContent=nm;
+  const t1=el("text",{class:"nm",x:x+10,y:y+(n.stub?19:18)},g); t1.textContent=nm;
   if(nm.length>25) t1.style.fontSize="11px";
-  const t2=el("text",{class:"yr",x:x+10,y:y+36},g); t2.textContent=n.stub?"":(n.p.years||"");
+  // деревня рождения (или жизни, если рождение неизвестно) — между именем и годами; у живых нет
+  const vl=n.stub?"":(n.p.village||"");
+  const t3=el("text",{class:"vl",x:x+10,y:y+33},g); t3.textContent=vl.length>30?vl.slice(0,29)+"…":vl;
+  const t2=el("text",{class:"yr",x:x+10,y:y+(n.stub?36:48)},g); t2.textContent=n.stub?"":(n.p.years||"");
   const dots=["birth","marriage","death"].map((k,i)=>el("circle",{class:"dot",cx:x+w-32+i*11,cy:y+H-13,r:4.2},g));
-  nodes[n.id]={g,box,t1,t2,dots,n};
+  nodes[n.id]={g,box,t1,t2,t3,dots,n};
 });
 
 // ---- цвета ----
@@ -230,12 +234,12 @@ const LEG={
 const lg=document.getElementById("legend"), sel=document.getElementById("mode");
 function render(mode){
   const cnt={};
-  Object.values(nodes).forEach(({box,t1,t2,dots,n,g})=>{
+  Object.values(nodes).forEach(({box,t1,t2,t3,dots,n,g})=>{
     const p=n.p; let bg,fg,key;
     if(mode==="other"){const c=otherCount(p),l=otherLevel(c);[bg,fg]=OL[l];key="o"+l;}
     else{key=stateOf(p,mode);[bg,fg]=ST[key];}
     if(!n.stub) cnt[key]=(cnt[key]||0)+1;  // в счёт легенды — только люди со страницей
-    box.setAttribute("fill",`var(${bg})`); t1.setAttribute("fill",`var(${fg})`); t2.setAttribute("fill",`var(${fg})`);
+    box.setAttribute("fill",`var(${bg})`); t1.setAttribute("fill",`var(${fg})`); t2.setAttribute("fill",`var(${fg})`); t3.setAttribute("fill",`var(${fg})`);
     g.classList.toggle("st-none",key==="none"||key==="o0");
     ["birth","marriage","death"].forEach((k,i)=>dots[i].setAttribute("fill",`var(${DOT[p[k].s]})`));
     g.setAttribute("aria-label",`${p.name}, ${p.years||""}: ${mode==="other"?otherCount(p)+" док.":({rec:"есть запись",doc:"по другим документам",guess:"вывод составителя",none:"документов нет"})[key]}`);

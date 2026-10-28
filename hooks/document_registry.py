@@ -176,6 +176,16 @@ def on_files(files, config):
     return files
 
 
+def _village(meta):
+    """Одна деревня для карточки: первая известная в `village` («? → д. Мышино → Зубово» —
+    «д. Мышино»), т. е. место рождения, а если оно неизвестно — первое место жизни."""
+    for part in str(meta.get("village") or "").split("→"):
+        part = part.strip()
+        if part and part != "?":
+            return part
+    return ""
+
+
 def _stems(p):
     """Начала личных имён человека («серг», «иоан»…) из `name` и `name_variants`."""
     names = [p["name"]] + [str(v) for v in p["meta"].get("name_variants") or []]
@@ -318,7 +328,7 @@ def _person(pid, ids, url_of):
         return [_plain(txt) for _, txt in bl][:2]
 
     out = {
-        "id": pid, "name": p["name"], "years": p["years"], "sex": meta.get("sex"),
+        "id": pid, "name": p["name"], "years": p["years"], "village": _village(meta), "sex": meta.get("sex"),
         "url": url_of(p["file"]), "parents": parents,
         "birth": {"s": b_state, "docs": doclist(own["B"]), "info": info(b_bl)},
         "marriage": {"s": m_state, "docs": doclist(own["M"]),
