@@ -16,7 +16,7 @@
 import re
 
 SKIP = {"index.md", "tree.md", "research-method.md", "genealogy-puzzles.md", "terminology.md", "about.md",
-        "sources/index.md", "people/index.md", "places/index.md", "surnames/index.md"}
+        "sources/index.md", "people/index.md", "places/index.md", "surnames/index.md", "misc/index.md"}
 
 TEXT = ("Материалы этой страницы подготовлены с помощью ИИ-инструментов "
         "на основе архивных документов и таблиц")

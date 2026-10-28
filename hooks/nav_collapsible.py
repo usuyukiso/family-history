@@ -9,7 +9,8 @@ COLLAPSIBLE вместо этого раскрываются по нажатию
 
 import re
 
-COLLAPSIBLE = {"Разное"}
+# «Разное» теперь всегда раскрыто, как остальные разделы; список пуст, пока не понадобится снова.
+COLLAPSIBLE = set()
 
 _LI = re.compile(r'<li class="([^"]*\bmd-nav__item--section\b[^"]*)">')
 _TITLE = re.compile(r'<span class="md-ellipsis">\s*([^<]*?)\s*</span>')

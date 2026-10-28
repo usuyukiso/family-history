@@ -71,11 +71,64 @@
   font-weight: 400;
   color: #e4ebdd;
 }
-.md-sidebar {
-  top: var(--site-header-h);
+/* Прилипающие боковые колонки — ниже шапки. Левое меню на узком экране (до 76.25em) —
+   выдвижная панель от верха экрана (top: 0), его не трогаем; «Содержание» справа
+   видно с 60em. */
+@media screen and (min-width: 60em) {
+  .md-sidebar--secondary {
+    top: calc(var(--site-header-h) + var(--site-menu-h));
+  }
 }
-/* Иконка сайта в шапке — крупнее стандартных 24px, золотистая. */
-.md-header__button.md-logo {
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    top: calc(var(--site-header-h) + var(--site-menu-h));
+  }
+}
+/* Строка разделов под шапкой: тот же зелёный, чуть темнее; текущий раздел
+   подчёркнут золотистым. Полное меню остаётся в левой колонке. */
+:root {
+  --site-menu-h: 36px;
+}
+.site-menu {
+  background-color: var(--md-primary-fg-color--dark);
+  color: var(--md-primary-bg-color);
+}
+.site-menu__inner {
+  display: flex;
+  gap: 4px;
+  height: var(--site-menu-h);
+  padding: 0 calc(.4rem + 4px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-menu__inner::-webkit-scrollbar {
+  display: none;
+}
+.site-menu__link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 12px;
+  border-bottom: 2px solid transparent;
+  font-size: 14px;
+  white-space: nowrap;
+  color: inherit;
+  opacity: .85;
+  transition: opacity .15s, border-color .15s;
+}
+.site-menu__link:hover,
+.site-menu__link:focus-visible {
+  color: inherit;
+  opacity: 1;
+}
+.site-menu__link--active {
+  opacity: 1;
+  border-bottom-color: var(--site-gold);
+}
+/* Иконка сайта в шапке — крупнее стандартных 24px, золотистая.
+   На телефоне она же стоит в заголовке выдвижного меню — тоже золотистая. */
+.md-header__button.md-logo,
+.md-nav__title .md-nav__button.md-logo {
   color: var(--site-gold);
 }
 .md-header__button.md-logo :is(img, svg) {
@@ -83,12 +136,17 @@
   width: auto;
 }
 .md-typeset :target {
-  --md-scroll-margin: calc(var(--site-header-h) + 1.2rem);
+  --md-scroll-margin: calc(var(--site-header-h) + var(--site-menu-h) + 1.2rem);
 }
 /* На телефоне шапка компактнее, чтобы не занимала треть экрана. */
 @media screen and (max-width: 44.984375em) {
   :root {
     --site-header-h: 76px;
+    --site-menu-h: 34px;
+  }
+  .site-menu__link {
+    padding: 0 8px;
+    font-size: 13px;
   }
   .md-header__topic:first-child {
     white-space: normal;
@@ -495,14 +553,29 @@
   margin: .8rem 0 1.2rem;
 }
 
-/* Левое меню (широкий экран): пункты разделов «Фамилии», «Места» и «Схемы» — с отступом
+/* Левое меню (широкий экран): пункты разделов «Фамилии», «Места» и «Разное» — с отступом
    и линией слева, чтобы отличались от заголовка раздела. Раздел узнаётся по ссылкам внутри
-   (SUR…, PLC… и страницы схем); «Персоны» и «Источники» не затрагиваются. */
+   (SUR…, PLC… и «Методология»); «Персоны» и «Источники» не затрагиваются. */
 @media screen and (min-width: 76.25em) {
-  .md-nav--primary > .md-nav__list > .md-nav__item--section:is(:has(a[href*="SUR1"]), :has(a[href*="PLC1"]), :has(a[href*="family-traits"]), :has(a[href*="document-registry"])) > .md-nav > .md-nav__list {
+  .md-nav--primary > .md-nav__list > .md-nav__item--section:is(:has(a[href*="SUR1"]), :has(a[href*="PLC1"]), :has(a[href*="research-method"])) > .md-nav > .md-nav__list {
     margin-left: .3rem;
     padding-left: .5rem;
     border-left: 1px solid var(--md-default-fg-color--lighter);
+  }
+  /* Стрелка раскрытия вложенного раздела: у темы кружок 18×18 px, по нему трудно попасть.
+     Область нажатия шире (32×24 px), сама стрелка того же размера. */
+  .md-nav--primary .md-nav__link .md-nav__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.2rem;
+    margin: -.15rem -.4rem -.15rem 0;
+    border-radius: .6rem;
+  }
+  .md-nav--primary .md-nav__link .md-nav__icon::after {
+    width: .9rem;
+    height: .9rem;
   }
 }
 

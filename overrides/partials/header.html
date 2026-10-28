@@ -64,6 +64,22 @@
       </div>
     {% endif %}
   </nav>
+  {% if config.extra.top_menu %}
+    <nav class="site-menu" aria-label="Разделы сайта">
+      <div class="site-menu__inner md-grid">
+        {% for item in config.extra.top_menu %}
+          {% set ns = namespace(current=false) %}
+          {% for prefix in [item.url] + (item.also or []) %}
+            {% if page and ((prefix == "" and page.is_homepage) or (prefix and page.url.startswith(prefix))) %}
+              {% set ns.current = true %}
+            {% endif %}
+          {% endfor %}
+          {% set current = ns.current %}
+          <a href="{{ item.url | url }}" class="site-menu__link{% if current %} site-menu__link--active{% endif %}"{% if current %} aria-current="page"{% endif %}>{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    </nav>
+  {% endif %}
   {% if "navigation.tabs.sticky" in features %}
     {% if "navigation.tabs" in features %}
       {% include "partials/tabs.html" %}

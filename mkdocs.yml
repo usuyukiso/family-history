@@ -88,7 +88,6 @@ validation:
 nav:
   - Главная: index.md
   - Родословное древо: tree.md
-  - Генеалогические загадки: genealogy-puzzles.md
   - Фамилии:
       - surnames/index.md
       - Березовский: surnames/SUR1006-berezovskiy.md
@@ -584,15 +583,38 @@ nav:
       - Базы данных:
           - sources/databases/DB1000-obd-memorial-davydov-70002475315.md
           - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md
-  - Схемы:
-      - Семейные черты: schemes/family-traits.md
-      - Реестр документов: schemes/document-registry.md
-      - Деревни и приходы: schemes/villages-parishes.md
-  - Методология: research-method.md
-  - Терминология: terminology.md
-  - О проекте: about.md
+  - Разное:
+      - misc/index.md
+      - Генеалогические загадки: genealogy-puzzles.md
+      - Схемы:
+          - schemes/index.md
+          - Семейные черты: schemes/family-traits.md
+          - Реестр документов: schemes/document-registry.md
+          - Деревни и приходы: schemes/villages-parishes.md
+      - Методология: research-method.md
+      - Терминология: terminology.md
+      - О проекте: about.md
 
 extra:
   generator: false
   # Подзаголовок мелким шрифтом под названием сайта в шапке (overrides/partials/header.html).
   subtitle: "Родословная, судьбы людей и семейные воспоминания"
+  # Строка разделов под названием сайта (overrides/partials/header.html): прямые ссылки
+  # на главные страницы разделов; полное меню — в левой колонке.
+  top_menu:
+    - title: Главная
+      url: ""
+    - title: Родословное древо
+      url: tree/
+    - title: Персоны
+      url: people/
+    - title: Фамилии
+      url: surnames/
+    - title: Места
+      url: places/
+    - title: Источники
+      url: sources/
+    - title: Разное
+      url: misc/
+      # Страницы раздела лежат не в misc/ — по этим адресам пункт тоже подсвечивается.
+      also: [genealogy-puzzles/, puzzles/, schemes/, research-method/, terminology/, about/]
