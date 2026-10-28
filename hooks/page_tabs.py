@@ -19,6 +19,18 @@ H2 = re.compile(r"<h2[^>]*>(.*?)</h2>", re.S)
 HEADERLINK = re.compile(r'<a class="headerlink"[^>]*>.*?</a>', re.S)
 
 
+SECOND_LINE = re.compile(r"^(.+) (губерния|область)$")
+
+
+def _label(name):
+    """Подпись вкладки; «губерния» / «область» — второй строкой мелким шрифтом
+    (вкладки на странице «Места»), чтобы вкладки были уже."""
+    m = SECOND_LINE.match(name)
+    if not m:
+        return html.escape(name)
+    return f'{html.escape(m.group(1))}<span class="page-tabs__sub">{m.group(2)}</span>'
+
+
 def on_page_content(content, page, config, files):
     if MARKER not in content:
         return content
@@ -34,7 +46,7 @@ def on_page_content(content, page, config, files):
         for i in range(len(pairs))
     )
     label_html = "".join(
-        f'<label for="__ptabs_{i + 1}">{html.escape(name)}</label>' for i, name in enumerate(labels)
+        f'<label for="__ptabs_{i + 1}">{_label(name)}</label>' for i, name in enumerate(labels)
     )
     blocks = "".join(f'<div class="tabbed-block">{text}</div>' for _, text in pairs)
     tabs = (

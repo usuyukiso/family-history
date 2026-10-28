@@ -87,7 +87,7 @@
 /* Строка разделов под шапкой: тот же зелёный, чуть темнее; текущий раздел
    подчёркнут золотистым. Полное меню остаётся в левой колонке. */
 :root {
-  --site-menu-h: 36px;
+  --site-menu-h: 44px;
 }
 .site-menu {
   background-color: var(--md-primary-fg-color--dark);
@@ -142,7 +142,7 @@
 @media screen and (max-width: 44.984375em) {
   :root {
     --site-header-h: 76px;
-    --site-menu-h: 34px;
+    --site-menu-h: 40px;
   }
   .site-menu__link {
     padding: 0 8px;
@@ -407,39 +407,61 @@
   margin: .25rem 0;
   padding: 0 0 .15rem .15rem;
 }
-/* Вкладки веток древа: крупнее обычных, шрифт PT Sans Narrow; подписи Material
+/* Вкладки веток древа и вкладки страниц из разделов (hooks/page_tabs.py: «Персоны»,
+   «Места»): крупнее обычных, шрифт PT Sans Narrow; подписи Material
    делает ссылками — общее подчёркивание ссылок сайта им не нужно.
    Вкладки, которые не помещаются, переносятся на новую строку (у Material —
    прокрутка вбок); поэтому бегунок Material (::before, двигается скриптом
    по одной строке) отключён, а выбранная вкладка подчёркнута своей рамкой. */
-.md-typeset .ftree .tabbed-labels {
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > .tabbed-labels {
   flex-wrap: wrap;
   overflow: visible;
 }
-.js .md-typeset .ftree .tabbed-labels::before {
+.js .md-typeset :is(.ftree .tabbed-set, .page-tabs) > .tabbed-labels::before {
   display: none;
 }
-.md-typeset .ftree .tabbed-labels > label {
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > .tabbed-labels > label {
   font-family: "PT Sans Narrow", "Arial Narrow", sans-serif;
   font-size: .9rem;
   border-bottom-width: 2px;
 }
-.md-typeset .ftree .tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
-.md-typeset .ftree .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
-.md-typeset .ftree .tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3),
-.md-typeset .ftree .tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),
-.md-typeset .ftree .tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
-.md-typeset .ftree .tabbed-set > input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6),
-.md-typeset .ftree .tabbed-set > input:nth-child(7):checked ~ .tabbed-labels > :nth-child(7),
-.md-typeset .ftree .tabbed-set > input:nth-child(8):checked ~ .tabbed-labels > :nth-child(8),
-.md-typeset .ftree .tabbed-set > input:nth-child(9):checked ~ .tabbed-labels > :nth-child(9),
-.md-typeset .ftree .tabbed-set > input:nth-child(10):checked ~ .tabbed-labels > :nth-child(10) {
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(7):checked ~ .tabbed-labels > :nth-child(7),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(8):checked ~ .tabbed-labels > :nth-child(8),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(9):checked ~ .tabbed-labels > :nth-child(9),
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > input:nth-child(10):checked ~ .tabbed-labels > :nth-child(10) {
   color: var(--md-default-fg-color);
   border-bottom-color: var(--md-default-fg-color);
 }
-.md-typeset .ftree .tabbed-labels a:not(.headerlink):not(.md-button) {
+.md-typeset :is(.ftree .tabbed-set, .page-tabs) > .tabbed-labels a:not(.headerlink):not(.md-button) {
   text-decoration: none;
   color: inherit;
+}
+/* Таблицы мест на странице «Места» (узнаются по ссылкам PLC… в первой колонке):
+   на всех вкладках одинаковые — во всю ширину, с одними и теми же ширинами колонок,
+   чтобы заголовки переносились одинаково; в «Персонах» помещается полное ФИО.
+   На узком экране ширины не задаются: таблица прокручивается вбок, как у темы. */
+@media screen and (min-width: 60em) {
+  .md-typeset .page-tabs table:has(td:first-child a[href*="PLC1"]) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  .md-typeset .page-tabs table:has(td:first-child a[href*="PLC1"]) th:nth-child(1) { width: 17%; }
+  .md-typeset .page-tabs table:has(td:first-child a[href*="PLC1"]) th:nth-child(2) { width: 30%; }
+  .md-typeset .page-tabs table:has(td:first-child a[href*="PLC1"]) th:nth-child(3) { width: 25%; }
+  .md-typeset .page-tabs table:has(td:first-child a[href*="PLC1"]) th:nth-child(4) { width: 28%; }
+}
+/* «губерния» / «область» под названием вкладки (hooks/page_tabs.py) */
+.md-typeset .page-tabs .page-tabs__sub {
+  display: block;
+  font-size: .75em;
+  line-height: 1.2;
 }
 /* У Material summary растянут на поля details (margin: 0 -.6rem); справа поля
    у details здесь нет, поэтому и summary справа не растягиваем — иначе он
