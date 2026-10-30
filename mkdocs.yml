@@ -72,6 +72,7 @@ extra_javascript:
   - javascripts/family-tree.js
   - javascripts/diagram-zoom.js
   - javascripts/page-tabs.js
+  - javascripts/home-photos.js
 
 # Страницы, доступные только по прямой ссылке (не в меню, не в поиске, не в карте сайта).
 not_in_nav: |

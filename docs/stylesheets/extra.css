@@ -783,9 +783,56 @@
   border-color: #8a7448;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .5);
 }
-@media (max-width: 480px) {
-  .md-typeset .home-photos { gap: .6rem; }
-  .md-typeset .home-photos a { padding: .25rem; }
+/* Точки под каруселью — только на телефоне (создаются в home-photos.js) */
+.md-typeset .home-photos-dots { display: none; }
+
+/* Телефон: фото листаются пальцем по горизонтали, соседнее фото выглядывает справа */
+@media (max-width: 600px) {
+  .md-typeset .home-photos {
+    position: relative; /* offsetLeft фото — относительно ленты (home-photos.js) */
+    display: flex;
+    gap: .9rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: .6rem 11% 1rem;
+    margin: 1.2em -.8rem .4em;
+  }
+  .md-typeset .home-photos::-webkit-scrollbar { display: none; }
+  .md-typeset .home-photos a,
+  .md-typeset .home-photos a:nth-child(n) {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+    padding: .3rem;
+    transform: none;
+  }
+  .md-typeset .home-photos-dots {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin: 0 0 1.6em;
+  }
+  .md-typeset .home-photos-dots button {
+    width: .55rem;
+    height: .55rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(90, 60, 25, .25);
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .md-typeset .home-photos-dots button[aria-current="true"] {
+    background: #b89a56;
+    transform: scale(1.25);
+  }
+  [data-md-color-scheme="slate"] .md-typeset .home-photos-dots button {
+    background: rgba(220, 200, 160, .3);
+  }
+  [data-md-color-scheme="slate"] .md-typeset .home-photos-dots button[aria-current="true"] {
+    background: #b89a56;
+  }
 }
 
 /* Ссылки на основные разделы в футере */
