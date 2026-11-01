@@ -317,6 +317,70 @@
   font-size: .72rem;
 }
 
+/* Таблицы с цифрами по графам (A1284, Крестьянский банк): заголовки числовых граф
+   повёрнуты вертикально, № и цифры узкие, графа с именем — самая широкая; без прокрутки. */
+/* Документы Крестьянского поземельного банка — свой цвет бумаги (только светлая тема). */
+[data-md-color-scheme="default"] .md-typeset .kpb-doc {
+  --doc-paper-bg: #cec7b6;
+}
+[data-md-color-scheme="default"] .md-typeset .bank-table:not(.plain-bg) table:not([class]) {
+  background: #cec7b6;
+}
+.md-typeset .bank-table .md-typeset__scrollwrap { overflow: visible; }
+.md-typeset .bank-table .md-typeset__table { display: block; padding: 0; }
+.md-typeset .bank-table table:not([class]) {
+  display: table;
+  width: 100%;
+  font-size: .66rem;
+}
+.md-typeset .bank-table table:not([class]) :is(th, td) {
+  min-width: 0;
+  padding: .3em .25em;
+}
+/* Числовые графы: с 3-й в основной таблице, со 2-й в сводке. */
+.md-typeset .bank-table:not(.bank-summary) table :is(th, td):nth-child(n+3),
+.md-typeset .bank-summary table :is(th, td):nth-child(n+2) {
+  width: 1.7em;
+  text-align: center;
+  white-space: nowrap;
+}
+.md-typeset .bank-table:not(.bank-summary) table th:nth-child(n+3),
+.md-typeset .bank-summary table th:nth-child(n+2) {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  vertical-align: bottom;
+  text-align: left !important; /* перебивает выравнивание из Markdown — текст прижат к низу */
+  line-height: 1.15;
+  padding: .4em .2em;
+}
+/* После bank-table.js: ячейка обычная, повёрнут только <span> — тогда он встаёт по центру над цифрами. */
+.md-typeset .bank-table table th.vh-cell {
+  writing-mode: horizontal-tb !important;
+  transform: none !important;
+  text-align: center !important;
+  vertical-align: bottom;
+}
+.md-typeset .bank-table table th.vh-cell .vh {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: left;
+  line-height: 1.15;
+}
+/* Графа «№». */
+.md-typeset .bank-table:not(.bank-summary) table :is(th, td):first-child {
+  width: 1.6em;
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+/* Графа «Покупщик» и подписи строк сводки забирают оставшуюся ширину. */
+.md-typeset .bank-table:not(.bank-summary) table :is(th, td):nth-child(2),
+.md-typeset .bank-summary table :is(th, td):first-child {
+  width: auto;
+  vertical-align: bottom;
+}
+
 /* Краткое меню разделов в начале страницы персоны. */
 .md-typeset .page-menu {
   margin: .6rem 0 1.2rem;

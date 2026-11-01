@@ -73,6 +73,7 @@ extra_javascript:
   - javascripts/diagram-zoom.js
   - javascripts/page-tabs.js
   - javascripts/home-photos.js
+  - javascripts/bank-table.js
 
 # Страницы, доступные только по прямой ссылке (не в меню, не в поиске, не в карте сайта).
 not_in_nav: |
@@ -464,6 +465,7 @@ nav:
           - sources/archives/A1196-rgia-dv-98-1-326-l24-spisok-khodakov-1903.md
           - sources/archives/A1207-glazki-1903-brak-2-ilarion-ivanov.md
           - sources/archives/A1208-glazki-1903-rozhd-26-anna.md
+          - sources/archives/A1284-krestyanskiy-bank-1903-vinnikovskoe-tovarishchestvo.md
           - sources/archives/A1014-giaso-23i-2-86-l23-1904-marriage.md
           - sources/archives/A1209-glazki-1904-brak-7-yakov-ivanov-feodosiya.md
           - sources/archives/A1255-rozhdestvo-1904-rozhdenie-anna.md
@@ -483,6 +485,7 @@ nav:
           - sources/archives/A1021-shkotovo-1907-births-mariya-pocherevina.md
           - sources/archives/A1213-glazki-1907-rozhd-26-nataliya.md
           - sources/archives/A1257-rozhdestvo-1907-rozhdenie-mariya.md
+          - sources/archives/A1285-krestyanskiy-bank-1907-vinnikovskoe-tovarishchestvo-11.md
           - sources/archives/A1008-shkotovo-1908-births.md
           - sources/archives/A1022-shkotovo-1908-births-mikhail-slednev.md
           - sources/archives/A1023-shkotovo-1908-births-anastasiya-soleeva.md
@@ -491,6 +494,7 @@ nav:
           - sources/archives/A1025-shkotovo-1909-births-aleksandra-pocherevina.md
           - sources/archives/A1115-rozhdestvo-1909-smert-anatoliy.md
           - sources/archives/A1214-bobrovka-1909-rozhd-28-29-klavdiya-tatiana.md
+          - sources/archives/A1286-krestyanskiy-bank-1909-gavrilovka-arenda-khutor-vinnikov.md
           - sources/archives/A1026-shkotovo-1910-births-fedor-kiselkov.md
           - sources/archives/A1027-shkotovo-1910-births-anastasiya-sledneva.md
           - sources/archives/A1116-rozhdestvo-1910-rozhdenie-zinaida.md
@@ -583,6 +587,7 @@ nav:
           - sources/websites/W1009-vgd-shkotovo-metriki-1886-1922.md
           - sources/websites/W1010-vgd-lyshchichi.md
           - sources/websites/W1011-facebook-valkivska-starovyna-vynnyky.md
+          - sources/websites/W1012-pereschet-rubley-v-dollary.md
       - Базы данных:
           - sources/databases/DB1000-obd-memorial-davydov-70002475315.md
           - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md
