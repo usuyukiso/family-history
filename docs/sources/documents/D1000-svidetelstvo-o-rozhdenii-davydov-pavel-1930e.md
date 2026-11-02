@@ -5,12 +5,14 @@ title: "1930-е Свидетельство о рождении Пав. Ив. Д�
 document_date: "1930-е"
 evidence_kind: "secondary"
 doc_replica: true
+replica_skill: replica-birth-certificate-1936
+paper: cream
 related_people:
   - P1005
   - P1019
   - P1018
 accessed: "2026-10-16"
-verified: "2026-10-16"
+verified: "2026-11-02"
 ---
 
 # 1930-е Свидетельство о рождении Пав. Ив. Давыдова, № 88889 (повторное) (D1000)
@@ -19,7 +21,7 @@ verified: "2026-10-16"
 
 Ниже — не скан, а копия, набранная по образцу бланка: та же раскладка граф, печатный текст бланка и вписанное от руки. Подпись заведующего и герб не воспроизводятся; печать показана выцветшим кругом без текста.
 
-<div class="replica">
+<div class="replica replica--1936">
 <div class="replica__sheet">
 <div class="replica__frame">
 <p class="rp-motto">ПРОЛЕТАРИИ ВСЕХ СТРАН, СОЕДИНЯЙТЕСЬ!</p>
@@ -31,7 +33,7 @@ verified: "2026-10-16"
 <div class="rp-row"><span class="rp-fld"><span class="rp-hand rp-center">Павел Иванович</span><span class="rp-cap">(имя и отчество)</span></span></div>
 <div class="rp-row"><span class="rp-lbl rp-bold">родился(лась)</span><span class="rp-fld"><span class="rp-hand">тысяча девятьсот шестнадцатого года</span></span></div>
 <div class="rp-row"><span class="rp-fld"><span class="rp-hand">двадцать второго июня 22/VI-1916 г. н/с</span><span class="rp-cap">(прописью и цифрами год, месяц и число)</span></span></div>
-<p class="rp-bold" style="margin-top:3cqw">о чем в книге записей актов гражданского состояния о рождении за 19<span class="rp-over">3<span class="rp-overmark">1</span></span><span class="rp-inline">6</span> год</p>
+<p class="rp-bold" style="margin-top:1.5cqw">о чем в книге записей актов гражданского состояния о рождении за 19<span class="rp-over">3<span class="rp-overmark">1</span></span><span class="rp-inline">6</span> год</p>
 <p class="rp-bold" style="margin-top:1cqw"><span class="rp-inline">„23“</span> числа <span class="rp-blank"><span class="rp-inline">июня</span>&emsp;&emsp;&emsp;</span> месяца произведена соответствующая запись.</p>
 <div class="rp-grp">
 <span class="rp-grp__lbl">Родители</span><span class="rp-brace">{</span>
@@ -73,7 +75,7 @@ verified: "2026-10-16"
 <p class="replica__note">Оборотная сторона</p>
 </div>
 
-Текст свидетельства (прочтение составителем сайта по скану; вписанное от руки выделено курсивом, сомнительное отмечено «[?]»):
+Текст свидетельства (**прочтение скана**; вписанное от руки выделено курсивом, сомнительное отмечено «[?]»):
 
 > ПРОЛЕТАРИИ ВСЕХ СТРАН, СОЕДИНЯЙТЕСЬ!<br>
 > НАРОДНЫЙ КОМИССАРИАТ ВНУТРЕННИХ ДЕЛ СССР<br>

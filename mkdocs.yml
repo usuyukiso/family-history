@@ -43,6 +43,7 @@ hooks:
   - hooks/nav_collapsible.py
   - hooks/place_pages.py
   - hooks/document_age.py
+  - hooks/replica_credit.py
   - hooks/household_tables.py
   - hooks/verification_status.py
   - hooks/document_registry.py
@@ -80,6 +81,7 @@ not_in_nav: |
   /people/P1004-pavel-p.md
   /people/P1026-konon.md
   /people/P1079-yakov-ivanov-zakrevskiy.md
+  /puzzles/sychevy-v-shevelevke.md
 
 validation:
   links:
@@ -419,6 +421,7 @@ nav:
           - sources/archives/A1098-polyane-1876-smert-27-feodor.md
           - sources/archives/A1099-polyane-1876-smert-58-petr-davydov.md
           - sources/archives/A1123-rozhdestvo-1876-brak-5-evdokiya-bogdanova.md
+          - sources/archives/A1287-giaso-23i-3-3-alfavit-anivskaya-1879-1895.md
           - sources/archives/A1100-rozhdestvo-1883-rozhdenie-dariya.md
           - sources/archives/A1101-rozhdestvo-1883-smert-matfey.md
           - sources/archives/A1140-rozhdestvo-1884-rozhdenie-27-mariya.md
@@ -558,6 +561,7 @@ nav:
           - sources/books/B1001-iz-istorii-zaseleniya-shkotovskogo-rayona-2017.md
       - Документы:
           - sources/documents/D1000-svidetelstvo-o-rozhdenii-davydov-pavel-1930e.md
+          - sources/documents/D1009-svidetelstvo-ob-okonchanii-shkoly-pisarev-grigoriy-1934.md
           - sources/documents/D1001-svidetelstvo-o-rozhdenii-pisarev-valeriy-1942.md
           - sources/documents/D1008-svidetelstvo-o-brake-davydov-pavel-1945.md
           - sources/documents/D1002-pereselencheskiy-bilet-naumov-1959.md

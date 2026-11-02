@@ -5,13 +5,14 @@ title: "1942 Свидетельство о рождении Вал. Гр. Пис
 document_date: "1942-04-20"
 evidence_kind: "primary"
 doc_replica: true
+replica_skill: replica-birth-certificate-1940s
 paper: grey
 related_people:
   - P1109
   - P1007
   - P1080
 accessed: "2026-10-17"
-verified: "2026-10-17"
+verified: "2026-11-02"
 ---
 
 # 1942 Свидетельство о рождении Вал. Гр. Писарева, РТ № 952045 (D1001)
@@ -36,15 +37,15 @@ verified: "2026-10-17"
 </div>
 </div>
 <p class="replica__note">Обложка (развёрнута): слева — задняя сторона, справа — передняя</p>
-<div class="replica__sheet" style="margin-top:1.5em">
+<div class="replica__sheet rp-inner" style="margin-top:1.5em">
 <div class="replica__frame">
 <p class="rp-title">СВИДЕТЕЛЬСТВО О РОЖДЕНИИ <span class="rp-ser">РТ&ensp;№ 952045</span></p>
 <div class="rp-row"><span class="rp-lbl rp-bold">Гр.</span><span class="rp-fld"><span class="rp-hand rp-center">Писарев</span><span class="rp-cap">(фамилия,</span></span></div>
 <div class="rp-row"><span class="rp-fld"><span class="rp-hand">Валерий&emsp;&emsp;&emsp;&emsp;Григорьевич</span><span class="rp-cap">имя и отчество)</span></span></div>
 <div class="rp-row"><span class="rp-lbl rp-bold">родился (<s>лась</s>)</span><span class="rp-fld"><span class="rp-hand">12/III-1942 г.&ensp;Двенадцатого марта тысяча</span></span></div>
 <div class="rp-row"><span class="rp-fld"><span class="rp-hand">девятьсот сорок второго года.</span><span class="rp-cap">(прописью и цифрами год, месяц и число)</span></span></div>
-<p class="rp-bold" style="margin-top:1.4cqw">о чем в книге записей актов гражданского состояния о рождении за 19<span class="rp-inline">42</span> год</p>
-<p class="rp-bold" style="margin-top:.6cqw"><span class="rp-blank"><span class="rp-inline">Апреля</span>&emsp;&emsp;&emsp;</span> месяца <span class="rp-blank"><span class="rp-inline">20</span></span> числа произведена соответствующая запись за № <span class="rp-inline">13.</span></p>
+<p class="rp-bold" style="margin-top:.4cqw">о чем в книге записей актов гражданского состояния о рождении за 19<span class="rp-inline">42</span> год</p>
+<p class="rp-bold" style="margin-top:.4cqw"><span class="rp-blank"><span class="rp-inline">Апреля</span>&emsp;&emsp;&emsp;</span> месяца <span class="rp-blank"><span class="rp-inline">20</span></span> числа произведена соответствующая запись за № <span class="rp-inline">13.</span></p>
 <div class="rp-grp">
 <span class="rp-grp__lbl rp-bold">Родители</span><span class="rp-brace">{</span>
 <div>
@@ -72,7 +73,7 @@ verified: "2026-10-17"
 <p class="replica__note">Внутренняя сторона</p>
 </div>
 
-Текст свидетельства (прочтение составителем сайта по скану; вписанное от руки выделено курсивом, сомнительное отмечено «[?]»):
+Текст свидетельства (**прочтение скана**; вписанное от руки выделено курсивом, сомнительное отмечено «[?]»):
 
 > **Обложка, передняя сторона:** Пролетарии всех стран, соединяйтесь! Народный комиссариат внутренних дел СССР. Отдел актов гражданского состояния. СВИДЕТЕЛЬСТВО О РОЖДЕНИИ
 >

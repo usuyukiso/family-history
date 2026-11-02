@@ -1351,6 +1351,13 @@
 [dir] .md-typeset .doc-grey blockquote {
   border-left-color: #c9c9c5;
 }
+/* Вписанное от руки (курсив) — синими чернилами, как на всех листах документов. */
+.md-typeset .doc-grey blockquote em {
+  color: #1f4e96;
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-grey blockquote em {
+  color: #9cc0f2;
+}
 [data-md-color-scheme="slate"] .md-typeset .doc-grey blockquote {
   --doc-paper-bg: #34353a;
   --doc-paper-border: #5a5c63;
@@ -1535,6 +1542,255 @@
 .md-typeset .replica--marriage .rp-seal { border-radius: 0; }
 .md-typeset .replica--marriage .rp-sign { padding-left: 8cqw; margin-top: 2.5cqw; }
 .md-typeset .replica--marriage .rp-date { padding-left: 2cqw; }
+
+/* Свидетельство об окончании школы 1934 г. (D1009): жёлтая бумага без сетки, рамка —
+   толстая линия + цепочка ромбов + тонкая линия; слева шапка облоно, справа крупный заголовок;
+   графы — сплошные линии, вписанное — фиолетовым. */
+.md-typeset .replica--school .replica__sheet {
+  --rp-pen: #5b3fa0;
+  background-color: #e9d49a;
+  background-image:
+    radial-gradient(ellipse at 20% 15%, rgba(170, 120, 40, .2), transparent 60%),
+    radial-gradient(ellipse at 80% 85%, rgba(160, 110, 40, .22), transparent 55%),
+    linear-gradient(90deg, transparent 49.6%, rgba(120, 90, 40, .12) 50%, transparent 50.4%),
+    linear-gradient(0deg, transparent 49.6%, rgba(120, 90, 40, .12) 50%, transparent 50.4%);
+  font-size: 2.3cqw;
+  padding: 3cqw 3cqw 1.5cqw;
+}
+.md-typeset .replica--school .replica__frame {
+  border: .55cqw solid var(--rp-ink);
+  padding: .8cqw;
+}
+.md-typeset .replica--school .rp-sborder {
+  border: 1.8cqw solid transparent;
+  /* сетка 3×3 из ромбов: каждый срез 10×10 — целый ромб, повторяется по краям */
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cg fill='%233a3a32'%3E%3Cpath d='M5 2L8 5L5 8L2 5Z'/%3E%3Cpath d='M15 2L18 5L15 8L12 5Z'/%3E%3Cpath d='M25 2L28 5L25 8L22 5Z'/%3E%3Cpath d='M5 12L8 15L5 18L2 15Z'/%3E%3Cpath d='M25 12L28 15L25 18L22 15Z'/%3E%3Cpath d='M5 22L8 25L5 28L2 25Z'/%3E%3Cpath d='M15 22L18 25L15 28L12 25Z'/%3E%3Cpath d='M25 22L28 25L25 28L22 25Z'/%3E%3C/g%3E%3C/svg%3E") 10 round;
+  box-shadow: inset 0 0 0 .25cqw var(--rp-ink);
+  padding: 1cqw;
+}
+.md-typeset .replica--school .rp-shead {
+  display: grid;
+  grid-template-columns: 34cqw 1fr;
+  column-gap: 3cqw;
+  padding: 2cqw 2cqw 0;
+}
+.md-typeset .replica--school .rp-sleft {
+  text-align: center;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 2.5cqw;
+  line-height: 1.2;
+}
+.md-typeset .replica--school .rp-sleft p + p { margin-top: .8cqw; }
+.md-typeset .replica--school .rp-sobl { letter-spacing: .25em; font-size: 2.7cqw; }
+.md-typeset .replica--school .rp-sleft .rp-sl { text-align: left; }
+.md-typeset .replica--school .rp-sright { text-align: center; }
+.md-typeset .replica--school .rp-smotto {
+  text-align: right;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 2cqw;
+}
+.md-typeset .replica--school .rp-stitle {
+  font-family: "PT Sans Narrow", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 7.6cqw;
+  line-height: 1;
+  margin-top: 7cqw;
+}
+.md-typeset .replica--school .rp-ssub {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 2.9cqw;
+  letter-spacing: .02em;
+  margin-top: 1cqw;
+}
+.md-typeset .replica--school .rp-sbody {
+  padding: 3cqw 3cqw 1cqw;
+  font-size: 2.45cqw;
+}
+.md-typeset .replica--school .rp-sl {
+  display: flex;
+  align-items: flex-end;
+  gap: .8cqw;
+  white-space: nowrap;
+  min-height: 5cqw;
+}
+.md-typeset .replica--school .rp-sbody > .rp-sl { margin-top: .9cqw; }
+.md-typeset .replica--school .rp-indent { padding-left: 6cqw; }
+.md-typeset .replica--school .rp-fill {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  border-bottom: 1px solid var(--rp-ink);
+  padding-left: 2cqw;
+}
+.md-typeset .replica--school .rp-w {
+  display: inline-block;
+  border-bottom: 1px solid var(--rp-ink);
+  text-align: center;
+}
+.md-typeset .replica--school .rp-h {
+  font-family: "Marck Script", cursive;
+  font-weight: 400;
+  font-size: 3.6cqw;
+  line-height: 1.1;
+  color: var(--rp-pen);
+}
+.md-typeset .replica--school .rp-u {
+  display: inline-block;
+  min-width: 4cqw;
+  border-bottom: 1px solid var(--rp-ink);
+  text-align: center;
+}
+.md-typeset .replica--school .rp-under {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2.2cqw;
+  text-align: center;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.5cqw;
+  color: var(--rp-ink);
+}
+.md-typeset .replica--school .rp-subj {
+  margin: 1.2cqw 6cqw 1.5cqw 12cqw;
+  white-space: nowrap;
+}
+.md-typeset .replica--school .rp-subj p {
+  display: grid;
+  grid-template-columns: 37cqw 1fr;
+  align-items: end;
+  min-height: 4.4cqw;
+}
+.md-typeset .replica--school .rp-subj .rp-fill { padding-left: 4cqw; }
+.md-typeset .replica--school .rp-sfoot {
+  display: grid;
+  grid-template-columns: 22cqw 1fr;
+  align-items: center;
+  margin-top: 2cqw;
+}
+.md-typeset .replica--school .rp-sseal {
+  position: relative;
+  padding-left: 7cqw;
+  padding-top: 5cqw;
+}
+.md-typeset .replica--school .rp-sstamp {
+  position: absolute;
+  left: 16cqw;
+  top: -6cqw;
+  width: 17cqw;
+  height: 17cqw;
+  border-radius: 50%;
+  border: .5cqw solid rgba(95, 70, 165, .25);
+  box-shadow: inset 0 0 0 2cqw rgba(95, 70, 165, .06), inset 0 0 0 2.3cqw rgba(95, 70, 165, .18);
+  background: radial-gradient(circle, rgba(95, 70, 165, .1), transparent 70%);
+}
+.md-typeset .replica--school .rp-ssign { position: relative; }
+.md-typeset .replica--school .rp-ssign p { margin-top: 2cqw; }
+.md-typeset .replica--school .rp-ssign p:last-child { padding-left: 4cqw; }
+.md-typeset .replica--school .rp-sb {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 2.2cqw;
+}
+.md-typeset .replica--school .rp-styp {
+  text-align: right;
+  font-size: 1.5cqw;
+  margin-top: .6cqw;
+  opacity: .8;
+}
+
+/* D1009: лист в пропорциях A4 (чуть длиннее, ≈ 1 : 1,5) — строки бланка плотнее. */
+.md-typeset .replica--school .replica__sheet { padding: 2.2cqw 2.2cqw 1cqw; }
+.md-typeset .replica--school .rp-sborder { padding: .6cqw; }
+.md-typeset .replica--school .rp-shead { padding: 1.2cqw 2cqw 0; }
+.md-typeset .replica--school .rp-sleft p + p { margin-top: .4cqw; }
+.md-typeset .replica--school .rp-sleft .rp-sl { min-height: 4.2cqw; }
+.md-typeset .replica--school .rp-stitle { margin-top: 3cqw; }
+.md-typeset .replica--school .rp-sbody { padding: 1.5cqw 3cqw .5cqw; line-height: 1.15; }
+.md-typeset .replica--school .rp-sl { min-height: 3.5cqw; }
+.md-typeset .replica--school .rp-sbody > .rp-sl { margin-top: .35cqw; }
+.md-typeset .replica--school .rp-sl:has(.rp-under) { margin-bottom: 1.7cqw; }
+.md-typeset .replica--school .rp-subj { margin: .6cqw 6cqw .8cqw 12cqw; }
+.md-typeset .replica--school .rp-subj p { min-height: 2.75cqw; }
+.md-typeset .replica--school .rp-subj p:last-child { min-height: 3.1cqw; }
+.md-typeset .replica--school .rp-h { font-size: 3.3cqw; line-height: 1; }
+.md-typeset .replica--school .rp-under { bottom: -1.9cqw; font-size: 1.4cqw; }
+.md-typeset .replica--school .rp-sfoot { margin-top: 1cqw; }
+.md-typeset .replica--school .rp-sseal { padding-top: 3.5cqw; }
+.md-typeset .replica--school .rp-ssign p { margin-top: 1.2cqw; }
+
+/* Таблицы в тексте на жёлтом листе — без лишней высоты строк. */
+.md-typeset .doc-paper-yellow blockquote table :is(th, td) {
+  padding: .25em .9em;
+  line-height: 1.35;
+}
+
+/* Текст документа на жёлтом листе (поле paper: yellow; D1009); вписанное от руки (курсив) —
+   синими чернилами, как у doc-white / doc-pink / doc-cream.
+   Класс doc-paper-yellow, чтобы не смешивать с вложенным .doc-yellow у A1270. */
+.md-typeset .doc-paper-yellow blockquote {
+  --doc-paper-bg: #f4e7b8; /* светлее бланка-оригинала, чтобы текст читался */
+  --doc-paper-stains: none;
+  --doc-paper-border: #d9c27e;
+  --doc-paper-ink: #2b2820;
+  --doc-paper-line: #e6d495;
+  --doc-ink-pen: #1f4e96;
+  box-shadow: 0 1px 4px rgba(110, 85, 20, .18);
+}
+[dir] .md-typeset .doc-paper-yellow blockquote {
+  border-left-color: #d9c27e;
+}
+.md-typeset .doc-paper-yellow blockquote em {
+  color: var(--doc-ink-pen);
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-paper-yellow blockquote {
+  --doc-paper-bg: #48412a;
+  --doc-paper-border: #736840;
+  --doc-paper-ink: #ececea;
+  --doc-paper-line: #5c5434;
+  --doc-ink-pen: #9cc0f2;
+}
+
+/* Свидетельство о рождении конца 1930-х (D1000): оригинал почти квадратный (1 : 1,14),
+   поэтому отступы между графами меньше, чем в базовом бланке. */
+.md-typeset .replica--1936 .replica__frame { padding: 2.2cqw 3.5cqw 2cqw; }
+.md-typeset .replica--1936 .rp-head { margin-top: .5cqw; }
+.md-typeset .replica--1936 .rp-title { margin: 2.5cqw 0 .5cqw; }
+.md-typeset .replica--1936 .rp-num { margin-bottom: .5cqw; }
+.md-typeset .replica--1936 .rp-row { margin-top: .2cqw; }
+.md-typeset .replica--1936 .rp-lbl { padding-top: 2.2cqw; }
+.md-typeset .replica--1936 .rp-hand,
+.md-typeset .replica--1936 .rp-fld > span:first-child { min-height: 4cqw; line-height: 1.05; }
+.md-typeset .replica--1936 .rp-grp { margin-top: 1cqw; }
+.md-typeset .replica--1936 .rp-foot { margin-top: 1.5cqw; }
+.md-typeset .replica--1936 .rp-seal { width: 10cqw; height: 10cqw; }
+.md-typeset .replica--1936 .rp-stamp { width: 13cqw; height: 13cqw; }
+.md-typeset .replica--1936 .rp-sign s { margin-top: 2.5cqw; }
+
+/* Свидетельство о рождении 1940-х (D1001), внутренняя сторона (.rp-inner): тот же альбомный
+   лист, что и обложка, — графы плотнее, чтобы лист не казался квадратным (≈ 1 : 0,7). */
+.md-typeset .replica--wide .rp-inner .replica__frame { padding: 1.2cqw 3cqw 1.5cqw; }
+.md-typeset .replica--wide .rp-inner .rp-row { margin-top: .1cqw; }
+.md-typeset .replica--wide .rp-inner .rp-hand,
+.md-typeset .replica--wide .rp-inner .rp-fld > span:first-child { min-height: 3cqw; line-height: 1.05; }
+.md-typeset .replica--wide .rp-inner .rp-lbl { padding-top: 1.5cqw; }
+.md-typeset .replica--wide .rp-inner .rp-grp { margin-top: .4cqw; }
+.md-typeset .replica--wide .rp-inner .rp-foot { margin-top: .6cqw; }
+.md-typeset .replica--wide .rp-inner .rp-seal { width: 8cqw; height: 8cqw; }
+.md-typeset .replica--wide .rp-inner .rp-stamp { width: 10cqw; height: 10cqw; }
+.md-typeset .replica--wide .rp-inner .rp-date { margin-top: .8cqw; }
+.md-typeset .replica--wide .rp-inner .rp-sign .rp-sign2 { margin-top: .4cqw; }
+
+/* Строка «Копия бланка сгенерирована с помощью скилла …» (hooks/replica_credit.py). */
+.md-typeset .replica-credit {
+  margin-top: 2.5em;
+  padding-top: .8em;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  font-size: .7rem;
+  color: var(--md-default-fg-color--light);
+}
 
 .md-typeset .replica .rp-spread {
   display: grid;
