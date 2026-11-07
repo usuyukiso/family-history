@@ -1862,6 +1862,12 @@
 /* Имя героя страницы внутри цитаты из документа: **…**{.subject} */
 .md-typeset strong.subject { color: #9a3b12; }
 
+/* Два имени одного человека в таблице «Имя в документах по годам» (P1066): **Фока**{.name-foka}, **Афанасий**{.name-afanasiy} */
+.md-typeset strong.name-foka { color: #1f4f9a; background: #e3ecfa; padding: 0 .2em; border-radius: 3px; }
+.md-typeset strong.name-afanasiy { color: #2e6b34; background: #e5f2e3; padding: 0 .2em; border-radius: 3px; }
+[data-md-color-scheme="slate"] .md-typeset strong.name-foka { color: #9cc0f5; background: #263449; }
+[data-md-color-scheme="slate"] .md-typeset strong.name-afanasiy { color: #9fd49a; background: #2b3a2b; }
+
 /* Название дела (по обложке или архивной описи) в «Полном описании»: <span class="delo-title">«…»</span> */
 .md-typeset .delo-title { color: #7b1e2b; font-weight: 600; }
 [data-md-color-scheme="slate"] .md-typeset .delo-title { color: #e8949f; }
