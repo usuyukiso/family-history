@@ -326,6 +326,16 @@
 [data-md-color-scheme="default"] .md-typeset .bank-table:not(.plain-bg) table:not([class]) {
   background: #cec7b6;
 }
+/* Узкие строки в длинных поимённых списках (исповедные росписи и т. п.):
+   <div class="dense-rows" markdown> … </div> */
+.md-typeset .dense-rows table:not([class]) :is(th, td) {
+  padding-top: .12em;
+  padding-bottom: .12em;
+  line-height: 1.25;
+}
+.md-typeset .dense-rows h3 {
+  margin: 1em 0 .3em;
+}
 .md-typeset .bank-table .md-typeset__scrollwrap { overflow: visible; }
 .md-typeset .bank-table .md-typeset__table { display: block; padding: 0; }
 .md-typeset .bank-table table:not([class]) {
@@ -1851,6 +1861,10 @@
 
 /* Имя героя страницы внутри цитаты из документа: **…**{.subject} */
 .md-typeset strong.subject { color: #9a3b12; }
+
+/* Название дела (по обложке или архивной описи) в «Полном описании»: <span class="delo-title">«…»</span> */
+.md-typeset .delo-title { color: #7b1e2b; font-weight: 600; }
+[data-md-color-scheme="slate"] .md-typeset .delo-title { color: #e8949f; }
 
 /* Уменьшенные схемы раздела «Схемы» (docs/schemes/*-tree.html) на их страницах */
 .md-typeset iframe.trait-tree { display: block; width: 100%; aspect-ratio: 1420 / 960; min-height: 420px; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 6px; margin: 1em 0; }
