@@ -22,8 +22,10 @@
   брата того же года не принимается за свою;
 - почему родители — эти: строка «Отец» / «Мать» / «Родители» в «Кратких
   сведениях». Слова «по мнению составителя», «по-видимому», «по предположению»
-  перед ссылкой на родителя — это вывод составителя; ссылки [A…] в строке —
-  документы, по которым родство установлено.
+  перед ссылкой на родителя — это вывод составителя; «по предположению
+  составителя» — родство документами не подтверждено вовсе, линия как
+  «без документа» (из точек); ссылки [A…] в строке — документы, по которым
+  родство установлено.
 
 Итог пишется в site/schemes/document-registry-data.js (window.REGISTRY),
 схема подключает его обычным <script>.
@@ -68,6 +70,9 @@ CITE = re.compile(r"\[((?:A|B|D|DB|F|L|W)\d{4})\]")
 LINK = re.compile(r"\[([^\]]*)\]\((?:\.\./)*(?:[\w/-]*/)?(P\d{4})[^)]*\)")
 BULLET = re.compile(r"^- \*\*([^*]+?)\*\*(.*)$", re.M)
 GUESS = re.compile(r"по мнению составителя|по-видимому|по предположению|предположительно|вероятно|возможно", re.I)
+# «По предположению составителя» — документов о родстве нет вовсе (слабее «вывода составителя»):
+# на схеме такая линия — из точек, как «без документа».
+HYP = re.compile(r"по предположению составителя", re.I)
 DATE = re.compile(r"\b\d{1,2}\.\d{2}\.\d{4}\b|\b\d{1,2}(?:/\d{1,2})? [а-я]+ \d{4}\b")
 NOT_OWN = re.compile(r"восприемни|поручит|упом", re.I)
 
@@ -275,7 +280,7 @@ def _person(pid, ids, url_of):
                if PARENT_LABEL.match(b.group(1).strip())]
     edges = {}
     for q in parents:
-        seg_txt, cites, guess = "", [], False
+        seg_txt, cites, guess, hyp = "", [], False, False
         for _, txt in par_lines + all_par:
             if f"({q})" not in txt and not re.search(rf"\({q}[)#]", txt):
                 continue
@@ -283,10 +288,13 @@ def _person(pid, ids, url_of):
             seg = next(s for s in segs if re.search(rf"\b{q}\b", s))
             before = seg[:re.search(rf"\b{q}\b", seg).start()]
             guess = bool(GUESS.search(before))
+            hyp = bool(HYP.search(before))
             cites = CITE.findall(seg) or CITE.findall(txt)
             seg_txt = _plain(txt)
             break
-        if guess:
+        if hyp:
+            st = "none"
+        elif guess:
             st = "guess"
         elif own["B"]:
             st = "rec"

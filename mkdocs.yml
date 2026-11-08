@@ -109,19 +109,24 @@ nav:
       - Харламенко: surnames/SUR1007-kharlamenko.md
   - Персоны:
       - people/index.md
+      - 17 век Меркулей Павлов: people/P1120-merkuley-pavlov.md
+      - 17 век Савелий Игнатьев: people/P1117-saveliy-ignatev.md
       - 1629 Федот Артемьев: people/P1111-fedot-artemev.md
       - 1645 Михайла Семенов: people/P1061-mikhayla-semenov.md
       - 1648 Феврония Тимофеева: people/P1062-fevroniya-timofeeva.md
+      - 1649 Егор Семенов: people/P1116-egor-semenov.md
       - 1649 Самуил Яковлев: people/P1069-samuil-yakovlev.md
+      - 1659 Алексей Меркульев: people/P1119-aleksey-merkulev.md
       - 1669 Нестер Кононов: people/P1025-nester-kononov.md
       - 1679 Кондратий Самуилов: people/P1068-kondratiy-samuilov.md
       - 1684 Татьяна Иванова: people/P1067-tatyana-ivanova.md
       - 1686 Евдокия: people/P1071-evdokiya.md
       - 1686 Калина Михайлов: people/P1059-kalina-mikhaylov.md
       - 1691 Ефимия Савельева: people/P1060-efimiya-saveleva.md
-      - 1692 Григорий Егоров: people/P1065-grigoriy-egorov.md
       - 1693 Никифор Никулин: people/P1072-nikifor-nikulin.md
       - 1694 Афанасий Федотов: people/P1066-afanasiy-fedotov.md
+      - 1694 Григорий Егоров: people/P1065-grigoriy-egorov.md
+      - 1694 Родион Савельев: people/P1118-rodion-savelev.md
       - 1696 Семен Гаврилов: people/P1054-semen-gavrilov.md
       - 1698 Ксения Трофимова: people/P1073-kseniya-trofimova.md
       - 1706 Акилина Трофимова: people/P1035-akilina-trofimova.md
@@ -234,6 +239,7 @@ nav:
           - Боровово: places/PLC1023-borovovo.md
           - Ванютино: places/PLC1018-vanyutino.md
           - Горелик: places/PLC1015-gorelik.md
+          - Горончары → см. Порухово: places/PLC1011-porukhovo.md
           - Захарино: places/PLC1003-zakharino.md
           - Зубово: places/PLC1008-zubovo.md
           - Костково: places/PLC1013-kostkovo.md
@@ -246,7 +252,7 @@ nav:
           - Пашки (Колтырево): places/PLC1016-pashki-koltyrevo.md
           - Печохново: places/PLC1014-pechokhnovo.md
           - Попова Гора: places/PLC1017-popova-gora.md
-          - Порухово: places/PLC1011-porukhovo.md
+          - Порухово (Горончары): places/PLC1011-porukhovo.md
           - Пухово: places/PLC1021-pukhovo.md
           - Саблево (Шевели): places/PLC1022-sablevo-sheveli.md
       - Смоленская губерния:
@@ -263,6 +269,11 @@ nav:
           - sources/archives/A1290-rgada-1209-1-8504-1709-terebenskaya-guba.md
           - sources/archives/A1291-rgada-1209-1-8505-1709-borovovo.md
           - sources/archives/A1292-rgada-1209-1-8505-1709-pentekhovo.md
+          - sources/archives/A1293-rgada-1209-1-8505-1709-pechokhnovo.md
+          - sources/archives/A1295-rgada-1209-1-8505-1709-porukhovo.md
+          - sources/archives/A1296-rgada-1209-1-8505-1709-delo.md
+          - sources/archives/A1297-rgada-1209-1-8505-1709-alekseevo-zuevo.md
+          - sources/archives/A1298-rgada-1209-1-8505-1709-popova-gora.md
           - sources/archives/A1177-rgada-1209-1-8510-1711-myshino.md
           - sources/archives/A1274-rgada-350-2-2681-1719-ilyinskaya-guba.md
           - sources/archives/A1275-rgada-350-2-2681-1719-gorelik.md
@@ -270,6 +281,7 @@ nav:
           - sources/archives/A1277-rgada-350-2-2681-1719-popova-gora.md
           - sources/archives/A1278-rgada-350-2-2681-1719-porukhovo.md
           - sources/archives/A1279-rgada-350-2-2681-1719-mikhaylovskaya-guba.md
+          - sources/archives/A1294-rgada-350-2-2681-1719-pechokhnovo.md
           - sources/archives/A1188-gapo-39-1-2505-ispoved-1742-pechakhnova.md
           - sources/archives/A1047-rgada-350-2-755-1745-makovitsy.md
           - sources/archives/A1160-rgada-350-2-755-1745-popova-gora.md
