@@ -14,24 +14,24 @@
    Данные — document-registry-data.js, его собирает хук hooks/document_registry.py. */
 :root{
   --bg:#f6f7f4; --fg:#22261f; --muted:#69705f; --line:#9aa290; --card:#ffffff; --btn:#e8eae3;
-  --rec:#5fae6b; --rec-fg:#0f2412; --doc:#cfe9c8; --doc-fg:#1d3a1f; --gss:#f2e3a9; --gss-fg:#3d3210;
+  --rec:#5fae6b; --rec-fg:#0f2412; --doc:#d3e3f5; --doc-fg:#173153; --gss:#f2e3a9; --gss-fg:#3d3210;
   --none:#ffffff; --none-fg:#69705f; --none-line:#b9beb0;
-  --e-rec:#3f9152; --e-doc:#8dc487; --e-gss:#c49a1c; --e-none:#b9beb0;
+  --e-rec:#3f9152; --e-doc:#4a86c8; --e-gss:#c49a1c; --e-none:#b9beb0;
   --o1:#e3f2de; --o2:#bfe0b6; --o3:#8cc583; --o4:#4f9a58; --o4-fg:#ffffff;
   --display:"PT Serif",Georgia,serif; --body:"PT Sans","Helvetica Neue",Arial,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#1b1d19; --fg:#e7e9e2; --muted:#a3aa98; --line:#5f6656; --card:#272a24; --btn:#2f332b;
-  --rec:#3f8a4c; --rec-fg:#f1fbef; --doc:#2f4a2f; --doc-fg:#d8ecd3; --gss:#5a4d1e; --gss-fg:#f6ecc5;
+  --rec:#3f8a4c; --rec-fg:#f1fbef; --doc:#24384f; --doc-fg:#d6e4f5; --gss:#5a4d1e; --gss-fg:#f6ecc5;
   --none:#23261f; --none-fg:#a3aa98; --none-line:#4f5547;
-  --e-rec:#5fb36d; --e-doc:#5d8f59; --e-gss:#c9a43a; --e-none:#4f5547;
+  --e-rec:#5fb36d; --e-doc:#6fa3dc; --e-gss:#c9a43a; --e-none:#4f5547;
   --o1:#26352a; --o2:#2f4d32; --o3:#3c6e40; --o4:#4f9a58; --o4-fg:#ffffff; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#1b1d19; --fg:#e7e9e2; --muted:#a3aa98; --line:#5f6656; --card:#272a24; --btn:#2f332b;
-  --rec:#3f8a4c; --rec-fg:#f1fbef; --doc:#2f4a2f; --doc-fg:#d8ecd3; --gss:#5a4d1e; --gss-fg:#f6ecc5;
+  --rec:#3f8a4c; --rec-fg:#f1fbef; --doc:#24384f; --doc-fg:#d6e4f5; --gss:#5a4d1e; --gss-fg:#f6ecc5;
   --none:#23261f; --none-fg:#a3aa98; --none-line:#4f5547;
-  --e-rec:#5fb36d; --e-doc:#5d8f59; --e-gss:#c9a43a; --e-none:#4f5547;
+  --e-rec:#5fb36d; --e-doc:#6fa3dc; --e-gss:#c9a43a; --e-none:#4f5547;
   --o1:#26352a; --o2:#2f4d32; --o3:#3c6e40; --o4:#4f9a58; --o4-fg:#ffffff; color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
@@ -74,8 +74,7 @@ svg#tree{display:block;user-select:none;-webkit-user-select:none}
 .ed{fill:none;stroke-width:1.8}
 .ed.rec{stroke:var(--e-rec);stroke-width:2.4}
 .ed.doc{stroke:var(--e-doc);stroke-width:2.2}
-.ed.guess{stroke:var(--e-gss);stroke-dasharray:6 4;stroke-width:2.2}
-.ed.none{stroke:var(--e-none);stroke-dasharray:2 4}
+.ed.guess{stroke:var(--e-gss);stroke-dasharray:6 4;stroke-width:2.2}.ed.none{stroke:var(--e-none);stroke-dasharray:2 4}
 .node{cursor:pointer;outline:none}
 .node rect.box{stroke:var(--none-line);stroke-width:1}
 .node.st-none rect.box{stroke-dasharray:4 3}
@@ -302,8 +301,7 @@ function tipHTML(id,mode){
       const why=e.why.length?esc(e.why.join("; ")):"";
       if(e.s==="rec") h+=`<p>${who}: ${gq.length>1?"указаны":"указан"+(P[gq[0]].sex==="f"?"а":"")} в ${b.docs.length?"записи":"свидетельстве"} о рождении.</p>`;
       else if(e.s==="doc") h+=`<p>${who}. Родство — по документам${why?": "+why:""}.</p>${docUl(e.docs,true)}`;
-      else if(e.s==="guess") h+=`<p>${who}: <b>вывод составителя</b>.${why?" Опора — "+why+".":""}</p>${e.text?`<p class="q">${esc(e.text)}</p>`:""}${docUl(e.docs,true)}`;
-      else h+=`<p>${who}: документа нет${e.text?" — "+esc(e.text.replace(/^[^:]*:\s*/,"")):""}.</p>`;
+      else if(e.s==="guess") h+=`<p>${who}: <b>вывод составителя</b>.${why?" Опора — "+why+".":""}</p>${e.text?`<p class="q">${esc(e.text)}</p>`:""}${docUl(e.docs,true)}`;      else h+=`<p>${who}: документа нет${e.text?" — "+esc(e.text.replace(/^[^:]*:\s*/,"")):""}.</p>`;
     });
   } else if(mode==="marriage"||mode==="death"){
     const x=p[mode], word=mode==="marriage"?"о браке":"о смерти";
