@@ -6,6 +6,7 @@ name_variants:
   - "Меркулей Павловъ [?]"
 birth_date: ""
 birth_date_status: unknown
+sort_year: 1640
 death_date: ""
 death_date_status: unknown
 parents: []
@@ -15,6 +16,7 @@ places: [PLC1011]
 village: "д. Порухово"
 tree_branch: "Псковская ветка"
 sources: [A1295, A1278]
+verified: "2026-11-10"
 ---
 
 # Меркулей Павлов (? – между 1709 и 1719)

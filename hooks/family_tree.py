@@ -18,7 +18,13 @@
 
 Корни разложены по вкладкам («Псковская ветка», …): вкладку задаёт поле
 `tree_branch` в front matter корня (или его супруга без родителей); корни без
-этого поля попадают во вкладку «Другие». Вкладки идут по алфавиту, «Другие» — последней.
+этого поля попадают во вкладку «Другие». Вкладки идут по алфавиту, «Неустановленное
+происхождение» и «Другие» — последними. Супруг со своим `tree_branch`, отличным от
+ветки корня (например, `"Неустановленное происхождение"` у Егора Почеревина), стоит
+ещё и отдельным корнем в своей вкладке, а не только рядом с супругом.
+
+Год рождения неизвестен — порядок по `sort_year` в front matter (в подписи меню года
+нет: «Меркулей Павлов»), иначе по году старшего ребёнка минус 20.
 
 Имя и годы жизни берутся из заголовка страницы: «# Иван Давыдов (ок. 1815 – 1901)».
 Под именем — где жил человек, из поля `village` («д. Горелик → Захарино»);
@@ -50,6 +56,7 @@ from mkdocs.utils import get_relative_url
 MARKER = "<!-- family-tree -->"
 SPOUSE = "💍"  # значок супруга в древе и в меню
 OTHER_BRANCH = "Другие"  # вкладка для корней без `tree_branch`
+UNKNOWN_BRANCH = "Неустановленное происхождение"  # вкладка перед «Другими»
 FILE_ID = re.compile(r"^(P\d{4})-")
 H1 = re.compile(r"^#\s+(.+?)\s*$", re.M)
 YEARS = re.compile(r"^(.*\S)\s+\(([^()]*[\d?][^()]*)\)$")
@@ -85,11 +92,19 @@ def on_files(files, config):
         ym = YEARS.match(title)
         name, years = (ym.group(1), ym.group(2)) if ym else (title, "")
         born = re.match(r"\d{4}", str(meta.get("birth_date") or ""))
+        # `sort_year` — примерный год только для порядка, когда год рождения неизвестен;
+        # в подписи меню (nav mkdocs.yml) его нет.
+        if not born and re.fullmatch(r"\d{4}", str(meta.get("sort_year") or "")):
+            sort_year = int(meta["sort_year"])
+        else:
+            sort_year = None
         _people[m.group(1)] = {
             "file": f,
             "name": name,
             "years": years,
-            "sort": (int(born.group(0)) if born else 9999, name),
+            "born": int(born.group(0)) if born else None,
+            "sort": (int(born.group(0)) if born else (sort_year or 9999), name),
+            "sort_year": sort_year,
             "female": meta.get("sex") == "f",
             "village": str(meta.get("village") or ""),
             "branch": str(meta.get("tree_branch") or ""),
@@ -108,6 +123,21 @@ def on_files(files, config):
             _people[par]["children"].add(pid)
         for s in p["spouses"]:
             _people[s]["spouses"].add(pid)
+    # Год рождения неизвестен («17 век», «? – после 1709»): для порядка в меню и в древе
+    # берём год старшего ребёнка минус 20 (примерно поколение), а не конец списка.
+    # Подпись в меню не меняется — её задаёт nav в mkdocs.yml.
+    def guess(pid, seen):
+        p = _people[pid]
+        if p["born"] is not None or p["sort_year"] is not None:
+            return p["sort"][0]
+        years = [guess(c, seen | {c}) for c in p["children"] if c not in seen]
+        years = [y for y in years if y is not None]
+        return min(years) - 20 if years else None
+    for pid, p in _people.items():
+        if p["born"] is None and p["sort_year"] is None:
+            y = guess(pid, {pid})
+            if y is not None:
+                p["sort"] = (y, p["name"])
     return files
 
 
@@ -164,7 +194,8 @@ def _roots():
             continue
         # Оба супруга без родителей — показываем пару один раз (см. _rank).
         partners = [s for s in p["spouses"] if not _people[s]["parents"]]
-        if any(_rank(s) < _rank(pid) for s in partners):
+        own = p["branch"] and any(p["branch"] != _branch(s) for s in partners)
+        if not own and any(_rank(s) < _rank(pid) for s in partners):
             continue
         roots.append(pid)
     return _root_order(roots, lambda r: [s for s in _people[r]["spouses"] if not _people[s]["parents"]])
@@ -205,8 +236,11 @@ def on_page_markdown(markdown, page, config, files):
     by_branch = {}
     for r in _roots():
         by_branch.setdefault(_branch(r), []).append(r)
-    # Вкладки по алфавиту, «Другие» — последней.
-    groups = {b: by_branch[b] for b in sorted(by_branch, key=lambda b: (b == OTHER_BRANCH, b))}
+    # Вкладки по алфавиту, «Неустановленное происхождение» и «Другие» — последними.
+    groups = {
+        b: by_branch[b]
+        for b in sorted(by_branch, key=lambda b: (b == OTHER_BRANCH, b == UNKNOWN_BRANCH, b))
+    }
     tree = (
         '<div class="ftree">\n'
         '<div class="ftree-controls">'
@@ -260,8 +294,8 @@ def _label(pid, titles):
     if titles.get(pid):
         return titles[pid]
     p = _people[pid]
-    year = p["sort"][0]
-    return f"{year} {p['name']}" if year != 9999 else p["name"]
+    year = p["born"]
+    return f"{year} {p['name']}" if year is not None else p["name"]
 
 
 _menu_places = {}  # подпись страницы в меню -> место (поле `village`)

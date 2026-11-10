@@ -15,6 +15,7 @@ spouses: [P1115]
 children: [P1112]
 places: [PLC1004]
 village: "х. Винники"
+tree_branch: "Харьковская ветка"
 sources: [A1265, A1264, A1283, A1267]
 ---
 

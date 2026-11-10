@@ -6,6 +6,7 @@ name_variants:
   - "Савелей Игнатьев"
 birth_date: ""
 birth_date_status: unknown
+sort_year: 1670
 death_date: ""
 death_date_status: unknown
 parents: []

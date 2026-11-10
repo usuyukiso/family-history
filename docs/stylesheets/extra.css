@@ -1859,6 +1859,12 @@
 [data-md-color-scheme="slate"] .md-typeset .vstatus--pending { color: #b8b8b2; background: #34353a; border-color: #50525a; }
 [data-md-color-scheme="slate"] .md-typeset .vstatus--ok { color: #9fd49a; background: #2b3a2b; border-color: #4a6a47; }
 
+/* Схема «Деревни и приходы»: подписи статусов цветом точки — **…**{.st-f-text} зелёная, **…**{.st-p-text} жёлтая */
+.md-typeset strong.st-f-text { color: #1e8a3a; }
+.md-typeset strong.st-p-text { color: #a87b00; }
+[data-md-color-scheme="slate"] .md-typeset strong.st-f-text { color: #4cc76a; }
+[data-md-color-scheme="slate"] .md-typeset strong.st-p-text { color: #f2c230; }
+
 /* Имя героя страницы внутри цитаты из документа: **…**{.subject} */
 .md-typeset strong.subject { color: #9a3b12; }
 
