@@ -77,6 +77,7 @@ extra_javascript:
   - javascripts/home-photos.js
   - javascripts/bank-table.js
   - javascripts/search-snippet.js
+  - javascripts/changelog-calendar.js
 
 # Страницы, доступные только по прямой ссылке (не в меню, не в поиске, не в карте сайта).
 not_in_nav: |
@@ -632,6 +633,7 @@ nav:
           - sources/databases/DB1001-pamyat-naroda-davydov-93350478.md
   - Разное:
       - misc/index.md
+      - Что нового: misc/changelog.md
       - Генеалогические загадки: genealogy-puzzles.md
       - Схемы:
           - schemes/index.md

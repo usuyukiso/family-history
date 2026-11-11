@@ -512,6 +512,17 @@
   color: var(--md-default-fg-color);
   border-bottom-color: var(--md-default-fg-color);
 }
+/* Древо: вкладки «Неустановленное происхождение» и «Другие» (класс ftree-row2 ставит
+   hooks/family_tree.py) всегда на второй строке — перенос строки делает ::after. */
+.md-typeset .ftree .tabbed-set > .tabbed-labels::after {
+  content: "";
+  flex-basis: 100%;
+  height: 0;
+  order: 1;
+}
+.md-typeset .ftree .tabbed-set > .tabbed-labels > label.ftree-row2 {
+  order: 2;
+}
 .md-typeset :is(.ftree .tabbed-set, .page-tabs) > .tabbed-labels a:not(.headerlink):not(.md-button) {
   text-decoration: none;
   color: inherit;
@@ -1952,4 +1963,101 @@
 .md-typeset .page-404__links .md-button {
   margin: 0;
   cursor: pointer;
+}
+
+/* «Что нового»: календарь дней с новостями (javascripts/changelog-calendar.js) —
+   в правой колонке вместо оглавления, на узком экране — над первой записью. */
+.cl-cal {
+  max-width: 15rem;
+  margin: 0 0 1.5rem;
+  padding: .7rem .6rem .5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
+  font-size: .7rem;
+  line-height: 1;
+  background: var(--md-default-bg-color);
+}
+.cl-cal--side {
+  margin: .6rem .6rem 1rem;
+}
+.cl-cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
+.cl-cal__title {
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+.cl-cal__nav {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--md-primary-fg-color);
+  cursor: pointer;
+}
+.cl-cal__nav:hover:not([disabled]) {
+  background: var(--md-accent-fg-color--transparent);
+}
+.cl-cal__nav[disabled] {
+  opacity: .25;
+  cursor: default;
+}
+.cl-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+.cl-cal__wd {
+  padding: .2rem 0 .35rem;
+  font-size: .6rem;
+  color: var(--md-default-fg-color--light);
+}
+.cl-cal__wd--we {
+  color: var(--md-default-fg-color--lighter);
+}
+.cl-cal__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--md-default-fg-color--lighter);
+}
+.md-typeset a.cl-cal__day--has,
+a.cl-cal__day--has {
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 0;
+  color: var(--md-primary-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+  box-shadow: inset 0 0 0 1px var(--md-primary-fg-color--light);
+}
+a.cl-cal__day--has:hover {
+  color: #fff;
+  background: var(--md-primary-fg-color--light);
+}
+a.cl-cal__day--has.is-active {
+  color: #fff;
+  background: var(--md-primary-fg-color);
+  box-shadow: inset 0 0 0 2px var(--site-gold);
+}
+.cl-cal__note {
+  margin: .55rem 0 0;
+  font-size: .62rem;
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+}
+[data-md-color-scheme="slate"] a.cl-cal__day--has {
+  color: var(--md-accent-fg-color);
+  box-shadow: inset 0 0 0 1px var(--md-accent-fg-color);
+}
+[data-md-color-scheme="slate"] a.cl-cal__day--has.is-active,
+[data-md-color-scheme="slate"] a.cl-cal__day--has:hover {
+  color: #10241a;
+  background: var(--md-accent-fg-color);
 }

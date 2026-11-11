@@ -7,7 +7,7 @@
 во внутреннем чек-листе internal/checks/documents_check_list.md (в репозитории,
 но не на сайте) — там же полная история проверок и правок каждой страницы.
 
-Плашки нет на главной, родословной, методологии, терминологии, «О проекте»
+Плашки нет на главной, родословной, методологии, терминологии, «О проекте», «Что нового»
 и на реестрах источников, мест, персон и фамилий — она стоит на страницах
 отдельных источников, биографий, мест и фамилий. Нет её и в разделе «Схемы»
 (docs/schemes/): там сводные схемы, а не страницы с документами.
@@ -16,7 +16,8 @@
 import re
 
 SKIP = {"index.md", "tree.md", "research-method.md", "genealogy-puzzles.md", "terminology.md", "about.md",
-        "sources/index.md", "people/index.md", "places/index.md", "surnames/index.md", "misc/index.md"}
+        "sources/index.md", "people/index.md", "places/index.md", "surnames/index.md", "misc/index.md",
+        "misc/changelog.md"}
 
 TEXT = ("Материалы этой страницы подготовлены с помощью ИИ-инструментов "
         "на основе архивных документов и таблиц")

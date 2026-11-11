@@ -10,9 +10,9 @@
 (function () {
   "use strict";
 
-  var BEFORE = 120;   // символов до первого найденного слова
-  var AFTER = 220;    // символов после него
-  var MIN_LEN = BEFORE + AFTER + 60; // короче — оставляем как есть
+  var BEFORE = 70;    // символов до первого найденного слова
+  var AFTER = 150;    // символов после него
+  var MIN_LEN = BEFORE + AFTER + 40; // короче — оставляем как есть
 
   // Части статьи результата, которые не трогаем.
   function isKeep(el) {
@@ -51,7 +51,11 @@
   function snip(article) {
     if (article.dataset.snip) return;
     article.dataset.snip = "1";
-    var body = Array.prototype.filter.call(article.children, function (el) { return !isKeep(el); });
+    // childNodes, а не children: Material часто кладёт текст раздела прямо в article,
+    // без <p> (голые текстовые узлы между <mark>), — их тоже надо учесть и убрать.
+    var body = Array.prototype.filter.call(article.childNodes, function (n) {
+      return n.nodeType === 3 || (n.nodeType === 1 && !isKeep(n));
+    });
     if (!body.length) return;
     var parts = collect(body);
     var total = parts.reduce(function (s, p) { return s + p.t.length; }, 0);

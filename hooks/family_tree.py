@@ -217,7 +217,11 @@ def _tabs(groups, page):
         for i in range(n)
     )
     labels = "".join(
-        f'<label for="__ftree_{i + 1}">{html.escape(name)}</label>' for i, name in enumerate(groups)
+        f'<label for="__ftree_{i + 1}"'
+        # «Неустановленное происхождение» и «Другие» — на второй строке вкладок (extra.css).
+        f'{" class=" + chr(34) + "ftree-row2" + chr(34) if name in (UNKNOWN_BRANCH, OTHER_BRANCH) else ""}'
+        f">{html.escape(name)}</label>"
+        for i, name in enumerate(groups)
     )
     blocks = "".join(
         '<div class="tabbed-block"><ul>' + "".join(_node(r, page, {r}) for r in roots) + "</ul></div>"
