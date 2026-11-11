@@ -1098,6 +1098,126 @@
   max-height: none;
 }
 
+/* Схемы родства, нарисованные вручную (SVG, div.kin-scheme): ряды — поколения.
+   Ширина не меньше натуральной (--ks-w), иначе текст мелкий; лишнее прокручивается. */
+/* Цвета линий — в тон схеме «Реестр документов»: зелёный — прямая запись,
+   синий — по отчеству / выведено из документа, красный пунктир — предположение,
+   фиолетовые точки — крёстные и поручители. */
+.kin-scheme {
+  --ks-rec: #2f8f4a;
+  --ks-doc: #2f74c4;
+  --ks-gss: #cf3f2c;
+  --ks-god: #8a4fb5;
+  margin: 1em 0;
+}
+[data-md-color-scheme="slate"] .kin-scheme {
+  --ks-rec: #5fb36d;
+  --ks-doc: #6fa3dc;
+  --ks-gss: #f08070;
+  --ks-god: #c39ae0;
+}
+.diagram-zoom__area .kin-scheme {
+  margin: 0;
+  padding: .4rem;
+}
+.kin-scheme svg {
+  display: block;
+  width: 100%;
+  min-width: var(--ks-w, 1200px);
+  height: auto;
+  font-family: inherit;
+}
+.kin-scheme .ks-band {
+  fill: var(--md-default-fg-color--lightest);
+}
+.kin-scheme .ks-gen {
+  fill: var(--md-default-fg-color--lighter);
+  font-size: 15px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+.kin-scheme .ks-box {
+  fill: var(--site-card-bg);
+  stroke: var(--site-border);
+  stroke-width: 1.2;
+}
+.kin-scheme text {
+  fill: var(--md-default-fg-color);
+  font-size: 12px;
+}
+.kin-scheme .ks-name,
+.kin-scheme .ks-txt,
+.kin-scheme .ks-godtxt {
+  text-anchor: middle;
+}
+.kin-scheme .ks-name {
+  font-weight: 700;
+}
+.kin-scheme .ks-l {
+  fill: none;
+  stroke: var(--md-default-fg-color--light);
+  stroke-width: 1.5;
+}
+.kin-scheme .ks-rec {
+  stroke: var(--ks-rec);
+  stroke-width: 2.2;
+}
+.kin-scheme .ks-doc {
+  stroke: var(--ks-doc);
+  stroke-width: 2.2;
+}
+.kin-scheme .ks-dash {
+  stroke: var(--ks-gss);
+  stroke-width: 2.2;
+  stroke-dasharray: 9 5;
+}
+.kin-scheme .ks-ah-rec {
+  fill: var(--ks-rec);
+}
+.kin-scheme .ks-ah-doc {
+  fill: var(--ks-doc);
+}
+.kin-scheme .ks-ah-gss {
+  fill: var(--ks-gss);
+}
+.kin-scheme .ks-arrhead {
+  fill: var(--md-default-fg-color--light);
+}
+.kin-scheme .ks-god {
+  fill: none;
+  stroke: var(--ks-god);
+  stroke-width: 3;
+  stroke-dasharray: 1 6;
+  stroke-linecap: round;
+}
+.kin-scheme .ks-god.ks-thin {
+  stroke-width: 1.5;
+  stroke-dasharray: 1 4;
+}
+.kin-scheme .ks-arrhead-g {
+  fill: var(--ks-god);
+}
+.kin-scheme .ks-godtxt {
+  fill: var(--ks-god);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.kin-scheme .ks-halo {
+  paint-order: stroke;
+  stroke: var(--md-default-bg-color);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+.kin-scheme .ks-q {
+  font-weight: 700;
+  font-size: 12.5px;
+}
+.kin-scheme .ks-note,
+.kin-scheme .ks-leg {
+  font-size: 11.5px;
+  fill: var(--md-default-fg-color--light);
+}
+
 /* Набранная копия документа «по образцу бланка» (страницы с doc_replica: true).
    Все размеры — в cqw, поэтому лист масштабируется целиком, как картинка. */
 .md-typeset .replica {

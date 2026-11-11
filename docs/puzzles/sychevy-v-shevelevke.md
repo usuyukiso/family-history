@@ -97,30 +97,116 @@
 
 Единственный Яков этого рода подходящего возраста — Яков Прокофьев (около 1747 г.): при рождении Василия ему было бы около 41 года. Если Василий — его сын, то Сычевы двора № 144 и Сычи двора № 99 — одна семья, и линия выглядит так: Прокофий → Яков Прокофьев → Василий Яковлев → Яков Васильев (около 1812 г.) → Никита и Арефа (?). Против: Василий записан отдельным двором, а не в доме Якова Прокофьева, и прямой записи, что он сын Якова Прокофьева, нет. Как с ними связан Мартин, отец Афанасия, неизвестно.
 
-Обозначения — как на схеме выше. Схема укорочена: дети Никиты и Арефы на ней не показаны.
+На схеме каждое поколение стоит в своём ряду (римские цифры слева). Мартин поставлен в ряд II только по возрасту его сына Афанасия; как он связан с Прокофием и его сыновьями, неизвестно. Пунктирные линии от обоих Яковов сходятся в одну: отцом Никиты и Арефы мог быть либо один, либо другой. Цвет линии показывает, на чём основана связь: зелёная — родство прямо записано в ревизской сказке 1850 г. («его сын», «сыновья умершего…»), синяя — выведено из отчества или из записи (Даниил назван внуком Якова Прокофьева), красный пунктир — предположение. Схема укорочена: дети Никиты и Арефы на ней не показаны. Обозначения — под схемой; её можно открыть на весь экран кнопкой над ней.
 
-```mermaid
-flowchart TD
-    PR["Прокофий"]
-    PR --> YP["Яков Прокофьев Сыч<br>ок. 1747, † 1839"]
-    PR --> TP["Тит Прокофьев<br>ок. 1757, † 1836"]
-    YP -->|?| EV["Евмен"]
-    EV --> DA["Даниил Евменов Сычов<br>ок. 1814<br>сыновья Корнилий, Георгий"]
-    YP -.->|?| VA["Василий Яковлев Сычев<br>ок. 1788, † 1837"]
-    VA --> YV["Яков Васильев Сычев<br>ок. 1812<br>⚭ Повола [?] Зосимовна"]
-    YV --> NKL["Николай<br>ок. 1847<br>ходок 1903 «Николай Сычевъ»?"]
-    YV --> OTH["Савва ок. 1837, Герасим ок. 1848,<br>Евдокия ок. 1834, Епистимия ок. 1838"]
-    MR["Мартин"] --> AF["Афанасий Мартинов Сыч<br>ок. 1789, † 1845"]
-    AF --> KA["Калинник ок. 1824,<br>Алексей ок. 1831"]
-    AF --> YA["Яков Афанасьев Сыч<br>ок. 1828<br>⚭ Евдокия Иванова"]
-    YV -.->|?| NI["Никита Яковлев Сычев<br>Шевелёвка 1906–1913"]
-    YV -.->|?| AR["Арефа Яковлев Сычов<br>Лыщичи 1905, Шевелёвка 1913 (?)"]
-    YA -.->|?| NI
-    YA -.->|?| AR
-    NI -.-|братья ?| AR
-    linkStyle 4,11,12,13,14,15 stroke-width:2px,stroke-dasharray:10 6
-```
-
+<div class="kin-scheme" style="--ks-w: 1462px">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1462 608" role="img" aria-label="Схема рода Сычей в Лыщичах по поколениям">
+<defs><marker id="ks2-rec" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="ks-ah-rec" d="M0 0 L10 5 L0 10 z"/></marker><marker id="ks2-doc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="ks-ah-doc" d="M0 0 L10 5 L0 10 z"/></marker><marker id="ks2-gss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="ks-ah-gss" d="M0 0 L10 5 L0 10 z"/></marker></defs>
+<rect class="ks-band" x="4" y="12" width="1454" height="53" rx="6"/>
+<text class="ks-gen" x="20" y="43.5">I</text>
+<rect class="ks-band" x="4" y="95" width="1454" height="68" rx="6"/>
+<text class="ks-gen" x="20" y="134">II</text>
+<rect class="ks-band" x="4" y="199" width="1454" height="68" rx="6"/>
+<text class="ks-gen" x="20" y="238">III</text>
+<rect class="ks-band" x="4" y="303" width="1454" height="83" rx="6"/>
+<text class="ks-gen" x="20" y="349.5">IV</text>
+<rect class="ks-band" x="4" y="444" width="1454" height="98" rx="6"/>
+<text class="ks-gen" x="20" y="498">V</text>
+<path class="ks-l ks-doc" d="M386.625 55 L386.625 79"/>
+<path class="ks-l ks-doc" d="M386.625 79 L289.125 79 L289.125 105" marker-end="url(#ks2-doc)"/>
+<path class="ks-l ks-doc" d="M386.625 79 L484.125 79 L484.125 105" marker-end="url(#ks2-doc)"/>
+<text class="ks-q" x="298.125" y="96" text-anchor="middle">?</text>
+<text class="ks-q" x="493.125" y="96" text-anchor="middle">?</text>
+<path class="ks-l ks-doc" d="M261.125 153 L261.125 181 L140 181 L140 209" marker-end="url(#ks2-doc)"/>
+<text class="ks-q" x="149" y="200" text-anchor="middle">?</text>
+<path class="ks-l ks-dash" d="M317.125 153 L317.125 181 L438.25 181 L438.25 209" marker-end="url(#ks2-gss)"/>
+<text class="ks-q" x="447.25" y="200" text-anchor="middle">?</text>
+<path class="ks-l ks-doc" d="M140 257 L140 313" marker-end="url(#ks2-doc)"/>
+<text class="ks-q" x="149" y="304" text-anchor="middle">?</text>
+<path class="ks-l ks-rec" d="M438.25 257 L438.25 313" marker-end="url(#ks2-rec)"/>
+<path class="ks-l ks-doc" d="M1254 153 L1254 209" marker-end="url(#ks2-doc)"/>
+<text class="ks-q" x="1263" y="200" text-anchor="middle">?</text>
+<path class="ks-l ks-rec" d="M1254 257 L1254 285"/>
+<path class="ks-l ks-rec" d="M1254 285 L1157 285 L1157 313" marker-end="url(#ks2-rec)"/>
+<path class="ks-l ks-rec" d="M1254 285 L1351 285 L1351 313" marker-end="url(#ks2-rec)"/>
+<path class="ks-l ks-rec" d="M438.25 376 L438.25 428"/>
+<path class="ks-l ks-rec" d="M348 428 L528.5 428"/>
+<path class="ks-l ks-rec" d="M348 428 L348 454" marker-end="url(#ks2-rec)"/>
+<path class="ks-l ks-rec" d="M528.5 428 L528.5 454" marker-end="url(#ks2-rec)"/>
+<path class="ks-l ks-dash" d="M482.25 376 L482.25 402 L839.25 402"/>
+<path class="ks-l ks-dash" d="M1113 376 L1113 402 L839.25 402"/>
+<path class="ks-l ks-dash" d="M839.25 402 L839.25 428"/>
+<path class="ks-l ks-dash" d="M709 428 L969.5 428"/>
+<path class="ks-l ks-dash" d="M709 428 L709 454" marker-end="url(#ks2-gss)"/>
+<text class="ks-q" x="718" y="445" text-anchor="middle">?</text>
+<path class="ks-l ks-dash" d="M969.5 428 L969.5 454" marker-end="url(#ks2-gss)"/>
+<text class="ks-q" x="978.5" y="445" text-anchor="middle">?</text>
+<text class="ks-note" x="839.25" y="394" text-anchor="middle">отец — один из двух Яковов ?</text>
+<path class="ks-l ks-dash" d="M793 493 L889 493"/>
+<text class="ks-q" x="841" y="486" text-anchor="middle">братья ?</text>
+<rect class="ks-box" x="347.125" y="22" width="79" height="33" rx="5"/>
+<text class="ks-name" x="386.625" y="42">Прокофий</text>
+<rect class="ks-box" x="199.625" y="105" width="179" height="48" rx="5"/>
+<text class="ks-name" x="289.125" y="125">Яков Прокофьев Сыч</text>
+<text class="ks-txt" x="289.125" y="140">род. ок. 1747, ум. 1839</text>
+<rect class="ks-box" x="394.625" y="105" width="179" height="48" rx="5"/>
+<text class="ks-name" x="484.125" y="125">Тит Прокофьев</text>
+<text class="ks-txt" x="484.125" y="140">род. ок. 1757, ум. 1836</text>
+<rect class="ks-box" x="1222" y="105" width="64" height="48" rx="5"/>
+<text class="ks-name" x="1254" y="132.5">Мартин</text>
+<rect class="ks-box" x="111.5" y="209" width="57" height="48" rx="5"/>
+<text class="ks-name" x="140" y="236.5">Евмен</text>
+<rect class="ks-box" x="348.75" y="209" width="179" height="48" rx="5"/>
+<text class="ks-name" x="438.25" y="229">Василий Яковлев Сычев</text>
+<text class="ks-txt" x="438.25" y="244">род. ок. 1788, ум. 1837</text>
+<rect class="ks-box" x="1164.5" y="209" width="179" height="48" rx="5"/>
+<text class="ks-name" x="1254" y="229">Афанасий Мартинов Сыч</text>
+<text class="ks-txt" x="1254" y="244">род. ок. 1789, ум. 1845</text>
+<rect class="ks-box" x="44" y="313" width="192" height="63" rx="5"/>
+<text class="ks-name" x="140" y="333">Даниил Евменов Сычов</text>
+<text class="ks-txt" x="140" y="348">род. ок. 1814</text>
+<text class="ks-txt" x="140" y="363">сыновья Корнилий, Георгий</text>
+<rect class="ks-box" x="342.25" y="313" width="192" height="63" rx="5"/>
+<text class="ks-name" x="438.25" y="333">Яков Васильев Сычев</text>
+<text class="ks-txt" x="438.25" y="348">род. ок. 1812</text>
+<text class="ks-txt" x="438.25" y="363">жена Повола [?] Зосимовна</text>
+<rect class="ks-box" x="1078" y="313" width="158" height="63" rx="5"/>
+<text class="ks-name" x="1157" y="333">Яков Афанасьев Сыч</text>
+<text class="ks-txt" x="1157" y="348">род. ок. 1828</text>
+<text class="ks-txt" x="1157" y="363">жена Евдокия Иванова</text>
+<rect class="ks-box" x="1252" y="313" width="198" height="63" rx="5"/>
+<text class="ks-txt" x="1351" y="340.5">Калинник, род. ок. 1824,</text>
+<text class="ks-txt" x="1351" y="355.5">Алексей, род. ок. 1831</text>
+<rect class="ks-box" x="252" y="454" width="192" height="78" rx="5"/>
+<text class="ks-txt" x="348" y="474">Евдокия, род. ок. 1834,</text>
+<text class="ks-txt" x="348" y="489">Савва, род. ок. 1837,</text>
+<text class="ks-txt" x="348" y="504">Епистимия, род. ок. 1838,</text>
+<text class="ks-txt" x="348" y="519">Герасим, род. ок. 1848</text>
+<rect class="ks-box" x="460" y="454" width="137" height="78" rx="5"/>
+<text class="ks-name" x="528.5" y="474">Николай</text>
+<text class="ks-txt" x="528.5" y="489">род. ок. 1847</text>
+<text class="ks-txt" x="528.5" y="504">ходок 1903 г.</text>
+<text class="ks-txt" x="528.5" y="519">«Николай Сычевъ»?</text>
+<rect class="ks-box" x="625" y="454" width="168" height="78" rx="5"/>
+<text class="ks-name" x="709" y="481.5">Никита Яковлев Сычев</text>
+<text class="ks-txt" x="709" y="496.5">упом. в Шевелёвке</text>
+<text class="ks-txt" x="709" y="511.5">1906–1913</text>
+<rect class="ks-box" x="889" y="454" width="161" height="78" rx="5"/>
+<text class="ks-name" x="969.5" y="481.5">Арефа Яковлев Сычов</text>
+<text class="ks-txt" x="969.5" y="496.5">упом.: Лыщичи 1905,</text>
+<text class="ks-txt" x="969.5" y="511.5">Шевелёвка 1913 (?)</text>
+<path class="ks-l ks-rec" d="M44 566 L88 566" marker-end="url(#ks2-rec)"/>
+<text class="ks-leg" x="98" y="570" text-anchor="start">прямо записано в ревизской сказке 1850 г.</text>
+<path class="ks-l ks-doc" d="M398 566 L442 566" marker-end="url(#ks2-doc)"/>
+<text class="ks-q" x="420" y="561" text-anchor="middle">?</text>
+<text class="ks-leg" x="452" y="570" text-anchor="start">по отчеству или выведено из записи</text>
+<path class="ks-l ks-dash" d="M714 566 L758 566" marker-end="url(#ks2-gss)"/>
+<text class="ks-q" x="736" y="561" text-anchor="middle">?</text>
+<text class="ks-leg" x="768" y="570" text-anchor="start">предположение</text>
+<text class="ks-leg" x="908" y="570" text-anchor="start">I–V — поколения</text>
+<text class="ks-leg" x="44" y="592" text-anchor="start">род. — родился (родилась) · ум. — умер · упом. — упоминается в документах · годы рождения — по возрасту в ревизской сказке 1850 г.</text>
+</svg>
+</div>
 Отцом Никиты и Арефы мог быть либо Яков Васильев Сычев, либо Яков Афанасьев Сыч (см. «[Кто был Яков, отец Никиты и Арефы](#kto-byl-yakov)»). Подтвердить или опровергнуть эту линию могли бы документы XVIII в., названные в теме форума: ревизская сказка 1795 г. по Лыщичам (ЦГИАК Украины, ф. 1855, оп. 1, д. 12; на форуме расшифрованы казаки, их подсуседки, цыгане и крестьяне; от крестьянской части сохранилась «только первая 1/3», и Сычей в ней нет) и материалы Киево-Печерской лавры в ЦГИАК (ф. 128) — ревизские сказки 1782 и 1785 гг., исповедные росписи вотчинных церквей [W1010]. Есть ли в них Лыщичи и Сычи, не проверено.
 
 ## Предположения о родстве
@@ -131,37 +217,153 @@ flowchart TD
 
 **Гипотеза составителя.** Все Сычевы Шевелёвки — потомки одного человека, Якова Сычева из села [Лыщичи](PLC1020). Его сын Никита Яковлев приехал первым, около 1903 г., с детьми, в том числе со взрослыми и женатыми. Брат Никиты, Арефий Яковлев, в 1905 г. ещё жил в Лыщичах [A1272] и приехал с сыновьями позже Никиты — по одному из вариантов, между июлем 1905 и мартом 1907 г. (см. «[Кто входил в 7 душ](#sem-dush)»). Фёдор — сын одного из братьев. Тогда в Шевелёвке жили три поколения одной семьи: братья Никита и Арефий, их дети, а также внуки Никиты.
 
-Сплошные линии — родство по метрическим записям; сплошная линия со знаком «?» — родство по отчеству (Яков — отец Никиты Яковлева и Арефы Яковлева, Арефий — отец Никиты и Никифора Арефьевых, Никита — отец детей «Никитиных»), но записи о рождении нет; длинный пунктир со знаком «?» — предположение; жирные зелёные точки — от крёстной (поручителя) к крестнику (жениху), ⚭ — брак. Схему можно открыть на весь экран кнопкой над ней.
+На схеме каждое поколение стоит в своём ряду (римские цифры слева): I — Яков, II — его сыновья, III — внуки, IV — правнуки. Цвет линии показывает, на чём основана связь: зелёная — на метрической записи; синяя со знаком «?» — на отчестве (Яков — отец Никиты Яковлева и Арефы Яковлева, Арефий — отец Никиты и Никифора Арефьевых, Никита — отец детей «Никитиных»), записи о рождении нет; красный пунктир со знаком «?» — предположение; фиолетовые точки — от крёстной к крестнику. Мария и Фёдор, у которых отец не установлен, стоят между семьями Никиты и Арефия; к Марии ведут две пунктирные линии — от Никиты Яковлева и от Никиты Арефьева (во втором случае она была бы поколением ниже). Поручительство Ивана Почеревина на свадьбе Никиты Арефьева показано не линией, а фиолетовой подписью в рамке Никиты. Обозначения — под схемой; её можно открыть на весь экран кнопкой над ней.
 
-```mermaid
-flowchart TD
-    YK["Яков Сычев, с. Лыщичи:<br>Яков Васильев Сычев, ок. 1812,<br>или Яков Афанасьев Сыч, ок. 1828 (?)"]
-    YK --> NI["Никита Яковлев Сычев<br>в Шевелёвке 1906–1913<br>⚭ Марфа Фокина"]
-    YK -->|?| AR["Арефий (Арефа) Яковлев Сычев<br>Лыщичи 1905, Шевелёвка 1913"]
-    NK["Николай Сычевъ<br>ходок 1903, Лыщичи, 7 душ"] -.-|"= ? или брат ?"| NI
-    NI --> AN["Анна Никитина<br>ок. 1883–1889<br>⚭ Ив. Ег. Почеревин"]
-    NI --> AL["Александра<br>1906, † 1906"]
-    NI --> EK["Екатерина<br>1908<br>⚭ Т. Н. Дубоделов"]
-    NI -->|?| MI["Михаил Никитин<br>⚭ Феодосия Григорьева"]
-    NI -->|?| NE["Неонила Никитина<br>⚭ Пимон Марков Следнев"]
-    NI -->|?| HA["Харитина Никитина<br>ок. 1896/97<br>⚭ Иоанн Борисов Ботвинка"]
-    NI -->|?| IV["Иван Никитович<br>1912"]
-    NI -.->|?| MA["Мария<br>ок. 1914, † 1917"]
-    NA -.->|?| MA
-    NI -.->|?| FE["Фёдор Сычев<br>в Шевелёвке 1920"]
-    AR -.->|?| FE
-    AR -->|?| NA["Никита Арефьев<br>ок. 1894/95<br>⚭ 1914 Надежда Агафонова Нерех"]
-    AR -->|?| NF["Никифор Арефьев<br>в Шевелёвке 1918"]
-    MI --> MK["Екатерина 1906, Иулиания 1908,<br>Епистимия 1910, Никита 1914,<br>Анна ок. 1919"]
-    FE --> IF["Иоанн<br>ок. 1914/15, † 1920"]
-    AN --> AP["Александра Почеревина<br>1909"]
-    NE --> SL["Михаил 1908 и<br>Анастасия 1910 Следневы"]
-    MI -.->|Феодосия — крёстная| AP
-    AN -.->|крёстная| SL
-    AN -.->|Ив. Почеревин — поручитель| NA
-    linkStyle 2,10,11,12,13 stroke-width:2px,stroke-dasharray:10 6
-    linkStyle 20,21,22 stroke:#4c7a12,stroke-width:3.5px,stroke-dasharray:2 5,stroke-linecap:round
-```
+<div class="kin-scheme" style="--ks-w: 1971px">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1971 644" role="img" aria-label="Схема предполагаемого родства Сычевых в Шевелёвке по поколениям">
+<defs><marker id="ks1-rec" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="ks-ah-rec" d="M0 0 L10 5 L0 10 z"/></marker><marker id="ks1-doc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="ks-ah-doc" d="M0 0 L10 5 L0 10 z"/></marker><marker id="ks1-gss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="ks-ah-gss" d="M0 0 L10 5 L0 10 z"/></marker><marker id="ks1-god" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse"><path class="ks-arrhead-g" d="M0 0 L10 5 L0 10 z"/></marker></defs>
+<rect class="ks-band" x="4" y="12" width="1963" height="83" rx="6"/>
+<text class="ks-gen" x="20" y="58.5">I</text>
+<rect class="ks-band" x="4" y="128" width="1963" height="83" rx="6"/>
+<text class="ks-gen" x="20" y="174.5">II</text>
+<rect class="ks-band" x="4" y="264" width="1963" height="136" rx="6"/>
+<text class="ks-gen" x="20" y="337">III</text>
+<rect class="ks-band" x="4" y="424" width="1963" height="148" rx="6"/>
+<text class="ks-gen" x="20" y="503">IV</text>
+<path class="ks-l ks-doc" d="M1199.62 85 L1199.62 110"/>
+<path class="ks-l ks-doc" d="M1199.62 110 L622 110 L622 138" marker-end="url(#ks1-doc)"/>
+<path class="ks-l ks-doc" d="M1199.62 110 L1777.25 110 L1777.25 138" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="631" y="128" text-anchor="middle">?</text>
+<text class="ks-q" x="1786.25" y="128" text-anchor="middle">?</text>
+<path class="ks-l ks-dash" d="M378.5 169.5 L508.5 169.5"/>
+<text class="ks-q" x="443.5" y="162.5" text-anchor="middle">= ? или брат ?</text>
+<path class="ks-l" d="M622 201 L622 250"/>
+<path class="ks-l" d="M113 250 L1131 250"/>
+<path class="ks-l ks-doc" d="M113 250 L113 276" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="122" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-rec" d="M291 250 L291 276" marker-end="url(#ks1-rec)"/>
+<path class="ks-l ks-doc" d="M462 250 L462 276" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="471" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-doc" d="M619 250 L619 276" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="628" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-rec" d="M789.5 250 L789.5 276" marker-end="url(#ks1-rec)"/>
+<path class="ks-l ks-rec" d="M967 250 L967 276" marker-end="url(#ks1-rec)"/>
+<path class="ks-l ks-doc" d="M1131 250 L1131 276" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="1140" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-doc" d="M1777.25 201 L1777.25 250"/>
+<path class="ks-l ks-doc" d="M1681.5 250 L1873 250"/>
+<path class="ks-l ks-doc" d="M1681.5 250 L1681.5 276" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="1690.5" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-doc" d="M1873 250 L1873 276" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="1882" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-dash" d="M668 201 L668 226 L1464 226 L1464 276" marker-end="url(#ks1-gss)"/>
+<path class="ks-l ks-dash" d="M1298.5 226 L1298.5 276" marker-end="url(#ks1-gss)"/>
+<text class="ks-q" x="1307.5" y="267" text-anchor="middle">?</text>
+<text class="ks-q" x="1455" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-dash" d="M1731.25 201 L1731.25 226 L1516 226 L1516 276" marker-end="url(#ks1-gss)"/>
+<text class="ks-q" x="1525" y="267" text-anchor="middle">?</text>
+<path class="ks-l ks-dash" d="M1681.5 390 L1681.5 560 L1298.5 560 L1298.5 354" marker-end="url(#ks1-gss)"/>
+<text class="ks-q" x="1307.5" y="376" text-anchor="middle">?</text>
+<text class="ks-note" x="1312.5" y="553" text-anchor="start">или дочь Никиты Арефьева</text>
+<path class="ks-l ks-rec" d="M113 354 L113 436" marker-end="url(#ks1-rec)"/>
+<path class="ks-l ks-rec" d="M291 354 L291 436" marker-end="url(#ks1-rec)"/>
+<path class="ks-l ks-rec" d="M462 354 L462 436" marker-end="url(#ks1-rec)"/>
+<path class="ks-l ks-rec" d="M1490 354 L1490 436" marker-end="url(#ks1-rec)"/>
+<path class="ks-god" d="M255 357 L149 433" marker-end="url(#ks1-god)"/>
+<text class="ks-godtxt ks-halo" x="202" y="399" text-anchor="middle">крёстная</text>
+<path class="ks-god" d="M426 357 L327 433" marker-end="url(#ks1-god)"/>
+<text class="ks-godtxt ks-halo" x="376.5" y="399" text-anchor="middle">Феодосия — крёстная</text>
+<rect class="ks-box" x="44" y="276" width="138" height="78" rx="5"/>
+<text class="ks-name" x="113" y="303.5">Неонила Никитина</text>
+<text class="ks-txt" x="113" y="318.5">⚭ Пимон Марков</text>
+<text class="ks-txt" x="113" y="333.5">Следнев</text>
+<rect class="ks-box" x="198" y="276" width="186" height="78" rx="5"/>
+<text class="ks-name" x="291" y="303.5">Анна Никитина</text>
+<text class="ks-txt" x="291" y="318.5">род. ок. 1883–1889</text>
+<text class="ks-txt" x="291" y="333.5">⚭ 1906 Ив. Ег. Почеревин</text>
+<rect class="ks-box" x="400" y="276" width="124" height="78" rx="5"/>
+<text class="ks-name" x="462" y="303.5">Михаил Никитин</text>
+<text class="ks-txt" x="462" y="318.5">⚭ Феодосия</text>
+<text class="ks-txt" x="462" y="333.5">Григорьева</text>
+<rect class="ks-box" x="540" y="276" width="158" height="78" rx="5"/>
+<text class="ks-name" x="619" y="296">Харитина Никитина</text>
+<text class="ks-txt" x="619" y="311">род. ок. 1896/97</text>
+<text class="ks-txt" x="619" y="326">⚭ 1913 Иоанн Борисов</text>
+<text class="ks-txt" x="619" y="341">Ботвинка</text>
+<rect class="ks-box" x="714" y="276" width="151" height="78" rx="5"/>
+<text class="ks-name" x="789.5" y="311">Александра</text>
+<text class="ks-txt" x="789.5" y="326">род. 1906, ум. 1906</text>
+<rect class="ks-box" x="881" y="276" width="172" height="78" rx="5"/>
+<text class="ks-name" x="967" y="303.5">Екатерина</text>
+<text class="ks-txt" x="967" y="318.5">род. 1908</text>
+<text class="ks-txt" x="967" y="333.5">⚭ 1925 Т. Н. Дубоделов</text>
+<rect class="ks-box" x="1069" y="276" width="124" height="78" rx="5"/>
+<text class="ks-name" x="1131" y="311">Иван Никитович</text>
+<text class="ks-txt" x="1131" y="326">род. 1912</text>
+<rect class="ks-box" x="1209" y="276" width="179" height="78" rx="5"/>
+<text class="ks-name" x="1298.5" y="311">Мария</text>
+<text class="ks-txt" x="1298.5" y="326">род. ок. 1914, ум. 1917</text>
+<rect class="ks-box" x="1404" y="276" width="172" height="78" rx="5"/>
+<text class="ks-name" x="1490" y="311">Фёдор Сычев</text>
+<text class="ks-txt" x="1490" y="326">упом. в Шевелёвке 1920</text>
+<rect class="ks-box" x="1592" y="276" width="179" height="114" rx="5"/>
+<text class="ks-name" x="1681.5" y="296">Никита Арефьев</text>
+<text class="ks-txt" x="1681.5" y="311">род. ок. 1894/95</text>
+<text class="ks-txt" x="1681.5" y="326">⚭ 1914 Надежда</text>
+<text class="ks-txt" x="1681.5" y="341">Агафонова Нерех</text>
+<line class="ks-god ks-thin" x1="1600" y1="348" x2="1763" y2="348"/>
+<text class="ks-godtxt" x="1681.5" y="362">поручитель на свадьбе —</text>
+<text class="ks-godtxt" x="1681.5" y="377">Ив. Ег. Почеревин</text>
+<rect class="ks-box" x="1787" y="276" width="172" height="78" rx="5"/>
+<text class="ks-name" x="1873" y="311">Никифор Арефьев</text>
+<text class="ks-txt" x="1873" y="326">упом. в Шевелёвке 1918</text>
+<rect class="ks-box" x="508.5" y="138" width="227" height="63" rx="5"/>
+<text class="ks-name" x="622" y="158">Никита Яковлев Сычев</text>
+<text class="ks-txt" x="622" y="173">упом. в Шевелёвке 1906–1913</text>
+<text class="ks-txt" x="622" y="188">жена (упом. 1908) Марфа Фокина</text>
+<rect class="ks-box" x="1649.75" y="138" width="255" height="63" rx="5"/>
+<text class="ks-name" x="1777.25" y="165.5">Арефий (Арефа) Яковлев Сычев</text>
+<text class="ks-txt" x="1777.25" y="180.5">упом.: Лыщичи 1905, Шевелёвка 1913</text>
+<rect class="ks-box" x="241.5" y="138" width="137" height="63" rx="5"/>
+<text class="ks-name" x="310" y="158">Николай Сычевъ</text>
+<text class="ks-txt" x="310" y="173">упом. 1903: ходок</text>
+<text class="ks-txt" x="310" y="188">из Лыщичей, 7 душ</text>
+<rect class="ks-box" x="1048.12" y="22" width="303" height="63" rx="5"/>
+<text class="ks-name" x="1199.62" y="42">Яков Сычев, с. Лыщичи:</text>
+<text class="ks-txt" x="1199.62" y="57">Яков Васильев Сычев, род. ок. 1812,</text>
+<text class="ks-txt" x="1199.62" y="72">или Яков Афанасьев Сыч, род. ок. 1828 (?)</text>
+<rect class="ks-box" x="34" y="436" width="158" height="63" rx="5"/>
+<text class="ks-name" x="113" y="456">Следневы:</text>
+<text class="ks-txt" x="113" y="471">Михаил, род. 1908,</text>
+<text class="ks-txt" x="113" y="486">Анастасия, род. 1910</text>
+<rect class="ks-box" x="244" y="436" width="94" height="63" rx="5"/>
+<text class="ks-name" x="291" y="456">Александра</text>
+<text class="ks-txt" x="291" y="471">Почеревина</text>
+<text class="ks-txt" x="291" y="486">род. 1909</text>
+<rect class="ks-box" x="379.5" y="436" width="165" height="108" rx="5"/>
+<text class="ks-name" x="462" y="456">Дети (род. – ум.):</text>
+<text class="ks-txt" x="462" y="471">Екатерина 1906</text>
+<text class="ks-txt" x="462" y="486">Иулиания 1908</text>
+<text class="ks-txt" x="462" y="501">Епистимия 1910 – 1911</text>
+<text class="ks-txt" x="462" y="516">Никита 1914 – 1914</text>
+<text class="ks-txt" x="462" y="531">Анна ок. 1919 – 1920</text>
+<rect class="ks-box" x="1390.5" y="436" width="199" height="48" rx="5"/>
+<text class="ks-name" x="1490" y="456">Иоанн</text>
+<text class="ks-txt" x="1490" y="471">род. ок. 1914/15, ум. 1920</text>
+<path class="ks-l ks-rec" d="M44 602 L88 602" marker-end="url(#ks1-rec)"/>
+<text class="ks-leg" x="98" y="606" text-anchor="start">по метрической записи</text>
+<path class="ks-l ks-doc" d="M288 602 L332 602" marker-end="url(#ks1-doc)"/>
+<text class="ks-q" x="310" y="597" text-anchor="middle">?</text>
+<text class="ks-leg" x="342" y="606" text-anchor="start">по отчеству, записи о рождении нет</text>
+<path class="ks-l ks-dash" d="M610 602 L654 602" marker-end="url(#ks1-gss)"/>
+<text class="ks-q" x="632" y="597" text-anchor="middle">?</text>
+<text class="ks-leg" x="664" y="606" text-anchor="start">предположение</text>
+<path class="ks-god" d="M814 602 L858 602" marker-end="url(#ks1-god)"/>
+<text class="ks-leg" x="868" y="606" text-anchor="start">от крёстной к крестнику</text>
+<text class="ks-leg" x="1068" y="606" text-anchor="start">I–IV — поколения</text>
+<text class="ks-leg" x="44" y="628" text-anchor="start">род. — родился (родилась) · ум. — умер (умерла) · упом. — упоминается в документах · ⚭ — брак (год венчания, если известен)</text>
+</svg>
+</div>
 
 Если гипотеза верна, Анна Почеревина и Никита Арефьев — двоюродные брат и сестра, а поручителем на свадьбе Никиты в 1914 г. был муж его двоюродной сестры. Тогда же понятно, почему Сычевы Арефьевы приехали именно в Шевелёвку: там уже жила семья их дяди.
 

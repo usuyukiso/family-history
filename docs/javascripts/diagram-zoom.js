@@ -1,4 +1,4 @@
-// Кнопка «на весь экран» над схемами (mermaid).
+// Кнопка «на весь экран» над схемами (mermaid и нарисованные вручную div.kin-scheme).
 (function () {
   function button(text, title, onClick) {
     var b = document.createElement("button");
@@ -27,7 +27,7 @@
       }));
     }
   }
-  function scan() { document.querySelectorAll("div.mermaid").forEach(setup); }
+  function scan() { document.querySelectorAll("div.mermaid, div.kin-scheme").forEach(setup); }
   new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
   scan();
 })();
