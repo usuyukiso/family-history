@@ -79,7 +79,9 @@ extra_javascript:
   - javascripts/search-snippet.js
   - javascripts/changelog-calendar.js
 
-# Страницы, доступные только по прямой ссылке (не в меню, не в поиске, не в карте сайта).
+# Страницы вне меню: открываются по ссылкам, есть в поиске и в карте сайта.
+# Полностью скрытая страница (не в поиске, не в карте сайта, noindex) — ещё и `hidden: true`
+# в front matter (hooks/hidden_pages.py), как P1004.
 not_in_nav: |
   /people/P1004-pavel-p.md
   /people/P1026-konon.md

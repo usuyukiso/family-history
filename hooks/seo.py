@@ -9,6 +9,8 @@
   - персоны, родившиеся в 1900 г. и позже (`birth_date`);
   - источники, датированные 1918 г. и позже (`document_date`);
   - любая страница с `noindex: true`; `noindex: false` отменяет правило.
+- **Только вне sitemap** (без noindex): раздел «Схемы» (docs/schemes/) —
+  сводные схемы, а не страницы с документами.
 - **Даты в sitemap.** `<lastmod>` — дата последнего коммита, менявшего .md-файл
   страницы (а не дата сборки). Файлы вне git получают дату сборки.
 
@@ -31,6 +33,8 @@ SOURCE_FROM = 1918
 MAX_LEN = 160
 
 _noindex = set()  # url страницы
+NO_SITEMAP = ("schemes/",)  # разделы, которых нет в sitemap (страницы не закрыты от индекса)
+_no_sitemap = set()  # url страницы
 _lastmod = {}  # url -> YYYY-MM-DD
 _git_dates = None  # путь .md относительно docs/ -> YYYY-MM-DD
 
@@ -124,6 +128,7 @@ def _load_git_dates(docs_dir):
 def on_pre_build(config):
     global _git_dates
     _noindex.clear()
+    _no_sitemap.clear()
     _lastmod.clear()
     _git_dates = _load_git_dates(config["docs_dir"])
 
@@ -142,6 +147,8 @@ def on_page_markdown(markdown, page, config, files):
             page.meta["description"] = html.escape(desc)
     if _is_noindex(page) and not page.meta.get("hidden"):
         _noindex.add(page.url)
+    if page.file.src_uri.startswith(NO_SITEMAP):
+        _no_sitemap.add(page.url)
     date = _git_dates.get(page.file.src_uri) if _git_dates else None
     if date:
         _lastmod[page.url] = date
@@ -163,7 +170,7 @@ def on_post_build(config):
 
         def fix(m):
             url = m.group(1)[len(base):] if m.group(1).startswith(base) else m.group(1)
-            if url in _noindex:
+            if url in _noindex or url in _no_sitemap:
                 return ""
             block = m.group(0)
             if url in _lastmod:

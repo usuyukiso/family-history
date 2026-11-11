@@ -6,8 +6,8 @@
   если код встречается в changelog.md;
 - страница без кода (schemes/family-traits.md) — если в changelog.md есть
   ссылка на её файл.
-Не проверяются: index.md, 404, сама changelog.md, страницы из `not_in_nav`
-в mkdocs.yml (доступны только по прямой ссылке) и всё, что перечислено
+Не проверяются: index.md, 404, сама changelog.md, полностью скрытые страницы
+(`hidden: true`; страницы просто вне меню — проверяются) и всё, что перечислено
 в internal/changelog_baseline.txt (страницы, вошедшие в открытие сайта
 одной сводной строкой, и служебные).
 
@@ -32,12 +32,13 @@ ID_RE = re.compile(r"^((?:FAM|PLC|SUR|EV|DB|P|F|D|A|B|W|N|L|I|M|V|O)\d{4})-")
 SKIP = {"index.md", "404.md"}
 
 
-def hidden_pages():
-    text = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
-    m = re.search(r"^not_in_nav:\s*\|\n((?:[ \t]+.*\n)+)", text, re.M)
-    if not m:
-        return set()
-    return {line.strip().lstrip("/") for line in m.group(1).splitlines() if line.strip()}
+def is_hidden(path):
+    """Полностью скрытая страница: `hidden: true` в front matter (hooks/hidden_pages.py)."""
+    text = path.read_text(encoding="utf-8")
+    if not text.startswith("---"):
+        return False
+    head = text.split("---", 2)[1]
+    return re.search(r"^hidden:\s*true\s*$", head, re.M) is not None
 
 
 def baseline():
@@ -52,12 +53,11 @@ def baseline():
 
 def missing():
     log = CHANGELOG.read_text(encoding="utf-8") if CHANGELOG.exists() else ""
-    hidden = hidden_pages()
     known = baseline()
     out = []
     for f in sorted(DOCS.rglob("*.md")):
         rel = f.relative_to(DOCS).as_posix()
-        if f.name in SKIP or f == CHANGELOG or rel in hidden:
+        if f.name in SKIP or f == CHANGELOG or is_hidden(f):
             continue
         m = ID_RE.match(f.name)
         key = m.group(1) if m else rel

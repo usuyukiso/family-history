@@ -512,16 +512,11 @@
   color: var(--md-default-fg-color);
   border-bottom-color: var(--md-default-fg-color);
 }
-/* Древо: вкладки «Неустановленное происхождение» и «Другие» (класс ftree-row2 ставит
-   hooks/family_tree.py) всегда на второй строке — перенос строки делает ::after. */
-.md-typeset .ftree .tabbed-set > .tabbed-labels::after {
-  content: "";
-  flex-basis: 100%;
-  height: 0;
-  order: 1;
-}
-.md-typeset .ftree .tabbed-set > .tabbed-labels > label.ftree-row2 {
-  order: 2;
+/* Древо: подписи вкладок в две строки («Псковская<br>ветка» — hooks/family_tree.py),
+   чтобы все вкладки стояли в один ряд. */
+.md-typeset .ftree .tabbed-set > .tabbed-labels > label {
+  line-height: 1.15;
+  text-align: center;
 }
 .md-typeset :is(.ftree .tabbed-set, .page-tabs) > .tabbed-labels a:not(.headerlink):not(.md-button) {
   text-decoration: none;
@@ -612,6 +607,16 @@
 }
 .md-typeset .ftree details[open] > summary::before {
   transform: rotate(90deg);
+}
+/* Корень без детей на сайте: карточка без стрелок, не раскрывается. */
+.md-typeset .ftree details.ftree-single > summary {
+  cursor: default;
+}
+.md-typeset .ftree details.ftree-single > summary::before {
+  content: "";
+}
+.md-typeset .ftree details.ftree-single > summary::after {
+  display: none;
 }
 .md-typeset .ftree .ftree-leaf::before {
   content: "•";

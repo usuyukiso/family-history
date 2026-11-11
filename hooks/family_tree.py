@@ -167,12 +167,17 @@ def _link(pid, page):
     return f'<span class="ftree-person"><a href="{href}">{html.escape(p["name"])}</a>{years}{place}</span>'
 
 
-def _node(pid, page, seen):
+def _node(pid, page, seen, top=False):
     p = _people[pid]
     head = _link(pid, page)
     for s in _sorted(p["spouses"]):
         head += f' <span class="ftree-spouse" title="в браке с">{SPOUSE} {_link(s, page)}</span>'
     kids = [c for c in _sorted(p["children"]) if c not in seen]
+    if not kids and top:
+        # Корень без детей на сайте (Егор Почеревин) — такая же карточка, как у
+        # остальных корней, но без стрелок и не раскрывается (extra.css, family-tree.js).
+        return (f'<li><details class="ftree-single"><summary>'
+                f'<span class="ftree-head">{head}</span></summary></details></li>')
     if not kids:
         return f'<li class="ftree-leaf"><span class="ftree-head">{head}</span></li>'
     inner = "".join(_node(c, page, seen | {c}) for c in kids)
@@ -216,15 +221,15 @@ def _tabs(groups, page):
         f'<input{" checked" if i == 0 else ""} id="__ftree_{i + 1}" name="__ftree" type="radio">'
         for i in range(n)
     )
+    # Подпись в две строки («Псковская<br>ветка», «Неустановленное<br>происхождение»),
+    # чтобы все вкладки помещались в один ряд.
     labels = "".join(
-        f'<label for="__ftree_{i + 1}"'
-        # «Неустановленное происхождение» и «Другие» — на второй строке вкладок (extra.css).
-        f'{" class=" + chr(34) + "ftree-row2" + chr(34) if name in (UNKNOWN_BRANCH, OTHER_BRANCH) else ""}'
-        f">{html.escape(name)}</label>"
+        f'<label for="__ftree_{i + 1}">'
+        f'{"<br>".join(html.escape(part) for part in name.split(" ", 1))}</label>'
         for i, name in enumerate(groups)
     )
     blocks = "".join(
-        '<div class="tabbed-block"><ul>' + "".join(_node(r, page, {r}) for r in roots) + "</ul></div>"
+        '<div class="tabbed-block"><ul>' + "".join(_node(r, page, {r}, top=True) for r in roots) + "</ul></div>"
         for roots in groups.values()
     )
     return (
