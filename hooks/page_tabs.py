@@ -16,6 +16,7 @@ import re
 
 MARKER = "<!-- h2-tabs -->"
 H2 = re.compile(r"<h2[^>]*>(.*?)</h2>", re.S)
+H2_ID = re.compile(r'<h2[^>]*\sid="([^"]+)"')
 HEADERLINK = re.compile(r'<a class="headerlink"[^>]*>.*?</a>', re.S)
 
 
@@ -29,6 +30,26 @@ def _label(name):
     if not m:
         return html.escape(name)
     return f'{html.escape(m.group(1))}<span class="page-tabs__sub">{m.group(2)}</span>'
+
+
+def _drop_tab_headings(page, ids):
+    """Убрать заголовки вкладок из оглавления справа: самих `## …` на странице
+    больше нет (они стали подписями вкладок), ссылки на них не работали.
+    Вложенные пункты (буквы, века) поднимаются на их место; какие из них
+    показывать, решает javascripts/page-tabs.js по открытой вкладке."""
+
+    def flatten(items):
+        out = []
+        for item in items:
+            if item.id in ids:
+                out.extend(flatten(item.children))
+            else:
+                item.children = flatten(item.children)
+                out.append(item)
+        return out
+
+    if page.toc:
+        page.toc.items = flatten(page.toc.items)
 
 
 def on_page_content(content, page, config, files):
@@ -49,6 +70,7 @@ def on_page_content(content, page, config, files):
         f'<label for="__ptabs_{i + 1}">{_label(name)}</label>' for i, name in enumerate(labels)
     )
     blocks = "".join(f'<div class="tabbed-block">{text}</div>' for _, text in pairs)
+    _drop_tab_headings(page, set(H2_ID.findall(body)))
     tabs = (
         f'<div class="tabbed-set tabbed-alternate page-tabs" data-tabs="1:{len(pairs)}">{inputs}'
         f'<div class="tabbed-labels">{label_html}</div>'
