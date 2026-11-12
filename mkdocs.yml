@@ -45,6 +45,7 @@ hooks:
   - hooks/document_age.py
   - hooks/delo_title.py
   - hooks/replica_credit.py
+  - hooks/family_list_nav.py
   - hooks/household_tables.py
   - hooks/verification_status.py
   - hooks/document_registry.py

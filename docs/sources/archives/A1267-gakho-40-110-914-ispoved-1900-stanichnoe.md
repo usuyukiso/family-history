@@ -8,6 +8,7 @@ inventory: "110"
 record: "914"
 page: "191–270 (с. 198, 229–230)"
 document_date: "1900"
+family_list: [PLC1004]
 evidence_kind: "primary"
 related_people:
   - P1097

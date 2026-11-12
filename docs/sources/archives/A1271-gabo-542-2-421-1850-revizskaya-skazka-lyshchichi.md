@@ -7,6 +7,7 @@ collection: "542"
 inventory: "2"
 record: "421"
 document_date: "1850-06-18"
+family_list: [PLC1020]
 url: "https://forum.vgd.ru/post/792/131622/p4965660.htm#pp4965660"
 evidence_kind: "primary"
 related_people:

@@ -8,6 +8,7 @@ inventory: "1"
 record: "2680"
 page: "1355 об. – 1356"
 document_date: "1806"
+family_list: [PLC1010]
 evidence_kind: "primary"
 related_people:
   - P1032

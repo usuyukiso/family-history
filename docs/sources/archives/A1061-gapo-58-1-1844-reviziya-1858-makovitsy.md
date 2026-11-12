@@ -8,6 +8,7 @@ inventory: "1"
 record: "1844"
 page: "82 об., 83"
 document_date: "1858"
+family_list: [PLC1002]
 evidence_kind: "primary"
 related_people:
   - P1013

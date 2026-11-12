@@ -8,6 +8,7 @@ inventory: "1"
 record: "1029"
 page: "411, 413 об. – 415"
 document_date: "1782-06"
+family_list: [PLC1008]
 evidence_kind: "primary"
 related_people:
   - P1029

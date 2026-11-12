@@ -8,6 +8,7 @@ inventory: "1"
 record: "2680"
 page: "1223, 1223 об."
 document_date: "1806"
+family_list: [PLC1003]
 evidence_kind: "primary"
 related_people:
   - P1010

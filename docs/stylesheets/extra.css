@@ -2186,3 +2186,64 @@ a.cl-cal__day--has.is-active {
   color: #10241a;
   background: var(--md-accent-fg-color);
 }
+
+/* Источники: «Предыдущий / Следующий известный год» по деревне (hooks/family_list_nav.py) */
+.md-typeset .fl-nav-wrap {
+  margin: 2rem 0 1.5rem;
+}
+.md-typeset .fl-nav__caption {
+  margin: 1rem 0 .3rem;
+  font-size: .7rem;
+  font-weight: 700;
+}
+.md-typeset .fl-nav {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem;
+  overflow: hidden;
+}
+.md-typeset a.fl-nav__row {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .75rem 1rem;
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  border-bottom: 0;
+}
+.md-typeset a.fl-nav__row + a.fl-nav__row {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+.md-typeset a.fl-nav__row:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-default-fg-color);
+}
+.md-typeset .fl-nav__arrow {
+  flex: none;
+  font-size: .85rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .fl-nav__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.md-typeset .fl-nav__label {
+  font-weight: 700;
+}
+.md-typeset .fl-nav__meta {
+  font-size: .68rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .fl-nav__badge {
+  flex: none;
+  padding: .1rem .5rem;
+  border-radius: .4rem;
+  font-size: .62rem;
+  color: var(--md-primary-fg-color);
+  background: var(--md-primary-bg-color);
+}
+[data-md-color-scheme="slate"] .md-typeset .fl-nav__badge {
+  color: var(--md-accent-fg-color);
+  background: var(--md-accent-bg-color);
+}

@@ -5,6 +5,7 @@ title: "1952–1966 Архивный отдел Администрации Не�
 repository: "Архивный отдел Администрации Нелидовского муниципального округа Тверской области"
 collection: "16"
 document_date: "1952–1966"
+family_list: [PLC1025]
 evidence_kind: "primary"
 paper: grey
 related_people:

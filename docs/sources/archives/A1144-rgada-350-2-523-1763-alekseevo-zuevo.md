@@ -8,6 +8,7 @@ inventory: "2"
 record: "523"
 page: "110 об.–111 (331 об.–332)"
 document_date: "1763"
+family_list: [PLC1007]
 evidence_kind: "primary"
 related_people:
   - P1025

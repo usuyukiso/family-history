@@ -7,6 +7,7 @@ collection: "39"
 inventory: "1"
 record: "1590"
 document_date: "1754"
+family_list: [PLC1002]
 evidence_kind: "primary"
 related_people:
   - P1023

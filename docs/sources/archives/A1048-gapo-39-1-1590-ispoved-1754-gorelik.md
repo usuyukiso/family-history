@@ -8,6 +8,7 @@ inventory: "1"
 record: "1590"
 page: "47 об., 48"
 document_date: "1754"
+family_list: [PLC1015]
 evidence_kind: "primary"
 related_people:
   - P1009

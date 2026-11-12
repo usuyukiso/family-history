@@ -8,6 +8,7 @@ inventory: "1"
 record: "2510"
 page: "204–205"
 document_date: "1747"
+family_list: [PLC1010]
 evidence_kind: "primary"
 related_people:
   - P1034

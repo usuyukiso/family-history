@@ -8,6 +8,7 @@ inventory: "1"
 record: "1029"
 page: "294–297"
 document_date: "1782"
+family_list: [PLC1009]
 evidence_kind: "primary"
 related_people:
   - P1049
