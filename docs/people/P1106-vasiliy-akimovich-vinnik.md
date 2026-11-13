@@ -12,6 +12,11 @@ death_date_status: probable
 parents: [P1102, P1103]
 spouses: [P1107]
 children: [P1108]
+children_no_page:
+  - {name: "Антонина", years: "1935 – 2016", sex: f}
+  - {name: "Николай", years: "1939", sex: m}
+  - {name: "Тамара", years: "1941", sex: f}
+  - {name: "Нина", years: "1946", sex: f}
 places: [PLC1004]
 village: "х. Винники"
 sources: []

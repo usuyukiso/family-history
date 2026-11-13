@@ -20,6 +20,15 @@ death_date_status: unknown
 parents: [P1000]
 spouses: [P1003]
 children: [P1076, P1077, P1006]
+children_no_page:
+  - {name: "Мария", years: "1907", sex: f}
+  - {name: "Александра", years: "1909", sex: f}
+  - {name: "Виктор", years: "1911 – 1911", sex: m}
+  - {name: "Николай", years: "1913", sex: m}
+  - {name: "Валентина", years: "", sex: f}
+  - {name: "Екатерина", years: "", sex: f, note: "возможно"}
+  - {name: "Владимир", years: "1916", sex: m}
+  - {name: "Ольга", years: "1923", sex: f}
 places: [PLC1000]
 village: "Сахалин → д. Шевелёвка"
 sources: [B1002, A1000, A1001, A1002, B1000, A1005, A1006, A1007, A1013, A1014, A1015, A1280, A1016, A1020, A1021, A1008, A1022, A1023, A1024, A1025, A1026, A1027, A1028, A1029, A1030, A1032, A1033, A1034, A1035, A1036, A1043, A1018, A1019, A1009, F1000, F1001, A1197, A1198]

@@ -10,6 +10,8 @@ death_date_status: unknown
 parents: []
 spouses: [P1081]
 children: [P1080]
+children_no_page:
+  - {name: "сын (имя неизвестно)", years: "", sex: m}
 places: []
 village: "?"
 sources: []

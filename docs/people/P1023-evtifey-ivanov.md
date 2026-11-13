@@ -13,6 +13,11 @@ death_date_status: unknown
 parents: []
 spouses: [P1046]
 children: [P1021]
+children_no_page:
+  - {name: "Февронья", years: "ок. 1734", sex: f}
+  - {name: "Родион (Иродион)", years: "ок. 1742–1744", sex: m}
+  - {name: "Наталья", years: "ок. 1745", sex: f}
+  - {name: "Елена", years: "ок. 1755", sex: f}
 places: [PLC1002, PLC1016]
 village: "д. Колтырево → Маковицы"
 tree_branch: "Псковская ветка"

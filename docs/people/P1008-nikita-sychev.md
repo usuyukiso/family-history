@@ -11,7 +11,19 @@ birth_date_status: unknown
 death_date: ""
 death_date_status: unknown
 spouses: []
+parents_hypothesis:
+  label: "Предполагаемые родители"
+  link: "puzzles/sychevy-v-shevelevke.md#predpolozheniya"
+  note: "предположения о родстве"
 children: [P1003]
+children_no_page:
+  - {name: "Михаил", years: "", sex: m}
+  - {name: "Неонила", years: "", sex: f}
+  - {name: "Харитина", years: "ок. 1896/97", sex: f}
+  - {name: "Александра", years: "1906 – 1906", sex: f}
+  - {name: "Екатерина", years: "1908", sex: f}
+  - {name: "Иван", years: "1912", sex: m}
+  - {name: "Мария [?]", years: "ок. 1914 – 1917", sex: f, note: "отцом мог быть Никита Арефьев"}
 places: [PLC1020, PLC1000]
 village: "с. Лыщичи → д. Шевелёвка"
 tree_branch: "Черниговская ветка"

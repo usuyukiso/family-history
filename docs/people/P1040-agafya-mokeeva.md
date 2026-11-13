@@ -13,6 +13,9 @@ death_date_status: unknown
 parents: []
 spouses: [P1039]
 children: [P1037]
+children_no_page:
+  - {name: "Филипп", years: "ок. 1779–1782 – 1822", sex: m}
+  - {name: "Татьяна", years: "ок. 1799", sex: f}
 places: [PLC1017]
 village: "? → д. Попова Гора"
 sources: [A1164, A1167, B1010, A1172]

@@ -11,6 +11,12 @@ death_date_status: unknown
 parents: []
 spouses: [P1093]
 children: [P1097]
+children_no_page:
+  - {name: "Тит", years: "ок. 1830", sex: m}
+  - {name: "Дарья", years: "ок. 1831", sex: f}
+  - {name: "Иван", years: "ок. 1831", sex: m}
+  - {name: "Василий", years: "ок. 1836", sex: m}
+  - {name: "Пелагея", years: "ок. 1837", sex: f}
 places: [PLC1004]
 village: "? → х. Винники"
 sources: [A1265]

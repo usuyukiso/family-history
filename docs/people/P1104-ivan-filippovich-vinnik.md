@@ -14,6 +14,8 @@ death_date_status: probable
 parents: [P1100, P1101]
 spouses: [P1105]
 children: [P1107]
+children_no_page:
+  - {name: "Александра", years: "1920", sex: f}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1283, A1266, A1267, A1284, A1285]

@@ -11,6 +11,12 @@ death_date_status: probable
 parents: [P1025]
 spouses: []
 children: [P1022]
+children_no_page:
+  - {name: "Григорий", years: "ок. 1737", sex: m}
+  - {name: "Матфей", years: "ок. 1740", sex: m}
+  - {name: "Авдотья", years: "ок. 1747", sex: f}
+  - {name: "Егор", years: "ок. 1751", sex: m}
+  - {name: "Савелий", years: "ок. 1752", sex: m}
 places: [PLC1007]
 village: "д. Алексеево-Зуево"
 sources: [A1276, A1144, A1143, A1145]

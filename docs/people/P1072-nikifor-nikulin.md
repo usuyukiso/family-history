@@ -11,6 +11,12 @@ death_date_status: confirmed
 parents: []
 spouses: [P1073]
 children: [P1074]
+children_no_page:
+  - {name: "Иван", years: "ок. 1733–1734", sex: m}
+  - {name: "Роман", years: "ок. 1736–1737", sex: m}
+  - {name: "Евдокия", years: "", sex: f}
+siblings_no_page:
+  - {name: "Понкратий", years: "ок. 1718–1719", sex: m}
 places: [PLC1013]
 village: "д. Костково"
 tree_branch: "Псковская ветка"

@@ -12,6 +12,12 @@ death_date_status: unknown
 parents: [P1072, P1073]
 spouses: [P1075]
 children: [P1044]
+children_no_page:
+  - {name: "Меланья", years: "ок. 1747", sex: f}
+  - {name: "Катерина", years: "ок. 1754", sex: f}
+  - {name: "Силуан [?]", years: "ок. 1755", sex: m}
+  - {name: "сын, имя неразборчиво", years: "ок. 1758", sex: m}
+  - {name: "Татьяна", years: "ок. 1762", sex: f}
 places: [PLC1013]
 village: "д. Костково"
 sources: [A1181, A1166, A1173]

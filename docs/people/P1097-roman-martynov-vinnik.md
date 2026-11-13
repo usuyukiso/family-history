@@ -12,6 +12,9 @@ death_date_status: unknown
 parents: [P1093, P1094]
 spouses: []
 children: [P1100]
+children_no_page:
+  - {name: "Данило", years: "1860", sex: m}
+  - {name: "Евфим", years: "ок. 1863", sex: m}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1265, A1266, A1267, A1284, A1285]

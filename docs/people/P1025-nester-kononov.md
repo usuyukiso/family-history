@@ -12,6 +12,10 @@ death_date_status: confirmed
 parents: [P1026]
 spouses: []
 children: [P1024]
+children_no_page:
+  - {name: "Демид", years: "ок. 1709", sex: m}
+  - {name: "Антон", years: "ок. 1714", sex: m}
+  - {name: "Понкратий", years: "ок. 1715", sex: m}
 places: [PLC1007]
 village: "д. Алексеево-Зуево"
 tree_branch: "Псковская ветка"

@@ -13,6 +13,12 @@ death_date_status: unknown
 parents: []
 spouses: [P1115]
 children: [P1112]
+children_no_page:
+  - {name: "Феодосия", years: "ок. 1842", sex: f}
+  - {name: "Трофим", years: "1853", sex: m}
+  - {name: "Евмений", years: "1857", sex: m}
+siblings_no_page:
+  - {name: "Нестор", years: "ок. 1814", sex: m}
 places: [PLC1004]
 village: "х. Винники"
 tree_branch: "Харьковская ветка"

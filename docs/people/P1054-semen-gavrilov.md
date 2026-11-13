@@ -11,6 +11,8 @@ death_date_status: confirmed
 parents: []
 spouses: []
 children: [P1052]
+children_no_page:
+  - {name: "Прасковья", years: "ок. 1743", sex: f}
 places: [PLC1008]
 village: "д. Зубово"
 tree_branch: "Псковская ветка"

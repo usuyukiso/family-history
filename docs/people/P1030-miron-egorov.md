@@ -11,6 +11,8 @@ death_date_status: unknown
 parents: [P1032, P1033]
 spouses: [P1031]
 children: [P1028]
+children_no_page:
+  - {name: "Дарья", years: "ок. 1798", sex: f}
 places: [PLC1010, PLC1019]
 village: "д. Мокряне → Лескушкино"
 sources: [A1153, A1154, B1007]

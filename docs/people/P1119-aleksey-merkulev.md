@@ -11,6 +11,8 @@ death_date_status: confirmed
 parents: [P1120]
 spouses: []
 children: [P1064]
+siblings_no_page:
+  - {name: "Терентий", years: "ок. 1669", sex: m, note: "брат по ревизии 1719 г."}
 places: [PLC1011]
 village: "д. Порухово"
 tree_branch: "Псковская ветка"

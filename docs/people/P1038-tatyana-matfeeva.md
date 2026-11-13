@@ -12,6 +12,11 @@ death_date_status: unknown
 parents: [P1044, P1045]
 spouses: [P1037]
 children: [P1036]
+children_no_page:
+  - {name: "Филипп", years: "1810", sex: m}
+  - {name: "Иван", years: "ок. 1812", sex: m}
+  - {name: "Дмитрий", years: "ок. 1813", sex: m}
+  - {name: "Пелагия", years: "1817", sex: f}
 places: [PLC1013, PLC1017]
 village: "д. Костково → Попова Гора"
 sources: [A1166, A1168, A1167, A1170, A1171, B1010, A1173]

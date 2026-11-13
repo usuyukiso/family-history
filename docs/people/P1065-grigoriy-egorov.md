@@ -11,6 +11,9 @@ death_date_status: confirmed
 parents: [P1116]
 spouses: []
 children: [P1063]
+children_no_page:
+  - {name: "Архип", years: "ок. 1719–1727", sex: m}
+  - {name: "Федор", years: "ок. 1729", sex: m}
 places: [PLC1014]
 village: "д. Печохново"
 tree_branch: "Псковская ветка"

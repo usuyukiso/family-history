@@ -12,6 +12,11 @@ death_date_status: unknown
 parents: [P1024]
 spouses: [P1021]
 children: [P1011]
+children_no_page:
+  - {name: "Праскева", years: "ок. 1759", sex: f}
+  - {name: "Макрида", years: "1763", sex: f}
+  - {name: "Тихон [?]", years: "1766", sex: m}
+  - {name: "Анна", years: "1767", sex: f}
 places: [PLC1007, PLC1002]
 village: "д. Алексеево-Зуево → Маковицы"
 sources: [A1143, A1144, A1148, A1150, A1050, A1310, A1054]

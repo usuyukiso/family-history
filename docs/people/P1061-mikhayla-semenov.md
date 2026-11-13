@@ -11,6 +11,14 @@ death_date_status: unknown
 parents: []
 spouses: [P1062]
 children: [P1059]
+children_no_page:
+  - {name: "Гаврила", years: "ок. 1684", sex: m}
+  - {name: "Григорий", years: "ок. 1688", sex: m}
+siblings_no_page:
+  - {name: "Влас", years: "ок. 1675–1681", sex: m}
+  - {name: "Федор", years: "ок. 1681", sex: m}
+  - {name: "Федот", years: "", sex: m}
+  - {name: "Ануфрий", years: "", sex: m}
 places: [PLC1009]
 village: "д. Мышино"
 tree_branch: "Псковская ветка"

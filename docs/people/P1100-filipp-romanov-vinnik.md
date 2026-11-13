@@ -13,6 +13,15 @@ death_date_status: unknown
 parents: [P1097]
 spouses: [P1101]
 children: [P1104]
+children_no_page:
+  - {name: "Ксения", years: "ок. 1897", sex: f}
+  - {name: "Надежда", years: "ок. 1898", sex: f}
+  - {name: "Ефимия", years: "1902", sex: f}
+  - {name: "Варвара", years: "1903", sex: f}
+  - {name: "Архип", years: "1907", sex: m}
+  - {name: "Мария", years: "", sex: f}
+  - {name: "Евдокия", years: "", sex: f}
+  - {name: "Семен", years: "", sex: m}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1282, A1283, A1266, A1267, A1284, A1285, W1012]

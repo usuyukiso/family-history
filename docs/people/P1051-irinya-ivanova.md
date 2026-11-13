@@ -11,6 +11,13 @@ death_date_status: unknown
 parents: []
 spouses: [P1050]
 children: [P1048]
+children_no_page:
+  - {name: "«…ина»", years: "ок. 1762", sex: f}
+  - {name: "Авксентий («..вий»)", years: "ок. 1764", sex: m}
+  - {name: "«..яна»", years: "ок. 1765", sex: f}
+  - {name: "Тимофей", years: "ок. 1767–1769", sex: m}
+  - {name: "Николай", years: "ок. 1772–1773", sex: m}
+  - {name: "Авдотья", years: "ок. 1777", sex: f}
 places: [PLC1008]
 village: "д. Зубово"
 sources: [A1159]

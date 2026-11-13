@@ -11,6 +11,8 @@ death_date_status: unknown
 parents: []
 spouses: []
 children: [P1068]
+children_no_page:
+  - {name: "Борис", years: "ок. 1669–1672", sex: m, note: "по мнению составителя"}
 places: [PLC1017]
 village: "д. Попова Гора"
 tree_branch: "Псковская ветка"

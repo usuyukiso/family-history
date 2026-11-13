@@ -12,6 +12,10 @@ death_date_status: probable
 parents: [P1089, P1090]
 spouses: []
 children: [P1095]
+children_no_page:
+  - {name: "Федор", years: "ок. 1808", sex: m}
+  - {name: "Евфим", years: "ок. 1813", sex: m}
+  - {name: "Антон", years: "ок. 1833", sex: m}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1262, A1263, A1264, A1265]

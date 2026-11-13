@@ -12,6 +12,15 @@ death_date_status: probable
 parents: [P1008]
 spouses: [P1002]
 children: [P1076, P1077, P1006]
+children_no_page:
+  - {name: "Мария", years: "1907", sex: f}
+  - {name: "Александра", years: "1909", sex: f}
+  - {name: "Виктор", years: "1911 – 1911", sex: m}
+  - {name: "Николай", years: "1913", sex: m}
+  - {name: "Валентина", years: "", sex: f}
+  - {name: "Екатерина", years: "", sex: f, note: "возможно"}
+  - {name: "Владимир", years: "1916", sex: m}
+  - {name: "Ольга", years: "1923", sex: f}
 places: [PLC1020, PLC1000]
 village: "с. Лыщичи → д. Шевелёвка"
 sources: [A1196, A1018, A1019, A1008, A1028, A1020, A1021, A1022, A1025, A1027, A1033, A1034, A1043, A1197, W1008]

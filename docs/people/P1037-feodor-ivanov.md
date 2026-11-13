@@ -13,6 +13,11 @@ death_date_status: unknown
 parents: [P1039, P1040]
 spouses: [P1038]
 children: [P1036]
+children_no_page:
+  - {name: "Филипп", years: "1810", sex: m}
+  - {name: "Иван", years: "ок. 1812", sex: m}
+  - {name: "Дмитрий", years: "ок. 1813", sex: m}
+  - {name: "Пелагия", years: "1817", sex: f}
 places: [PLC1017]
 village: "д. Попова Гора"
 sources: [A1167, A1168, A1170, A1171, B1010, A1172]

@@ -11,6 +11,10 @@ death_date_status: unknown
 parents: [P1048, P1049]
 spouses: [P1028]
 children: [P1027]
+children_no_page:
+  - {name: "Прокопий (Прокофий)", years: "ок. 1818–1819", sex: m}
+  - {name: "Анкундин (Анкидин)", years: "ок. 1822", sex: m}
+  - {name: "Захарий", years: "ок. 1824", sex: m}
 places: [PLC1008, PLC1019]
 village: "д. Зубово → Лескушкино"
 sources: [A1155, B1007, B1008, A1157, A1158, A1159]

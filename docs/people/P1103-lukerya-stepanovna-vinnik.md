@@ -11,6 +11,9 @@ death_date_status: probable
 parents: []
 spouses: [P1102]
 children: [P1106]
+children_no_page:
+  - {name: "Елена (Олена)", years: "1927", sex: f}
+  - {name: "Анна", years: "1930", sex: f}
 places: [PLC1004]
 village: "? → х. Винники"
 sources: []

@@ -11,6 +11,8 @@ death_date_status: unknown
 parents: []
 spouses: [P1098]
 children: [P1102]
+children_no_page:
+  - {name: "Сусанна", years: "ок. 1895", sex: f}
 places: [PLC1004]
 village: "? → х. Винники"
 sources: [A1267]

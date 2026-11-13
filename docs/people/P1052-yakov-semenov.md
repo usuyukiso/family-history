@@ -11,6 +11,11 @@ death_date_status: confirmed
 parents: [P1054]
 spouses: [P1053]
 children: [P1050]
+children_no_page:
+  - {name: "Авдотья", years: "ок. 1746", sex: f}
+  - {name: "Кондратий", years: "ок. 1748–1750", sex: m}
+  - {name: "Федосья", years: "ок. 1753", sex: f}
+  - {name: "Акилина", years: "1763–1768", sex: f}
 places: [PLC1008]
 village: "д. Зубово"
 sources: [A1159, A1158, A1174]

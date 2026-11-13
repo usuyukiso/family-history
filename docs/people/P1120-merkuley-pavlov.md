@@ -12,6 +12,8 @@ death_date_status: unknown
 parents: []
 spouses: []
 children: [P1119]
+children_no_page:
+  - {name: "Федор", years: "взрослый в 1709", sex: m}
 places: [PLC1011]
 village: "д. Порухово"
 tree_branch: "Псковская ветка"

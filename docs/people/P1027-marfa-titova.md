@@ -13,6 +13,11 @@ death_date_status: unknown
 parents: [P1028, P1029]
 spouses: [P1015]
 children: [P1017]
+children_no_page:
+  - {name: "Агафья", years: "ок. 1834–1837", sex: f}
+  - {name: "Ксения", years: "ок. 1840", sex: f}
+  - {name: "Анна", years: "1853", sex: f}
+  - {name: "Иустина", years: "1856 – 1857", sex: f}
 places: [PLC1002, PLC1010, PLC1019]
 village: "д. Лескушкино → Маковицы"
 sources: [B1007, A1074, A1058, A1078, A1079, A1059, A1060, A1156, A1081, A1084, A1085, A1061, A1062, A1153, A1155, B1008]

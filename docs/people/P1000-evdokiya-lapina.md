@@ -14,6 +14,8 @@ death_date_status: confirmed
 spouses:
   - P1001
 children: [P1002]
+children_no_page:
+  - {name: "Мария", years: "1885 – 1885", sex: f}
 places: [PLC1000]
 village: "Яросл. губ. → Сахалин → д. Шевелёвка"
 tree_branch: "Ярославская ветка"

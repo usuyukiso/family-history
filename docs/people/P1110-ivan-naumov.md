@@ -11,6 +11,8 @@ death_date_status: probable
 parents: []
 spouses: [P1080]
 children: []
+children_no_page:
+  - {name: "Станислав Иванович Наумов", years: "1947 – ок. 1981", sex: m}
 places: []
 village: "Нелидово → Биробиджанский совхоз → Хабаровский край → Тюмень"
 sources: [D1002, D1004, A1270]

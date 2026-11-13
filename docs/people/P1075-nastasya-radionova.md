@@ -11,6 +11,12 @@ death_date_status: unknown
 parents: [P1118]
 spouses: [P1074]
 children: [P1044]
+children_no_page:
+  - {name: "Меланья", years: "ок. 1747", sex: f}
+  - {name: "Катерина", years: "ок. 1754", sex: f}
+  - {name: "Силуан [?]", years: "ок. 1755", sex: m}
+  - {name: "сын, имя неразборчиво", years: "ок. 1758", sex: m}
+  - {name: "Татьяна", years: "ок. 1762", sex: f}
 places: [PLC1023, PLC1013]
 village: "д. Боравова → Костково"
 sources: [A1181, A1291, B1011]

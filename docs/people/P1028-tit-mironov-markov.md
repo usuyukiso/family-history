@@ -14,6 +14,10 @@ death_date_status: unknown
 parents: [P1030, P1031]
 spouses: [P1029]
 children: [P1027]
+children_no_page:
+  - {name: "Прокопий (Прокофий)", years: "ок. 1818–1819", sex: m}
+  - {name: "Анкундин (Анкидин)", years: "ок. 1822", sex: m}
+  - {name: "Захарий", years: "ок. 1824", sex: m}
 places: [PLC1010, PLC1019]
 village: "д. Мокряне → Лескушкино"
 sources: [A1153, A1154, A1155, B1007, B1008, A1074]

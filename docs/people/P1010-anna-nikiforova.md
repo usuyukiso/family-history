@@ -11,6 +11,13 @@ death_date_status: confirmed
 parents: [P1063, P1064]
 spouses: [P1009]
 children: [P1012]
+children_no_page:
+  - {name: "Фадей (Фотий)", years: "ок. 1756–1759", sex: m}
+  - {name: "Исаак", years: "ок. 1759 – 1817", sex: m}
+  - {name: "Февронья", years: "ок. 1762", sex: f}
+  - {name: "Настасья", years: "ок. 1762", sex: f}
+  - {name: "Родион (Иродион)", years: "1774 – 1836", sex: m}
+  - {name: "Евдокия", years: "ок. 1777", sex: f}
 places: [PLC1003, PLC1012, PLC1014, PLC1015]
 village: "д. Печохново → Горелик → Захарино"
 sources: [A1188, A1189, A1063, A1049, A1053, A1055, A1056, A1051, A1052, A1070, A1064, A1068, A1182]

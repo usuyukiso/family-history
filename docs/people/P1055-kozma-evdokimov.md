@@ -12,6 +12,12 @@ death_date_status: unknown
 parents: [P1057, P1058]
 spouses: [P1056]
 children: [P1049]
+children_no_page:
+  - {name: "Максим", years: "ок. 1756", sex: m}
+  - {name: "Петр", years: "ок. 1762", sex: m}
+  - {name: "Наталья", years: "", sex: f}
+  - {name: "Ирина", years: "ок. 1771", sex: f}
+  - {name: "Иван", years: "ок. 1774", sex: m}
 places: [PLC1009]
 village: "д. Мышино"
 sources: [A1174, A1159, A1175]

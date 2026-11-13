@@ -12,6 +12,10 @@ death_date_status: confirmed
 parents: [P1068, P1071]
 spouses: [P1070]
 children: [P1041]
+children_no_page:
+  - {name: "Петр", years: "ок. 1738–1751", sex: m}
+  - {name: "Игнат (Игнатий)", years: "ок. 1739–1743", sex: m}
+  - {name: "Матвей (Матфей)", years: "ок. 1744 – 1750", sex: m}
 places: [PLC1017]
 village: "д. Попова Гора"
 sources: [A1277, A1160, A1161, A1162, A1163, A1164, A1165, A1186, A1195]

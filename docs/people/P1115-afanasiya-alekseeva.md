@@ -11,6 +11,10 @@ death_date_status: unknown
 parents: []
 spouses: [P1114]
 children: [P1112]
+children_no_page:
+  - {name: "Феодосия", years: "ок. 1842", sex: f}
+  - {name: "Трофим", years: "1853", sex: m}
+  - {name: "Евмений", years: "1857", sex: m}
 places: [PLC1004]
 village: "? → х. Винники"
 sources: [A1265]

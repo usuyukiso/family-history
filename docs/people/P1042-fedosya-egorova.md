@@ -13,6 +13,10 @@ death_date_status: unknown
 parents: []
 spouses: [P1041]
 children: [P1039]
+children_no_page:
+  - {name: "Пелагея", years: "ок. 1756", sex: f}
+  - {name: "Петр", years: "ок. 1768–1775", sex: m}
+  - {name: "Логин", years: "ок. 1771–1772", sex: m}
 places: [PLC1017, PLC1018]
 village: "д. Ванютино → Попова Гора"
 sources: [A1161, A1162, A1163, A1164, A1165, A1167, A1186]

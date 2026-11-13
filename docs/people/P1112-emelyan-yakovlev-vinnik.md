@@ -12,6 +12,9 @@ death_date_status: unknown
 parents: [P1114, P1115]
 spouses: [P1113]
 children: [P1101]
+children_no_page:
+  - {name: "Михаил", years: "ок. 1872", sex: m}
+  - {name: "Настасья", years: "ок. 1889", sex: f}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1265, A1267]

@@ -2247,3 +2247,253 @@ a.cl-cal__day--has.is-active {
   color: var(--md-accent-fg-color);
   background: var(--md-accent-bg-color);
 }
+
+/* Персоны: схема «Родители → братья и сёстры → дети» перед «Источниками» (hooks/person_kin.py) */
+.md-typeset .kin-nav {
+  --kin-gap: 2.4rem;
+  --kin-line: var(--md-default-fg-color--lighter);
+  --kin-m: #e3ecf7;
+  --kin-m-border: #9fb8d6;
+  --kin-f: #f6ecc9;
+  --kin-f-border: #d6bf78;
+  margin: 2rem 0 1.5rem;
+  padding: 1rem 1.1rem 1.2rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem;
+  font-size: 12px; /* весь текст схемы — 12px, как в «Реестре документов» */
+}
+[data-md-color-scheme="slate"] .md-typeset .kin-nav {
+  --kin-m: #26354a;
+  --kin-m-border: #4d6788;
+  --kin-f: #3d3622;
+  --kin-f-border: #7d6c3a;
+}
+.md-typeset .kin-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+/* кнопка «на весь экран» (docs/javascripts/diagram-zoom.js) */
+.md-typeset .kin-zoom {
+  flex: none;
+  min-width: 2rem;
+  padding: .1rem .5rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: .2rem;
+  background: transparent;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+}
+.md-typeset .kin-zoom:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+.md-typeset .kin-nav:fullscreen {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: auto;
+  padding: 1.5rem 2rem;
+  background: var(--md-default-bg-color);
+}
+/* легенда: что значат рамки и линии */
+.md-typeset .kin-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1.1rem;
+  margin-bottom: .9rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .kin-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+}
+.md-typeset .kin-sw {
+  display: inline-block;
+  width: 1.1rem;
+  height: .7rem;
+  border-radius: .2rem;
+  border: 1px solid var(--kin-m-border);
+  background: var(--kin-m);
+}
+.md-typeset .kin-sw--f {
+  margin-left: -.15rem;
+  border-color: var(--kin-f-border);
+  background: var(--kin-f);
+}
+.md-typeset .kin-sw--nopage {
+  border-style: dashed;
+  border-color: var(--md-default-fg-color--lighter);
+  background: transparent;
+}
+.md-typeset .kin-sw--self {
+  border: 2px solid #4f78a8;
+}
+.md-typeset .kin-sw--line {
+  height: 0;
+  border: 0;
+  border-top: 1px solid var(--kin-line);
+  border-radius: 0;
+  background: none;
+}
+/* ссылка на разбор с предположениями о родителях */
+.md-typeset a.kin-card.kin-hypo .kin-name {
+  font-style: italic;
+}
+.md-typeset .kin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--kin-gap);
+}
+.md-typeset .kin-head {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: .45rem;
+}
+.md-typeset .kin-stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+.md-typeset .kin-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: .4rem .6rem;
+  border: 1px solid var(--kin-m-border);
+  border-radius: .45rem;
+  background: var(--kin-m);
+  color: var(--md-default-fg-color);
+  line-height: 1.3;
+}
+.md-typeset .kin-card.kin-f {
+  border-color: var(--kin-f-border);
+  background: var(--kin-f);
+}
+.md-typeset a.kin-card:not(.headerlink) {
+  text-decoration: none;
+  font-weight: 400;
+}
+.md-typeset a.kin-card:hover {
+  color: var(--md-default-fg-color);
+  box-shadow: 0 0 0 2px var(--md-accent-fg-color--transparent);
+  border-color: var(--md-accent-fg-color);
+}
+.md-typeset a.kin-card .kin-name {
+  color: var(--md-typeset-a-color);
+}
+.md-typeset .kin-name {
+  font-weight: 700;
+}
+.md-typeset .kin-place {
+  font-style: italic;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .kin-years {
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .kin-note {
+  color: var(--md-default-fg-color--light);
+}
+/* без своей страницы — пунктир, без цвета */
+.md-typeset .kin-card.kin-nopage {
+  border-style: dashed;
+  border-color: var(--md-default-fg-color--lighter);
+  background: transparent;
+}
+.md-typeset .kin-card.kin-nopage .kin-name {
+  font-weight: 600;
+}
+.md-typeset .kin-card.kin-self {
+  border-width: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+}
+.md-typeset .kin-card.kin-self.kin-m { border-color: #4f78a8; }
+.md-typeset .kin-card.kin-self.kin-f { border-color: #b8952f; }
+.md-typeset .kin-empty-text {
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .kin-selfbox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.md-typeset .kin-spouse {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  margin-left: .6rem;
+}
+.md-typeset .kin-spouse .kin-card {
+  flex: 1;
+  min-width: 0;
+}
+.md-typeset .kin-ring {
+  font-size: .7rem;
+}
+/* линии: родители ─┐ ├─ братья/сёстры, человек ─┐ ├─ дети */
+.md-typeset .kin-col--parents .kin-card::after,
+.md-typeset .kin-col--middle .kin-stack > .kin-card::before,
+.md-typeset .kin-col--middle .kin-self::before,
+.md-typeset .kin-col--kids .kin-card::before,
+.md-typeset .kin-has-kids .kin-self::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(var(--kin-gap) / 2);
+  border-top: 1px solid var(--kin-line);
+}
+.md-typeset .kin-col--parents .kin-card::after,
+.md-typeset .kin-has-kids .kin-self::after {
+  left: 100%;
+}
+/* рамка 2px у выделенной карточки: линии начинаются от её края */
+.md-typeset .kin-has-kids .kin-self::after { margin-left: 1px; }
+.md-typeset .kin-col--middle .kin-stack > .kin-card::before,
+.md-typeset .kin-col--middle .kin-self::before,
+.md-typeset .kin-col--kids .kin-card::before {
+  right: 100%;
+}
+.md-typeset .kin-col--parents .kin-stack::after,
+.md-typeset .kin-col--middle .kin-stack::before,
+.md-typeset .kin-col--kids .kin-stack::before {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  border-left: 1px solid var(--kin-line);
+}
+.md-typeset .kin-col--parents .kin-stack::after {
+  right: calc(var(--kin-gap) / -2);
+}
+.md-typeset .kin-col--middle .kin-stack::before,
+.md-typeset .kin-col--kids .kin-stack::before {
+  left: calc(var(--kin-gap) / -2);
+}
+.md-typeset .kin-stack--none::before,
+.md-typeset .kin-stack--none::after,
+.md-typeset .kin-col--parents .kin-stack--none .kin-card::after,
+.md-typeset .kin-stack--none .kin-card::before {
+  display: none;
+}
+/* узкий экран: столбцы друг под другом, без линий */
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .kin-grid {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+  .md-typeset .kin-nav .kin-stack::before,
+  .md-typeset .kin-nav .kin-stack::after,
+  .md-typeset .kin-nav .kin-card::before,
+  .md-typeset .kin-nav .kin-card::after {
+    display: none;
+  }
+}

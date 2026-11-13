@@ -12,6 +12,9 @@ death_date_status: unknown
 parents: []
 spouses: [P1011]
 children: [P1013, P1015]
+children_no_page:
+  - {name: "Устинья", years: "1807", sex: f}
+  - {name: "Пимен", years: "ок. 1809", sex: m}
 places: [PLC1002]
 village: "? → д. Маковицы"
 sources: [A1071, A1057, A1072, A1058, A1059]

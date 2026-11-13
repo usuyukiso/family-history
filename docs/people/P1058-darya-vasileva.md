@@ -11,6 +11,13 @@ death_date_status: confirmed
 parents: []
 spouses: [P1057]
 children: [P1055]
+children_no_page:
+  - {name: "Кирила", years: "ок. 1738", sex: m}
+  - {name: "Егор", years: "ок. 1741", sex: m}
+  - {name: "Трифон", years: "ок. 1743", sex: m}
+  - {name: "Марья", years: "ок. 1748 – 1769", sex: f}
+  - {name: "Анна", years: "ок. 1753", sex: f}
+  - {name: "Василиса", years: "ок. 1753", sex: f}
 places: [PLC1024, PLC1009]
 village: "д. Кочаново → Мышино"
 sources: [A1174, B1011]

@@ -12,6 +12,14 @@ death_date_status: unknown
 parents: [P1065]
 spouses: [P1064]
 children: [P1010]
+children_no_page:
+  - {name: "Пелагея", years: "ок. 1739", sex: f}
+  - {name: "Никифор", years: "ок. 1744", sex: m}
+  - {name: "Евфросиния", years: "ок. 1744–1746", sex: f}
+  - {name: "Дарья", years: "ок. 1747", sex: f}
+  - {name: "Павел", years: "ок. 1750–1752", sex: m}
+  - {name: "Семен", years: "ок. 1754", sex: m}
+  - {name: "Марфа", years: "ок. 1759", sex: f}
 places: [PLC1014]
 village: "д. Печохново"
 sources: [A1294, A1188, A1189, A1182, A1063, A1049, A1192]

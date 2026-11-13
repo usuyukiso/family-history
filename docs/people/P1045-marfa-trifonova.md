@@ -11,6 +11,15 @@ death_date_status: unknown
 parents: []
 spouses: [P1044]
 children: [P1038]
+children_no_page:
+  - {name: "Агрипина", years: "ок. 1779", sex: f}
+  - {name: "Артемий", years: "ок. 1787", sex: m}
+  - {name: "Домна", years: "", sex: f}
+  - {name: "Васса", years: "", sex: f}
+  - {name: "Василий", years: "", sex: m}
+  - {name: "Николай", years: "", sex: m}
+  - {name: "Екатерина", years: "", sex: f}
+  - {name: "Симеон", years: "1804", sex: m, note: "возможно"}
 places: [PLC1013]
 village: "? → д. Костково"
 sources: [A1166, A1173]

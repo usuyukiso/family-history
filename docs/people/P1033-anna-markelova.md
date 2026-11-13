@@ -11,6 +11,9 @@ death_date_status: unknown
 parents: []
 spouses: [P1032]
 children: [P1030]
+children_no_page:
+  - {name: "Еким", years: "ок. 1759", sex: m}
+  - {name: "Григорий", years: "ок. 1766–1768", sex: m}
 places: [PLC1010]
 village: "? → д. Мокряне"
 sources: [A1154]

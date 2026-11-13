@@ -11,6 +11,11 @@ death_date_status: probable
 parents: [P1011, P1047]
 spouses: [P1027]
 children: [P1017]
+children_no_page:
+  - {name: "Агафья", years: "ок. 1834–1837", sex: f}
+  - {name: "Ксения", years: "ок. 1840", sex: f}
+  - {name: "Анна", years: "1853", sex: f}
+  - {name: "Иустина", years: "1856 – 1857", sex: f}
 places: [PLC1002]
 village: "д. Маковицы"
 sources: [A1057, A1074, A1078, A1058, A1062, A1094, A1084, A1108, A1059, A1060, A1081, A1085, A1079, A1061, A1076, A1082, A1092, A1095, A1071, A1156]

@@ -11,6 +11,11 @@ death_date_status: unknown
 parents: []
 spouses: [P1066]
 children: [P1009]
+children_no_page:
+  - {name: "Яков", years: "ок. 1718–1725", sex: m}
+  - {name: "Понкратий (Панкратий)", years: "ок. 1724–1731", sex: m}
+  - {name: "Исак", years: "ок. 1735", sex: m}
+  - {name: "Параскева", years: "ок. 1739", sex: f}
 places: [PLC1015, PLC1012]
 village: "д. Горелик → Красихино"
 sources: [A1048, A1049]

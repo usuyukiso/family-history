@@ -11,6 +11,15 @@ death_date_status: confirmed
 parents: [P1011, P1047]
 spouses: []
 children: []
+children_no_page:
+  - {name: "Ирина (Иринья)", years: "ок. 1824", sex: f}
+  - {name: "Домна", years: "ок. 1826", sex: f}
+  - {name: "Матрона", years: "1833", sex: f}
+  - {name: "Александра", years: "ок. 1847 – 1857", sex: f}
+  - {name: "Дарья", years: "ок. 1851", sex: f}
+  - {name: "Агафья", years: "1858 – 1859", sex: f}
+  - {name: "Евдокия", years: "1860", sex: f}
+  - {name: "Алексей", years: "1862", sex: m}
 places: [PLC1002]
 village: "д. Маковицы"
 sources: [A1057, A1058, A1083, A1099, A1078, A1073, A1059, A1060, A1086, A1087, A1089, A1091, A1093, A1061, A1062, A1075, A1077, A1080, A1081, A1084, A1088, A1090, A1097, A1071]

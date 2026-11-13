@@ -12,6 +12,13 @@ death_date_status: unknown
 parents: [P1085, P1086]
 spouses: [P1090]
 children: [P1092]
+children_no_page:
+  - {name: "Анна", years: "1780", sex: f}
+  - {name: "Татьяна", years: "1783", sex: f}
+  - {name: "Мария", years: "1789", sex: f}
+  - {name: "Евдокия", years: "1792", sex: f}
+  - {name: "Семен", years: "1794 – до 1799", sex: m}
+  - {name: "Евдокия", years: "1796", sex: f}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1261, A1262, A1263]

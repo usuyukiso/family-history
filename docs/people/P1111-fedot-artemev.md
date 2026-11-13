@@ -10,6 +10,10 @@ death_date_status: unknown
 parents: []
 spouses: []
 children: [P1066]
+children_no_page:
+  - {name: "Алексей", years: "взрослый в 1709", sex: m}
+  - {name: "Потапий (Потап)", years: "ок. 1694", sex: m}
+  - {name: "Семен", years: "ок. 1704", sex: m}
 places: [PLC1015]
 village: "д. Горелик"
 tree_branch: "Псковская ветка"

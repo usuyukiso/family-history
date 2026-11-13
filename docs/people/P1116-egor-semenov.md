@@ -10,6 +10,9 @@ death_date_status: unknown
 parents: []
 spouses: []
 children: [P1065]
+children_no_page:
+  - {name: "Захар", years: "ок. 1704", sex: m, note: "по выводу составителя"}
+  - {name: "Ермолай", years: "ок. 1709", sex: m}
 places: [PLC1014]
 village: "д. Печохново"
 tree_branch: "Псковская ветка"

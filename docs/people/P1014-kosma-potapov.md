@@ -13,6 +13,14 @@ death_date_status: unknown
 parents: [P1012]
 spouses: [P1036]
 children: [P1016]
+children_no_page:
+  - {name: "Исакий (Исаак)", years: "1830", sex: m}
+  - {name: "Дарья", years: "1832", sex: f}
+  - {name: "Дарья", years: "1834", sex: f}
+  - {name: "Иулиан (Ульян)", years: "1836 – 1905", sex: m}
+  - {name: "Февронья", years: "1844 – 1844", sex: f}
+siblings_no_page:
+  - {name: "Федосья", years: "", sex: f}
 places: [PLC1003]
 village: "д. Захарино"
 sources: [A1125, A1126, A1131, A1058, A1059, A1060, A1122, A1136, A1062, A1121, A1132, A1133, A1135, A1127, A1128, A1129, A1134, A1055, A1130, A1056, A1069, B1009, A1235, A1237, A1238, A1239, A1240, A1241, A1242, A1243, A1244, A1245, A1246, A1247, A1248, A1249, A1250, A1251, A1252, A1256]

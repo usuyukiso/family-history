@@ -12,6 +12,10 @@ death_date_status: probable
 parents: [P1104, P1105]
 spouses: [P1106]
 children: [P1108]
+children_no_page:
+  - {name: "Николай", years: "1939", sex: m}
+  - {name: "Тамара", years: "1941", sex: f}
+  - {name: "Нина", years: "1946", sex: f}
 places: [PLC1004]
 village: "х. Винники → с. Литовки"
 sources: []

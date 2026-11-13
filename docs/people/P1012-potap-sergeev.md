@@ -12,6 +12,11 @@ death_date_status: confirmed
 parents: [P1009, P1010]
 spouses: []
 children: [P1014]
+children_no_page:
+  - {name: "Варвара", years: "ок. 1793–1794 – 1833?", sex: f}
+  - {name: "Марья", years: "ок. 1798–1799", sex: f}
+  - {name: "Стефанида (Степанида)", years: "1804", sex: f}
+  - {name: "Артемий", years: "1810", sex: m}
 places: [PLC1003, PLC1015]
 village: "д. Горелик → Захарино"
 sources: [A1052, A1056, A1066, A1053, A1055, A1069, A1125, A1130, A1120, A1126, A1051, A1058, B1009, A1229, A1231, A1234, A1235, A1228, A1230]

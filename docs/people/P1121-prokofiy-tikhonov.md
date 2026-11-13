@@ -11,6 +11,11 @@ death_date_status: unknown
 parents: []
 spouses: []
 children: [P1046]
+children_no_page:
+  - {name: "Тимофей", years: "1719", sex: m}
+  - {name: "Семен", years: "ок. 1725", sex: m, note: "предположение"}
+siblings_no_page:
+  - {name: "Михайло [?]", years: "ок. 1683", sex: m}
 places: [PLC1002]
 village: "д. Маковицы"
 tree_branch: "Псковская ветка"

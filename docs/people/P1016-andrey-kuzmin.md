@@ -12,6 +12,13 @@ death_date_status: confirmed
 parents: [P1014, P1036]
 spouses: []
 children: [P1018]
+children_no_page:
+  - {name: "Лука", years: "1859", sex: m}
+  - {name: "Пелагея", years: "1863 – 1863", sex: f}
+  - {name: "Иаков", years: "1864 – 1865", sex: m}
+  - {name: "Алексей", years: "ок. 1880–1881", sex: m, note: "по всей видимости"}
+  - {name: "Мария", years: "1884", sex: f}
+  - {name: "Анна", years: "1887", sex: f}
 places: [PLC1003]
 village: "д. Захарино"
 sources: [A1131, A1136, A1141, A1062, A1123, A1124, A1140, A1137, A1138, A1139, A1142, A1058, A1132, A1133, A1135, A1059, A1060, A1103, A1104, A1112, A1114, A1116, A1127, A1128, A1129, B1009, A1252, A1253, A1254, A1255, A1257, A1258]

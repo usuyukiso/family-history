@@ -12,6 +12,10 @@ death_date_status: unknown
 parents: []
 spouses: [P1059]
 children: [P1057]
+children_no_page:
+  - {name: "Анна", years: "ок. 1707", sex: f}
+  - {name: "Федор", years: "ок. 1710", sex: m}
+  - {name: "Ананей", years: "ок. 1720", sex: m, note: "по-видимому"}
 places: [PLC1009]
 village: "? → д. Мышино"
 sources: [A1177]

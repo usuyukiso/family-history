@@ -11,6 +11,9 @@ death_date_status: unknown
 parents: []
 spouses: [P1081]
 children: []
+children_no_page:
+  - {name: "Евгений Нестерович", years: "1926", sex: m}
+  - {name: "Лидия Нестеровна", years: "1928", sex: f}
 places: [PLC1025]
 village: "д. Дрогачево"
 sources: [B1014, A1269]

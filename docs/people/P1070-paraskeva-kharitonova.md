@@ -12,6 +12,10 @@ death_date_status: unknown
 parents: []
 spouses: [P1043]
 children: [P1041]
+children_no_page:
+  - {name: "Петр", years: "ок. 1738–1751", sex: m}
+  - {name: "Игнат (Игнатий)", years: "ок. 1739–1743", sex: m}
+  - {name: "Матвей (Матфей)", years: "ок. 1744 – 1750", sex: m}
 places: [PLC1022, PLC1017]
 village: "д. Саблево-Шевели → Попова Гора"
 sources: [A1162, A1186, B1011]

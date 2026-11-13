@@ -11,6 +11,12 @@ death_date_status: unknown
 parents: []
 spouses: [P1095]
 children: [P1098]
+children_no_page:
+  - {name: "Матрона", years: "ок. 1849", sex: f}
+  - {name: "Стефан", years: "ок. 1852", sex: m}
+  - {name: "Михаил", years: "ок. 1854", sex: m}
+  - {name: "Яков", years: "1855", sex: m}
+  - {name: "Аким", years: "1857", sex: m}
 places: [PLC1004]
 village: "? → х. Винники"
 sources: [A1264, A1265]

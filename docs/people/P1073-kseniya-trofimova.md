@@ -11,6 +11,10 @@ death_date_status: unknown
 parents: []
 spouses: [P1072]
 children: [P1074]
+children_no_page:
+  - {name: "Иван", years: "ок. 1733–1734", sex: m}
+  - {name: "Роман", years: "ок. 1736–1737", sex: m}
+  - {name: "Евдокия", years: "", sex: f}
 places: [PLC1021, PLC1013]
 village: "д. Пухово → Костково"
 sources: [A1181, B1011]

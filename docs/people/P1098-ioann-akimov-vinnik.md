@@ -13,6 +13,13 @@ death_date_status: unknown
 parents: [P1095, P1096]
 spouses: [P1099]
 children: [P1102]
+children_no_page:
+  - {name: "Даниил", years: "ок. 1880", sex: m}
+  - {name: "Павел", years: "ок. 1881", sex: m}
+  - {name: "Сергий", years: "ок. 1883", sex: m}
+  - {name: "Феодор", years: "ок. 1886", sex: m}
+  - {name: "Михей", years: "ок. 1888", sex: m}
+  - {name: "Сусанна", years: "ок. 1895", sex: f}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1265, A1267]

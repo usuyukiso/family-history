@@ -13,6 +13,10 @@ death_date_status: unknown
 parents: [P1055, P1056]
 spouses: [P1048]
 children: [P1029]
+children_no_page:
+  - {name: "Агафья", years: "ок. 1779", sex: f}
+  - {name: "Устина", years: "ок. 1794", sex: f}
+  - {name: "Марфа", years: "ок. 1797", sex: f}
 places: [PLC1009, PLC1008]
 village: "д. Мышино → Зубово"
 sources: [A1174, A1159, A1157, A1175, A1158]

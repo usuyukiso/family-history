@@ -13,6 +13,11 @@ death_date_status: confirmed
 parents: [P1121]
 spouses: [P1023]
 children: [P1021]
+children_no_page:
+  - {name: "Февронья", years: "ок. 1734", sex: f}
+  - {name: "Родион (Иродион)", years: "ок. 1742–1744", sex: m}
+  - {name: "Наталья", years: "ок. 1745", sex: f}
+  - {name: "Елена", years: "ок. 1755", sex: f}
 places: [PLC1002]
 village: "д. Маковицы"
 sources: [A1309, A1146, A1143, A1149, A1047, A1050]

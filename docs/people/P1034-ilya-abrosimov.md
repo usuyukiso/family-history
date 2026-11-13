@@ -12,6 +12,8 @@ death_date_status: unknown
 parents: []
 spouses: [P1035]
 children: [P1032]
+siblings_no_page:
+  - {name: "Никита", years: "ок. 1724", sex: m}
 places: [PLC1010]
 village: "д. Мокряне"
 tree_branch: "Псковская ветка"

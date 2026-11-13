@@ -10,6 +10,10 @@ death_date_status: unknown
 parents: []
 spouses: []
 children: [P1081]
+children_no_page:
+  - {name: "Феня Анисимовна", years: "", sex: f}
+  - {name: "Григорий Анисимович", years: "1912", sex: m}
+  - {name: "Алефтина (Анастасия?) Анисимовна", years: "? – после 1995", sex: f}
 places: []
 village: "?"
 tree_branch: "Тверская ветка"

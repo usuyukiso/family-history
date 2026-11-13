@@ -11,6 +11,13 @@ death_date_status: unknown
 parents: []
 spouses: [P1087]
 children: [P1091]
+children_no_page:
+  - {name: "Пелагея", years: "ок. 1774", sex: f}
+  - {name: "Степан", years: "ок. 1778 – 1847", sex: m}
+  - {name: "Ксения", years: "ок. 1781", sex: f}
+  - {name: "Иван", years: "ок. 1783", sex: m}
+  - {name: "Степан", years: "ок. 1789 – 1837", sex: m}
+  - {name: "Иван", years: "ок. 1792 – 1844", sex: m}
 places: [PLC1004]
 village: "? → х. Винники"
 sources: [A1262, A1263]

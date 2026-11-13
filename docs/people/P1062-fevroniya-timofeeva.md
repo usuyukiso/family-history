@@ -11,6 +11,9 @@ death_date_status: unknown
 parents: []
 spouses: [P1061]
 children: [P1059]
+children_no_page:
+  - {name: "Гаврила", years: "ок. 1684", sex: m}
+  - {name: "Григорий", years: "ок. 1688", sex: m}
 places: [PLC1009]
 village: "? → д. Мышино"
 sources: [A1177]

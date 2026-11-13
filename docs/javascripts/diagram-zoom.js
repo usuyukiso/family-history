@@ -27,7 +27,24 @@
       }));
     }
   }
-  function scan() { document.querySelectorAll("div.mermaid, div.kin-scheme").forEach(setup); }
+  // Схема родни на странице персоны (div.kin-nav): у неё своя рамка, поэтому
+  // кнопка встаёт в её заголовок, а на весь экран разворачивается сама схема.
+  function setupKin(nav) {
+    if (nav.dataset.zoom || !nav.requestFullscreen) return;
+    nav.dataset.zoom = "1";
+    var title = nav.querySelector(".kin-title");
+    if (!title) return;
+    var b = button("⛶", "На весь экран", function () {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else nav.requestFullscreen();
+    });
+    b.className = "kin-zoom";
+    title.appendChild(b);
+  }
+  function scan() {
+    document.querySelectorAll("div.mermaid, div.kin-scheme").forEach(setup);
+    document.querySelectorAll("div.kin-nav").forEach(setupKin);
+  }
   new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
   scan();
 })();

@@ -12,6 +12,8 @@ death_date_status: probable
 parents: [P1087, P1088]
 spouses: []
 children: [P1093]
+children_no_page:
+  - {name: "Дмитрий", years: "ок. 1799", sex: m}
 places: [PLC1004]
 village: "х. Винники"
 sources: [A1262, A1263, A1264]

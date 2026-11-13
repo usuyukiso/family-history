@@ -11,6 +11,8 @@ death_date_status: unknown
 parents: []
 spouses: [P1030]
 children: [P1028]
+children_no_page:
+  - {name: "Дарья", years: "ок. 1798", sex: f}
 places: [PLC1010]
 village: "? → д. Мокряне"
 sources: [A1154, A1153, B1007]

@@ -11,6 +11,11 @@ death_date_status: confirmed
 parents: [P1021, P1022]
 spouses: [P1047]
 children: [P1013, P1015]
+children_no_page:
+  - {name: "Василий", years: "ок. 1775", sex: m}
+  - {name: "Февронья", years: "ок. 1786", sex: f}
+  - {name: "Устинья", years: "1807", sex: f}
+  - {name: "Пимен", years: "ок. 1809", sex: m}
 places: [PLC1002]
 village: "д. Маковицы"
 sources: [A1143, A1148, A1150, A1310, A1057, A1072, A1050, A1054, A1066, A1067, A1071, A1058, A1047, A1059, A1062, A1094]

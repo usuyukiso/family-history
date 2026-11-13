@@ -12,6 +12,8 @@ death_date_status: unknown
 parents: []
 spouses: []
 children: [P1118]
+children_no_page:
+  - {name: "Егор", years: "взрослый в 1709", sex: m}
 places: [PLC1023]
 village: "д. Боровово"
 tree_branch: "Псковская ветка"

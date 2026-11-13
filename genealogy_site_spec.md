@@ -303,6 +303,9 @@ spouses:
   - P1001
 children:
   - P1004
+children_no_page:            # дети без своей страницы — для схемы родни (hooks/person_kin.py)
+  - {name: "Мария", years: "1907", sex: f}
+siblings_no_page: []         # братья и сёстры без страницы, если их нет у родителей
 families:
   - FAM1000
 places:

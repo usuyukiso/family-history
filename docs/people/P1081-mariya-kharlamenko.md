@@ -12,6 +12,10 @@ death_date_status: probable
 parents: [P1082]
 spouses: [P1083, P1084]
 children: [P1080]
+children_no_page:
+  - {name: "сын (имя неизвестно)", years: "", sex: m}
+  - {name: "Евгений Нестерович", years: "1926", sex: m}
+  - {name: "Лидия Нестеровна", years: "1928", sex: f}
 places: [PLC1025]
 village: "? → д. Дрогачево → Тюмень"
 sources: [A1269, F1003, L1002]

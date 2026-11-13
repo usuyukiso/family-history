@@ -11,6 +11,8 @@ death_date_status: probable
 parents: [P1002, P1003]
 spouses: [P1005]
 children: []
+children_no_page:
+  - {name: "Лариса", years: "1946", sex: f}
 places: [PLC1000]
 village: "д. Шевелёвка → Камчатка"
 sources: [A1034, A1037, B1002, A1033, A1035, A1036, D1008]

@@ -15,6 +15,11 @@ death_date_status: unknown
 parents: [P1023, P1046]
 spouses: [P1022]
 children: [P1011]
+children_no_page:
+  - {name: "Праскева", years: "ок. 1759", sex: f}
+  - {name: "Макрида", years: "1763", sex: f}
+  - {name: "Тихон [?]", years: "1766", sex: m}
+  - {name: "Анна", years: "1767", sex: f}
 places: [PLC1002, PLC1016]
 village: "д. Колтырево (?) → Маковицы"
 sources: [A1047, A1146, A1143, A1147, A1148, A1149, A1150, A1050, A1151, A1310, A1054, A1057]

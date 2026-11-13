@@ -13,6 +13,11 @@ death_date_status: confirmed
 parents: [P1037, P1038]
 spouses: [P1014]
 children: [P1016]
+children_no_page:
+  - {name: "Исакий (Исаак)", years: "1830", sex: m}
+  - {name: "Дарья", years: "1832", sex: f}
+  - {name: "Дарья", years: "1834", sex: f}
+  - {name: "Иулиан (Ульян)", years: "1836 – 1905", sex: m}
 places: [PLC1003, PLC1017]
 village: "д. Попова Гора → Захарино"
 sources: [B1010, A1126, B1009, A1127, A1128, A1129, A1121, A1131, A1058, A1132, A1167, A1168, A1170, A1171]
