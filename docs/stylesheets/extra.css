@@ -2497,3 +2497,16 @@ a.cl-cal__day--has.is-active {
     display: none;
   }
 }
+
+/* Рукописные письма (поле handwriting: true, L-страницы): текст на листе —
+   прописным шрифтом чёрными чернилами; заголовки граф бланка — обычным шрифтом. */
+.md-typeset .doc-hand blockquote p,
+.md-typeset .doc-hand blockquote td {
+  font-family: "Caveat", cursive;
+  font-size: 1.2em;
+  color: #1a1a1a;
+}
+[data-md-color-scheme="slate"] .md-typeset .doc-hand blockquote p,
+[data-md-color-scheme="slate"] .md-typeset .doc-hand blockquote td {
+  color: var(--doc-paper-ink);
+}

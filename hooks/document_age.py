@@ -9,7 +9,11 @@
 вписанное от руки — синими чернилами), `paper: yellow` — в
 <div class="doc-paper-yellow"> (жёлтый бланк, вписанное — синими чернилами; класс
 не doc-yellow, чтобы не задеть вложенный .doc-yellow у A1270). Остальные документы
-оформляются обычной бумагой без обёртки."""
+оформляются обычной бумагой без обёртки.
+
+Поле `handwriting: true` (рукописные письма, L-страницы) дополнительно
+оборачивает страницу в <div class="doc-hand">: текст на листе набирается
+прописным шрифтом (Caveat, ×1,2) чёрными чернилами."""
 
 import re
 
@@ -17,6 +21,13 @@ import re
 def on_page_content(html, page, config, files):
     if not page.file.src_uri.startswith("sources/"):
         return html
+    html = _paper(html, page)
+    if page.meta.get("handwriting") is True:
+        html = f'<div class="doc-hand">\n{html}\n</div>'
+    return html
+
+
+def _paper(html, page):
     paper = str(page.meta.get("paper", ""))
     if paper in ("grey", "white", "pink", "cream"):
         return f'<div class="doc-{paper}">\n{html}\n</div>'
